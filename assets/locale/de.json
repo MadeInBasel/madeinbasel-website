@@ -1,0 +1,22 @@
+{
+  "meta": {
+    "description": "Made in Basel",
+    "keywords": "Made in Basel, MadeInBasel, Swiss Made, Basel, Switzerland"
+  },
+  "pages": {
+    "home": "Home",
+    "services": "Services",
+    "terms": "Disclaimer"
+  },
+  "buttons": {
+    "continue": "Continue",
+    "back": "Back",
+    "save": "Save",
+    "send": "Send",
+    "sendRequest": "Send Request",
+    "confirm": "Confirm",
+    "close": "Close",
+    "cancel": "Cancel",
+    "visitWebsite": "Visit Website"
+  }
+}

@@ -1,0 +1,17 @@
+@import "~assets/styles/variables.scss";
+
+#index {
+  background-color: $colorGreen;
+  text-align: center;
+
+  .wallpaper {
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+
+    .logo {
+      width: 40vw;
+    }
+  }
+}

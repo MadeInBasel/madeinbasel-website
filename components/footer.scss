@@ -1,0 +1,74 @@
+@import "~assets/styles/variables.scss";
+
+#footer {
+  background-color: $colorDark;
+  color: white;
+  padding-bottom: 7vw;
+  padding-top: 7vw;
+  @media (min-width: $breakpointMedium) {
+    padding-bottom: 40px;
+    padding-top: 40px;
+  }
+
+  a {
+    color: #AEC4D7;
+    color: lighten($colorPink, 20);
+    text-decoration: none;
+  }
+
+  .footer-inner {
+    flex-wrap: wrap;
+
+    > div {
+      margin-bottom: 30px;
+    }
+    @media (min-width: $breakpointSmall) {
+      display: flex;
+
+      > div {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .emblem {
+    margin-bottom: 20px;
+    margin-right: 20px;
+
+    svg {
+      width: 90px;
+
+      g {
+        fill: white;
+      }
+    }
+  }
+
+  .contact {
+    margin-right: 50px;
+    line-height: 1.4;
+
+    i {
+      display: none;
+    }
+  }
+
+  .menu {
+    margin-left: auto;
+
+    ul {
+      text-transform: uppercase;
+      margin: 0;
+      padding: 0;
+      line-height: 1.4;
+      list-style-type: none;
+
+      li {
+        @media (min-width: $breakpointMedium) {
+          display: inline;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}

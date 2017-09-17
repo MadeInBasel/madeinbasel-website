@@ -1,13 +1,16 @@
 // Specify overrides (theme and/or base variables etc.)
 // See https://vuetifyjs.com/quick-start
+
+$color-pack = false
+
 $theme := {
-  primary: #9c27b0
+  primary: #F96673
   accent: #ce93d8
   secondary: #424242
   info: #0D47A1
   warning: #ffb300
   error: #B71C1C
-  success: #2E7D32
+  success: #49a577
 }
 
 // Import Vuetify styling
@@ -15,3 +18,7 @@ $theme := {
 
 .page
   @extend .fade-transition
+
+// Overwrites
+.btn--raised
+  box-shadow none

@@ -1,0 +1,100 @@
+@import "~assets/styles/variables.scss";
+
+#header {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  left: 0;
+  height: $headerHeight;
+  position: fixed;
+  top: 0;
+  transition: box-shadow 200ms 800ms;
+  width: 100%;
+  z-index: 2;
+
+  .header-background {
+    background-color: $colorPink;
+    height: 100%;
+    position: absolute;
+    transform: translateY(0);
+    transition: 400ms 400ms;
+    width: 100%;
+  }
+
+  #layout.scrollTopExtendend & {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+    transition: none;
+
+    .header-background {
+      transform: translateY(-100%);
+      transition: none;
+      background-color: transparent;
+    }
+  }
+
+  .header-navigation {
+    height: $headerHeight;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 0;
+    position: relative;
+    @media(min-width: $breakpointSmall) {
+      padding-left: 5vw;
+      padding-right: 5vw;
+    }
+    @media(min-width: $breakpointMedium) {
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+  }
+
+  .logo {
+    display: block;
+    margin-right: auto;
+    position: relative;
+    width: 160px;
+
+    .beta {
+      background-color: $colorFg;
+      color: $colorBg;
+      bottom: 5px;
+      font-size: 0.7em;
+      font-weight: bold;
+      left: 100%;
+      padding: 0 4px;
+      position: absolute;
+    }
+  }
+}
+
+.header-navigation-menu {
+  display: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  @media(min-width: 700px) {
+    display: flex;
+    font-size: 1.2em;
+  }
+
+  li {
+    border-top: 2px solid transparent;
+
+    &.nuxt-link-active {
+      border-top-color: rgba(255, 255, 255, .5);
+    }
+
+    a {
+      color: white;
+      display: block;
+      padding: 12px;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.hamburger {
+  .icon {
+    font-size: 30px;
+  }
+}
