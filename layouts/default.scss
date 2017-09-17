@@ -73,12 +73,11 @@ h3 {
 
   .emblem {
     display: flex;
-    height: 90px;
+    height: 140px;
     justify-content: center;
 
-    svg {
-      width: 50px;
-      fill: $colorPink;
+    img {
+      width: 900px;
     }
   }
 
@@ -94,7 +93,7 @@ h3 {
 
   .list__tile--active {
     .icon {
-      color: $colorPink;
+      color: $colorGreen;
     }
   }
 
