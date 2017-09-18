@@ -1,14 +1,27 @@
 <template>
 <div id="index">
-  <section class="wallpaper">
+  <section class="wallpaper boundaries">
     <img class="logo" src="~assets/images/logo.svg" alt="Logo">
+  </section>
+  <section class="section--overlay">
+    <div class="boundaries">
+      <h2>What</h2>
+      <div class="abstract">
+        “Made in Basel” ist eine Gesellschaft zur Promotion von Basler Produkten und Dienstleistungen. “Made in Basel” befasst sich im weitesten Sinne mit der Marken- und Labelpflege.
+      </div>
+      <v-layout class="members" wrap>
+        <v-flex xs6 sm3 v-for="(item,i) in member" :key="i">
+          <div class="member">
+            <img :src="'/images/member/' +item.image" :alt="item.name">
+          </div>
+        </v-flex>
+      </v-layout>
+    </div>
   </section>
 </div>
 </template>
 
 <script>
-import { TimelineMax, Linear } from 'gsap'
-
 export default {
   components: {},
   scrollToTop: true,
@@ -17,13 +30,38 @@ export default {
       title: this.$t('pages.home')
     }
   },
-  mounted() {
-    var index = document.querySelector('#index')
-    var bg = new TimelineMax({ repeat: -1 })
-
-    bg.to(index, 5, { backgroundColor: '#00ffff', ease: Linear.easeNone })
-      .to(index, 5, { backgroundColor: '#ff9eff', ease: Linear.easeNone })
-      .to(index, 5, { backgroundColor: '#78ffcc', ease: Linear.easeNone })
+  data() {
+    return {
+      member: [{
+          image: 'alpphone.png',
+          name: 'AlpPhone'
+        },
+        {
+          image: 'bachapp.png',
+          name: 'Bach App'
+        },
+        {
+          image: 'cargomedia.png',
+          name: 'Cargo Media AG'
+        },
+        {
+          image: 'denkmal.png',
+          name: 'Denkmal.org'
+        },
+        {
+          image: 'draeggwaegg.png',
+          name: 'Dräggwägg'
+        },
+        {
+          image: 'erlio.png',
+          name: 'Erlio'
+        },
+        {
+          image: 'thoma.png',
+          name: 'Thoma'
+        }
+      ]
+    }
   },
   i18n: {
     messages: {

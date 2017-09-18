@@ -4,8 +4,8 @@ const main = [{
     icon: 'home'
   },
   {
-    path: '/services',
-    label: 'pages.services',
+    path: '/join',
+    label: 'pages.join',
     icon: 'palette'
   }
 ]

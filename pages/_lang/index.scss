@@ -1,9 +1,6 @@
 @import "~assets/styles/variables.scss";
 
 #index {
-  background-color: $colorGreen;
-  text-align: center;
-
   .wallpaper {
     align-items: center;
     display: flex;
@@ -12,6 +9,23 @@
 
     .logo {
       width: 40vw;
+    }
+  }
+
+  .flex {
+    padding: 5px;
+
+    .member {
+      align-items: center;
+      background-color: white;
+      display: flex;
+      height: 100px;
+      justify-content: center;
+      padding: 12px;
+    }
+
+    img {
+      max-height: 100%;
     }
   }
 }

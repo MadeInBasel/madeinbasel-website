@@ -2,7 +2,7 @@
 var WebFont = require('webfontloader');
 
 WebFont.load({
-  google: {
-    families: ['Roboto', 'Raleway:Extra-Bold']
+  typekit: {
+    id: 'kye0tbt'
   }
 });

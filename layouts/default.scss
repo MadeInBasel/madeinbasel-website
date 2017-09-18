@@ -7,9 +7,8 @@
 }
 
 body {
-  background: #fafafa;
   color: #333;
-  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-smoothing: auto;
   -webkit-font-smoothing: antialiased;
@@ -38,7 +37,8 @@ h3 {
 
 h1,
 h2 {
-  font-family: 'Raleway', 'Roboto', 'Helvetica', sans-serif;
+  font-family: "din-2014",sans-serif;
+  font-weight: bold;
 }
 
 h2 {
@@ -56,13 +56,23 @@ h3 {
   }
 }
 
+#background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $colorGreen;
+}
+
 #layout {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 #page {
+  position: relative;
   flex-grow: 1;
 }
 
@@ -121,10 +131,9 @@ section {
     padding-bottom: 4em;
   }
 
-  &.section--shadow {
-    border-bottom: 1px solid #e6e6e6;
-    box-shadow: 0 90px 90px -60px rgba(0, 0, 0, 0.03);
-    margin-bottom: 2em;
+  &.section--overlay {
+    background-color: rgba(0, 0, 0, .4);
+    color: white;
   }
 }
 
@@ -145,6 +154,7 @@ section {
 .abstract {
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 2em;
   text-align: center;
   @media(min-width: $breakpointMini) {
     width: 90%;
