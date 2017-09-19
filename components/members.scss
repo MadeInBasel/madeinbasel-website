@@ -1,0 +1,36 @@
+@import "~assets/styles/variables.scss";
+
+.members {
+  .flex {
+    padding: 5px;
+
+    .member {
+      align-items: center;
+      background-color: white;
+      display: flex;
+      height: 100px;
+      justify-content: center;
+      padding: 12px;
+    }
+
+    img {
+      max-height: 100%;
+    }
+  }
+}
+
+.dialog-content {
+  background: $colorBg;
+  box-shadow: 0 -4px 4px rgba(0,0,0,0.05);
+  margin-top: -22px;
+  position: relative;
+
+  .logo {
+    display: flex;
+    justify-content: center;
+
+    img {
+      max-height: 100px;
+    }
+  }
+}

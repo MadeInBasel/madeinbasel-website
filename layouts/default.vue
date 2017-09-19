@@ -1,5 +1,5 @@
 <template>
-<v-app id="layout" class="scrollTop scrollTopExtendend">
+<v-app id="layout" class="scrollTop scrollTopExtended">
   <div id="background"></div>
   <app-header v-on:drawer="toggleNavigation"></app-header>
   <v-navigation-drawer id="navigation" class="pb-0" persistent temporary right height="100%" enable-resize-watcher v-model="drawer">
@@ -7,7 +7,7 @@
       <img class="logo" src="~assets/images/logo.svg" alt="Logo">
     </nuxt-link>
     <v-list dense>
-      <v-list-tile v-for="(item, i) in main" :key="i" nuxt v-ripple :to="localePath(`${item.path}`)">
+      <v-list-tile v-for="(item, i) in main" :key="i" nuxt exact v-ripple :to="localePath(`${item.path}`)">
         <v-list-tile-action>
           <v-icon class="grey--text text--darken-1">{{ item.icon }}</v-icon>
         </v-list-tile-action>
@@ -63,7 +63,7 @@ export default {
       var $self = $(this.$el)
       _.throttle(function () {
         $self.toggleClass('scrollTop', $(document).scrollTop() < 10)
-        $self.toggleClass('scrollTopExtendend', $(document).scrollTop() < window.screen.height / 8)
+        $self.toggleClass('scrollTopExtended', $(document).scrollTop() < window.screen.height / 4)
       }, 100)()
     }
   },

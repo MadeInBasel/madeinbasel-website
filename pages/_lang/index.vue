@@ -1,74 +1,99 @@
 <template>
 <div id="index">
+  <style media="screen">
+    #header .logo {
+      display: none;
+    }
+  </style>
   <section class="wallpaper boundaries">
     <img class="logo" src="~assets/images/logo.svg" alt="Logo">
-  </section>
-  <section class="section--overlay">
-    <div class="boundaries">
-      <h2>What</h2>
-      <div class="abstract">
-        “Made in Basel” ist eine Gesellschaft zur Promotion von Basler Produkten und Dienstleistungen. “Made in Basel” befasst sich im weitesten Sinne mit der Marken- und Labelpflege.
-      </div>
-      <v-layout class="members" wrap>
-        <v-flex xs6 sm3 v-for="(item,i) in member" :key="i">
-          <div class="member">
-            <img :src="'/images/member/' +item.image" :alt="item.name">
-          </div>
-        </v-flex>
-      </v-layout>
+    <div class="more">
+      <v-icon>expand_more</v-icon>
     </div>
   </section>
+
+  <section class="section--dark">
+    <div class="boundaries">
+      <h2>{{ $t('intro.heading')}}</h2>
+      <div class="abstract">
+        {{ $t('intro.abstract')}}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="boundaries">
+      <h2>{{ $t('about.heading')}}</h2>
+      <div class="abstract">
+        {{ $t('about.abstract')}}
+      </div>
+    </div>
+  </section>
+
+  <section class="section--dark">
+    <div class="boundaries">
+      <h2>{{ $t('members.heading')}}</h2>
+      <div class="abstract">
+        {{ $t('members.abstract')}}
+      </div>
+      <component-members paging=8 />
+      <div class="text-xs-center">
+        <v-btn primary :to="localePath('/join')">{{ $t('pages.join') }}</v-btn>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="boundaries">
+      <h2>{{ $t('join.heading')}}</h2>
+      <div class="abstract">
+        {{ $t('join.abstract')}}
+      </div>
+    </div>
+  </section>
+
 </div>
 </template>
 
 <script>
+import members from '~/components/members.vue'
+
 export default {
-  components: {},
+  components: {
+    'component-members': members
+  },
   scrollToTop: true,
   head() {
     return {
       title: this.$t('pages.home')
     }
   },
-  data() {
-    return {
-      member: [{
-          image: 'alpphone.png',
-          name: 'AlpPhone'
-        },
-        {
-          image: 'bachapp.png',
-          name: 'Bach App'
-        },
-        {
-          image: 'cargomedia.png',
-          name: 'Cargo Media AG'
-        },
-        {
-          image: 'denkmal.png',
-          name: 'Denkmal.org'
-        },
-        {
-          image: 'draeggwaegg.png',
-          name: 'Dräggwägg'
-        },
-        {
-          image: 'erlio.png',
-          name: 'Erlio'
-        },
-        {
-          image: 'thoma.png',
-          name: 'Thoma'
-        }
-      ]
-    }
-  },
   i18n: {
     messages: {
       en: {
-
+        intro: {
+          heading: 'A label is a promise',
+          abstract: 'Basel is the home of some amazing services and products created by even more amazing people. With the "Made in Basel" label, we want to underline this fact. We help sustain a creative climate which encourages entrepreneurship and innovation, and creates employment opportunities for a diverse local workforce.'
+        },
+        about: {
+          heading: 'About',
+          abstract: 'Made in Basel is an initiative to promote products and services from Basel, Switzerland.'
+        },
+        members: {
+          heading: 'Members',
+          abstract: 'These companies are already members.'
+        },
+        join: {
+          heading: 'Become a part',
+          abstract: 'Do you create Products made in Basel? Are you an entrepeneur with a great service with headquarters in the city? Great - join us today and get the badge.'
+        }
       },
-      de: {}
+      de: {
+        intro: {
+          heading: 'Mehrwert für Basel und die Welt'
+        }
+      }
     }
   }
 }

@@ -5,8 +5,10 @@
   },
   "pages": {
     "home": "Home",
-    "join": "Mitglied werden",
-    "terms": "Disclaimer"
+    "join": "Mitmachen",
+    "members": "Mitglieder",
+    "contact": "Kontakt",
+    "terms": "Impressum"
   },
   "buttons": {
     "continue": "Continue",

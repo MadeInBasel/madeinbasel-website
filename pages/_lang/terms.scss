@@ -1,0 +1,29 @@
+@import '~assets/styles/variables.scss';
+
+#terms {
+  .contact {
+    i {
+      display: none;
+    }
+  }
+
+  h4 {
+    margin-top: 2em;
+  }
+
+  .terms-dialog {
+    text-align: center;
+    width: 100%;
+  }
+
+}
+
+.dialog-custom.terms.dialog {
+  padding: 20px 2vw;
+
+  iframe {
+    border: 0;
+    height: 60vh;
+    width: 100%;
+  }
+}

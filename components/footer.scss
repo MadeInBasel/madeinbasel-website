@@ -1,18 +1,18 @@
 @import "~assets/styles/variables.scss";
 
 #footer {
-  background-color: $colorDark;
+  background-color: $colorBgDark;
   color: white;
   padding-bottom: 7vw;
   padding-top: 7vw;
+  position: relative;
   @media (min-width: $breakpointMedium) {
     padding-bottom: 40px;
     padding-top: 40px;
   }
 
   a {
-    color: #AEC4D7;
-    color: lighten($colorPink, 20);
+    color: white;
     text-decoration: none;
   }
 
@@ -27,19 +27,6 @@
 
       > div {
         margin-bottom: 0;
-      }
-    }
-  }
-
-  .emblem {
-    margin-bottom: 20px;
-    margin-right: 20px;
-
-    svg {
-      width: 90px;
-
-      g {
-        fill: white;
       }
     }
   }

@@ -6,14 +6,15 @@ $breakpointLarge: 1200px;
 $breakpointExtraLarge: 1400px;
 $colorSubtle: #5d5d5d;
 
-$headerHeight: 54px;
+$headerHeight: 68px;
 
 $colorBg: white;
-$colorBgSubtle: #eaeaea;
 $colorFg: #333333;
 
 // MadeInBasel Colors
 $colorGreen: #78ffcc;
 $colorPink: #ff9eff;
 $colorBlue: #00ffff;
-$colorDark: #2b393f;
+
+$colorBgDark: rgba(0, 0, 0, .5);
+$colorBgLight: rgba(255, 255, 255, .5);

@@ -1,6 +1,7 @@
 <template>
 <footer id="footer">
   <div class="footer-inner boundaries">
+    <component-address />
     <component-language />
     <div class="menu" :title="$t('about')">
       <ul>
@@ -14,11 +15,13 @@
 </template>
 
 <script>
+import address from '~/components/contactAddress.vue'
 import language from '~/components/language.vue'
 import { social } from '~/assets/menus.js'
 
 export default {
   components: {
+    'component-address': address,
     'component-language': language
   },
   data() {
