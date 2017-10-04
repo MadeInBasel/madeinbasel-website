@@ -17,7 +17,7 @@
       <h2>{{ $t('intro.heading')}}</h2>
       <div class="abstract" v-html="$t('intro.abstract')"></div>
       <div class="text-xs-center">
-        <v-btn primary large :to="localePath('/join')">{{ $t('buttons.learnMore') }}</v-btn>
+        <v-btn primary large :to="localePath('/label')">{{ $t('buttons.learnMore') }}</v-btn>
       </div>
     </div>
   </section>
@@ -78,10 +78,6 @@ export default {
         join: {
           heading: 'Join Us',
           abstract: 'Are you a Basel based company or organisation? Join us and get the badge today.'
-        },
-        buttons: {
-          allMembers: 'All Members',
-          learnMore: 'Learn More'
         }
       },
       de: {
@@ -94,12 +90,8 @@ export default {
           abstract: 'Basel ist vor allem bekannt für seine Pharmakonzerne, aber wussten Sie, dass es mehrere Messerschmiede in Basel gibt? In vielen Hinterhöfen wird gebastelt, gelötet und geschraubt, in Mansarden sind die Startups mit den Ideen von Morgen einquartiert. Gehen sie auf Entdeckungsreise.'
         },
         join: {
-          heading: 'Mitmachen',
+          heading: 'Beitreten',
           abstract: 'Alle in Basel ansässigen Personen und Institutionen können Teil von <strong>Made in Basel</strong> werden. Die Mitgliedschaft ist und bleibt kostenlos. Registriere dich und nutze das Label für dein Marketing. Registrierte Mitglieder werden auf der Webseite aufgeführt und profitieren zusätzlich von exklusiven Angeboten.'
-        },
-        buttons: {
-          allMembers: 'Alle Mitglieder',
-          learnMore: 'Mehr Erfahren'
         }
       }
     }

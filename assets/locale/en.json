@@ -5,7 +5,8 @@
   },
   "pages": {
     "home": "Home",
-    "join": "Participate",
+    "label": "The Label",
+    "join": "Join",
     "members": "Members",
     "contact": "Contact",
     "terms": "Terms"
@@ -19,6 +20,8 @@
     "confirm": "Confirm",
     "close": "Close",
     "cancel": "Cancel",
-    "visitWebsite": "Visit Website"
+    "visitWebsite": "Visit Website",
+    "allMembers": "All Members",
+    "learnMore": "Learn More"
   }
 }

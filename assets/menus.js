@@ -4,6 +4,11 @@ const main = [{
     icon: 'home'
   },
   {
+    path: '/label',
+    label: 'pages.label',
+    icon: 'copyright'
+  },
+  {
     path: '/join',
     label: 'pages.join',
     icon: 'add_circle'

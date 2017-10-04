@@ -1,8 +1,8 @@
 <template>
-<v-layout class="members" wrap>
-  <v-flex xs6 sm3 v-for="(item,i) in memberPaging(paging)" :key="i">
+<v-layout class="members" wrap @keyup.esc="[handleDialogVisibility(), $router.push(localePath('/members'))]">
+  <v-flex xs6 sm3 v-for="(item, index) in memberPaging(paging)" :key="item.slug">
     <v-dialog lazy v-model="item.dialog" width="600" content-class="dialog--custom">
-      <nuxt-link class="member" v-ripple slot="activator" alt="Preview" to>
+      <nuxt-link class="member" v-ripple slot="activator" alt="Preview" :to="{ path: localePath('/members') + '#' + `${item.slug}`}">
         <img :src="'/images/members/' +item.image" :alt="item.name">
       </nuxt-link>
       <div class="dialog-content">
@@ -19,8 +19,9 @@
           <div class="content-logo">
             <img :src="'/images/members/' + item.image" :alt="item.name">
           </div>
-          <div class="content-description abstract">
-            {{ item.description }}
+          <div v-if="item.hasOwnProperty('description')" class="content-description abstract">
+            <div v-if="$i18n.locale === 'en'">{{ item.description.en }}</div>
+            <div v-if="$i18n.locale === 'de'">{{ item.description.de }}</div>
           </div>
           <div v-if="item.hasOwnProperty('memberSince')" class="text-xs-center">
             <small>{{ $t('memberSince')}}: {{ item.memberSince }}</small>
@@ -30,7 +31,7 @@
           </div>
         </div>
       </div>
-      <v-btn class="btn-close" small fab @click="[item.dialog=false]">
+      <v-btn class="btn-close" fab small @click="[item.dialog=false, $router.push(localePath('/members'))]">
         <v-icon>close</v-icon>
       </v-btn>
     </v-dialog>
@@ -40,12 +41,13 @@
 
 <script>
 import { members } from '~/assets/members.js'
+import _ from 'underscore'
 
 export default {
   props: {
     paging: {
       type: String,
-      default: 100
+      default: '100'
     }
   },
   data() {
@@ -60,7 +62,33 @@ export default {
       return this.members.filter(function (item, index) {
         return index < paging
       })
+    },
+    handleDialogVisibility: function () {
+      var openDialog = this.$route.hash ? this.$route.hash.slice(1) : false
+      var self = this
+      if (openDialog) {
+        _.defer(function () {
+          var activeDialog = self.members.filter(function (item, index) {
+            return openDialog === item.slug
+          })
+          if (activeDialog.length && activeDialog[0].hasOwnProperty.dialog) {
+            activeDialog[0].dialog = true
+          }
+        })
+      } else {
+        _.defer(function () {
+          _.each(self.members, function (item) {
+            item.dialog = false
+          })
+        })
+      }
     }
+  },
+  created() {
+    this.handleDialogVisibility()
+  },
+  watch: {
+    '$route': 'handleDialogVisibility'
   },
   i18n: {
     messages: {

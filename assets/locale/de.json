@@ -5,7 +5,8 @@
   },
   "pages": {
     "home": "Home",
-    "join": "Mitmachen",
+    "label": "Das Label",
+    "join": "Beitreten",
     "members": "Mitglieder",
     "contact": "Kontakt",
     "terms": "Impressum"
@@ -19,6 +20,8 @@
     "confirm": "Confirm",
     "close": "Close",
     "cancel": "Cancel",
-    "visitWebsite": "Visit Website"
+    "visitWebsite": "Visit Website",
+    "allMembers": "Alle Mitglieder",
+    "learnMore": "Mehr Erfahren"
   }
 }
