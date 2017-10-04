@@ -5,23 +5,34 @@
       <nuxt-link class="member" v-ripple slot="activator" alt="Preview" to>
         <img :src="'/images/members/' +item.image" :alt="item.name">
       </nuxt-link>
-      <div class="map">
-        <img :src="'https://maps.googleapis.com/maps/api/staticmap?zoom=14&size=640x300' + mapStyles + '&markers=' + item.longitude + ',' + item.latitude +'&key=' + googleAPIKey" alt="Google Maps">
-      </div>
       <div class="dialog-content">
-        <div class="logo">
-          <img :src="'/images/members/' +item.image" :alt="item.name">
+        <div class="map">
+          <div class="map-placeholder">
+            <div>
+              <v-icon>map</v-icon>
+            </div>
+            {{ $t('mapPlaceholder') }}
+          </div>
+          <img v-if="item.hasOwnProperty('longitude')" :src="'https://maps.googleapis.com/maps/api/staticmap?zoom=14&size=640x300' + mapStyles + '&markers=' + item.longitude + ',' + item.latitude +'&key=' + googleAPIKey" alt="Google Maps">
         </div>
-        <div class="description">
-          {{ item.description }}
-        </div>
-        <div>
-          <small>{{ $t('memberSince')}}: {{ item.memberSince }}</small>
-        </div>
-        <div v-if="item.hasOwnProperty('website')" class="text-xs-center">
-          <v-btn flat outline :href="item.website" target="_blank ">{{ $t('buttons.visitWebsite') }}</v-btn>
+        <div class="content">
+          <div class="content-logo">
+            <img :src="'/images/members/' + item.image" :alt="item.name">
+          </div>
+          <div class="content-description abstract">
+            {{ item.description }}
+          </div>
+          <div v-if="item.hasOwnProperty('memberSince')" class="text-xs-center">
+            <small>{{ $t('memberSince')}}: {{ item.memberSince }}</small>
+          </div>
+          <div v-if="item.hasOwnProperty('website')" class="text-xs-center">
+            <v-btn flat outline :href="item.website" target="_blank ">{{ $t('buttons.visitWebsite') }}</v-btn>
+          </div>
         </div>
       </div>
+      <v-btn class="btn-close" small fab @click="[item.dialog=false]">
+        <v-icon>close</v-icon>
+      </v-btn>
     </v-dialog>
   </v-flex>
 </v-layout>
@@ -54,10 +65,12 @@ export default {
   i18n: {
     messages: {
       en: {
-        memberSince: 'Member since'
+        memberSince: 'Member since',
+        mapPlaceholder: 'Address unknown'
       },
       de: {
-        memberSince: 'Mitglied seit'
+        memberSince: 'Mitglied seit',
+        mapPlaceholder: 'Adresse unbekannt'
       }
     }
   }

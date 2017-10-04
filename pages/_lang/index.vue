@@ -15,22 +15,14 @@
   <section class="section--dark">
     <div class="boundaries">
       <h2>{{ $t('intro.heading')}}</h2>
-      <div class="abstract">
-        {{ $t('intro.abstract')}}
+      <div class="abstract" v-html="$t('intro.abstract')"></div>
+      <div class="text-xs-center">
+        <v-btn primary large :to="localePath('/join')">{{ $t('buttons.learnMore') }}</v-btn>
       </div>
     </div>
   </section>
 
   <section>
-    <div class="boundaries">
-      <h2>{{ $t('about.heading')}}</h2>
-      <div class="abstract">
-        {{ $t('about.abstract')}}
-      </div>
-    </div>
-  </section>
-
-  <section class="section--dark">
     <div class="boundaries">
       <h2>{{ $t('members.heading')}}</h2>
       <div class="abstract">
@@ -38,17 +30,20 @@
       </div>
       <component-members paging=8 />
       <div class="text-xs-center">
-        <v-btn primary :to="localePath('/join')">{{ $t('pages.join') }}</v-btn>
+        <v-btn primary large :to="localePath('/members')">{{ $t('buttons.allMembers') }}</v-btn>
       </div>
-
+      <div class="text-xs-center">
+        <v-btn flat large :to="localePath('/join')">{{ $t('pages.join') }}</v-btn>
+      </div>
     </div>
   </section>
 
-  <section>
+  <section class="section--dark">
     <div class="boundaries">
       <h2>{{ $t('join.heading')}}</h2>
-      <div class="abstract">
-        {{ $t('join.abstract')}}
+      <div class="abstract" v-html="$t('join.abstract')"></div>
+      <div class="text-xs-center">
+        <v-btn primary large :to="localePath('/join')">{{ $t('pages.join') }}</v-btn>
       </div>
     </div>
   </section>
@@ -73,25 +68,38 @@ export default {
     messages: {
       en: {
         intro: {
-          heading: 'A label is a promise',
-          abstract: 'Basel is the home of some amazing services and products created by even more amazing people. With the "Made in Basel" label, we want to underline this fact. We help sustain a creative climate which encourages entrepreneurship and innovation, and creates employment opportunities for a diverse local workforce.'
-        },
-        about: {
-          heading: 'About',
-          abstract: 'Made in Basel is an initiative to promote products and services from Basel, Switzerland.'
+          heading: 'The Label',
+          abstract: '<strong>Made in Basel</strong> is an initiative to promote products and services from Basel, Switzerland. We support local production and help sustain a creative climate that encourages entrepreneurship and innovation. <strong>One city. One promise. One label.</strong>'
         },
         members: {
-          heading: 'Members',
-          abstract: 'These companies are already members.'
+          heading: 'Basel for Explorers',
+          abstract: 'These companies and organisations are members.'
         },
         join: {
-          heading: 'Become a part',
-          abstract: 'Do you create Products made in Basel? Are you an entrepeneur with a great service with headquarters in the city? Great - join us today and get the badge.'
+          heading: 'Join Us',
+          abstract: 'Are you a Basel based company or organisation? Join us and get the badge today.'
+        },
+        buttons: {
+          allMembers: 'All Members',
+          learnMore: 'Learn More'
         }
       },
       de: {
         intro: {
-          heading: 'Mehrwert für Basel und die Welt'
+          heading: 'Das Label',
+          abstract: '<strong>Made in Basel</strong> ist eine Initiative um Produkte und Dienstleistungen aus Basel zu bewerben. Wir fördern Innovation und Unternehmergeist, setzen uns ein für ein vielfältiges, kreatives Klima und unterstützen Basel Qualitäten als Wohn-, Arbeits- und Kulturstadt.'
+        },
+        members: {
+          heading: 'Viel zu Entdecken',
+          abstract: 'Basel ist vor allem bekannt für seine Pharmakonzerne, aber wussten Sie, dass es mehrere Messerschmiede in Basel gibt? In vielen Hinterhöfen wird gebastelt, gelötet und geschraubt, in Mansarden sind die Startups mit den Ideen von Morgen einquartiert. Gehen sie auf Entdeckungsreise.'
+        },
+        join: {
+          heading: 'Mitmachen',
+          abstract: 'Alle in Basel ansässigen Personen und Institutionen können Teil von <strong>Made in Basel</strong> werden. Die Mitgliedschaft ist und bleibt kostenlos. Registriere dich und nutze das Label für dein Marketing. Registrierte Mitglieder werden auf der Webseite aufgeführt und profitieren zusätzlich von exklusiven Angeboten.'
+        },
+        buttons: {
+          allMembers: 'Alle Mitglieder',
+          learnMore: 'Mehr Erfahren'
         }
       }
     }

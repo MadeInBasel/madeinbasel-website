@@ -39,11 +39,13 @@ h1,
 h2 {
   font-family: "din-2014",sans-serif;
   font-weight: bold;
+  text-decoration: underline;
 }
 
 h1 {
   margin-top: 1em;
   margin-bottom: 0.7em;
+  text-shadow: 1px 1px rgba(0, 0, 0, .2);
 }
 
 h2 {
@@ -144,7 +146,7 @@ section {
   }
 
   &.section--dark {
-    background-color: rgba(0, 0, 0, .4);
+    background-color: rgba(0, 0, 0, .3);
     color: white;
 
     a {
@@ -189,6 +191,18 @@ section {
 
 .dialog--custom {
   background-color: $colorBg;
+  position: relative;
+
+  .btn-close {
+    background-color: transparent !important;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    .icon {
+      font-size: 26px;
+    }
+  }
 
   .dialog-content {
     padding: 10px 4vw;

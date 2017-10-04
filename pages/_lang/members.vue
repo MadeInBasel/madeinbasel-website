@@ -1,9 +1,11 @@
 <template>
-<div id="contact">
+<div id="members">
   <section class="boundaries">
     <h1>{{ $t('pages.members') }}</h1>
     <component-members />
-    <v-btn primary :to="localePath('/join')">{{ $t('pages.join') }}</v-btn>
+    <div class="text-xs-center">
+      <v-btn primary large :to="localePath('/join')">{{ $t('pages.join') }}</v-btn>
+    </div>
   </section>
 </div>
 </template>

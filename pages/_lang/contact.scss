@@ -1,6 +1,10 @@
 @import '~assets/styles/variables.scss';
 
 #contact {
+  .contactForm {
+    margin-bottom: 1em;
+  }
+
   .contact {
     margin-top: 1vh;
     margin-bottom: 4vh;

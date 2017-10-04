@@ -23,9 +23,9 @@
 
   <section>
     <h2>{{ $t('terms') }}</h2>
-    <v-dialog class="terms-dialog" v-model="dialog" width="600" content-class="dialog-custom terms">
+    <v-dialog class="terms-dialog" v-model="dialog" width="600" content-class="dialog--custom terms">
       <v-btn class="btn-dialog" primary large slot="activator">Allgemeine Geschäftsbedingungen</v-btn>
-      <iframe src="https://docs.google.com/document/d/176JnYi7_ogncO0YzUDNk5IdSM1sGt9xtoSRxu3_uajM/pub"></iframe>
+      <iframe src="https://docs.google.com/document/d/e/2PACX-1vRyzyY7NLVRU9xv4DGB6v7T46PpW9yg2eIn7Z0xDnQDyv24oEBxcaqfKPGeMdjlLlw0hTH9sLJhUQ3k/pub"></iframe>
       <div class="dialog-footer">
         <v-btn primary @click="dialog = false">{{ $t('buttons.close' )}}</v-btn>
       </div>
@@ -79,7 +79,7 @@ export default {
         },
         copyright: {
           heading: 'Urheberrechte',
-          content: 'Die Urheber- und alle anderen Rechte an Inhalten, Bildern, Fotos oder anderen Dateien auf der Website gehören ausschliesslich der Firma Santihans oder den speziell genannten Rechtsinhabern. Für die Reproduktion jeglicher Elemente ist die schriftliche Zustimmung der Urheberrechtsträger im Voraus einzuholen.'
+          content: 'Die Urheber- und alle anderen Rechte an Inhalten, Bildern, Fotos oder anderen Dateien auf der Website gehören ausschliesslich der "Made in Basel" oder den speziell genannten Rechtsinhabern. Für die Reproduktion jeglicher Elemente ist die schriftliche Zustimmung der Urheberrechtsträger im Voraus einzuholen.'
         },
         cookies: {
           heading: 'Cookies',

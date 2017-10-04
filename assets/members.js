@@ -1,7 +1,8 @@
 const members = [{
+    dialog: false,
     image: 'santihans.png',
     name: 'Santihans',
-    website: 'https://santihans.com',
+    website: 'https://www.santihans.com',
     email: 'info@santihans.com',
     longitude: '47.5625149',
     latitude: '7.5751406',
@@ -9,6 +10,7 @@ const members = [{
     memberSince: '2017'
   },
   {
+    dialog: false,
     image: 'alpphone.png',
     name: 'AlpPhone',
     website: 'https://alp-phone.ch',
@@ -19,26 +21,33 @@ const members = [{
     memberSince: '2017'
   },
   {
+    dialog: false,
     image: 'bachapp.png',
-    name: 'Bach App'
+    name: 'BachApp',
+    website: 'https://www.bachapp.ch/'
   },
   {
+    dialog: false,
     image: 'cargomedia.png',
     name: 'Cargo Media AG'
   },
   {
+    dialog: false,
     image: 'denkmal.png',
     name: 'Denkmal.org'
   },
   {
+    dialog: false,
     image: 'draeggwaegg.png',
     name: 'Dräggwägg'
   },
   {
+    dialog: false,
     image: 'erlio.png',
     name: 'Erlio'
   },
   {
+    dialog: false,
     image: 'thoma.png',
     name: 'Thoma'
   }

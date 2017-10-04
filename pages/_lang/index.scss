@@ -1,6 +1,10 @@
 @import "~assets/styles/variables.scss";
 
 #index {
+  strong {
+    text-transform: uppercase;
+  }
+
   .wallpaper {
     align-items: center;
     display: flex;
@@ -18,5 +22,9 @@
       left: 50%;
       transform: translateX(-50%);
     }
+  }
+
+  .members {
+    margin-bottom: 0.8em;
   }
 }
