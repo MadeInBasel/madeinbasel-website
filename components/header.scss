@@ -60,7 +60,6 @@
 }
 
 .hamburger {
-  background-color: rgba(255, 255, 255, 0) !important;
   transition: 200ms 0;
   @media(min-width: 700px) {
     opacity: 0;
@@ -91,11 +90,5 @@
     pointer-events: auto;
     transform: translate(0, 0);
     transition-delay: 400ms;
-  }
-}
-
-#layout:not(.scrollTopExtended) {
-  .hamburger {
-    background-color: rgba(255, 255, 255, .5) !important;
   }
 }

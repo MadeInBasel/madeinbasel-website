@@ -48,6 +48,9 @@ h1 {
 
   + .abstract {
     font-size: 1.3em;
+    @media(min-width: $breakpointSmall) {
+      font-size: 1.4em;
+    }
   }
 }
 
@@ -56,6 +59,9 @@ h2 {
 
   + .abstract {
     font-size: 1.2em;
+    @media(min-width: $breakpointSmall) {
+      font-size: 1.3em;
+    }
   }
 }
 
@@ -150,6 +156,49 @@ section {
     padding-bottom: 4em;
   }
 
+  &.border-bottom,
+  &.border-top {
+    position: relative;
+  }
+
+  &.border-bottom {
+    padding-bottom: 5em;
+    @media(min-width: $breakpointSmall) {
+      padding-bottom: 6em;
+    }
+
+    &::after {
+      background-image: url('~assets/images/border.svg');
+      background-repeat: no-repeat;
+      bottom: 0;
+      content: '';
+      height: 50px;
+      left: 50%;
+      position: absolute;
+      transform: translateX(-30px);
+      width: 700px;
+    }
+  }
+
+  &.border-top {
+    padding-top: 5em;
+    @media(min-width: $breakpointSmall) {
+      padding-top: 7em;
+    }
+
+    &::before {
+      background-image: url('~assets/images/border.svg');
+      background-repeat: no-repeat;
+      content: '';
+      height: 50px;
+      position: absolute;
+      right: 50%;
+      top: 0;
+      transform: translateX(30px) scale(-1, -1);
+      width: 700px;
+    }
+  }
+
   &.section--small {
     padding-top: 0.5em;
     padding-bottom: 0.5em;
@@ -162,10 +211,22 @@ section {
     background-color: $colorBgDark;
     mix-blend-mode: multiply;
 
+    &.border-bottom,
+    &.border-top {
+      &::after,
+      &::before {
+        background-image: url('~assets/images/border-light.svg');
+      }
+    }
+
     a {
       color: $colorPink;
     }
   }
+}
+
+.btn {
+  font-weight: bold;
 }
 
 .boundaries {
@@ -187,14 +248,12 @@ section {
   margin-right: auto;
   margin-bottom: 2em;
   text-align: center;
+  font-weight: bold;
   @media(min-width: $breakpointMini) {
     width: 90%;
   }
   @media(min-width: $breakpointSmall) {
     width: 80%;
-  }
-  @media(min-width: $breakpointMedium) {
-    width: 70%;
   }
 }
 
@@ -230,4 +289,26 @@ section {
     justify-content: center;
     margin-top: 1em;
   }
+}
+@keyframes rainbow {
+  0% {
+    background: $colorGreen;
+  }
+
+  33% {
+    background: $colorBlue;
+  }
+
+  66% {
+    background: $colorPink;
+  }
+
+  100% {
+    background: $colorGreen;
+  }
+}
+
+.rainbow {
+  animation: rainbow 20s;
+  animation-iteration-count: infinite;
 }

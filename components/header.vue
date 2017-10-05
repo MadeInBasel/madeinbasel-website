@@ -12,7 +12,7 @@
         <a href="javascript:;" v-ripple v-on:click.stop="openNavigation()">Menu</a>
       </li>
     </ul>
-    <v-btn class="hamburger" v-on:click.stop="openNavigation()" fab role="navigation">
+    <v-btn class="hamburger rainbow" v-on:click.stop="openNavigation()" fab role="navigation">
       <v-icon>menu</v-icon>
     </v-btn>
   </div>

@@ -1,11 +1,11 @@
 <template>
 <div id="terms">
-  <section class="impressum boundaries">
+  <section class="impressum boundaries border-bottom">
     <h1>{{ $t('pages.terms') }}</h1>
     <component-address />
   </section>
 
-  <section class="legal section--dark">
+  <section class="legal section--dark border-bottom border-top">
     <div class="boundaries">
       <h2>{{ $t('legal') }}</h2>
 
@@ -18,10 +18,9 @@
       <h4>{{ $t('cookies.heading') }}</h4>
       <p v-html="$t('cookies.content')"></p>
     </div>
-
   </section>
 
-  <section>
+  <section class="border-top">
     <h2>{{ $t('terms') }}</h2>
     <v-dialog class="terms-dialog" v-model="dialog" width="600" content-class="dialog--custom terms">
       <v-btn class="btn-dialog" primary large slot="activator">Allgemeine Geschäftsbedingungen</v-btn>

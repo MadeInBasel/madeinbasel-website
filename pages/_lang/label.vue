@@ -1,19 +1,19 @@
 <template>
 <div id="label">
-  <section class="label boundaries">
+  <section class="label boundaries border-bottom">
     <h1>{{ $t('pages.label') }}</h1>
     <div class="abstract" v-html="$t('intro.abstract')"></div>
     <img class="logo" src="~assets/images/logo.svg" alt="Logo">
   </section>
 
-  <section class="section--dark">
+  <section class="section--dark border-top border-bottom">
     <div class="boundaries">
       <h2>{{ $t('mission.heading')}}</h2>
       <div class="abstract" v-html="$t('mission.abstract')"></div>
     </div>
   </section>
 
-  <section>
+  <section class="border-top">
     <div class="boundaries">
       <h2>{{ $t('vision.heading')}}</h2>
       <div class="abstract" v-html="$t('vision.abstract')"></div>

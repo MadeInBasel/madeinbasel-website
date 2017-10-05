@@ -1,6 +1,6 @@
 <template>
 <v-app id="layout" class="scrollTop scrollTopExtended">
-  <div id="background"></div>
+  <div id="background" class="rainbow"></div>
   <app-header v-on:drawer="toggleNavigation"></app-header>
   <v-navigation-drawer id="navigation" class="pb-0" persistent temporary right height="100%" enable-resize-watcher v-model="drawer">
     <nuxt-link class="emblem" :to="localePath('/')">
@@ -36,7 +36,6 @@
 </template>
 
 <script>
-import { TimelineMax, Linear } from 'gsap'
 import { main, social } from '~/assets/menus.js'
 import header from '~/components/header.vue'
 import footer from '~/components/footer.vue'
@@ -77,14 +76,6 @@ export default {
     }
   },
   mounted() {
-    return
-    var index = document.querySelector('#background')
-    var bg = new TimelineMax({ repeat: -1 })
-
-    bg.to(index, 5, { backgroundColor: '#00ffff', ease: Linear.easeNone })
-      .to(index, 5, { backgroundColor: '#ff9eff', ease: Linear.easeNone })
-      .to(index, 5, { backgroundColor: '#78ffcc', ease: Linear.easeNone })
-
     this.handleScroll()
     document.addEventListener('scroll', this.handleScroll)
   },
