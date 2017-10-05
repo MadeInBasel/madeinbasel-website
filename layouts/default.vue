@@ -77,6 +77,7 @@ export default {
     }
   },
   mounted() {
+    return
     var index = document.querySelector('#background')
     var bg = new TimelineMax({ repeat: -1 })
 

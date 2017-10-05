@@ -1,8 +1,10 @@
 @import "~assets/styles/variables.scss";
 
 #footer {
-  background-color: rgb(58, 58, 58);
+  background-color: $colorBgDark;
+  border-top: 3px dotted white;
   color: white;
+  mix-blend-mode: multiply;
   padding-bottom: 7vw;
   padding-top: 7vw;
   position: relative;

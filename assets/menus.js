@@ -6,7 +6,7 @@ const main = [{
   {
     path: '/label',
     label: 'pages.label',
-    icon: 'copyright'
+    icon: 'lightbulb_outline'
   },
   {
     path: '/join',

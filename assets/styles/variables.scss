@@ -9,12 +9,12 @@ $colorSubtle: #5d5d5d;
 $headerHeight: 68px;
 
 $colorBg: white;
-$colorFg: #333333;
+$colorFg: rgb(25, 25, 25);
 
 // MadeInBasel Colors
 $colorGreen: #78ffcc;
 $colorPink: #ff9eff;
 $colorBlue: #00ffff;
 
-$colorBgDark: rgba(0, 0, 0, .5);
+$colorBgDark: $colorFg;
 $colorBgLight: rgba(255, 255, 255, .5);
