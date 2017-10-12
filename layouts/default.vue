@@ -1,6 +1,5 @@
 <template>
-<v-app id="layout" class="scrollTop scrollTopExtended">
-  <div id="background" class="rainbow"></div>
+<v-app id="layout" class="rainbow scrollTop scrollTopExtended">
   <app-header v-on:drawer="toggleNavigation"></app-header>
   <v-navigation-drawer id="navigation" class="pb-0" persistent temporary right height="100%" enable-resize-watcher v-model="drawer">
     <nuxt-link class="emblem" :to="localePath('/')">

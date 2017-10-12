@@ -1,28 +1,36 @@
 <template>
 <div id="label">
-  <section class="label boundaries border-bottom">
-    <h1>{{ $t('pages.label') }}</h1>
-    <div class="abstract" v-html="$t('intro.abstract')"></div>
-    <img class="logo" src="~assets/images/logo.svg" alt="Logo">
-  </section>
-
-  <section class="section--dark border-top border-bottom">
-    <div class="boundaries">
-      <h2>{{ $t('mission.heading')}}</h2>
-      <div class="abstract" v-html="$t('mission.abstract')"></div>
+  <section class="intro">
+    <div class="section-inner boundaries">
+      <h1>{{ $t('pages.label') }}</h1>
+      <div class="abstract" v-html="$t('intro.abstract')"></div>
+      <img class="logo" src="~assets/images/logo.svg" alt="Logo">
     </div>
   </section>
 
-  <section class="border-top">
-    <div class="boundaries">
+  <section class="section--dark">
+    <div class="wave wave-top"></div>
+    <div class="section-inner">
+      <div class="boundaries">
+        <h2>{{ $t('mission.heading')}}</h2>
+        <div class="abstract" v-html="$t('mission.abstract')"></div>
+      </div>
+    </div>
+    <div class="wave wave-bottom"></div>
+  </section>
+
+  <section>
+    <div class="section-inner boundaries">
       <h2>{{ $t('vision.heading')}}</h2>
       <div class="abstract" v-html="$t('vision.abstract')"></div>
     </div>
   </section>
 
   <section class="section--small section--dark">
-    <div class="boundaries">
-      <small>{{ $t('intro.small') }}</small>
+    <div class="section-inner">
+      <div class="boundaries">
+        <small>{{ $t('intro.small') }}</small>
+      </div>
     </div>
   </section>
 </div>

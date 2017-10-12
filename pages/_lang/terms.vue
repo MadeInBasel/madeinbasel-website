@@ -1,34 +1,42 @@
 <template>
 <div id="terms">
-  <section class="impressum boundaries border-bottom">
-    <h1>{{ $t('pages.terms') }}</h1>
-    <component-address />
-  </section>
-
-  <section class="legal section--dark border-bottom border-top">
-    <div class="boundaries">
-      <h2>{{ $t('legal') }}</h2>
-
-      <h4>{{ $t('disclaimer.heading') }}</h4>
-      <p>{{ $t('disclaimer.content') }}</p>
-
-      <h4>{{ $t('copyright.heading') }}</h4>
-      <p>{{ $t('copyright.content') }}</p>
-
-      <h4>{{ $t('cookies.heading') }}</h4>
-      <p v-html="$t('cookies.content')"></p>
+  <section class="impressum">
+    <div class="section-inner boundaries">
+      <h1>{{ $t('pages.terms') }}</h1>
+      <component-address />
     </div>
   </section>
 
-  <section class="border-top">
-    <h2>{{ $t('terms') }}</h2>
-    <v-dialog class="terms-dialog" v-model="dialog" width="600" content-class="dialog--custom terms">
-      <v-btn class="btn-dialog" primary large slot="activator">Allgemeine Geschäftsbedingungen</v-btn>
-      <iframe src="https://docs.google.com/document/d/e/2PACX-1vRyzyY7NLVRU9xv4DGB6v7T46PpW9yg2eIn7Z0xDnQDyv24oEBxcaqfKPGeMdjlLlw0hTH9sLJhUQ3k/pub"></iframe>
-      <div class="dialog-footer">
-        <v-btn primary @click="dialog = false">{{ $t('buttons.close' )}}</v-btn>
+  <section class="legal section--dark">
+    <div class="wave wave-top"></div>
+    <div class="section-inner">
+      <div class="boundaries">
+        <h2>{{ $t('legal') }}</h2>
+
+        <h4>{{ $t('disclaimer.heading') }}</h4>
+        <p>{{ $t('disclaimer.content') }}</p>
+
+        <h4>{{ $t('copyright.heading') }}</h4>
+        <p>{{ $t('copyright.content') }}</p>
+
+        <h4>{{ $t('cookies.heading') }}</h4>
+        <p v-html="$t('cookies.content')"></p>
       </div>
-    </v-dialog>
+    </div>
+    <div class="wave wave-bottom"></div>
+  </section>
+
+  <section>
+    <div class="section-inner">
+      <h2>{{ $t('terms') }}</h2>
+      <v-dialog class="terms-dialog" v-model="dialog" width="600" content-class="dialog--custom terms">
+        <v-btn class="btn-dialog" primary large slot="activator">Allgemeine Geschäftsbedingungen</v-btn>
+        <iframe src="https://docs.google.com/document/d/e/2PACX-1vRyzyY7NLVRU9xv4DGB6v7T46PpW9yg2eIn7Z0xDnQDyv24oEBxcaqfKPGeMdjlLlw0hTH9sLJhUQ3k/pub"></iframe>
+        <div class="dialog-footer">
+          <v-btn primary @click="dialog = false">{{ $t('buttons.close' )}}</v-btn>
+        </div>
+      </v-dialog>
+    </div>
   </section>
 
 </div>

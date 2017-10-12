@@ -1,11 +1,13 @@
 <template>
 <div id="members">
-  <section class="boundaries">
-    <h1>{{ $t('pages.members') }}</h1>
-    <div class="abstract" v-html="$t('intro.abstract', {icon: '♥'})"></div>
-    <component-members />
-    <div class="text-xs-center">
-      <v-btn primary large :to="localePath('/join')">{{ $t('pages.join') }}</v-btn>
+  <section>
+    <div class="section-inner boundaries">
+      <h1>{{ $t('pages.members') }}</h1>
+      <div class="abstract" v-html="$t('intro.abstract', {icon: '♥'})"></div>
+      <component-members />
+      <div class="text-xs-center">
+        <v-btn primary large :to="localePath('/join')">{{ $t('pages.join') }}</v-btn>
+      </div>
     </div>
   </section>
 </div>

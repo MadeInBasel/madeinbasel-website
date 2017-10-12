@@ -1,10 +1,12 @@
 <template>
 <div id="contact">
-  <section class="boundaries">
-    <h1>{{ $t('pages.contact') }}</h1>
-    <component-contact-form />
-    <div class="address">
-      <component-address />
+  <section>
+    <div class="section-inner boundaries">
+      <h1>{{ $t('pages.contact') }}</h1>
+      <component-contact-form />
+      <div class="address">
+        <component-address />
+      </div>
     </div>
   </section>
 </div>

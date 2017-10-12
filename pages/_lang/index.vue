@@ -12,18 +12,23 @@
     </div>
   </section>
 
-  <section class="section--dark border-bottom">
-    <div class="boundaries">
-      <h2>{{ $t('intro.heading')}}</h2>
-      <div class="abstract" v-html="$t('intro.abstract')"></div>
-      <div class="text-xs-center">
-        <v-btn outline dark large :to="localePath('/label')">{{ $t('buttons.learnMore') }}</v-btn>
+
+  <section class="section--dark">
+    <div class="wave wave-top"></div>
+    <div class="section-inner">
+      <div class="boundaries">
+        <h2>{{ $t('intro.heading')}}</h2>
+        <div class="abstract" v-html="$t('intro.abstract')"></div>
+        <div class="text-xs-center">
+          <v-btn outline dark large :to="localePath('/label')">{{ $t('buttons.learnMore') }}</v-btn>
+        </div>
       </div>
     </div>
+    <div class="wave wave-bottom"></div>
   </section>
 
-  <section class="border-top border-bottom">
-    <div class="boundaries">
+  <section>
+    <div class="section-inner boundaries">
       <h2>{{ $t('members.heading')}}</h2>
       <div class="abstract">
         {{ $t('members.abstract')}}
@@ -38,12 +43,15 @@
     </div>
   </section>
 
-  <section class="section--dark border-top">
-    <div class="boundaries">
-      <h2>{{ $t('join.heading')}}</h2>
-      <div class="abstract" v-html="$t('join.abstract')"></div>
-      <div class="text-xs-center">
-        <v-btn outline dark large :to="localePath('/join')">{{ $t('pages.join') }}</v-btn>
+  <section class="section--dark">
+    <div class="wave wave-top"></div>
+    <div class="section-inner">
+      <div class="boundaries">
+        <h2>{{ $t('join.heading')}}</h2>
+        <div class="abstract" v-html="$t('join.abstract')"></div>
+        <div class="text-xs-center">
+          <v-btn outline dark large :to="localePath('/join')">{{ $t('pages.join') }}</v-btn>
+        </div>
       </div>
     </div>
   </section>

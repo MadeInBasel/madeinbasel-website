@@ -13,9 +13,15 @@
     position: relative;
 
     .logo {
-      width: 40vw;
+      width: 60vw;
       max-width: 500px;
       max-height: 100%;
+      @media (min-width: $breakpointSmall) {
+        width: 40vw;
+      }
+      @media (min-height: 600px) {
+        max-height: 500px;
+      }
     }
 
     .more {
