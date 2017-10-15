@@ -5,6 +5,11 @@
     margin-bottom: 1em;
   }
 
+  form {
+    background: $colorBgLight;
+    padding: 20px;
+  }
+
   .contact {
     margin-top: 1vh;
     margin-bottom: 4vh;
@@ -30,10 +35,5 @@
         top: 4px;
       }
     }
-  }
-
-  form {
-    background: $colorBgLight;
-    padding: 20px;
   }
 }

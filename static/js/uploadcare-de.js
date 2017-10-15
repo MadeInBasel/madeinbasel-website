@@ -1,0 +1,1 @@
+UPLOADCARE_LOCALE = 'de'

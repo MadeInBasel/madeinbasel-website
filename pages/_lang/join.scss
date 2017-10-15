@@ -1,4 +1,23 @@
 @import "~assets/styles/variables.scss";
 
 #join {
+  .component-uploadcare {
+    .preview {
+      .image {
+        object-fit: contain;
+        max-height: 150px;
+      }
+    }
+
+    .btn-upload {
+      .icon {
+        margin-right: 0.3em;
+      }
+    }
+
+    .stateError {
+      color: #b71c1c;
+      min-height: 19px;
+    }
   }
+}
