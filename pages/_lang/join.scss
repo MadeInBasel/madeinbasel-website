@@ -1,6 +1,12 @@
 @import "~assets/styles/variables.scss";
 
 #join {
+  .address-preview .proposition {
+    background-color: lightblue;
+    border: 1px dashed;
+    padding: 4px 8px 0;
+  }
+
   .component-uploadcare {
     .preview {
       .image {

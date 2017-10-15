@@ -12,6 +12,10 @@
     "terms": "Terms"
   },
   "buttons": {
+    "accept": "Accept",
+    "edit": "Edit",
+    "discard": "Discard",
+    "change": "Change",
     "continue": "Continue",
     "back": "Back",
     "save": "Save",

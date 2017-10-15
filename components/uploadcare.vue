@@ -2,8 +2,8 @@
 <div class="component-uploadcare">
   <div v-show="statePreview" class="preview">
     <img class="image" :src="imageUrl" alt="Logo">
-    <v-btn primary @click="discardImage">
-      <v-icon>close</v-icon> {{ $t('buttons.remove') }}
+    <v-btn small round @click="discardImage">
+      {{ $t('buttons.change') }}
     </v-btn>
   </div>
   <div v-show="stateUpload">
@@ -74,7 +74,6 @@ export default {
     messages: {
       en: {
         buttons: {
-          remove: 'Remove',
           upload: 'Upload Logo'
         },
         error: {
@@ -82,7 +81,12 @@ export default {
         }
       },
       de: {
-
+        buttons: {
+          upload: 'Logo Hochladen'
+        },
+        error: {
+          upload: 'Hochladen fehlgeschlagen. Bitte PNG oder JPG verwenden.'
+        }
       }
     }
   }

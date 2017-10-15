@@ -12,15 +12,19 @@
     "terms": "Impressum"
   },
   "buttons": {
-    "continue": "Continue",
-    "back": "Back",
-    "save": "Save",
-    "send": "Send",
-    "sendRequest": "Send Request",
-    "confirm": "Confirm",
-    "close": "Close",
-    "cancel": "Cancel",
-    "visitWebsite": "Visit Website",
+    "accept": "Akzeptieren",
+    "edit": "Bearbeiten",
+    "discard": "Verwerfen",
+    "change": "Ändern",
+    "continue": "Weiter",
+    "back": "Zurück",
+    "save": "Speichern",
+    "send": "Senden",
+    "sendRequest": "Anfrage Senden",
+    "confirm": "Bestätigen",
+    "close": "Schliessen",
+    "cancel": "Abbrechen",
+    "visitWebsite": "Webseite Besuchen",
     "allMembers": "Alle Mitglieder",
     "learnMore": "Mehr Erfahren"
   }
