@@ -29,13 +29,7 @@
   <section>
     <div class="section-inner">
       <h2>{{ $t('terms') }}</h2>
-      <v-dialog class="terms-dialog" v-model="dialog" width="600" content-class="dialog--custom terms">
-        <v-btn class="btn-dialog" primary large slot="activator">Allgemeine Geschäftsbedingungen</v-btn>
-        <iframe src="https://docs.google.com/document/d/e/2PACX-1vRyzyY7NLVRU9xv4DGB6v7T46PpW9yg2eIn7Z0xDnQDyv24oEBxcaqfKPGeMdjlLlw0hTH9sLJhUQ3k/pub"></iframe>
-        <div class="dialog-footer">
-          <v-btn primary @click="dialog = false">{{ $t('buttons.close' )}}</v-btn>
-        </div>
-      </v-dialog>
+      <component-terms />
     </div>
   </section>
 
@@ -44,10 +38,12 @@
 
 <script>
 import address from '~/components/contactAddress.vue'
+import terms from '~/components/terms.vue'
 
 export default {
   components: {
-    'component-address': address
+    'component-address': address,
+    'component-terms': terms
   },
   head() {
     return {
@@ -79,7 +75,7 @@ export default {
       },
       de: {
         legal: 'Rechtliche Hinweise',
-        terms: 'AGBs',
+        terms: 'Allgemeine Geschäftsbedingungen',
         disclaimer: {
           heading: 'Haftungsausschluss',
           content: 'Der Autor übernimmt keinerlei Gewähr hinsichtlich der inhaltlichen Richtigkeit, Genauigkeit, Aktualität, Zuverlässigkeit und Vollständigkeit der Informationen. Haftungsansprüche gegen den Autor wegen Schäden materieller oder immaterieller Art, welche aus dem Zugriff oder der Nutzung bzw. Nichtnutzung der veröffentlichten Informationen, durch Missbrauch der Verbindung oder durch technische Störungen entstanden sind, werden ausgeschlossen. Alle Angebote sind unverbindlich. Der Autor behält es sich ausdrücklich vor, Teile der Seiten oder das gesamte Angebot ohne gesonderte Ankündigung zu verändern, zu ergänzen, zu löschen oder die Veröffentlichung zeitweise oder endgültig einzustellen.'

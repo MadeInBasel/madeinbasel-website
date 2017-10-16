@@ -1,6 +1,12 @@
 @import "~assets/styles/variables.scss";
 
 .members {
+  .spinner {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
   .flex {
     padding: 5px;
 

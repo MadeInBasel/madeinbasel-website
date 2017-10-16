@@ -9,7 +9,6 @@
         {{ $t('form.successMessage') }}
       </v-alert>
       <v-form v-show="!formSuccess" v-model="valid" ref="form">
-
         <v-stepper v-model="stepper" vertical>
 
           <v-stepper-step step="1" :complete="stepper > 1">{{ $t('form.step1.title') }}
@@ -44,6 +43,7 @@
           <v-stepper-content step="3">
             <v-text-field :label="$t('form.email.label')" v-model="email" :rules="emailRules" required></v-text-field>
             <v-checkbox :label="$t('form.terms.label')" v-model="terms" :rules="[v => !!v || $t('form.terms.error')]" required></v-checkbox>
+            <component-terms link />
             <div class="text-xs-right">
               <v-btn flat @click.native="stepper = 2">{{ $t('buttons.back') }}</v-btn>
               <v-btn @click="submit" :loading="stateLoading" :disabled="(!valid || stateLoading)">{{ $t('buttons.save') }}</v-btn>
@@ -61,6 +61,7 @@
 import $ from 'jquery'
 import uploadcare from '~/components/uploadcare.vue'
 import address from '~/components/address.vue'
+import terms from '~/components/terms.vue'
 import { config } from '~/assets/firebase.js'
 const firebase = require('firebase')
 require('firebase/firestore')
@@ -68,7 +69,8 @@ require('firebase/firestore')
 export default {
   components: {
     'component-uploadcare': uploadcare,
-    'component-address': address
+    'component-address': address,
+    'component-terms': terms
   },
   head() {
     return {
