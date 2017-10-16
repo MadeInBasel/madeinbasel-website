@@ -1,27 +1,29 @@
 @import "~assets/styles/variables.scss";
 
-.members {
+.component-members {
   .spinner {
     display: flex;
     justify-content: center;
     width: 100%;
   }
 
-  .flex {
-    padding: 5px;
+  .members {
+    .flex {
+      padding: 5px;
 
-    .member {
-      align-items: center;
-      box-shadow: 2px 2px rgba(0,0,0,0.3);
-      background-color: white;
-      display: flex;
-      height: 100px;
-      justify-content: center;
-      padding: 12px;
-    }
+      .member {
+        align-items: center;
+        box-shadow: 2px 2px rgba(0,0,0,0.3);
+        background-color: white;
+        display: flex;
+        height: 100px;
+        justify-content: center;
+        padding: 12px;
+      }
 
-    img {
-      max-height: 100%;
+      img {
+        max-height: 100%;
+      }
     }
   }
 }

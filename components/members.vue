@@ -1,13 +1,15 @@
 <template>
-<v-layout class="members" wrap @keyup.esc="dialog = false">
+<div class="component-members" @keyup.esc="dialog = false">
   <div v-show="!ready" class="spinner">
     <v-progress-circular indeterminate color="primary"></v-progress-circular>
   </div>
-  <v-flex v-show="ready" xs6 sm3 v-for="(item, index) in memberPaging(paging)" :key="item.id">
-    <nuxt-link class="member" v-ripple alt="Preview" :to="{ path: $route.path + '#' + `${item.id}`}">
-      <img :src="item.data.organisationImage.cdnUrl" :alt="item.data.organisationName">
-    </nuxt-link>
-  </v-flex>
+  <transition-group name="transition-down" tag="div" class="layout members wrap">
+    <v-flex v-show="ready" xs6 sm3 v-for="(item, index) in memberPaging(paging)" :key="item.id">
+      <nuxt-link class="member" v-ripple alt="Preview" :to="{ path: $route.path + '#' + `${item.id}`}">
+        <img :src="item.data.organisationImage.cdnUrl" :alt="item.data.organisationName">
+      </nuxt-link>
+    </v-flex>
+  </transition-group>
   <v-dialog v-if="item.data" lazy v-model="dialog" width="600" content-class="dialog--custom">
     <div class="dialog-content">
       <div class="map">
@@ -39,7 +41,7 @@
       <v-icon>close</v-icon>
     </v-btn>
   </v-dialog>
-</v-layout>
+</div>
 </template>
 
 <script>

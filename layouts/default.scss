@@ -310,3 +310,18 @@ section {
   animation: rainbow 20s;
   animation-iteration-count: infinite;
 }
+
+// Transitions
+.transition-down-enter-active {
+  transition: all 0.3s 0.2s ease;
+}
+
+.transition-down-leave-active {
+  transition: all 0.8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.transition-down-enter,
+.transition-down-leave-to {
+  transform: translateY(-10px);
+  opacity: 0;
+}

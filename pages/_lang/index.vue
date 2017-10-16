@@ -6,7 +6,9 @@
     }
   </style>
   <section class="wallpaper boundaries">
-    <img class="logo" src="~assets/images/logo.svg" alt="Logo">
+    <transition name="transition-down">
+      <img v-show="ready" class="logo" src="~assets/images/logo.svg" alt="Logo">
+    </transition>
     <div class="more">
       <v-icon>expand_more</v-icon>
     </div>
@@ -69,6 +71,14 @@ export default {
     return {
       title: this.$t('pages.home')
     }
+  },
+  data() {
+    return {
+      ready: false
+    }
+  },
+  mounted() {
+    this.ready = true
   },
   i18n: {
     messages: {
