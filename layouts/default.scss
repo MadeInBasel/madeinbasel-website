@@ -137,6 +137,12 @@ h3 {
   .btn-close {
     flex-shrink: 0;
   }
+
+  .btn-close-top {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
 }
 
 section {
@@ -177,26 +183,27 @@ section {
 }
 
 .wave {
-  background-image: url('~assets/images/border-wave.svg');
-  background-size: cover;
+  animation: waves 300s linear infinite;
+  background-size: contain;
   background-position: bottom center;
   background-repeat: repeat-x;
   height: 5vw;
+  width: 200%;
   @media(min-width: $breakpointLarge) {
     height: 40px;
   }
 
   &.wave-top {
+    background-image: url('~assets/images/border-wave-top.png');
     margin-top: 5vw;
-    transform: translateY(1px);
     @media(min-width: $breakpointLarge) {
       margin-top: 40px;
     }
   }
 
   &.wave-bottom {
+    background-image: url('~assets/images/border-wave-bottom.png');
     margin-bottom: 5vw;
-    transform: translateY(-1px) scale(1, -1);
     @media(min-width: $breakpointLarge) {
       margin-bottom: 40px;
     }
@@ -283,6 +290,19 @@ section {
 
   100% {
     background: $colorGreen;
+  }
+}
+@keyframes waves {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
   }
 }
 

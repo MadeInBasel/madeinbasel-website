@@ -12,7 +12,6 @@
     </div>
   </section>
 
-
   <section class="section--dark">
     <div class="wave wave-top"></div>
     <div class="section-inner">
@@ -66,7 +65,6 @@ export default {
   components: {
     'component-members': members
   },
-  scrollToTop: true,
   head() {
     return {
       title: this.$t('pages.home')

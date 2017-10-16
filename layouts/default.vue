@@ -1,5 +1,5 @@
 <template>
-<v-app id="layout" class="rainbow scrollTop scrollTopExtended">
+<v-app id="layout" class="rainbow scrollTop scrollTopExtended" v-scroll="onScroll">
   <app-header v-on:drawer="toggleNavigation"></app-header>
   <v-navigation-drawer id="navigation" class="pb-0" persistent temporary right height="100%" enable-resize-watcher v-model="drawer">
     <nuxt-link class="emblem" :to="localePath('/')">
@@ -26,6 +26,9 @@
     </v-list>
     <app-language/>
     <v-btn class="btn-close" primary v-on:click="drawer=false">{{ $t('buttons.close') }}</v-btn>
+    <v-btn class="btn-close-top" small icon v-on:click="drawer=false">
+      <v-icon>close</v-icon>
+    </v-btn>
   </v-navigation-drawer>
   <div id="page">
     <nuxt />
@@ -51,17 +54,20 @@ export default {
   data: () => ({
     drawer: false,
     main: main,
-    social: social
+    social: social,
+    offsetTop: 0
   }),
   methods: {
     toggleNavigation: function (state) {
       this.drawer = state
     },
-    handleScroll: function () {
-      var $self = $(this.$el)
+    onScroll(e) {
+      this.offsetTop = window.pageYOffset || document.documentElement.scrollTop
+      var $layout = $(this.$el)
+      var self = this
       _.throttle(function () {
-        $self.toggleClass('scrollTop', $(document).scrollTop() < 10)
-        $self.toggleClass('scrollTopExtended', $(document).scrollTop() < window.screen.height / 4)
+        $layout.toggleClass('scrollTop', self.offsetTop < 10)
+        $layout.toggleClass('scrollTopExtended', self.offsetTop < window.screen.height / 4)
       }, 100)()
     }
   },
@@ -73,13 +79,6 @@ export default {
         self.$router.replace({ path: `/de` + self.$route.fullPath })
       }())
     }
-  },
-  mounted() {
-    this.handleScroll()
-    document.addEventListener('scroll', this.handleScroll)
-  },
-  beforeDestroy: function () {
-    document.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>

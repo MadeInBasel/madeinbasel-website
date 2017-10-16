@@ -56,7 +56,7 @@ export default {
         },
         vision: {
           heading: 'Vision',
-          abstract: '"Whoever has visions should go to the doctor."" - <em>Helmut Schmidt</em>'
+          abstract: '"Whoever has visions should go to the doctor." - <em>Helmut Schmidt</em>'
         }
       },
       de: {
