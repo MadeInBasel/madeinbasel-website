@@ -1,7 +1,7 @@
 <template>
 <div id="terms">
   <section class="impressum">
-    <div class="section-inner boundaries">
+    <div class="section-inner boundaries" v-scroll-reveal="vueScrollRevealConfig">
       <h1>{{ $t('pages.terms') }}</h1>
       <component-address />
     </div>
@@ -10,7 +10,7 @@
   <section class="legal section--dark">
     <div class="wave wave-top"></div>
     <div class="section-inner">
-      <div class="boundaries">
+      <div class="boundaries" v-scroll-reveal="vueScrollRevealConfig">
         <h2>{{ $t('legal') }}</h2>
 
         <h4>{{ $t('disclaimer.heading') }}</h4>
@@ -27,7 +27,7 @@
   </section>
 
   <section>
-    <div class="section-inner">
+    <div class="section-inner boundaries" v-scroll-reveal="vueScrollRevealConfig">
       <h2>{{ $t('terms') }}</h2>
       <component-terms />
     </div>

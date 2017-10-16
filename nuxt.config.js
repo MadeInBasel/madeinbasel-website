@@ -45,7 +45,7 @@ module.exports = {
    ** Customize the progress-bar color
    */
   loading: {
-    color: '#333333'
+    color: '#191919'
   },
 
   css: [{
@@ -77,6 +77,10 @@ module.exports = {
     },
     {
       src: '~plugins/vueSmoothScroll.js'
+    },
+    {
+      src: '~plugins/VueScrollReveal.js',
+      ssr: false
     }
   ],
 
@@ -88,7 +92,7 @@ module.exports = {
    ** Build configuration
    */
   build: {
-    vendor: ['jquery', 'vuetify', 'underscore', 'vue-loading-spinner', 'vue-smooth-scroll'],
+    vendor: ['jquery', 'vuetify', 'underscore', 'vue-loading-spinner', 'vue-smooth-scroll', 'vue-scroll-reveal'],
     /*
      ** Run ESLINT on save
      */

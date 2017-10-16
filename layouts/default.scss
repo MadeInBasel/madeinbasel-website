@@ -322,6 +322,6 @@ section {
 
 .transition-down-enter,
 .transition-down-leave-to {
-  transform: translateY(-10px);
+  transform: translateY(10px);
   opacity: 0;
 }

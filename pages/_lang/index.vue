@@ -6,6 +6,9 @@
     }
   </style>
   <section class="wallpaper boundaries">
+    <div v-show="!ready" class="spinner">
+      <v-progress-circular indeterminate color="primary"></v-progress-circular>
+    </div>
     <transition name="transition-down">
       <img v-show="ready" class="logo" src="~assets/images/logo.svg" alt="Logo">
     </transition>
@@ -17,7 +20,7 @@
   <section class="section--dark">
     <div class="wave wave-top"></div>
     <div class="section-inner">
-      <div class="boundaries">
+      <div class="boundaries" v-scroll-reveal="vueScrollRevealConfig">
         <h2>{{ $t('intro.heading')}}</h2>
         <div class="abstract" v-html="$t('intro.abstract')"></div>
         <div class="text-xs-center">
@@ -29,7 +32,7 @@
   </section>
 
   <section>
-    <div class="section-inner boundaries">
+    <div class="section-inner boundaries" v-scroll-reveal="vueScrollRevealConfig">
       <h2>{{ $t('members.heading')}}</h2>
       <div class="abstract">
         {{ $t('members.abstract')}}
@@ -47,7 +50,7 @@
   <section class="section--dark">
     <div class="wave wave-top"></div>
     <div class="section-inner">
-      <div class="boundaries">
+      <div class="boundaries" v-scroll-reveal="vueScrollRevealConfig">
         <h2>{{ $t('join.heading')}}</h2>
         <div class="abstract" v-html="$t('join.abstract')"></div>
         <div class="text-xs-center">
