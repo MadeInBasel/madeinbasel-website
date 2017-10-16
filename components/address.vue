@@ -55,7 +55,7 @@ export default {
           }
         }
       })
-    }, 1000),
+    }, 600),
     validateAddress(state) {
       this.addressError = state
       this.$refs.address.validate()

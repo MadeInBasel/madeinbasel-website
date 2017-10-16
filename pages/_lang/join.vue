@@ -61,6 +61,7 @@
 import $ from 'jquery'
 import uploadcare from '~/components/uploadcare.vue'
 import address from '~/components/address.vue'
+import { config } from '~/assets/firebase.js'
 const firebase = require('firebase')
 require('firebase/firestore')
 
@@ -130,14 +131,6 @@ export default {
       if (this.$refs.form.validate()) {
         this.stateLoading = true
         var self = this
-        var config = {
-          apiKey: 'AIzaSyCaTOBcKbkvUq4mKbSvqHYy0uxzuL-t03E',
-          authDomain: 'madeinbasel-1505858460376.firebaseapp.com',
-          databaseURL: 'https://madeinbasel-1505858460376.firebaseio.com',
-          projectId: 'madeinbasel-1505858460376',
-          storageBucket: 'madeinbasel-1505858460376.appspot.com',
-          messagingSenderId: '372112151128'
-        }
         if (!firebase.apps.length) {
           firebase.initializeApp(config)
         }
