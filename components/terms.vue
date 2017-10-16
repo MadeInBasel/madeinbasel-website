@@ -1,6 +1,6 @@
 <template>
 <div class="component-terms">
-  <v-dialog class="terms-dialog" v-model="dialog" width="600" content-class="dialog--custom terms">
+  <v-dialog class="terms-dialog" v-model="dialog" width="600" content-class="dialog--custom dialog--terms">
     <v-btn v-if="!link" class="btn-dialog" primary large slot="activator">{{ $t('label') }}</v-btn>
     <a v-else href="javascript:;" slot="activator">
       {{ $t('label') }}
@@ -40,11 +40,11 @@ export default {
 </script>
 
 <style media="screen">
-.dialog--custom {
+.dialog--terms {
   padding: 20px 2vw;
 }
 
-.dialog--custom iframe {
+.dialog--terms iframe {
   border: 0;
   height: 60vh;
   width: 100%;

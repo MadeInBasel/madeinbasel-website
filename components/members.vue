@@ -1,10 +1,10 @@
 <template>
-<v-layout class="members" wrap @keyup.esc="$router.push(localePath('/members'))">
+<v-layout class="members" wrap @keyup.esc="dialog = false">
   <div v-show="!ready" class="spinner">
     <v-progress-circular indeterminate color="primary"></v-progress-circular>
   </div>
   <v-flex v-show="ready" xs6 sm3 v-for="(item, index) in memberPaging(paging)" :key="item.id">
-    <nuxt-link class="member" v-ripple alt="Preview" :to="{ path: localePath('/members') + '#' + `${item.id}`}">
+    <nuxt-link class="member" v-ripple alt="Preview" :to="{ path: $route.path + '#' + `${item.id}`}">
       <img :src="item.data.organisationImage.cdnUrl" :alt="item.data.organisationName">
     </nuxt-link>
   </v-flex>
@@ -27,15 +27,15 @@
           <div v-if="$i18n.locale === 'en'">{{ item.data.description.en }}</div>
           <div v-if="$i18n.locale === 'de'">{{ item.data.description.de }}</div>
         </div>
-        <div v-if="item.data.hasOwnProperty('memberSince')" class="text-xs-center">
-          <small>{{ $t('memberSince')}}: {{ item.data.timestamp }}</small>
+        <div v-if="item.data.hasOwnProperty('timestamp')" class="text-xs-center">
+          <small>{{ $t('memberSince')}}: {{ getYear() }}</small>
         </div>
         <div v-if="item.data.hasOwnProperty('website')" class="text-xs-center">
           <v-btn flat outline nuxt :href='item.data.website' target="_blank" rel="noopener">{{ $t('buttons.visitWebsite') }}</v-btn>
         </div>
       </div>
     </div>
-    <v-btn class="btn-close" fab small @click="$router.push(localePath('/members'))">
+    <v-btn class="btn-close" fab small @click="dialog = false">
       <v-icon>close</v-icon>
     </v-btn>
   </v-dialog>
@@ -108,6 +108,14 @@ export default {
       } else {
         this.dialog = false
       }
+    },
+    getYear: function () {
+      var year = ''
+      if (this.item.data) {
+        let date = new Date(this.item.data.timestamp)
+        year = date.getFullYear()
+      }
+      return year
     }
   },
   created() {
@@ -117,7 +125,7 @@ export default {
     '$route': 'handleDialogVisibility',
     dialog: function (state) {
       if (!state) {
-        this.$router.push(this.localePath('/members'))
+        this.$router.go(-1)
       }
     }
   },
