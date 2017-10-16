@@ -1,6 +1,6 @@
 <template>
 <div id="join">
-  <section class="join" v-scroll-reveal="vueScrollRevealConfig">
+  <section class="join" v-scroll-reveal="$vueScrollRevealConfig">
     <div class="section-inner boundaries">
       <h1>{{ $t('pages.join') }}</h1>
       <div class="abstract" v-html="$t('abstract')"></div>

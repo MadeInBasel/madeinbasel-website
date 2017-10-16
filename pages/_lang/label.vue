@@ -1,7 +1,7 @@
 <template>
 <div id="label">
   <section class="intro">
-    <div class="section-inner boundaries" v-scroll-reveal="vueScrollRevealConfig">
+    <div class="section-inner boundaries" v-scroll-reveal="$vueScrollRevealConfig">
       <h1>{{ $t('pages.label') }}</h1>
       <div class="abstract" v-html="$t('intro.abstract')"></div>
       <img class="logo" src="~assets/images/logo.svg" alt="Logo">
@@ -11,7 +11,7 @@
   <section class="section--dark">
     <div class="wave wave-top"></div>
     <div class="section-inner">
-      <div class="boundaries" v-scroll-reveal="vueScrollRevealConfig">
+      <div class="boundaries" v-scroll-reveal="$vueScrollRevealConfig">
         <h2>{{ $t('mission.heading')}}</h2>
         <div class="abstract" v-html="$t('mission.abstract')"></div>
       </div>
@@ -20,7 +20,7 @@
   </section>
 
   <section>
-    <div class="section-inner boundaries" v-scroll-reveal="vueScrollRevealConfig">
+    <div class="section-inner boundaries" v-scroll-reveal="$vueScrollRevealConfig">
       <h2>{{ $t('vision.heading')}}</h2>
       <div class="abstract" v-html="$t('vision.abstract')"></div>
     </div>

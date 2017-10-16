@@ -8,17 +8,11 @@ export default ({
 }) => {
   const config = {
     install(app, options) {
-      app.mixin({
-        data() {
-          return {
-            vueScrollRevealConfig: {
-              scale: 1,
-              delay: 200,
-              distance: '20px'
-            }
-          }
-        }
-      })
+      app.prototype.$vueScrollRevealConfig = {
+        scale: 1,
+        delay: 200,
+        distance: '20px'
+      }
     }
   }
   Vue.use(config)
