@@ -8,7 +8,10 @@
       <v-alert v-show="formSuccess" icon="done" success>
         {{ $t('form.successMessage') }}
       </v-alert>
-      <v-form v-show="!formSuccess" v-model="valid" ref="form">
+      <v-alert v-show="firebaseError" icon="error" error>
+        {{ $t('form.errorMessage') }}
+      </v-alert>
+      <v-form v-show="(!formSuccess && !firebaseError)" v-model="valid" ref="form">
         <v-stepper v-model="stepper" vertical>
 
           <v-stepper-step step="1" :complete="stepper > 1">{{ $t('form.step1.title') }}
@@ -62,7 +65,7 @@ import $ from 'jquery'
 import uploadcare from '~/components/uploadcare.vue'
 import address from '~/components/address.vue'
 import terms from '~/components/terms.vue'
-import { config } from '~/assets/firebase.js'
+import { firebaseConfig } from '~/assets/config.js'
 const firebase = require('firebase')
 require('firebase/firestore')
 
@@ -80,6 +83,7 @@ export default {
   data() {
     return {
       formSuccess: false,
+      firebaseError: false,
       stateLoading: false,
       stepper: 0,
       valid: false,
@@ -134,7 +138,7 @@ export default {
         this.stateLoading = true
         var self = this
         if (!firebase.apps.length) {
-          firebase.initializeApp(config)
+          firebase.initializeApp(firebaseConfig)
         }
         var db = firebase.firestore()
         var data = {
@@ -166,6 +170,7 @@ export default {
             })
           })
           .catch(function (error) {
+            self.firebaseError = true
             console.error('Error adding document: ', error)
           })
       }
@@ -221,7 +226,8 @@ export default {
             label: 'I agree to the terms (AGBs)',
             error: 'You must agree to continue!'
           },
-          successMessage: 'Congratulations. Thank you for participating! Your information will be published within a couple days. Need help? Contact us hello@madeinbasel.org'
+          successMessage: 'Congratulations. Thank you for participating! Your information will be published within a couple days. Need help? Contact us hello@madeinbasel.org',
+          errorMessage: 'Something went wront. Please try again or contact us hello@madeinbasel.org'
         }
       },
       de: {
@@ -269,7 +275,8 @@ export default {
             label: 'Ich akzeptiere die Allgemeinen Geschäftsbedingungen (AGB)',
             error: 'Akzeptieren die AGBs um fortzufahren!'
           },
-          successMessage: 'Gratulation. Danke fürs Mitmachen! Deine Informationen werden in den nächsten Tagen publiziert. Brauchen Sie Hilfe? Kontaktieren Sie hello@madeinbasel.org'
+          successMessage: 'Gratulation. Danke fürs Mitmachen! Deine Informationen werden in den nächsten Tagen publiziert. Brauchen Sie Hilfe? Kontaktieren Sie hello@madeinbasel.org',
+          errorMessage: 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder kontaktieren Sie uns via Email: hello@madeinbasel.org'
         }
       }
     }
