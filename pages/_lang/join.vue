@@ -49,7 +49,7 @@
             <component-terms link />
             <div class="text-xs-right">
               <v-btn flat @click.native="stepper = 2">{{ $t('buttons.back') }}</v-btn>
-              <v-btn @click="submit" :loading="stateLoading" :disabled="(!valid || stateLoading)">{{ $t('buttons.save') }}</v-btn>
+              <v-btn primary @click="submit" :loading="stateLoading" :disabled="(!valid || stateLoading)">{{ $t('buttons.save') }}</v-btn>
             </div>
           </v-stepper-content>
 
@@ -65,7 +65,7 @@ import $ from 'jquery'
 import uploadcare from '~/components/uploadcare.vue'
 import address from '~/components/address.vue'
 import terms from '~/components/terms.vue'
-import { firebaseConfig } from '~/assets/config.js'
+import { config } from '~/assets/firebase.js'
 const firebase = require('firebase')
 require('firebase/firestore')
 
@@ -138,7 +138,7 @@ export default {
         this.stateLoading = true
         var self = this
         if (!firebase.apps.length) {
-          firebase.initializeApp(firebaseConfig)
+          firebase.initializeApp(config)
         }
         var db = firebase.firestore()
         var data = {
@@ -150,7 +150,8 @@ export default {
           website: this.website,
           email: this.email,
           featureRequest: this.featureRequest,
-          terms: this.terms
+          terms: this.terms,
+          verified: false
         }
 
         db.collection('organisations').add(data)

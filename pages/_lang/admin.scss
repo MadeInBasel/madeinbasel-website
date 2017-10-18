@@ -1,0 +1,22 @@
+@import "~assets/styles/variables.scss";
+
+#admin {
+  .user {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    .thumb {
+      border-radius: 50%;
+      height: 70px;
+      width: 70px;
+    }
+  }
+}
+
+.admin-zone {
+  margin-top: 20px;
+  background-color: #d8e9e0;
+  padding: 10px;
+  border: 2px dashed #a1b1a9;
+}

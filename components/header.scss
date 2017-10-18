@@ -17,6 +17,11 @@
   position: relative;
 }
 
+.user {
+  margin-right: auto;
+  transition: 200ms;
+}
+
 .logo {
   display: flex;
   height: 100%;
@@ -26,7 +31,6 @@
   transform: translate(-50%, 0);
   transition: 200ms;
   width: 50px;
-
 }
 
 .header-navigation-menu {
@@ -80,7 +84,8 @@
     transform: translate(68px, -100%);
   }
 
-  .logo {
+  .logo,
+  .user {
     opacity: 0;
     transform: translate(-50%, -100%);
   }

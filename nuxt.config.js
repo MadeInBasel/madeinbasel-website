@@ -38,7 +38,15 @@ module.exports = {
         rel: 'stylesheet',
         type: 'text/css',
         href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'
+      },
+      {
+        rel: 'stylesheet',
+        type: 'text/css',
+        href: 'https://cdn.firebase.com/libs/firebaseui/2.4.0/firebaseui.css'
       }
+    ],
+    script: [
+      { src: '/js/uploadcare.js' },
     ]
   },
   /*
@@ -111,6 +119,6 @@ module.exports = {
   },
 
   generate: {
-    routes: ['/', '/de', '/contact', '/de/contact', '/join', '/de/join', '/label', '/de/label', '/members', '/de/members', '/terms', '/de/terms']
+    routes: ['/', '/de', '/admin', 'de/admin', '/contact', '/de/contact', '/join', '/de/join', '/label', '/de/label', '/members', '/de/members', '/terms', '/de/terms']
   }
 }

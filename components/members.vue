@@ -4,7 +4,7 @@
     <v-progress-circular indeterminate color="primary"></v-progress-circular>
   </div>
   <transition-group name="transition-down" tag="div" class="layout members wrap">
-    <v-flex v-show="ready" xs6 sm3 v-for="(item, index) in memberPaging(paging)" :key="item.id">
+    <v-flex v-show="ready" xs6 sm3 v-for="(item, index) in membersPaging()" :key="item.id">
       <nuxt-link class="member" v-ripple alt="Preview" :to="{ path: $route.path + '#' + `${item.id}`}">
         <img :src="item.data.organisationImage.cdnUrl" :alt="item.data.organisationName">
       </nuxt-link>
@@ -26,8 +26,8 @@
           <img :src="item.data.organisationImage.cdnUrl" :alt="item.data.organisationName">
         </div>
         <div v-if="item.data.hasOwnProperty('description')" class="content-description abstract">
-          <div v-if="$i18n.locale === 'en'">{{ item.data.description.en }}</div>
-          <div v-if="$i18n.locale === 'de'">{{ item.data.description.de }}</div>
+          <div v-if="$i18n.locale === 'en' || user">{{ item.data.description.en }}</div>
+          <div v-if="$i18n.locale === 'de' || user">{{ item.data.description.de }}</div>
         </div>
         <div v-if="item.data.hasOwnProperty('timestamp')" class="text-xs-center">
           <small>{{ $t('memberSince')}}: {{ getYear() }}</small>
@@ -35,6 +35,7 @@
         <div v-if="item.data.hasOwnProperty('website')" class="text-xs-center">
           <v-btn flat outline nuxt :href='item.data.website' target="_blank" rel="noopener">{{ $t('buttons.visitWebsite') }}</v-btn>
         </div>
+        <slot name="button" :id="item.id"></slot>
       </div>
     </div>
     <v-btn class="btn-close" fab small @click="dialog = false">
@@ -55,6 +56,10 @@ export default {
     paging: {
       type: String,
       default: '100'
+    },
+    verified: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
@@ -91,15 +96,24 @@ export default {
           console.log('Error getting documents: ', error)
         })
     },
-    memberPaging: function (paging) {
-      return this.members.slice(0, paging)
+    membersPaging: function (paging = this.paging, verified = this.verified) {
+      let members = this.members
+      members = members.filter(item => {
+        if (verified) {
+          return item.data.hasOwnProperty('verified') && item.data.verified === true
+        } else {
+          return !item.data.hasOwnProperty('verified') || item.data.verified === false
+        }
+      })
+      members = members.slice(0, paging)
+      return members
     },
     handleDialogVisibility: function () {
       var openDialog = this.$route.hash ? this.$route.hash.slice(1) : false
       var self = this
       if (openDialog) {
         _.defer(function () {
-          var activeDialog = self.members.filter(function (item, index) {
+          var activeDialog = self.membersPaging().filter(function (item, index) {
             return openDialog === item.id
           })
           if (activeDialog.length === 1) {
@@ -123,11 +137,17 @@ export default {
   created() {
     this.getMembers()
   },
+  computed: {
+    user() {
+      return this.$store.state.user
+    }
+  },
   watch: {
     '$route': 'handleDialogVisibility',
     dialog: function (state) {
+      var self = this
       if (!state) {
-        this.$router.go(-1)
+        self.$router.go(-1)
       }
     }
   },

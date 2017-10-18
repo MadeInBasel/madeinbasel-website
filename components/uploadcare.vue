@@ -24,7 +24,6 @@ export default {
   head() {
     return {
       script: [
-        { src: '/js/uploadcare.js' },
         { src: this.$i18n.locale === 'de' ? '/js/uploadcare-de.js' : '' }
       ]
     }

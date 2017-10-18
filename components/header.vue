@@ -1,6 +1,9 @@
 <template>
 <div id="header">
   <div class="header-navigation boundaries">
+    <nuxt-link v-if="user" class="user" to="/admin">
+      {{ user.displayName }}
+    </nuxt-link>
     <nuxt-link class="logo" :to="localePath('/')">
       <img src="~assets/images/logo-seal.svg" alt="Logo">
     </nuxt-link>
@@ -29,6 +32,11 @@ export default {
       openNavigation: function () {
         this.$emit('drawer', true)
       }
+    }
+  },
+  computed: {
+    user() {
+      return this.$store.state.user
     }
   }
 }
