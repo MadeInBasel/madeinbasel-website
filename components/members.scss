@@ -2,9 +2,11 @@
 
 .component-members {
   .spinner {
+    align-items: center;
     display: flex;
     justify-content: center;
     width: 100%;
+    min-height: 100px;
   }
 
   .members {
@@ -25,6 +27,12 @@
         max-height: 100%;
       }
     }
+  }
+
+  .emptyPaging {
+    margin: 12px;
+    padding: 12px;
+    border: 2px dashed $colorSubtle;
   }
 }
 
@@ -88,5 +96,12 @@
     .content-description {
       margin-bottom: 1em;
     }
+  }
+
+  .admin-zone {
+    margin-top: 20px;
+    background-color: #d8e9e0;
+    padding: 10px;
+    border: 2px dashed #a1b1a9;
   }
 }

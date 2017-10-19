@@ -27,5 +27,8 @@
     "visitWebsite": "Webseite Besuchen",
     "allMembers": "Alle Mitglieder",
     "learnMore": "Mehr Erfahren"
+  },
+  "error": {
+    "empty": "Nichts anzuzeigen"
   }
 }

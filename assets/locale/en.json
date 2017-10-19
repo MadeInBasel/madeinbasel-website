@@ -27,5 +27,8 @@
     "visitWebsite": "Visit Website",
     "allMembers": "All Members",
     "learnMore": "Learn More"
+  },
+  "error": {
+    "empty": "Nothing to show"
   }
 }

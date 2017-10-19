@@ -150,8 +150,7 @@ export default {
           website: this.website,
           email: this.email,
           featureRequest: this.featureRequest,
-          terms: this.terms,
-          verified: false
+          terms: this.terms
         }
 
         db.collection('organisations').add(data)

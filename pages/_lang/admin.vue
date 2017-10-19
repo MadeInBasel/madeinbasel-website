@@ -17,26 +17,13 @@
   <section v-if="user">
     <div class="section-inner boundaries">
       <h2>Unverified Members</h2>
-      <component-members :verified=false>
-        <template slot="button" scope="document">
-          <div class="admin-zone text-xs-center">
-            <v-btn error @click="deleteEntry(document.id)">Delete</v-btn>
-            <v-btn primary @click="verifyEntry(document.id)">Verify</v-btn>
-          </div>
-        </template>
-      </component-members>
+      <component-members :verified=false></component-members>
     </div>
   </section>
   <section>
     <div class="section-inner boundaries">
       <h2>Verified Members</h2>
-      <component-members>
-        <template v-if="user" slot="button" scope="document">
-          <div class="admin-zone text-xs-center">
-            <v-btn error @click="deleteEntry(document.id)">Delete</v-btn>
-          </div>
-        </template>
-      </component-members>
+      <component-members></component-members>
     </div>
   </section>
 </div>
@@ -59,11 +46,6 @@ export default {
       title: 'Admin'
     }
   },
-  data() {
-    return {
-      valid: false
-    }
-  },
   methods: {
     logOut() {
       firebase.auth().signOut()
@@ -79,30 +61,6 @@ export default {
       }
       var ui = new firebaseui.auth.AuthUI(firebase.auth())
       ui.start('#firebaseui-auth-container', uiConfig)
-    },
-    verifyEntry(id) {
-      var self = this
-      var db = firebase.firestore()
-      db.collection('organisations').doc(id).update({
-          verified: true
-        })
-        .then(function () {
-          console.log('Set to verified!')
-        })
-        .catch(function (error) {
-          console.error('Error writing document: ', error)
-        })
-    },
-    deleteEntry(id) {
-      var self = this
-      var db = firebase.firestore()
-      db.collection('organisations').doc(id).delete()
-        .then(function () {
-          console.log('Successfully deleted!')
-        })
-        .catch(function (error) {
-          console.error('Error writing document: ', error)
-        })
     }
   },
   computed: {
