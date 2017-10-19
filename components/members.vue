@@ -19,7 +19,7 @@
           </div>
           {{ $t('mapPlaceholder') }}
         </div>
-        <img v-if="item.data.hasOwnProperty('address')" :src="'https://maps.googleapis.com/maps/api/staticmap?zoom=14&size=640x300' + mapStyles + '&markers=' + item.data.address.lat + ',' + item.data.address.lng +'&key=' + googleAPIKey" alt="Google Maps">
+        <img v-if="item.data.address.lng && item.data.address.lat" :src="'https://maps.googleapis.com/maps/api/staticmap?zoom=14&size=640x300' + mapStyles + '&markers=' + item.data.address.lat + ',' + item.data.address.lng +'&key=' + googleAPIKey" alt="Google Maps">
       </div>
       <div class="content">
         <div class="content-logo">
