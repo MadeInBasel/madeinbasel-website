@@ -146,6 +146,8 @@ h3 {
 }
 
 section {
+  overflow: hidden;
+
   &.intro {
     min-height: 100vh;
   }
@@ -183,7 +185,6 @@ section {
 }
 
 .wave {
-  animation: waves 300s linear infinite;
   background-size: contain;
   background-position: bottom center;
   background-repeat: repeat-x;
@@ -194,6 +195,7 @@ section {
   }
 
   &.wave-top {
+    animation: wavesTop 300s linear infinite;
     background-image: url('~assets/images/border-wave-top.png');
     margin-top: 5vw;
     @media(min-width: $breakpointLarge) {
@@ -202,6 +204,7 @@ section {
   }
 
   &.wave-bottom {
+    animation: wavesBottom 300s linear infinite;
     background-image: url('~assets/images/border-wave-bottom.png');
     margin-bottom: 5vw;
     @media(min-width: $breakpointLarge) {
@@ -292,17 +295,30 @@ section {
     background: $colorGreen;
   }
 }
-@keyframes waves {
+@keyframes wavesTop {
   0% {
-    transform: translateX(0);
+    transform: translate(0, 1px);
   }
 
   50% {
-    transform: translateX(-50%);
+    transform: translate(-50%, 1px);
   }
 
   100% {
-    transform: translateX(0);
+    transform: translate(0, 1px);
+  }
+}
+@keyframes wavesBottom {
+  0% {
+    transform: translate(0, -1px);
+  }
+
+  50% {
+    transform: translate(-50%, -1px);
+  }
+
+  100% {
+    transform: translate(0, -1px);
   }
 }
 
