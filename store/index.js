@@ -1,7 +1,8 @@
 export const state = () => ({
   locales: ['en', 'de'],
   locale: 'en',
-  user: null
+  user: null,
+  db: null
 })
 
 export const mutations = {
@@ -12,5 +13,8 @@ export const mutations = {
   },
   UPDATE_USER(state, user) {
     state.user = user
+  },
+  FILL_DB(state, db) {
+    state.db = db
   }
 }

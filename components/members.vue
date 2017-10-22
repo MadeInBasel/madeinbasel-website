@@ -8,7 +8,7 @@
     <v-progress-circular indeterminate color="primary"></v-progress-circular>
   </div>
 
-  <div v-if="!membersPaging.length">
+  <div v-if="(ready && !membersPaging.length)">
     <div class="emptyPaging text-xs-center">
       {{ $t('error.empty')}}
     </div>
@@ -61,13 +61,11 @@
 </template>
 
 <script>
-import { config } from '~/assets/firebase.js'
-const firebase = require('firebase')
-require('firebase/firestore')
 import _ from 'underscore'
+import { mapState } from 'vuex'
 
 export default {
-  created() {
+  beforeMount() {
     this.getMembers()
   },
   props: {
@@ -95,13 +93,8 @@ export default {
   methods: {
     getMembers: function () {
       this.ready = false
-      if (!firebase.apps.length) {
-        firebase.initializeApp(config)
-      }
-      var db = firebase.firestore()
       var self = this
-
-      db.collection('organisations')
+      this.firestore.collection('organisations')
         .get()
         .then(function (querySnapshot) {
           self.members = querySnapshot.docs.map(function (item) {
@@ -145,8 +138,7 @@ export default {
     revokeVerification(id) {
       this.loadingVerify = true
       var self = this
-      var db = firebase.firestore()
-      db.collection('organisations').doc(id).update({
+      this.firestore.collection('organisations').doc(id).update({
           verified: false
         })
         .then(function () {
@@ -167,8 +159,7 @@ export default {
     verifyEntry(id) {
       this.loadingVerify = true
       var self = this
-      var db = firebase.firestore()
-      db.collection('organisations').doc(id).update({
+      this.firestore.collection('organisations').doc(id).update({
           verified: true
         })
         .then(function () {
@@ -190,8 +181,7 @@ export default {
     deleteEntry(id) {
       this.loadingDelete = true
       var self = this
-      var db = firebase.firestore()
-      db.collection('organisations').doc(id).delete()
+      this.firestore.collection('organisations').doc(id).delete()
         .then(function () {
           self.loadingDelete = false
           self.dialog = false
@@ -208,6 +198,9 @@ export default {
   computed: {
     user() {
       return this.$store.state.user
+    },
+    firestore() {
+      return this.$store.state.db
     },
     membersPaging() {
       let members = this.members

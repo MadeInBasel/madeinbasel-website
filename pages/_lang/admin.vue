@@ -11,7 +11,7 @@
         <div>UID: {{ user.uid }}</div>
         <v-btn primary @click="logOut">Log out</v-btn>
       </div>
-      <div v-else id="firebaseui-auth-container"></div>
+      <div v-show="!user" id="firebaseui-auth-container"></div>
     </div>
   </section>
   <section v-if="user">
@@ -31,11 +31,7 @@
 
 <script>
 import _ from 'underscore'
-import { config } from '~/assets/firebase.js'
-var firebase = require('firebase')
 import members from '~/components/members.vue'
-
-require('firebase/firestore')
 
 export default {
   components: {
@@ -46,21 +42,35 @@ export default {
       title: 'Admin'
     }
   },
+  data() {
+    return {
+      ui: null
+    }
+  },
   methods: {
     logOut() {
+      var firebase = require('firebase')
       firebase.auth().signOut()
       this.$store.commit('UPDATE_USER', null)
+      this.showFirebaseUI()
     },
     showFirebaseUI() {
-      var firebaseui = require('firebaseui')
-      var uiConfig = {
-        signInSuccessUrl: '/admin',
-        signInOptions: [
-          firebase.auth.GoogleAuthProvider.PROVIDER_ID
-        ]
+      if (process.browser && !this.user) {
+        var firebase = require('firebase')
+        var firebaseui = require('firebaseui')
+        var uiConfig = {
+          signInSuccessUrl: '/admin',
+          signInOptions: [
+            firebase.auth.GoogleAuthProvider.PROVIDER_ID
+          ]
+        }
+        if (!this.ui) {
+          this.ui = new firebaseui.auth.AuthUI(firebase.auth())
+        } else {
+          this.ui.delete()
+        }
+        this.ui.start('#firebaseui-auth-container', uiConfig)
       }
-      var ui = new firebaseui.auth.AuthUI(firebase.auth())
-      ui.start('#firebaseui-auth-container', uiConfig)
     }
   },
   computed: {
@@ -68,18 +78,12 @@ export default {
       return this.$store.state.user
     }
   },
-  beforeCreate() {
-    if (!firebase.apps.length) {
-      firebase.initializeApp(config)
-    }
-
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        this.$store.commit('UPDATE_USER', user)
-      } else {
-        this.showFirebaseUI()
-      }
+  mounted() {
+    var self = this
+    _.defer(function () {
+      self.showFirebaseUI()
     })
+
   }
 }
 </script>

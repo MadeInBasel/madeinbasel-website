@@ -1,9 +1,6 @@
 const webpack = require('webpack')
 
 module.exports = {
-  /*
-   ** Headers of the page
-   */
   head: {
     title: 'Made in Basel',
     titleTemplate: '%s - Made in Basel',
@@ -45,9 +42,9 @@ module.exports = {
         href: 'https://cdn.firebase.com/libs/firebaseui/2.4.0/firebaseui.css'
       }
     ],
-    script: [
-      { src: '/js/uploadcare.js' },
-    ]
+    script: [{
+      src: '/js/uploadcare.js'
+    }]
   },
   /*
    ** Customize the progress-bar color
@@ -89,6 +86,9 @@ module.exports = {
     {
       src: '~plugins/VueScrollReveal.js',
       ssr: false
+    },
+    {
+      src: '~plugins/firebase.js'
     }
   ],
 
