@@ -62,10 +62,9 @@
 
 <script>
 import _ from 'underscore'
-import { mapState } from 'vuex'
 
 export default {
-  beforeMount() {
+  mounted() {
     this.getMembers()
   },
   props: {

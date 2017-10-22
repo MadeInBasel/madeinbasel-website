@@ -88,7 +88,8 @@ module.exports = {
       ssr: false
     },
     {
-      src: '~plugins/firebase.js'
+      src: '~plugins/firebase.js',
+      ssr: false
     }
   ],
 
