@@ -1,7 +1,11 @@
 <template>
 <div id="members">
   <section>
-    <div class="section-inner boundaries" v-scroll-reveal="$vueScrollRevealConfig">
+    <div class="section-inner boundaries" v-scroll-reveal="{
+    scale: 1,
+    delay: 200,
+    distance: '20px'
+  }">
       <h1>{{ $t('pages.members') }}</h1>
       <div class="abstract" v-html="$t('intro.abstract', {icon: '♥'})"></div>
       <component-members />

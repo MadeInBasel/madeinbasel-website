@@ -20,7 +20,11 @@
   <section class="section--dark">
     <div class="wave wave-top"></div>
     <div class="section-inner">
-      <div class="boundaries" v-scroll-reveal="$vueScrollRevealConfig">
+      <div class="boundaries" v-scroll-reveal="{
+    scale: 1,
+    delay: 200,
+    distance: '20px'
+  }">
         <h2>{{ $t('intro.heading')}}</h2>
         <div class="abstract" v-html="$t('intro.abstract')"></div>
         <div class="text-xs-center">
@@ -32,7 +36,11 @@
   </section>
 
   <section>
-    <div class="section-inner boundaries" v-scroll-reveal="$vueScrollRevealConfig">
+    <div class="section-inner boundaries" v-scroll-reveal="{
+    scale: 1,
+    delay: 200,
+    distance: '20px'
+  }">
       <h2>{{ $t('members.heading')}}</h2>
       <div class="abstract">
         {{ $t('members.abstract')}}
@@ -50,7 +58,11 @@
   <section class="section--dark">
     <div class="wave wave-top"></div>
     <div class="section-inner">
-      <div class="boundaries" v-scroll-reveal="$vueScrollRevealConfig">
+      <div class="boundaries" v-scroll-reveal="{
+    scale: 1,
+    delay: 200,
+    distance: '20px'
+  }">
         <h2>{{ $t('join.heading')}}</h2>
         <div class="abstract" v-html="$t('join.abstract')"></div>
         <div class="text-xs-center">

@@ -1,7 +1,11 @@
 <template>
 <div id="contact">
   <section>
-    <div class="section-inner boundaries" v-scroll-reveal="$vueScrollRevealConfig">
+    <div class="section-inner boundaries" v-scroll-reveal="{
+    scale: 1,
+    delay: 200,
+    distance: '20px'
+  }">
       <h1>{{ $t('pages.contact') }}</h1>
       <component-contact-form />
       <div class="address">
