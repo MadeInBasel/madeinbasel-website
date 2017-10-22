@@ -65,9 +65,6 @@ import $ from 'jquery'
 import uploadcare from '~/components/uploadcare.vue'
 import address from '~/components/address.vue'
 import terms from '~/components/terms.vue'
-import { config } from '~/assets/firebase.js'
-const firebase = require('firebase')
-require('firebase/firestore')
 
 export default {
   components: {
@@ -137,10 +134,6 @@ export default {
       if (this.$refs.form.validate()) {
         this.stateLoading = true
         var self = this
-        if (!firebase.apps.length) {
-          firebase.initializeApp(config)
-        }
-        var db = firebase.firestore()
         var data = {
           timestamp: new Date(),
           organisationImage: this.organisationImage,
@@ -153,7 +146,7 @@ export default {
           terms: this.terms
         }
 
-        db.collection('organisations').add(data)
+        this.firestore.collection('organisations').add(data)
           .then(function () {
             // Success
             self.formSuccess = true
@@ -177,6 +170,11 @@ export default {
     },
     clear() {
       this.$refs.form.reset()
+    }
+  },
+  computed: {
+    firestore() {
+      return this.$store.state.db
     }
   },
   i18n: {
