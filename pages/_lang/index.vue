@@ -112,15 +112,15 @@ export default {
       de: {
         intro: {
           heading: 'Das Label',
-          abstract: '<strong>Made in Basel</strong> ist eine Initiative um Produkte und Dienstleistungen aus Basel zu bewerben. Wir fördern Innovation und Unternehmergeist, dokumentieren Basel\'s Vielfalt als Wohn-, Arbeits- und Kulturstadt.'
+          abstract: '<strong>Made in Basel</strong> ist eine Initiative um Produkte und Dienstleistungen aus Basel zu bewerben. Wir fördern Innovation, Vielfalt und Unternehmergeist und helfen damit Basel als Wohn-, Arbeits- und Kulturstadt auf der Weltkarte zu verankern.'
         },
         members: {
           heading: 'Neues Entdecken',
-          abstract: 'In Basel\'s Hinterhöfen wird gebastelt, gelötet und geschraubt, in Kellern und Mansarden entstehen die Ideen von Morgen. <strong>Made in Basel</strong> dokumentiert Basel\'s Schaffen anhand augewählter Geschichten und einem öffentlichen Mitgliederverzeichnis.'
+          abstract: 'In Basel\'s Hinterhöfen wird gebastelt, gelötet und geschraubt, in Kellern und Mansarden wird an den die Ideen von Morgen getüftelt. <strong>Made in Basel</strong> dokumentiert Basel\'s Schaffen anhand augewählter Geschichten und einem öffentlichen Mitgliederverzeichnis.'
         },
         join: {
           heading: 'Mach mit!',
-          abstract: '<strong>Made in Basel</strong> ist eine offene Plattform - grundsätzlich können alle in Basel ansässigen Personen und Institutionen beitreten und vom Label profitieren. Übrigens, das Ganze ist kostenlos. Mach mit!'
+          abstract: '<strong>Made in Basel</strong> ist eine offene Plattform - grundsätzlich können alle in Basel ansässigen Personen und Institutionen beitreten und vom Label profitieren. Übrigens, das Ganze ist für Organisationen mit bis zu 10 Personen kostenlos. Mach mit!'
         }
       }
     }
