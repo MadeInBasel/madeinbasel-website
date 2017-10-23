@@ -61,6 +61,23 @@
       </v-form>
     </div>
   </section>
+  <section class="section--dark">
+    <div class="wave wave-top"></div>
+    <div class="section-inner">
+      <div class="boundaries" v-scroll-reveal="{
+  scale: 1,
+  delay: 200,
+  distance: '20px'
+}">
+        <h2>{{ $t('download.heading')}}</h2>
+        <div class="abstract" v-html="$t('download.abstract')"></div>
+        <div class="text-xs-center">
+          <v-btn outline dark large href="/files/MadeInBasel-LogoPackage.zip" download="MadeInBasel-LogoPackage">
+            <v-icon>file_download</v-icon> {{ $t('download.button') }}</v-btn>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
 </template>
 
@@ -184,7 +201,7 @@ export default {
   i18n: {
     messages: {
       en: {
-        abstract: 'It takes only 2 minutes, it\'s free forever and there are no strings attached. Sign up and to get represented on the website, and be able to download the <strong>Made in Basel</strong> label files to use at your disposal.',
+        abstract: 'It takes only 2 minutes and the membership is free. Want to tell your story? Make sure to set the option in step 2.',
         form: {
           step1: {
             title: 'Your Organisation',
@@ -230,10 +247,15 @@ export default {
           },
           successMessage: 'Congratulations. Thank you for participating! Your information will be published within a couple days. Need help? Contact us hello@madeinbasel.org',
           errorMessage: 'Something went wront. Please try again or contact us hello@madeinbasel.org'
+        },
+        download: {
+          heading: 'Downloads',
+          abstract: 'Download the label files for your marketing purposes.',
+          button: 'Get Logo Package'
         }
       },
       de: {
-        abstract: 'Nimm dir 2 Minuten Zeit um mitzumachen.',
+        abstract: 'Nimm dir 2 Minuten Zeit um mitzumachen. Die Mitgliedschaft ist kostenlos. Möchtest du deine Geschichte erzählen? Wähle die Option in Schritt 2 und wir melden uns bei dir. ',
         form: {
           step1: {
             title: 'Deine Organisation',
@@ -241,7 +263,7 @@ export default {
           },
           step2: {
             title: 'Deine Mission',
-            intro: 'Beschreiben Sie Ihre Tätigkeit'
+            intro: 'Beschreiben deine Tätigkeit'
           },
           step3: {
             title: 'Kontakt',
@@ -264,7 +286,7 @@ export default {
           },
           featured: {
             label: 'Personönlichs Portrait',
-            hint: 'Ich möchte ein persönliches Portrait auf Made in Basel. Bitte kontaktieren Sie mich.'
+            hint: 'Ich möchte ein persönliches Portrait auf Made in Basel. Bitte um Kontaktaufnahme'
           },
           email: {
             label: 'Email',
@@ -275,10 +297,15 @@ export default {
           },
           terms: {
             label: 'Ich akzeptiere die Allgemeinen Geschäftsbedingungen (AGB)',
-            error: 'Akzeptieren die AGBs um fortzufahren!'
+            error: 'Akzeptiere die AGBs um fortzufahren!'
           },
-          successMessage: 'Gratulation. Danke fürs Mitmachen! Deine Informationen werden in den nächsten Tagen publiziert. Brauchen Sie Hilfe? Kontaktieren Sie hello@madeinbasel.org',
-          errorMessage: 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder kontaktieren Sie uns via Email: hello@madeinbasel.org'
+          successMessage: 'Gratulation. Danke fürs Mitmachen! Deine Informationen werden in den nächsten Tagen publiziert. Brauchst du Hilfe? hello@madeinbasel.org',
+          errorMessage: 'Es ist ein Fehler aufgetreten. Bitte versuche es erneut oder kontaktiere uns via Email: hello@madeinbasel.org'
+        },
+        download: {
+          heading: 'Downloads',
+          abstract: 'Lade die Logo-Dateien zur freien Verwendung herunter.',
+          button: 'Dateien Herunterladen'
         }
       }
     }

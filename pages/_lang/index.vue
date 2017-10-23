@@ -42,9 +42,7 @@
     distance: '20px'
   }">
       <h2>{{ $t('members.heading')}}</h2>
-      <div class="abstract">
-        {{ $t('members.abstract')}}
-      </div>
+      <div class="abstract" v-html="$t('members.abstract')"></div>
       <component-members paging=8 />
       <div class="text-xs-center">
         <v-btn primary large :to="localePath('/members')">{{ $t('buttons.allMembers') }}</v-btn>
@@ -114,15 +112,15 @@ export default {
       de: {
         intro: {
           heading: 'Das Label',
-          abstract: '<strong>Made in Basel</strong> ist eine Initiative um Produkte und Dienstleistungen aus Basel zu bewerben. Wir fördern Innovation und Unternehmergeist, setzen uns ein für ein vielfältiges, kreatives Klima und unterstützen Basel Qualitäten als Wohn-, Arbeits- und Kulturstadt.'
+          abstract: '<strong>Made in Basel</strong> ist eine Initiative um Produkte und Dienstleistungen aus Basel zu bewerben. Wir fördern Innovation und Unternehmergeist, dokumentieren Basel\'s Vielfalt als Wohn-, Arbeits- und Kulturstadt.'
         },
         members: {
-          heading: 'Entdecken',
-          abstract: 'Basel ist vor allem bekannt für seine Pharmakonzerne, aber wussten Sie, dass es mehrere Messerschmiede in Basel gibt? In vielen Hinterhöfen wird gebastelt, gelötet und geschraubt, in Mansarden sind die Startups mit den Ideen von Morgen einquartiert. Gehen sie auf Entdeckungsreise.'
+          heading: 'Neues Entdecken',
+          abstract: 'In Basel\'s Hinterhöfen wird gebastelt, gelötet und geschraubt, in Kellern und Mansarden entstehen die Ideen von Morgen. <strong>Made in Basel</strong> dokumentiert Basel\'s Schaffen anhand augewählter Geschichten. Es wird zudem ein Verzeichnis über Mitglieder geführt.'
         },
         join: {
           heading: 'Mach mit!',
-          abstract: 'Alle in Basel ansässigen Personen und Institutionen können Teil von <strong>Made in Basel</strong> werden. Die Mitgliedschaft ist und bleibt kostenlos. Registriere dich und nutze das Label für dein Marketing. Registrierte Mitglieder werden auf der Webseite aufgeführt und profitieren zusätzlich von exklusiven Angeboten.'
+          abstract: '<strong>Made in Basel</strong> ist eine offene Plattform - grundsätzlich können alle in Basel ansässigen Personen und Institutionen beitreten und vom Label profitieren. Übrigens, das Ganze ist kostenlos. Mach mit!'
         }
       }
     }
