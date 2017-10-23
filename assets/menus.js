@@ -4,20 +4,28 @@ const main = [{
     icon: 'home'
   },
   {
-    path: '/label',
-    label: 'pages.label',
-    icon: 'lightbulb_outline'
-  },
-  {
     path: '/join',
     label: 'pages.join',
     icon: 'add_circle'
   },
   {
+    path: '/label',
+    label: 'pages.label',
+    icon: 'lightbulb_outline'
+  },
+  {
+    path: '/stories',
+    label: 'pages.stories',
+    icon: 'favorite'
+  },
+  {
     path: '/members',
     label: 'pages.members',
     icon: 'face'
-  },
+  }
+]
+
+const about = [
   {
     path: '/contact',
     label: 'pages.contact',
@@ -42,5 +50,6 @@ const social = [{
 
 export {
   main,
+  about,
   social
 }

@@ -164,7 +164,8 @@ export default {
           website: this.website,
           email: this.email,
           featureRequest: this.featureRequest,
-          terms: this.terms
+          terms: this.terms,
+          verified: false
         }
 
         this.firestore.collection('organisations').add(data)

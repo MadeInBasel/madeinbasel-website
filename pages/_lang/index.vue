@@ -116,7 +116,7 @@ export default {
         },
         members: {
           heading: 'Neues Entdecken',
-          abstract: 'In Basel\'s Hinterhöfen wird gebastelt, gelötet und geschraubt, in Kellern und Mansarden entstehen die Ideen von Morgen. <strong>Made in Basel</strong> dokumentiert Basel\'s Schaffen anhand augewählter Geschichten. Es wird zudem ein Verzeichnis über Mitglieder geführt.'
+          abstract: 'In Basel\'s Hinterhöfen wird gebastelt, gelötet und geschraubt, in Kellern und Mansarden entstehen die Ideen von Morgen. <strong>Made in Basel</strong> dokumentiert Basel\'s Schaffen anhand augewählter Geschichten und einem öffentlichen Mitgliederverzeichnis.'
         },
         join: {
           heading: 'Mach mit!',
