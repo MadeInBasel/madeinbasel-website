@@ -8,6 +8,16 @@
   }">
       <h1>{{ $t('pages.terms') }}</h1>
       <component-address />
+
+      <div class="team">
+        <div class="team-heading">{{ $t('team.lead') }}</div>
+        <div>Christophe Schwyzer</div>
+        <div class="team-heading">{{ $t('team.editorial') }}</div>
+        <div>Olivier Christe</div>
+      </div>
+
+      <v-btn class="btn-download" primary href="/files/MadeInBasel-LogoPackage.zip" download="MadeInBasel-LogoPackage">
+        <v-icon>file_download</v-icon> {{ $t('buttons.downloadLogoPackage') }}</v-btn>
     </div>
   </section>
 
@@ -70,6 +80,10 @@ export default {
   i18n: {
     messages: {
       en: {
+        team: {
+          lead: 'Lead/Website',
+          editorial: 'Editorial/Stories'
+        },
         legal: 'Legal Notices',
         terms: 'Terms (German)',
         disclaimer: {
@@ -86,6 +100,10 @@ export default {
         }
       },
       de: {
+        team: {
+          lead: 'Leitung/Webseite',
+          editorial: 'Redaktion/Geschichten'
+        },
         legal: 'Rechtliche Hinweise',
         terms: 'Allgemeine Geschäftsbedingungen',
         disclaimer: {

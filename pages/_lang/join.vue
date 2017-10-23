@@ -73,7 +73,7 @@
         <div class="abstract" v-html="$t('download.abstract')"></div>
         <div class="text-xs-center">
           <v-btn outline dark large href="/files/MadeInBasel-LogoPackage.zip" download="MadeInBasel-LogoPackage">
-            <v-icon>file_download</v-icon> {{ $t('download.button') }}</v-btn>
+            <v-icon>file_download</v-icon> {{ $t('buttons.downloadLogoPackage') }}</v-btn>
         </div>
       </div>
     </div>
@@ -250,8 +250,7 @@ export default {
         },
         download: {
           heading: 'Downloads',
-          abstract: 'Download the label files for your marketing purposes.',
-          button: 'Get Logo Package'
+          abstract: 'Download the label files for your marketing purposes.'
         }
       },
       de: {
@@ -304,8 +303,7 @@ export default {
         },
         download: {
           heading: 'Downloads',
-          abstract: 'Lade die Logo-Dateien zur freien Verwendung herunter.',
-          button: 'Dateien Herunterladen'
+          abstract: 'Lade die Logo-Dateien zur freien Verwendung herunter.'
         }
       }
     }

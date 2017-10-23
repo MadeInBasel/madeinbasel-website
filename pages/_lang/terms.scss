@@ -2,9 +2,24 @@
 
 #terms {
   .contact {
+    margin-bottom: 1em;
+
     i {
       display: none;
     }
+  }
+
+  .team {
+    margin-bottom: 1em;
+
+    .team-heading {
+      font-weight: bold;
+      margin-top: 0.5em;
+    }
+  }
+
+  .btn-download {
+    margin-left: 0;
   }
 
   h4 {
