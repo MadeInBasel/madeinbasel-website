@@ -2,7 +2,14 @@
 <footer id="footer">
   <div class="footer-inner boundaries">
     <component-address />
-    <component-language />
+    <div>
+      <component-language />
+      <div>
+        <a v-show="animations" href="javascript:;" @click="toggleAnimations(false)">{{ $t('animations.on') }}</a>
+        <a v-show="!animations" href="javascript:;" @click="toggleAnimations(true)">{{ $t('animations.off') }}</a>
+      </div>
+    </div>
+
     <div class="menu" :title="$t('about')">
       <ul>
         <li v-for="item in social">
@@ -29,13 +36,31 @@ export default {
       social: social
     }
   },
+  computed: {
+    animations() {
+      return this.$store.state.animations
+    }
+  },
+  methods: {
+    toggleAnimations(state) {
+      this.$store.commit('TOGGLE_ANIMATIONS', state)
+    }
+  },
   i18n: {
     messages: {
       en: {
-        about: 'About'
+        about: 'About',
+        animations: {
+          on: 'Animations: ON',
+          off: 'Animations: OFF'
+        }
       },
       de: {
-        about: 'Über'
+        about: 'Über',
+        animations: {
+          on: 'Animationen: AN',
+          off: 'Animationen: AUS'
+        }
       }
     }
   }

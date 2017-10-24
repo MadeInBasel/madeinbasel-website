@@ -1,5 +1,5 @@
 <template>
-<v-app id="layout" class="rainbow scrollTop scrollTopExtended" v-scroll="onScroll">
+<v-app id="layout" class="rainbow scrollTop scrollTopExtended" v-bind:class="{ 'no-animations': !animations }" v-scroll="onScroll">
   <div class="layout-inner">
     <v-navigation-drawer id="navigation" class="pb-0" persistent temporary right height="100%" enable-resize-watcher v-model="drawer">
       <nuxt-link class="emblem" :to="localePath('/')">
@@ -83,6 +83,11 @@ export default {
         $layout.toggleClass('scrollTop', self.offsetTop < 10)
         $layout.toggleClass('scrollTopExtended', self.offsetTop < window.screen.height / 4)
       }, 100)()
+    }
+  },
+  computed: {
+    animations() {
+      return this.$store.state.animations
     }
   },
   beforeMount() {

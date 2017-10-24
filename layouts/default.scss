@@ -81,6 +81,24 @@ h3 {
       opacity: 1;
     }
   }
+
+  &:not(.no-animations) {
+    &.rainbow,
+    .rainbow {
+      animation: rainbow 20s;
+      animation-iteration-count: infinite;
+    }
+
+    .wave {
+      &.wave-top {
+        animation: wavesTop 300s linear infinite;
+      }
+
+      &.wave-bottom {
+        animation: wavesBottom 300s linear infinite;
+      }
+    }
+  }
 }
 
 #page {
@@ -198,7 +216,6 @@ section {
   }
 
   &.wave-top {
-    // animation: wavesTop 300s linear infinite;
     background-image: url('~assets/images/border-wave-top.png');
     margin-top: 5vw;
     @media(min-width: $breakpointLarge) {
@@ -207,7 +224,6 @@ section {
   }
 
   &.wave-bottom {
-    // animation: wavesBottom 300s linear infinite;
     background-image: url('~assets/images/border-wave-bottom.png');
     margin-bottom: 5vw;
     @media(min-width: $breakpointLarge) {
@@ -326,9 +342,7 @@ section {
 }
 
 .rainbow {
-  background-color: $colorGreen;
-  // animation: rainbow 20s;
-  animation-iteration-count: infinite;
+  background-color: $colorGreen !important;
 }
 
 // Transitions

@@ -2,7 +2,8 @@ export const state = () => ({
   locales: ['en', 'de'],
   locale: 'en',
   user: null,
-  db: null
+  db: null,
+  animations: true
 })
 
 export const mutations = {
@@ -16,5 +17,8 @@ export const mutations = {
   },
   FILL_DB(state, db) {
     state.db = db
+  },
+  TOGGLE_ANIMATIONS(state, animations) {
+    state.animations = animations
   }
 }
