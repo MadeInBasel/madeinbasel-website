@@ -120,6 +120,6 @@ module.exports = {
   },
 
   generate: {
-    routes: ['/', '/de', '/admin', 'de/admin', '/contact', '/de/contact', '/join', '/de/join', '/label', '/de/label', '/members', '/de/members', '/terms', '/de/terms']
+    routes: ['/', '/de', '/admin', 'de/admin', '/stories', 'de/stories', '/contact', '/de/contact', '/join', '/de/join', '/label', '/de/label', '/members', '/de/members', '/terms', '/de/terms']
   }
 }
