@@ -120,7 +120,7 @@ export default {
         },
         join: {
           heading: 'Mach mit!',
-          abstract: '<strong>Made in Basel</strong> ist eine offene Plattform - grundsätzlich können alle in Basel ansässigen Personen und Institutionen beitreten und vom Label profitieren. Übrigens, das Ganze ist für Organisationen mit bis zu 10 Personen kostenlos. Mach mit!'
+          abstract: '<strong>Made in Basel</strong> ist eine offene Plattform - grundsätzlich können alle in Basel ansässigen Personen und Institutionen beitreten und vom Label profitieren. Übrigens, das Ganze ist kostenlos. Mach mit!'
         }
       }
     }

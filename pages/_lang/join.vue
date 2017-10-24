@@ -25,6 +25,9 @@
             <component-uploadcare v-on:success="setOrganisationImage" v-on:discard="resetOrganisationImage" />
             <v-text-field :label="$t('form.organisationName.label')" ref="organisationName" v-model="organisationName" :rules="organisationNameRules" required></v-text-field>
             <component-address v-on:success="setAddress" v-on:discard="resetAddress" />
+            <v-flex xs9 sm4>
+              <v-text-field :label="$t('form.employees.label')" v-model="employees" type="number"></v-text-field>
+            </v-flex>
             <div class="text-xs-right">
               <v-btn primary :disabled="validateStep1()" @click.native="stepper = 2">{{ $t('buttons.continue') }}</v-btn>
             </div>
@@ -34,9 +37,14 @@
             <small>{{ $t('form.step2.intro') }}</small>
           </v-stepper-step>
           <v-stepper-content step="2">
-            <v-text-field :label="$t('form.website.label')" :rules="websiteRules" v-model="website"></v-text-field>
-            <v-text-field :label="$t('form.description.label.en')" v-model="description.en" :rules="descriptionRules" :counter="140"></v-text-field>
+            <v-flex xs9 sm6>
+              <v-text-field :label="$t('form.website.label')" :rules="websiteRules" v-model="website"></v-text-field>
+            </v-flex>
             <v-text-field :label="$t('form.description.label.de')" v-model="description.de" :rules="descriptionRules" :counter="140"></v-text-field>
+            <v-text-field :label="$t('form.description.label.en')" v-model="description.en" :rules="descriptionRules" :counter="140"></v-text-field>
+            <v-flex sm8>
+              <v-select ref="foo" v-bind:items="industries" v-model="industry" :label="$t('form.industry.label')" autocomplete></v-select>
+            </v-flex>
             <v-checkbox :label="$t('form.featured.label')" :hint="$t('form.featured.hint')" :persistent-hint=true v-model="featureRequest"></v-checkbox>
             <div class="text-xs-right">
               <v-btn flat @click.native="stepper = 1">{{ $t('buttons.back') }}</v-btn>
@@ -49,7 +57,7 @@
           </v-stepper-step>
           <v-stepper-content step="3">
             <v-text-field :label="$t('form.email.label')" v-model="email" :rules="emailRules" required></v-text-field>
-            <v-checkbox :label="$t('form.terms.label')" v-model="terms" :rules="[v => !!v || $t('form.terms.error')]" required></v-checkbox>
+            <v-checkbox :label="$t('form.terms.label')" :hint="$t('form.terms.hint')" persistent-hint v-model="terms" :rules="[v => !!v || $t('form.terms.error')]" required></v-checkbox>
             <component-terms link />
             <div class="text-xs-right">
               <v-btn flat @click.native="stepper = 2">{{ $t('buttons.back') }}</v-btn>
@@ -110,6 +118,7 @@ export default {
       organisationNameRules: [
         (v) => !!v || this.$t('form.organisationName.error')
       ],
+      employees: null,
       description: {
         en: '',
         de: ''
@@ -117,6 +126,8 @@ export default {
       descriptionRules: [
         (v) => (!v || v.length <= 140) || this.$t('form.description.error')
       ],
+      industry: null,
+      industries: this.$t('industries'),
       address: {},
       website: '',
       websiteRules: [
@@ -159,15 +170,16 @@ export default {
           timestamp: new Date(),
           organisationImage: this.organisationImage,
           organisationName: this.organisationName,
-          description: this.description,
           address: this.address,
+          employees: this.employees,
+          description: this.description,
+          industry: this.industries.findIndex(function (value) { return value === self.industry }),
           website: this.website,
           email: this.email,
           featureRequest: this.featureRequest,
           terms: this.terms,
           verified: false
         }
-
         this.firestore.collection('organisations').add(data)
           .then(function () {
             // Success
@@ -220,6 +232,9 @@ export default {
             label: 'Organisation Name',
             error: 'Name is required'
           },
+          employees: {
+            label: 'Number of employees'
+          },
           website: {
             label: 'Website',
             error: 'Website must be valid'
@@ -230,6 +245,9 @@ export default {
               de: 'Description German'
             },
             error: 'Description must be less than 140 characters'
+          },
+          industry: {
+            label: 'Industry'
           },
           featured: {
             label: 'Featured Story',
@@ -243,8 +261,12 @@ export default {
             }
           },
           terms: {
-            label: 'I agree to the terms (AGBs)',
+            label: 'Terms',
+            hint: 'I agree to the terms (AGBs)',
             error: 'You must agree to continue!'
+          },
+          sponsoring: {
+            label: 'I want to get involved or become a sponsor. Please contact me.'
           },
           successMessage: 'Congratulations. Thank you for participating! Your information will be published within a couple days. Need help? Contact us hello@madeinbasel.org',
           errorMessage: 'Something went wront. Please try again or contact us hello@madeinbasel.org'
@@ -273,6 +295,9 @@ export default {
             label: 'Name Organisation',
             error: 'Name ist erforderlich'
           },
+          employees: {
+            label: 'Anzahl Angestellte'
+          },
           website: {
             label: 'Webseite',
             error: 'Webseite muss gültig sein'
@@ -284,8 +309,11 @@ export default {
             },
             error: 'Beschreibung darf 140 Zeichen nicht überschreiten'
           },
+          industry: {
+            label: 'Branche'
+          },
           featured: {
-            label: 'Personönlichs Portrait',
+            label: 'Persönlichs Portrait',
             hint: 'Ich möchte ein persönliches Portrait auf Made in Basel. Bitte um Kontaktaufnahme'
           },
           email: {
@@ -295,8 +323,12 @@ export default {
               valid: 'Ungültige Emailadresse'
             }
           },
+          sponsoring: {
+            label: 'Ich habe eine Idee oder möchte Sponsor werden. Bitte um Kontaktaufnahme.'
+          },
           terms: {
-            label: 'Ich akzeptiere die Allgemeinen Geschäftsbedingungen (AGB)',
+            label: 'AGBs',
+            hint: 'Ich akzeptiere die Allgemeinen Geschäftsbedingungen (AGB)',
             error: 'Akzeptiere die AGBs um fortzufahren!'
           },
           successMessage: 'Gratulation. Danke fürs Mitmachen! Deine Informationen werden in den nächsten Tagen publiziert. Brauchst du Hilfe? hello@madeinbasel.org',
