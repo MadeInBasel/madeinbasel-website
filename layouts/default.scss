@@ -14,13 +14,6 @@ body {
   -webkit-font-smoothing: antialiased;
   margin: 0;
   padding: 0;
-  opacity: 0;
-  transition: opacity 200ms;
-
-  html.wf-active &,
-  html.wf-inactive & {
-    opacity: 1;
-  }
 }
 
 img,
@@ -78,6 +71,16 @@ h3 {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+
+  > * {
+    opacity: 0;
+    transition: opacity 200ms;
+
+    html.wf-active &,
+    html.wf-inactive & {
+      opacity: 1;
+    }
+  }
 }
 
 #page {
