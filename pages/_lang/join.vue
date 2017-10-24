@@ -268,7 +268,7 @@ export default {
           sponsoring: {
             label: 'I want to get involved or become a sponsor. Please contact me.'
           },
-          successMessage: 'Congratulations. Thank you for participating! Your information will be published within a couple days. Need help? Contact us hello@madeinbasel.org',
+          successMessage: 'Congratulations. Thank you for participating! Your information will be published within a couple days. Ideas, suggestions or want to become a sponsor? Contact us! hello@madeinbasel.org',
           errorMessage: 'Something went wront. Please try again or contact us hello@madeinbasel.org'
         },
         download: {
@@ -331,7 +331,7 @@ export default {
             hint: 'Ich akzeptiere die Allgemeinen Geschäftsbedingungen (AGB)',
             error: 'Akzeptiere die AGBs um fortzufahren!'
           },
-          successMessage: 'Gratulation. Danke fürs Mitmachen! Deine Informationen werden in den nächsten Tagen publiziert. Brauchst du Hilfe? hello@madeinbasel.org',
+          successMessage: 'Gratulation. Danke fürs Mitmachen! Deine Informationen werden in den nächsten Tagen publiziert. Hast du Ideen, Anregungen oder den Wunsch Sponsor zu werden? Melde dich! hello@madeinbasel.org',
           errorMessage: 'Es ist ein Fehler aufgetreten. Bitte versuche es erneut oder kontaktiere uns via Email: hello@madeinbasel.org'
         },
         download: {
