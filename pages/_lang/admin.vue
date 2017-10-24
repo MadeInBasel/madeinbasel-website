@@ -9,7 +9,7 @@
         <div><strong>{{ user.displayName }}</strong></div>
         <div>{{ user.email }}</div>
         <div>UID: {{ user.uid }}</div>
-        <v-btn primary @click="logOut">Log out</v-btn>
+        <v-btn color="primary" @click="logOut">Log out</v-btn>
       </div>
       <div v-show="!user" id="firebaseui-auth-container"></div>
     </div>

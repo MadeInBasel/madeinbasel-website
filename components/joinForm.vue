@@ -1,6 +1,6 @@
 <template>
 <div class="component-joinForm">
-  <v-alert v-show="formSuccess" icon="done" success>
+  <v-alert v-show="formSuccess" icon="done" color="success">
     {{ $t('form.successMessage') }}
   </v-alert>
   <v-alert v-show="firebaseError" icon="error" error>
@@ -20,7 +20,7 @@
           <v-text-field :label="$t('form.employees.label')" v-model="employees" type="number" :rules="employeesRules" required></v-text-field>
         </v-flex>
         <div class="text-xs-right">
-          <v-btn primary :disabled="validateStep1()" @click.native="stepper = 2">{{ $t('buttons.continue') }}</v-btn>
+          <v-btn color="primary" :disabled="validateStep1()" @click.native="stepper = 2">{{ $t('buttons.continue') }}</v-btn>
         </div>
       </v-stepper-content>
 
@@ -39,7 +39,7 @@
         <v-checkbox :label="$t('form.featured.label')" :hint="$t('form.featured.hint')" :persistent-hint=true v-model="featureRequest"></v-checkbox>
         <div class="text-xs-right">
           <v-btn flat @click.native="stepper = 1">{{ $t('buttons.back') }}</v-btn>
-          <v-btn primary @click.native="stepper = 3">{{ $t('buttons.continue') }}</v-btn>
+          <v-btn color="primary" @click.native="stepper = 3">{{ $t('buttons.continue') }}</v-btn>
         </div>
 
       </v-stepper-content>
@@ -52,7 +52,7 @@
         <component-terms link />
         <div class="text-xs-right">
           <v-btn flat @click.native="stepper = 2">{{ $t('buttons.back') }}</v-btn>
-          <v-btn primary @click="submit" :loading="stateLoading" :disabled="(!valid || stateLoading)">{{ $t('buttons.save') }}</v-btn>
+          <v-btn color="primary" @click="submit" :loading="stateLoading" :disabled="(!valid || stateLoading)">{{ $t('buttons.save') }}</v-btn>
         </div>
       </v-stepper-content>
 
@@ -108,6 +108,7 @@ export default {
         (v) => !!v || this.$t('form.email.error.required'),
         (v) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || this.$t('form.email.error.valid')
       ],
+      password: '',
       featureRequest: false,
       terms: false
     }
@@ -180,6 +181,12 @@ export default {
   computed: {
     firestore() {
       return this.$store.state.db
+    },
+    pwProgress() {
+      return Math.min(100, this.value.length * 10)
+    },
+    pwColor() {
+      return ['error', 'warning', 'success'][Math.floor(this.progress / 40)]
     }
   },
   i18n: {

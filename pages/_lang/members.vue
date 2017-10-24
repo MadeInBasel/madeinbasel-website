@@ -10,7 +10,7 @@
       <div class="abstract" v-html="$t('intro.abstract', {icon: '♥'})"></div>
       <component-members />
       <div class="text-xs-center">
-        <v-btn primary large :to="localePath('/join')">{{ $t('pages.join') }}</v-btn>
+        <v-btn color="primary" large :to="localePath('/join')">{{ $t('pages.join') }}</v-btn>
       </div>
     </div>
   </section>

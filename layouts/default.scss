@@ -70,9 +70,9 @@ h3 {
 #layout {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 
-  > * {
+  > .layout-inner {
+    min-height: 100vh;
     opacity: 0;
     transition: opacity 200ms;
 
@@ -198,7 +198,7 @@ section {
   }
 
   &.wave-top {
-    animation: wavesTop 300s linear infinite;
+    // animation: wavesTop 300s linear infinite;
     background-image: url('~assets/images/border-wave-top.png');
     margin-top: 5vw;
     @media(min-width: $breakpointLarge) {
@@ -207,7 +207,7 @@ section {
   }
 
   &.wave-bottom {
-    animation: wavesBottom 300s linear infinite;
+    // animation: wavesBottom 300s linear infinite;
     background-image: url('~assets/images/border-wave-bottom.png');
     margin-bottom: 5vw;
     @media(min-width: $breakpointLarge) {
@@ -283,19 +283,19 @@ section {
 }
 @keyframes rainbow {
   0% {
-    background: $colorGreen;
+    background-color: $colorGreen;
   }
 
   33% {
-    background: $colorBlue;
+    background-color: $colorBlue;
   }
 
   66% {
-    background: $colorPink;
+    background-color: $colorPink;
   }
 
   100% {
-    background: $colorGreen;
+    background-color: $colorGreen;
   }
 }
 @keyframes wavesTop {
@@ -326,7 +326,8 @@ section {
 }
 
 .rainbow {
-  animation: rainbow 20s;
+  background-color: $colorGreen;
+  // animation: rainbow 20s;
   animation-iteration-count: infinite;
 }
 

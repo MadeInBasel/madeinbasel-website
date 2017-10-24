@@ -18,7 +18,7 @@
     "vue-loading-spinner": "^1.0.10",
     "vue-scroll-reveal": "^1.0.3",
     "vue-smooth-scroll": "^1.0.13",
-    "vuetify": "^0.15.7",
+    "vuetify": "^0.16.9",
     "webfontloader": "^1.6.28"
   },
   "scripts": {

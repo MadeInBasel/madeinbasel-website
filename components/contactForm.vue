@@ -1,6 +1,6 @@
 <template>
 <div class="contactForm">
-  <v-alert v-show="formSuccess" icon="done" success>
+  <v-alert v-show="formSuccess" icon="done" color="success">
     {{ $t('form.successMessage') }}
   </v-alert>
   <div v-show="!formSuccess">
@@ -11,7 +11,7 @@
       <v-text-field name="message" :label="$t('form.message')" counter v-model="message" max="400" multi-line :rules="[rules.required]"></v-text-field>
       <div class="form-action">
         <slot></slot>
-        <v-btn type="submit" primary>{{ $t('form.submit') }}</v-btn>
+        <v-btn type="submit" color="primary">{{ $t('form.submit') }}</v-btn>
       </div>
     </v-form>
   </div>

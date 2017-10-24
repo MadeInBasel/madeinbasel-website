@@ -7,7 +7,7 @@
     </v-btn>
   </div>
   <div v-show="stateUpload">
-    <v-btn primary class="btn-upload" :loading="stateLoading" :disabled="stateLoading" @click="uploadImage">
+    <v-btn color="primary" class="btn-upload" :loading="stateLoading" :disabled="stateLoading" @click="uploadImage">
       <v-icon>cloud_upload</v-icon>&nbsp; {{ $t('buttons.upload') }}*
     </v-btn>
   </div>

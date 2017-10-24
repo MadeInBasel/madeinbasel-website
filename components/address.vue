@@ -4,7 +4,7 @@
     <div v-show="addressProposition" class="proposition">
       <div><small><strong>{{ $t('proposition') }}</strong></small></div>
       <span v-text="addressProposition.formatted_address" class="mr-2"></span>
-      <v-btn primary round small @click="acceptAddress()">{{ $t('buttons.accept') }}</v-btn>
+      <v-btn color="primary" round small @click="acceptAddress()">{{ $t('buttons.accept') }}</v-btn>
     </div>
     <v-text-field :label="$t('label')" ref="address" v-model.lazy="addressSearch" :rules="addressRules" v-on:input="updateMap"></v-text-field>
   </div>

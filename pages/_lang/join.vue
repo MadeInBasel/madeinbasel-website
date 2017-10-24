@@ -11,7 +11,7 @@
       <component-join v-on:success="dialog=true" />
       <v-dialog v-model="dialog" width="600" content-class="dialog--custom dialog--done">
         <div class="text-xs-center done">
-          <v-icon success>check_circle</v-icon>
+          <v-icon color="success">check_circle</v-icon>
         </div>
         <h3>{{ $t('success.heading ')}}!</h3>
         <div class="abstract">
@@ -22,7 +22,7 @@
           <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
         <div class="dialog-footer">
-          <v-btn primary @click="dialog = false">{{ $t('buttons.close' )}}</v-btn>
+          <v-btn color="primary" @click="dialog = false">{{ $t('buttons.close' )}}</v-btn>
         </div>
       </v-dialog>
     </div>

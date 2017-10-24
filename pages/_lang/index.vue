@@ -45,7 +45,7 @@
       <div class="abstract" v-html="$t('members.abstract')"></div>
       <component-members paging=8 />
       <div class="text-xs-center">
-        <v-btn primary large :to="localePath('/members')">{{ $t('buttons.allMembers') }}</v-btn>
+        <v-btn color="primary" large :to="localePath('/members')">{{ $t('buttons.allMembers') }}</v-btn>
       </div>
       <div class="text-xs-center">
         <v-btn flat large :to="localePath('/join')">{{ $t('pages.join') }}</v-btn>

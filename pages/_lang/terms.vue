@@ -16,7 +16,7 @@
         <div>Olivier Christe</div>
       </div>
 
-      <v-btn class="btn-download" primary href="/files/MadeInBasel-LogoPackage.zip" download="MadeInBasel-LogoPackage">
+      <v-btn class="btn-download" color="primary" href="/files/MadeInBasel-LogoPackage.zip" download="MadeInBasel-LogoPackage">
         <v-icon>file_download</v-icon> {{ $t('buttons.downloadLogoPackage') }}</v-btn>
     </div>
   </section>
