@@ -8,8 +8,23 @@
     <div class="section-inner boundaries">
       <h1>{{ $t('pages.join') }}</h1>
       <div class="abstract" v-html="$t('abstract')"></div>
-
-      <component-join />
+      <component-join v-on:success="dialog=true" />
+      <v-dialog v-model="dialog" width="600" content-class="dialog--custom dialog--done">
+        <div class="text-xs-center done">
+          <v-icon success>check_circle</v-icon>
+        </div>
+        <h3>{{ $t('success.heading ')}}!</h3>
+        <div class="abstract">
+          {{ $t('success.abstract ')}}
+        </div>
+        <div class="text-xs-center">
+          <a href="https://twitter.com/madeinbasel?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @madeinbasel</a>
+          <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+        <div class="dialog-footer">
+          <v-btn primary @click="dialog = false">{{ $t('buttons.close' )}}</v-btn>
+        </div>
+      </v-dialog>
     </div>
   </section>
   <section class="section--dark">
@@ -46,7 +61,7 @@ export default {
   },
   data() {
     return {
-
+      dialog: false
     }
   },
   methods: {
@@ -62,6 +77,10 @@ export default {
         download: {
           heading: 'Downloads',
           abstract: 'Download the label files for your marketing purposes.'
+        },
+        success: {
+          heading: 'Congratulations',
+          abstract: 'Your data will be checked and will be activated within the next days.'
         }
       },
       de: {
@@ -69,7 +88,12 @@ export default {
         download: {
           heading: 'Downloads',
           abstract: 'Lade die Logo-Dateien zur freien Verwendung herunter.'
+        },
+        success: {
+          heading: 'Gratulation',
+          abstract: 'Deine Angaben werden geprüft und in den nächsten Tagen freigeschaltet.'
         }
+
       }
     }
   }

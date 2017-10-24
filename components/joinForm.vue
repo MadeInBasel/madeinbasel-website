@@ -17,7 +17,7 @@
         <v-text-field :label="$t('form.organisationName.label')" ref="organisationName" v-model="organisationName" :rules="organisationNameRules" required></v-text-field>
         <component-address v-on:success="setAddress" v-on:discard="resetAddress" />
         <v-flex xs9 sm4>
-          <v-text-field :label="$t('form.employees.label')" v-model="employees" type="number"></v-text-field>
+          <v-text-field :label="$t('form.employees.label')" v-model="employees" type="number" :rules="employeesRules" required></v-text-field>
         </v-flex>
         <div class="text-xs-right">
           <v-btn primary :disabled="validateStep1()" @click.native="stepper = 2">{{ $t('buttons.continue') }}</v-btn>
@@ -86,6 +86,9 @@ export default {
         (v) => !!v || this.$t('form.organisationName.error')
       ],
       employees: null,
+      employeesRules: [
+        (v) => !!v || this.$t('form.employees.error')
+      ],
       description: {
         en: '',
         de: ''
@@ -127,7 +130,7 @@ export default {
       this.address = {}
     },
     validateStep1() {
-      return !this.organisationName || !this.organisationImage
+      return !this.organisationName || !this.organisationImage || !this.employees
     },
     submit() {
       if (this.$refs.form.validate()) {
@@ -152,6 +155,7 @@ export default {
             // Success
             self.formSuccess = true
             self.stateLoading = false
+            self.$emit('success')
           }).then(function () {
             $.ajax({
               url: 'https://formspree.io/hello@madeinbasel.org',
@@ -199,7 +203,8 @@ export default {
             error: 'Name is required'
           },
           employees: {
-            label: 'Number of employees'
+            label: 'Number of employees',
+            error: 'Number of employees is required'
           },
           website: {
             label: 'Website',
@@ -231,7 +236,7 @@ export default {
             hint: 'I agree to the terms (AGBs)',
             error: 'You must agree to continue!'
           },
-          successMessage: 'Congratulations. Thank you for participating! Your information will be published within a couple days. Ideas, suggestions or want to become a sponsor? Contact us! hello@madeinbasel.org',
+          successMessage: 'Congratulations. Thank you for participating! Your information will be published within a couple days. Do you have ideas or suggestions or want to become a sponsor? Contact us! hello@madeinbasel.org',
           errorMessage: 'Something went wront. Please try again or contact us hello@madeinbasel.org'
         }
       },
@@ -254,7 +259,8 @@ export default {
             error: 'Name ist erforderlich'
           },
           employees: {
-            label: 'Anzahl Angestellte'
+            label: 'Anzahl Angestellte',
+            error: 'Anzahl Angestellte ist erforderlich'
           },
           website: {
             label: 'Webseite',
