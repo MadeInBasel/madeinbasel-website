@@ -9,7 +9,7 @@
       <h1>{{ $t('pages.join') }}</h1>
       <div class="abstract" v-html="$t('abstract')"></div>
       <component-join v-on:success="dialog=true" />
-      <v-dialog v-model="dialog" width="600" content-class="dialog--custom dialog--done">
+      <v-dialog v-model="dialog" max-width="600" content-class="dialog--custom dialog--done">
         <div class="text-xs-center done">
           <v-icon color="success">check_circle</v-icon>
         </div>
@@ -63,12 +63,6 @@ export default {
     return {
       dialog: false
     }
-  },
-  methods: {
-
-  },
-  computed: {
-
   },
   i18n: {
     messages: {

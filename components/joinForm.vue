@@ -48,6 +48,10 @@
       </v-stepper-step>
       <v-stepper-content step="3">
         <v-text-field :label="$t('form.email.label')" v-model="email" :rules="emailRules" required></v-text-field>
+        <v-text-field :label="$t('form.password.label')" v-model="password" loading min="8" :rules="passwordRules" required :append-icon="passwordVisibility ? 'visibility' : 'visibility_off'" :append-icon-cb="() => (passwordVisibility = !passwordVisibility)"
+          :type="passwordVisibility ? 'password' : 'text'" counter>
+          <v-progress-linear slot="progress" :value="pwProgress" height="3" :color="pwColor"></v-progress-linear>
+        </v-text-field>
         <v-checkbox :label="$t('form.terms.label')" :hint="$t('form.terms.hint')" persistent-hint v-model="terms" :rules="[v => !!v || $t('form.terms.error')]" required></v-checkbox>
         <component-terms link />
         <div class="text-xs-right">
@@ -109,6 +113,10 @@ export default {
         (v) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || this.$t('form.email.error.valid')
       ],
       password: '',
+      passwordVisibility: false,
+      passwordRules: [
+        (v) => (!!v && v.length >= 8) || this.$t('form.password.error')
+      ],
       featureRequest: false,
       terms: false
     }
@@ -151,26 +159,44 @@ export default {
           terms: this.terms,
           verified: false
         }
-        this.firestore.collection('organisations').add(data)
+        var firebase = require('firebase')
+        firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
           .then(function () {
-            // Success
-            self.formSuccess = true
-            self.stateLoading = false
-            self.$emit('success')
-          }).then(function () {
-            $.ajax({
-              url: 'https://formspree.io/hello@madeinbasel.org',
-              method: 'POST',
-              data: {
-                _subject: 'New Member - Made in Basel',
-                data: data,
-                dataType: 'json'
-              }
-            })
+            data.owner = self.user.uid
+            self.firestore.collection('organisations').doc(self.user.uid).set(data)
+              .then(function () {
+                // Success
+                self.formSuccess = true
+                self.stateLoading = false
+                self.$emit('success')
+              })
+              .then(function () {
+                $.ajax({
+                  url: 'https://formspree.io/hello@madeinbasel.org',
+                  method: 'POST',
+                  data: {
+                    _subject: 'New Member - Made in Basel',
+                    data: data,
+                    dataType: 'json'
+                  }
+                })
+              })
+              .catch(function (error) {
+                self.firebaseError = true
+                console.error('Error adding document: ', error)
+              })
+          })
+          .then(function () {
+            firebase.auth().currentUser.sendEmailVerification()
+              .catch(function (error) {
+                console.log(error)
+              })
           })
           .catch(function (error) {
-            self.firebaseError = true
-            console.error('Error adding document: ', error)
+            var errorCode = error.code
+            var errorMessage = error.message
+            console.log(errorCode)
+            console.log(errorMessage)
           })
       }
     },
@@ -182,11 +208,14 @@ export default {
     firestore() {
       return this.$store.state.db
     },
+    user() {
+      return this.$store.state.user
+    },
     pwProgress() {
-      return Math.min(100, this.value.length * 10)
+      return Math.min(100, this.password.length * 10)
     },
     pwColor() {
-      return ['error', 'warning', 'success'][Math.floor(this.progress / 40)]
+      return ['error', 'warning', 'success'][Math.floor(this.pwProgress / 40)]
     }
   },
   i18n: {
@@ -202,7 +231,7 @@ export default {
             intro: 'Describe what you do'
           },
           step3: {
-            title: 'Contact Info',
+            title: 'Account',
             intro: 'Let\'s keep in touch. Won\'t be public and we don\'t spam.'
           },
           organisationName: {
@@ -238,6 +267,10 @@ export default {
               valid: 'E-mail must be valid'
             }
           },
+          password: {
+            label: 'Password',
+            error: 'At least 8 characters'
+          },
           terms: {
             label: 'Terms',
             hint: 'I agree to the terms (AGBs)',
@@ -258,7 +291,7 @@ export default {
             intro: 'Beschreiben deine Tätigkeit'
           },
           step3: {
-            title: 'Kontakt',
+            title: 'Benutzerkonto',
             intro: 'Kontaktangaben. Wird nicht veröffentlicht.'
           },
           organisationName: {
@@ -293,6 +326,10 @@ export default {
               required: 'Email ist erforderlich',
               valid: 'Ungültige Emailadresse'
             }
+          },
+          password: {
+            label: 'Passwort',
+            error: 'Mindestens 8 Zeichen'
           },
           terms: {
             label: 'AGBs',

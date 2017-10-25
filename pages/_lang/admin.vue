@@ -2,10 +2,9 @@
 <div id="admin">
   <section class="admin">
     <div class="section-inner boundaries">
-
       <h1>Admin</h1>
       <div v-if="user" class="user">
-        <img :src="user.photoURL" class="thumb" alt="Thumb">
+        <img v-if="user.photoURL" :src="user.photoURL" class="thumb" alt="Thumb">
         <div><strong>{{ user.displayName }}</strong></div>
         <div>{{ user.email }}</div>
         <div>UID: {{ user.uid }}</div>
@@ -61,6 +60,7 @@ export default {
         var uiConfig = {
           signInSuccessUrl: '/admin',
           signInOptions: [
+            firebase.auth.EmailAuthProvider.PROVIDER_ID,
             firebase.auth.GoogleAuthProvider.PROVIDER_ID
           ]
         }

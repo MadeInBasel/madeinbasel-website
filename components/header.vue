@@ -2,7 +2,7 @@
 <div id="header">
   <div class="header-navigation boundaries">
     <nuxt-link v-if="user" class="user" to="/admin">
-      {{ user.displayName }}
+      {{ user.displayName ? user.displayName : user.email }}
     </nuxt-link>
     <nuxt-link class="logo" :to="localePath('/')">
       <img src="~assets/images/logo-seal.svg" alt="Logo">

@@ -21,7 +21,7 @@
     </v-flex>
   </transition-group>
 
-  <v-dialog v-if="item.data" lazy v-model="dialog" width="600" content-class="dialog--custom">
+  <v-dialog v-if="item.data" lazy v-model="dialog" max-width="600" content-class="dialog--custom">
     <div class="dialog-content">
       <div class="map">
         <div class="map-placeholder">

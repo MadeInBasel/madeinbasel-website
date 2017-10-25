@@ -8,7 +8,6 @@ export default ({
   isClient,
   store
 }) => {
-
   const firebase = require("firebase");
   require('firebase/firestore')
 
