@@ -8,9 +8,8 @@
         <div><strong>{{ user.displayName }}</strong></div>
         <div>{{ user.email }}</div>
         <div>UID: {{ user.uid }}</div>
-        <v-btn color="primary" @click="logOut">Log out</v-btn>
       </div>
-      <div v-show="!user" id="firebaseui-auth-container"></div>
+      <component-login :logOutButton=true />
     </div>
   </section>
   <section v-if="user">
@@ -31,59 +30,22 @@
 <script>
 import _ from 'underscore'
 import members from '~/components/members.vue'
+import login from '~/components/login.vue'
 
 export default {
   components: {
-    'component-members': members
+    'component-members': members,
+    'component-login': login
   },
   head() {
     return {
       title: 'Admin'
     }
   },
-  data() {
-    return {
-      ui: null
-    }
-  },
-  methods: {
-    logOut() {
-      var firebase = require('firebase')
-      firebase.auth().signOut()
-      this.$store.commit('UPDATE_USER', null)
-      this.showFirebaseUI()
-    },
-    showFirebaseUI() {
-      if (process.browser && !this.user) {
-        var firebase = require('firebase')
-        var firebaseui = require('firebaseui')
-        var uiConfig = {
-          signInSuccessUrl: '/admin',
-          signInOptions: [
-            firebase.auth.EmailAuthProvider.PROVIDER_ID,
-            firebase.auth.GoogleAuthProvider.PROVIDER_ID
-          ]
-        }
-        if (!this.ui) {
-          this.ui = new firebaseui.auth.AuthUI(firebase.auth())
-        } else {
-          this.ui.delete()
-        }
-        this.ui.start('#firebaseui-auth-container', uiConfig)
-      }
-    }
-  },
   computed: {
     user() {
       return this.$store.state.user
     }
-  },
-  mounted() {
-    var self = this
-    _.defer(function () {
-      self.showFirebaseUI()
-    })
-
   }
 }
 </script>

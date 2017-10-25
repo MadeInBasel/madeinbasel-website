@@ -28,7 +28,9 @@
     "visitWebsite": "Webseite Besuchen",
     "allMembers": "Alle Mitglieder",
     "learnMore": "Mehr Erfahren",
-    "downloadLogoPackage": "Logo Dateien Herunterladen"
+    "downloadLogoPackage": "Logo Dateien Herunterladen",
+    "login": "Anmelden",
+    "logout": "Abmelden"
   },
   "error": {
     "empty": "Nichts anzuzeigen"

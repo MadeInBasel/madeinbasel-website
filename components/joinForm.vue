@@ -9,7 +9,7 @@
   <v-form v-show="(!formSuccess && !firebaseError)" v-model="valid" ref="form">
     <v-stepper v-model="stepper" vertical>
 
-      <v-stepper-step step="1" :complete="stepper > 1">{{ $t('form.step1.title') }}
+      <!-- <v-stepper-step step="1" :complete="stepper > 1">{{ $t('form.step1.title') }}
         <small>{{ $t('form.step1.intro') }}</small>
       </v-stepper-step>
       <v-stepper-content step="1">
@@ -40,18 +40,19 @@
         <div class="text-xs-right">
           <v-btn flat @click.native="stepper = 1">{{ $t('buttons.back') }}</v-btn>
           <v-btn color="primary" @click.native="stepper = 3">{{ $t('buttons.continue') }}</v-btn>
-        </div>
+        </div> -->
 
       </v-stepper-content>
       <v-stepper-step step="3">{{ $t('form.step3.title') }}
         <small>{{ $t('form.step3.intro') }}</small>
       </v-stepper-step>
       <v-stepper-content step="3">
-        <v-text-field :label="$t('form.email.label')" v-model="email" :rules="emailRules" required></v-text-field>
+        <component-login />
+        <!-- <v-text-field :label="$t('form.email.label')" v-model="email" :rules="emailRules" required></v-text-field>
         <v-text-field :label="$t('form.password.label')" v-model="password" loading min="8" :rules="passwordRules" required :append-icon="passwordVisibility ? 'visibility' : 'visibility_off'" :append-icon-cb="() => (passwordVisibility = !passwordVisibility)"
           :type="passwordVisibility ? 'password' : 'text'" counter>
           <v-progress-linear slot="progress" :value="pwProgress" height="3" :color="pwColor"></v-progress-linear>
-        </v-text-field>
+        </v-text-field> -->
         <v-checkbox :label="$t('form.terms.label')" :hint="$t('form.terms.hint')" persistent-hint v-model="terms" :rules="[v => !!v || $t('form.terms.error')]" required></v-checkbox>
         <component-terms link />
         <div class="text-xs-right">
@@ -69,12 +70,14 @@
 import $ from 'jquery'
 import uploadcare from '~/components/uploadcare.vue'
 import address from '~/components/address.vue'
+import login from '~/components/login.vue'
 import terms from '~/components/terms.vue'
 
 export default {
   components: {
     'component-uploadcare': uploadcare,
     'component-address': address,
+    'component-login': login,
     'component-terms': terms
   },
   data() {
@@ -288,7 +291,7 @@ export default {
           },
           step2: {
             title: 'Deine Mission',
-            intro: 'Beschreiben deine Tätigkeit'
+            intro: 'Beschreibe deine Tätigkeit'
           },
           step3: {
             title: 'Benutzerkonto',

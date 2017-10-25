@@ -28,7 +28,9 @@
     "visitWebsite": "Visit Website",
     "allMembers": "All Members",
     "learnMore": "Learn More",
-    "downloadLogoPackage": "Get Logo Package"
+    "downloadLogoPackage": "Get Logo Package",
+    "login": "Login",
+    "logout": "Logout"
   },
   "error": {
     "empty": "Nothing to show"
