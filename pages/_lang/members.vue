@@ -33,12 +33,12 @@ export default {
     messages: {
       en: {
         intro: {
-          abstract: 'sowas'
+          abstract: 'Below you will find the complete list of our members. Selected members have stories attached and are marked with a {icon}. Click on the respective logo for more information.'
         }
       },
       de: {
         intro: {
-          abstract: 'Im Folgenden finden Sie das vollständige Verzeichnis der eingetragenen Trägerschaft. Ausgewählte Mitglieder wurden von uns persönlich porträtiert und mit einem {icon} gekennzeichnet. Klicken sie auf das jeweilige Logo für mehr Informationen.'
+          abstract: 'Im Folgenden finden Sie das vollständige Mitgliederverzeichnis. Ausgewählte Mitglieder wurden von uns persönlich porträtiert und mit einem {icon} gekennzeichnet. Klicken sie auf das jeweilige Logo für mehr Informationen.'
         }
       }
     }
