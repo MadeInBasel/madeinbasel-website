@@ -9,7 +9,7 @@
       <h1>{{ $t('pages.stories') }}</h1>
       <div class="abstract" v-html="$t('intro.abstract')"></div>
       <div class="text-xs-center">
-        <i>coming soon</i>
+        <i>work in progress</i>
       </div>
 
     </div>
