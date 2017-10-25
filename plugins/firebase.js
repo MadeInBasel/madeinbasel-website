@@ -41,7 +41,5 @@ export default ({
       store.commit('UPDATE_USER', null)
     }
   })
-
   store.commit('FILL_DB', db)
-
 }

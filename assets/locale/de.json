@@ -30,7 +30,8 @@
     "learnMore": "Mehr Erfahren",
     "downloadLogoPackage": "Logo Dateien Herunterladen",
     "login": "Anmelden",
-    "logout": "Abmelden"
+    "logout": "Abmelden",
+    "deleteAccount": "Benutzerkonto löschen"
   },
   "error": {
     "empty": "Nichts anzuzeigen"

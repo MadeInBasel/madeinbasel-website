@@ -13,3 +13,23 @@
     }
   }
 }
+
+.dialog--delete {
+  padding: 2em 0.5em;
+
+  .reason {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1em;
+
+    > div {
+      width: 60%;
+    }
+  }
+
+  .errorDelete {
+    margin: 1em;
+    border: 1px solid red;
+    padding: 1em;
+  }
+}

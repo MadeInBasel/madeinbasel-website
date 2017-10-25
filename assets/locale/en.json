@@ -30,7 +30,8 @@
     "learnMore": "Learn More",
     "downloadLogoPackage": "Get Logo Package",
     "login": "Login",
-    "logout": "Logout"
+    "logout": "Logout",
+    "deleteAccount": "Delete Account"
   },
   "error": {
     "empty": "Nothing to show"

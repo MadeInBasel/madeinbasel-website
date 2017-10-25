@@ -68,10 +68,7 @@ export default {
     }
   },
   mounted() {
-    var self = this
-    _.defer(function () {
-      self.showFirebaseUI()
-    })
+    this.showFirebaseUI()
   },
   i18n: {
     messages: {
