@@ -9,7 +9,7 @@
   <v-form v-show="(!formSuccess && !firebaseError)" v-model="valid" ref="form">
     <v-stepper v-model="stepper" vertical>
 
-      <!-- <v-stepper-step step="1" :complete="stepper > 1">{{ $t('form.step1.title') }}
+      <v-stepper-step step="1" :complete="stepper > 1">{{ $t('form.step1.title') }}
         <small>{{ $t('form.step1.intro') }}</small>
       </v-stepper-step>
       <v-stepper-content step="1">
@@ -40,7 +40,7 @@
         <div class="text-xs-right">
           <v-btn flat @click.native="stepper = 1">{{ $t('buttons.back') }}</v-btn>
           <v-btn color="primary" @click.native="stepper = 3">{{ $t('buttons.continue') }}</v-btn>
-        </div> -->
+        </div>
 
       </v-stepper-content>
       <v-stepper-step step="3">{{ $t('form.step3.title') }}
@@ -48,14 +48,9 @@
       </v-stepper-step>
       <v-stepper-content step="3">
         <component-login />
-        <!-- <v-text-field :label="$t('form.email.label')" v-model="email" :rules="emailRules" required></v-text-field>
-        <v-text-field :label="$t('form.password.label')" v-model="password" loading min="8" :rules="passwordRules" required :append-icon="passwordVisibility ? 'visibility' : 'visibility_off'" :append-icon-cb="() => (passwordVisibility = !passwordVisibility)"
-          :type="passwordVisibility ? 'password' : 'text'" counter>
-          <v-progress-linear slot="progress" :value="pwProgress" height="3" :color="pwColor"></v-progress-linear>
-        </v-text-field> -->
-        <v-checkbox :label="$t('form.terms.label')" :hint="$t('form.terms.hint')" persistent-hint v-model="terms" :rules="[v => !!v || $t('form.terms.error')]" required></v-checkbox>
-        <component-terms link />
+        <v-checkbox v-if="user" class="terms" :label="$t('form.terms.label')" :hint="$t('form.terms.hint')" persistent-hint v-model="terms" :rules="[v => !!v || $t('form.terms.error')]" required></v-checkbox>
         <div class="text-xs-right">
+          <component-terms link />
           <v-btn flat @click.native="stepper = 2">{{ $t('buttons.back') }}</v-btn>
           <v-btn color="primary" @click="submit" :loading="stateLoading" :disabled="(!valid || stateLoading)">{{ $t('buttons.save') }}</v-btn>
         </div>
@@ -110,16 +105,6 @@ export default {
       websiteRules: [
         (v) => (!v || /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/.test(v)) || this.$t('form.website.error')
       ],
-      email: '',
-      emailRules: [
-        (v) => !!v || this.$t('form.email.error.required'),
-        (v) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || this.$t('form.email.error.valid')
-      ],
-      password: '',
-      passwordVisibility: false,
-      passwordRules: [
-        (v) => (!!v && v.length >= 8) || this.$t('form.password.error')
-      ],
       featureRequest: false,
       terms: false
     }
@@ -145,7 +130,7 @@ export default {
       return !this.organisationName || !this.organisationImage || !this.employees
     },
     submit() {
-      if (this.$refs.form.validate()) {
+      if (this.user && this.$refs.form.validate()) {
         this.stateLoading = true
         var self = this
         var data = {
@@ -157,50 +142,36 @@ export default {
           description: this.description,
           industry: this.industries.findIndex(function (value) { return value === self.industry }),
           website: this.website,
-          email: this.email,
           featureRequest: this.featureRequest,
           terms: this.terms,
+          owner: this.user.uid,
+          email: this.user.email,
           verified: false
         }
-        var firebase = require('firebase')
-        firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
+        self.firestore.collection('organisations').add(data)
           .then(function () {
-            data.owner = self.user.uid
-            self.firestore.collection('organisations').doc(self.user.uid).set(data)
-              .then(function () {
-                // Success
-                self.formSuccess = true
-                self.stateLoading = false
-                self.$emit('success')
-              })
-              .then(function () {
-                $.ajax({
-                  url: 'https://formspree.io/hello@madeinbasel.org',
-                  method: 'POST',
-                  data: {
-                    _subject: 'New Member - Made in Basel',
-                    data: data,
-                    dataType: 'json'
-                  }
-                })
-              })
-              .catch(function (error) {
-                self.firebaseError = true
-                console.error('Error adding document: ', error)
-              })
+            // Success
+            self.formSuccess = true
+            self.stateLoading = false
+            self.$emit('success')
           })
           .then(function () {
-            firebase.auth().currentUser.sendEmailVerification()
-              .catch(function (error) {
-                console.log(error)
-              })
+            $.ajax({
+              url: 'https://formspree.io/hello@madeinbasel.org',
+              method: 'POST',
+              data: {
+                _subject: 'New Member - Made in Basel',
+                data: data,
+                dataType: 'json'
+              }
+            })
           })
           .catch(function (error) {
-            var errorCode = error.code
-            var errorMessage = error.message
-            console.log(errorCode)
-            console.log(errorMessage)
+            self.firebaseError = true
+            console.error('Error adding document: ', error)
           })
+      } else {
+        console.error('Error submitting the form. Form invalid or no user.')
       }
     },
     clear() {
@@ -213,12 +184,6 @@ export default {
     },
     user() {
       return this.$store.state.user
-    },
-    pwProgress() {
-      return Math.min(100, this.password.length * 10)
-    },
-    pwColor() {
-      return ['error', 'warning', 'success'][Math.floor(this.pwProgress / 40)]
     }
   },
   i18n: {
@@ -263,20 +228,9 @@ export default {
             label: 'Featured Story',
             hint: 'I want to get a personal portrayel on Made in Basel. Please contact me.'
           },
-          email: {
-            label: 'E-mail',
-            error: {
-              required: 'E-mail is required',
-              valid: 'E-mail must be valid'
-            }
-          },
-          password: {
-            label: 'Password',
-            error: 'At least 8 characters'
-          },
           terms: {
-            label: 'Terms',
-            hint: 'I agree to the terms (AGBs)',
+            label: 'I agree…',
+            hint: '…to the terms (AGBs)',
             error: 'You must agree to continue!'
           },
           successMessage: 'Congratulations. Thank you for participating! Your information will be published within a couple days. Do you have ideas or suggestions or want to become a sponsor? Contact us! hello@madeinbasel.org',
@@ -323,20 +277,9 @@ export default {
             label: 'Persönlichs Portrait',
             hint: 'Ich möchte ein persönliches Portrait auf Made in Basel. Bitte um Kontaktaufnahme'
           },
-          email: {
-            label: 'Email',
-            error: {
-              required: 'Email ist erforderlich',
-              valid: 'Ungültige Emailadresse'
-            }
-          },
-          password: {
-            label: 'Passwort',
-            error: 'Mindestens 8 Zeichen'
-          },
           terms: {
-            label: 'AGBs',
-            hint: 'Ich akzeptiere die Allgemeinen Geschäftsbedingungen (AGB)',
+            label: 'Ich akzeptiere…',
+            hint: '…die Allgemeinen Geschäftsbedingungen (AGB)',
             error: 'Akzeptiere die AGBs um fortzufahren!'
           },
           successMessage: 'Gratulation. Danke fürs Mitmachen! Deine Informationen werden in den nächsten Tagen publiziert. Hast du Ideen, Anregungen oder den Wunsch Sponsor zu werden? Melde dich! hello@madeinbasel.org',
@@ -349,5 +292,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "~assets/styles/variables.scss";
+@import "joinForm.scss";
 </style>
