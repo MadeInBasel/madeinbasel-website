@@ -12,13 +12,31 @@
       <component-login :logOutButton=true />
     </div>
   </section>
-  <section v-if="user">
+  <section v-if="user && !user.isAdmin">
+    <div class="section-inner boundaries">
+      <h2>My Entries</h2>
+      <div class="abstract">
+        (verified)
+      </div>
+      <component-members :isOwner=true></component-members>
+    </div>
+  </section>
+  <section v-if="user && !user.isAdmin">
+    <div class="section-inner boundaries">
+      <h2>My Entries</h2>
+      <div class="abstract">
+        (Verification pending)
+      </div>
+      <component-members :verified=false :isOwner=true></component-members>
+    </div>
+  </section>
+  <section v-if="user && user.isAdmin">
     <div class="section-inner boundaries">
       <h2>Unverified Members</h2>
       <component-members :verified=false></component-members>
     </div>
   </section>
-  <section>
+  <section v-if="user && user.isAdmin">
     <div class="section-inner boundaries">
       <h2>Verified Members</h2>
       <component-members></component-members>

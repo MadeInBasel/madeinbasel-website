@@ -1,6 +1,6 @@
 <template>
 <div class="component-members" @keyup.esc="dialog = false">
-  <div v-if="user" class="admin-zone text-xs-center">
+  <div v-if="user && user.isAdmin" class="admin-zone text-xs-center">
     <v-btn color="primary" :loading="!ready" :disabled="!ready" @click="getMembers()">
       <v-icon>cached</v-icon> Reload Members</v-btn>
   </div>
@@ -46,7 +46,7 @@
         <div v-if="item.data.hasOwnProperty('website')" class="text-xs-center">
           <v-btn flat outline nuxt :href='item.data.website' target="_blank" rel="noopener">{{ $t('buttons.visitWebsite') }}</v-btn>
         </div>
-        <div v-if="user" class="admin-zone text-xs-center">
+        <div v-if="user && user.isAdmin" class="admin-zone text-xs-center">
           <v-btn error :loading="loadingDelete" :disabled="loadingDelete" @click="deleteEntry(item.id)">Delete</v-btn>
           <v-btn v-if="!item.data.verified" color="primary" :loading="loadingVerify" :disabled="loadingVerify" @click="verifyEntry(item.id)">Verify</v-btn>
           <v-btn v-if="item.data.verified" :loading="loadingVerify" :disabled="loadingVerify" @click="revokeVerification(item.id)">Revoke Verification</v-btn>
@@ -75,6 +75,10 @@ export default {
     verified: {
       type: Boolean,
       default: true
+    },
+    isOwner: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -211,6 +215,11 @@ export default {
             return !item.data.hasOwnProperty('verified') || item.data.verified === false
           }
         })
+        if (this.isOwner && this.user) {
+          members = members.filter(item => {
+            return item.data.hasOwnProperty('owner') && item.data.owner === this.user.uid
+          })
+        }
         members = members.slice(0, this.paging)
       }
       return members

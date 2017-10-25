@@ -30,13 +30,12 @@ export default {
   },
   methods: {
     logOut() {
-      if (process.browser) {
-        firebase.auth().signOut()
-        this.showFirebaseUI()
-      }
+      firebase.auth().signOut()
+      this.showFirebaseUI()
     },
     showFirebaseUI() {
       var firebaseui = require('firebaseui')
+      var self = this
       var uiConfig = {
         callbacks: {
           signInSuccess: function (currentUser, credential, redirectUrl) {

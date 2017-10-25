@@ -19,7 +19,11 @@
 
 .user {
   margin-right: auto;
+  max-width: 40%;
+  overflow: hidden;
+  text-overflow: ellipsis;
   transition: 200ms;
+  white-space: nowrap;
 }
 
 .logo {
