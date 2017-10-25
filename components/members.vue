@@ -46,10 +46,10 @@
         <div v-if="item.data.hasOwnProperty('website')" class="text-xs-center">
           <v-btn flat outline nuxt :href='item.data.website' target="_blank" rel="noopener">{{ $t('buttons.visitWebsite') }}</v-btn>
         </div>
-        <div v-if="user && user.isAdmin" class="admin-zone text-xs-center">
-          <v-btn error :loading="loadingDelete" :disabled="loadingDelete" @click="deleteEntry(item.id)">Delete</v-btn>
-          <v-btn v-if="!item.data.verified" color="primary" :loading="loadingVerify" :disabled="loadingVerify" @click="verifyEntry(item.id)">Verify</v-btn>
-          <v-btn v-if="item.data.verified" :loading="loadingVerify" :disabled="loadingVerify" @click="revokeVerification(item.id)">Revoke Verification</v-btn>
+        <div v-if="user" class="admin-zone text-xs-center">
+          <v-btn v-if="user.uid === item.data.owner || user.isAdmin" color="error" :loading="loadingDelete" :disabled="loadingDelete" @click="deleteEntry(item.id)">Delete</v-btn>
+          <v-btn v-if="user.isAdmin && !item.data.verified" color="primary" :loading="loadingVerify" :disabled="loadingVerify" @click="verifyEntry(item.id)">Verify</v-btn>
+          <v-btn v-if="user.isAdmin && item.data.verified" :loading="loadingVerify" :disabled="loadingVerify" @click="revokeVerification(item.id)">Revoke Verification</v-btn>
         </div>
       </div>
     </div>
