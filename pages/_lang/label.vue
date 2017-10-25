@@ -60,11 +60,12 @@ export default {
     messages: {
       en: {
         intro: {
-          abstract: 'sowas'
+          abstract: 'The main aspect of <strong>Made in Basel</strong> is the trade-mark shown below. It serves as a label and a distinctive brand. The use of the label is free of charge for all institutions and residents of Basel*.',
+          small: '*See terms for more details.'
         },
         mission: {
           heading: 'Mission',
-          abstract: ''
+          abstract: '<strong>Made in Basel</strong> is an initiative to promote products and services from Basel. We support innovation and entrepreneurial spirit, sustain a diverse, creative climate where ideas and people can prosper. The label stands for high-quality local products and services with a unique spirit. Members are committed to Basel as a place to live, work and recreate.'
         },
         vision: {
           heading: 'Vision',
@@ -78,7 +79,7 @@ export default {
         },
         mission: {
           heading: 'Mission',
-          abstract: '<strong>Made in Basel</strong> ist eine Initiative um Produkte und Dienstleistungen aus Basel zu bewerben. Wir fördern Innovation und Unternehmergeist, setzen uns ein für ein vielfältiges, kreatives Klima und unterstützen Basel Qualitäten als Wohn-, Arbeits- und Kulturstadt. Das Qualitätslabel steht für hochwertige lokale Produkte und Dienstleistungen mit einem Hauch von Basel. Mitglieder bekennen sich zum Werkplatz Basel.'
+          abstract: '<strong>Made in Basel</strong> ist eine Initiative um Produkte und Dienstleistungen aus Basel zu bewerben. Wir fördern Innovation und Unternehmergeist, setzen uns ein für ein vielfältiges, kreatives Klima wo Ideen und Menschen gedeihen können.Das Label steht für hochwertige lokale Produkte und Dienstleistungen mit einzigartigem Spirit. Mitglieder bekennen sich zu Basel als Wohn-, Arbeits- und Kulturstadt.'
         },
         vision: {
           heading: 'Vision',
