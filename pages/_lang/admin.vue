@@ -2,7 +2,7 @@
 <div id="admin">
   <section class="admin">
     <div class="section-inner boundaries">
-      <h1>{{ $t('heading') }}</h1>
+      <h1>{{ $t('pages.admin') }}</h1>
       <div v-if="user" class="user">
         <img v-if="user.photoURL" :src="user.photoURL" class="thumb" alt="Thumb">
         <div><strong>{{ user.displayName }}</strong></div>
@@ -39,22 +39,22 @@
       <component-login :logOutButton=true />
     </div>
   </section>
-  <section v-if="user && !user.isAdmin">
+  <section v-if="user && !user.isAdmin" v-show="verifiedCount">
     <div class="section-inner boundaries">
       <h2>{{ $t('entries' )}}</h2>
       <div class="abstract">
-        ({{ $t('verified')}})
+        {{ $t('verified')}} ({{ verifiedCount }})
       </div>
-      <component-members :isOwner=true></component-members>
+      <component-members :isOwner=true v-on:count="handleVerified"></component-members>
     </div>
   </section>
-  <section v-if="user && !user.isAdmin">
+  <section v-if="user && !user.isAdmin" v-show="pendingCount">
     <div class="section-inner boundaries">
-      <h2>{{ $t('entries' )}}</h2>
+      <h2>{{ $t('entries')}}</h2>
       <div class="abstract">
-        ({{ $t('verificationPending')}})
+        {{ $t('verificationPending')}} ({{ pendingCount }})
       </div>
-      <component-members :verified=false :isOwner=true></component-members>
+      <component-members :verified=false :isOwner=true v-on:count="handlePending"></component-members>
     </div>
   </section>
   <section v-if="user && user.isAdmin">
@@ -92,10 +92,18 @@ export default {
     return {
       dialogDelete: false,
       loadingDelete: false,
-      errorDelete: ''
+      errorDelete: '',
+      verifiedCount: false,
+      pendingCount: false
     }
   },
   methods: {
+    handlePending(count) {
+      this.pendingCount = count
+    },
+    handleVerified(count) {
+      this.verifiedCount = count
+    },
     deleteAccount() {
       this.loadingDelete = true
       var self = this
@@ -128,7 +136,6 @@ export default {
   i18n: {
     messages: {
       en: {
-        heading: 'Admin',
         delete: {
           heading: 'So sad!',
           abstract: 'Be aware. Registered organisations remain on the platform unless they have been deleted prior to this action. You will not be able to recover your account.',
@@ -139,7 +146,6 @@ export default {
         verificationPending: 'Verification pending'
       },
       de: {
-        heading: 'Admin',
         delete: {
           heading: 'Oh noooo!',
           abstract: 'Achtung. Registrierte Organisationen bleiben auf der Plattform bestehen falls sie nicht vorher gelöscht wurden. Das Konto kann nicht wiederhergestellt werden.',

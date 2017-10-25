@@ -25,8 +25,7 @@ const main = [{
   }
 ]
 
-const about = [
-  {
+const about = [{
     path: '/contact',
     label: 'pages.contact',
     icon: 'mail'
@@ -35,6 +34,11 @@ const about = [
     path: '/terms',
     label: 'pages.terms',
     icon: 'info'
+  },
+  {
+    path: '/admin',
+    label: 'pages.admin',
+    icon: 'person'
   }
 ]
 

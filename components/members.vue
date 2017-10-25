@@ -222,6 +222,7 @@ export default {
         }
         members = members.slice(0, this.paging)
       }
+      this.$emit('count', members.length)
       return members
     }
   },
