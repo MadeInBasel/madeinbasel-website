@@ -18,8 +18,7 @@
           {{ $t('success.abstract ')}}
         </div>
         <div class="text-xs-center">
-          <a href="https://twitter.com/madeinbasel?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @madeinbasel</a>
-          <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <a href="https://twitter.com/madeinbasel" target="_blank">Follow @madeinbasel</a>
         </div>
         <div class="dialog-footer">
           <v-btn color="primary" @click="dialog = false">{{ $t('buttons.close' )}}</v-btn>
