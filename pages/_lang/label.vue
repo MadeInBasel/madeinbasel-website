@@ -74,12 +74,12 @@ export default {
       },
       de: {
         intro: {
-          abstract: 'Hauptbestandteil von <strong>Made in Basel</strong> ist die unten abgebildetet geschützte Wort-Bild-Marke. Sie dient als Label und als Erkennungsmerkmal. Die Verwendung des Labels steht grundsätzlich allen in Basel ansässigen Institutionen und Personen frei*.',
+          abstract: 'Hauptbestandteil von <strong>Made in Basel</strong> ist die unten abgebildete geschützte Wort-Bild-Marke. Sie dient als Label und als Erkennungsmerkmal. Die Verwendung des Labels steht grundsätzlich allen in Basel ansässigen Institutionen und Personen frei*.',
           small: '*Unter Berücksichtigung der in den AGBs beschriebenen Voraussetzungen.'
         },
         mission: {
           heading: 'Mission',
-          abstract: '<strong>Made in Basel</strong> ist eine Initiative um Produkte und Dienstleistungen aus Basel zu bewerben. Wir fördern Innovation und Unternehmergeist, setzen uns ein für ein vielfältiges, kreatives Klima wo Ideen und Menschen gedeihen können.Das Label steht für hochwertige lokale Produkte und Dienstleistungen mit einzigartigem Spirit. Mitglieder bekennen sich zu Basel als Wohn-, Arbeits- und Kulturstadt.'
+          abstract: '<strong>Made in Basel</strong> ist eine Initiative um Produkte und Dienstleistungen aus Basel zu bewerben. Wir fördern Innovation und Unternehmergeist, setzen uns für ein vielfältiges, kreatives Klima ein und unterstützen Basels Qualitäten als Wohn-, Arbeits- und Kulturstadt. Das Label steht für hochwertige lokale Produkte und Dienstleistungen mit einem Hauch Basel. Mitglieder bekennen sich zum Werkplatz Basel. '
         },
         vision: {
           heading: 'Vision',

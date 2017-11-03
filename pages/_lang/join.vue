@@ -9,6 +9,7 @@
       <h1>{{ $t('pages.join') }}</h1>
       <div class="abstract" v-html="$t('abstract')"></div>
       <component-join v-on:success="dialog=true" />
+      <small class="join-addendum fine-print"><span v-html="$t('free-notice', {mib: '<strong>Made in Basel</strong>'})"></span>&nbsp; <a href="mailto:hello@madeinbasel.org">hello@madeinbasel.org</a></small>
       <v-dialog v-model="dialog" max-width="600" content-class="dialog--custom dialog--done">
         <div class="text-xs-center done">
           <v-icon color="success">check_circle</v-icon>
@@ -35,7 +36,7 @@
   distance: '20px'
 }">
         <h2>{{ $t('download.heading')}}</h2>
-        <div class="abstract" v-html="$t('download.abstract')"></div>
+        <div class="abstract" v-html="$t('download.abstract', {mib: '<strong>Made in Basel</strong>'})"></div>
         <div class="text-xs-center">
           <v-btn outline dark large href="/files/MadeInBasel-LogoPackage.zip" download="MadeInBasel-LogoPackage">
             <v-icon>file_download</v-icon> {{ $t('buttons.downloadLogoPackage') }}</v-btn>
@@ -66,21 +67,21 @@ export default {
   i18n: {
     messages: {
       en: {
-        abstract: 'It takes only 2 minutes and the membership is free. Want to tell your story? Make sure to set the option in step 2.',
+        abstract: 'It takes only 2 minutes and the membership is free*. You can edit or remove your listing at anytime. No strings attached.',
         download: {
           heading: 'Downloads',
-          abstract: 'Download the label files for your marketing purposes.'
+          abstract: 'Download the {mib} label files for your marketing purposes. We\'d be happy if our logo finds a place on your website!'
         },
         success: {
           heading: 'Congratulations',
-          abstract: 'Your data will be checked and will be activated within the next days.'
+          abstract: 'Your data will be checked and your listing will be activated within the next days.'
         }
       },
       de: {
-        abstract: 'Nimm dir 2 Minuten Zeit um mitzumachen. Die Mitgliedschaft ist kostenlos. Möchtest du ein persönliches Portrait? Wähle die Option in Schritt 2 und wir melden uns bei dir.',
+        abstract: 'Nimm dir 2 Minuten Zeit um mitzumachen. Die Mitgliedschaft ist kostenlos*. Möchtest du deine Geschichte erzählen? Wähle die Option in Schritt 2 und wir melden uns bei dir.',
         download: {
           heading: 'Downloads',
-          abstract: 'Lade die Logo-Dateien zur freien Verwendung herunter.'
+          abstract: 'Lade die {mib}-Logo-Dateien zur freien Verwendung herunter. Wir freuen uns, wenn unser Logo einen Platz auf deiner Webseite findet!'
         },
         success: {
           heading: 'Gratulation',

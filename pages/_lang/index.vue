@@ -26,7 +26,7 @@
     distance: '20px'
   }">
         <h2>{{ $t('intro.heading')}}</h2>
-        <div class="abstract" v-html="$t('intro.abstract')"></div>
+        <div class="abstract" v-html="$t('intro.abstract', {mib: '<strong>Made in Basel</strong>'})"></div>
         <div class="text-xs-center">
           <v-btn outline dark large :to="localePath('/label')">{{ $t('buttons.learnMore') }}</v-btn>
         </div>
@@ -42,7 +42,7 @@
     distance: '20px'
   }">
       <h2>{{ $t('members.heading')}}</h2>
-      <div class="abstract" v-html="$t('members.abstract')"></div>
+      <div class="abstract" v-html="$t('members.abstract', {mib: '<strong>Made in Basel</strong>'})"></div>
       <component-members paging=8 />
       <div class="text-xs-center">
         <v-btn color="primary" large :to="localePath('/members')">{{ $t('buttons.allMembers') }}</v-btn>
@@ -62,10 +62,17 @@
     distance: '20px'
   }">
         <h2>{{ $t('join.heading')}}</h2>
-        <div class="abstract" v-html="$t('join.abstract')"></div>
+        <div class="abstract" v-html="$t('join.abstract', {mib: '<strong>Made in Basel</strong>'})"></div>
         <div class="text-xs-center">
           <v-btn outline dark large :to="localePath('/join')">{{ $t('pages.join') }}</v-btn>
         </div>
+      </div>
+    </div>
+  </section>
+  <section class="section--small section--dark">
+    <div class="section-inner">
+      <div class="boundaries">
+        <small class="fine-print"><span v-html="$t('free-notice', {mib: '<strong>Made in Basel</strong>'})"></span>&nbsp; <a href="mailto:hello@madeinbasel.org">hello@madeinbasel.org</a></small>
       </div>
     </div>
   </section>
@@ -98,29 +105,29 @@ export default {
       en: {
         intro: {
           heading: 'The Label',
-          abstract: '<strong>Made in Basel</strong> is an initiative to promote products and services from Basel, Switzerland. We support local production and help sustain a creative climate that encourages entrepreneurship and innovation. <strong>One city. One promise. One label.</strong>'
+          abstract: '{mib} is an initiative to promote products and services from Basel, Switzerland. We support local production and help sustain a creative climate that encourages entrepreneurship and innovation. We put Basel on the map.'
         },
         members: {
-          heading: 'Explore',
-          abstract: 'These companies and organisations are members.'
+          heading: 'Discover',
+          abstract: 'In Basel\'s backyards, cellary  and attics people are working on tomorrow\'s ideas and products. {mib} documents extraordinary craftsmanship and tells the story about the people behind it. We also maintain a public registry.'
         },
         join: {
           heading: 'Join Us',
-          abstract: 'Are you a Basel based company or organisation? Join us and get the badge today.'
+          abstract: '{mib} is an open platform. In general, all citizens and institutions with residence in Basel may join and benefit from the label. And yes, it\'s free*. Join in!'
         }
       },
       de: {
         intro: {
           heading: 'Das Label',
-          abstract: '<strong>Made in Basel</strong> ist eine Initiative um Produkte und Dienstleistungen aus Basel zu bewerben. Wir fördern Innovation, Vielfalt und Unternehmergeist und helfen damit Basel als Wohn-, Arbeits- und Kulturstadt auf der Weltkarte zu verankern.'
+          abstract: '{mib} ist eine Initiative, die Produkte und Dienstleistungen aus Basel bewirbt. Wir fördern Innovation, Vielfalt und Unternehmergeist und helfen damit Basel als Wohn-, Arbeits- und Kulturstadt auf der Weltkarte zu verankern.'
         },
         members: {
           heading: 'Neues Entdecken',
-          abstract: 'In Basel\'s Hinterhöfen wird gebastelt, gelötet und geschraubt, in Kellern und Mansarden wird an den die Ideen von Morgen getüftelt. <strong>Made in Basel</strong> dokumentiert Basel\'s Schaffen anhand augewählter Geschichten und einem öffentlichen Mitgliederverzeichnis.'
+          abstract: 'In Basels Hinterhöfen wird gebastelt, gelötet und geschraubt. In Kellern und Mansarden entstehen die Ideen von Morgen. {mib} dokumentiert Basels Schaffen anhand ausgewählter Geschichten. Es wird zudem ein Verzeichnis über Mitglieder geführt.'
         },
         join: {
           heading: 'Mach mit!',
-          abstract: '<strong>Made in Basel</strong> ist eine offene Plattform - grundsätzlich können alle in Basel ansässigen Personen und Institutionen beitreten und vom Label profitieren. Übrigens, das Ganze ist kostenlos. Mach mit!'
+          abstract: '{mib} ist eine offene Plattform. Grundsätzlich können alle in Basel ansässigen Personen und Institutionen beitreten und vom Label profitieren. Übrigens, das Ganze ist kostenlos*. Mach mit!'
         }
       }
     }

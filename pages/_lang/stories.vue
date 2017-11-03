@@ -28,12 +28,12 @@ export default {
     messages: {
       en: {
         intro: {
-          abstract: 'Here you can find stories about selected products from Basel. From handicraft to industrial production - get an insight into the studios and production sites and the people working there.'
+          abstract: 'Here you\'ll find stories about selected products from Basel. From handicraft to industrial production - get an insight into the studios and production sites and get to know the people behind the products.'
         }
       },
       de: {
         intro: {
-          abstract: 'Hier findest du Geschichten zu ausgewählten Produkten aus Basel. Von Handwerk bis Industrieproduktion - erhalte Einblick in die Ateliers und Produktionsstätten und deren Verantwortlichen.'
+          abstract: 'Hier findest du Geschichten zu ausgewählten Produzenten aus Basel. Vom Handwerk zur Industrieproduktion - erhalte Einblick in die Ateliers und Produktionsstätten und lerne die Menschen hinter den Produkten kennen.'
         }
       }
     }

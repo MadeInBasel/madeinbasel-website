@@ -38,7 +38,7 @@ export default {
       },
       de: {
         intro: {
-          abstract: 'Im Folgenden finden Sie das vollständige Mitgliederverzeichnis. Ausgewählte Mitglieder wurden von uns persönlich porträtiert und mit einem {icon} gekennzeichnet. Klicken sie auf das jeweilige Logo für mehr Informationen.'
+          abstract: 'Im Folgenden findest du das vollständige Verzeichnis der eingetragenen Mitglieder. Ausgewählte Produzenten werden von uns persönlich porträtiert und sind mit einem {icon} gekennzeichnet. Klicke auf das jeweilige Logo für mehr Informationen.'
         }
       }
     }

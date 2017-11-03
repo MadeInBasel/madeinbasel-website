@@ -1,6 +1,10 @@
 @import "~assets/styles/variables.scss";
 
-#join {}
+#join {
+  .join-addendum {
+    padding: 0.4em;
+  }
+}
 
 .dialog--done {
   padding: 16px;

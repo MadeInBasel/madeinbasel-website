@@ -44,7 +44,7 @@
           <small>{{ $t('memberSince')}}: {{ getYear() }}</small>
         </div>
         <div v-if="item.data.hasOwnProperty('website')" class="text-xs-center">
-          <v-btn flat outline nuxt :href='item.data.website' target="_blank" rel="noopener">{{ $t('buttons.visitWebsite') }}</v-btn>
+          <v-btn flat outline nuxt ripple :href='item.data.website' target="_blank" rel="noopener">{{ $t('buttons.visitWebsite') }}</v-btn>
         </div>
         <div v-if="user" class="admin-zone text-xs-center">
           <v-btn v-if="user.uid === item.data.owner || user.isAdmin" color="error" :loading="loadingDelete" :disabled="loadingDelete" @click="deleteEntry(item.id)">Delete</v-btn>

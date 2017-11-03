@@ -264,6 +264,19 @@ section {
   }
 }
 
+.fine-print {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  @media(min-width: $breakpointMini) {
+    width: 80%;
+  }
+  @media(min-width: $breakpointSmall) {
+    width: 70%;
+  }
+}
+
 .dialog__container {
   display: block !important;
 }
