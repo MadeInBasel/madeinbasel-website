@@ -126,7 +126,7 @@ export default {
         },
         benefits: {
           heading: 'Why does it matter?',
-          abstract: 'Basel has a extraordinarily diverse workforce that gives the city much of its character and soul. The label "Made in Basel" intends to benefit both, consumers and manufactures. Here is how:',
+          abstract: 'Basel has an extraordinarily diverse workforce that gives the city much of its character and soul. The label "Made in Basel" intends to benefit both, consumers and manufactures. Here is how:',
           consumers: {
             heading: 'For Consumers',
             arguments: [

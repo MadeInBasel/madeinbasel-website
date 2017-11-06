@@ -67,7 +67,7 @@ export default {
   i18n: {
     messages: {
       en: {
-        abstract: 'It takes only 2 minutes and the membership is free*. You can edit or remove your listing at anytime. No strings attached.',
+        abstract: 'It takes only 2 minutes to participate and the membership is free*. The more details you provide, the easier it is for others to find you.',
         download: {
           heading: 'Downloads',
           abstract: 'Download the {mib} label files for your marketing purposes. We\'d be happy if our logo finds a place on your website!'
@@ -78,7 +78,7 @@ export default {
         }
       },
       de: {
-        abstract: 'Nimm dir 2 Minuten Zeit um mitzumachen. Die Mitgliedschaft ist kostenlos*. Möchtest du deine Geschichte erzählen? Wähle die Option in Schritt 2 und wir melden uns bei dir.',
+        abstract: 'Nimm dir 2 Minuten Zeit um mitzumachen. Die Mitgliedschaft ist kostenlos*. Ausführliche Angaben helfen um aus der Masse hervorzutreten und von Kunden und Partnern entdeckt zu werden.',
         download: {
           heading: 'Downloads',
           abstract: 'Lade die {mib}-Logo-Dateien zur freien Verwendung herunter. Wir freuen uns, wenn unser Logo einen Platz auf deiner Webseite findet!'
