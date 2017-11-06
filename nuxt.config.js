@@ -81,7 +81,8 @@ module.exports = {
       ssr: false
     },
     {
-      src: '~plugins/vueSmoothScroll.js'
+      src: '~plugins/vueSmoothScroll.js',
+      ssr: false
     },
     {
       src: '~plugins/VueScrollReveal.js',
