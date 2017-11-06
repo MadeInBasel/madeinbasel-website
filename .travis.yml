@@ -2,10 +2,9 @@ language: node_js
 node_js: 8
 
 install:
-  - npm install
   - yarn
 
-script: npm run generate
+script: nuxt generate
 
 deploy:
   skip_cleanup: true
