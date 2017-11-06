@@ -109,7 +109,7 @@ export default {
         },
         members: {
           heading: 'Discover',
-          abstract: 'In Basel\'s backyards, cellary  and attics people are working on tomorrow\'s ideas and products. {mib} documents extraordinary craftsmanship and tells the story about the people behind it. We also maintain a public registry.'
+          abstract: 'In Basel\'s backyards, cellars  and attics people are working on tomorrow\'s ideas and products. {mib} documents extraordinary craftsmanship and tells the story about the people behind it. We also maintain a public registry.'
         },
         join: {
           heading: 'Join Us',

@@ -14,6 +14,12 @@
         <div>Christophe Schwyzer</div>
         <div class="team-heading">{{ $t('team.editorial') }}</div>
         <div>Olivier Christe</div>
+        <div class="team-heading">{{ $t('team.logo') }}</div>
+        <div>David Steiner</div>
+        <div class="team-heading">{{ $t('team.support') }}</div>
+        <div>Lara Schnell</div>
+        <div>Nicolas Schmutz</div>
+        <div>Remo Kübler</div>
       </div>
 
       <v-btn class="btn-download" color="primary" href="/files/MadeInBasel-LogoPackage.zip" download="MadeInBasel-LogoPackage">
@@ -82,7 +88,9 @@ export default {
       en: {
         team: {
           lead: 'Lead/Website',
-          editorial: 'Editorial/Stories'
+          editorial: 'Editorial/Stories',
+          logo: 'Logo',
+          support: 'Supporter'
         },
         legal: 'Legal Notices',
         terms: 'Terms (German)',
@@ -102,7 +110,9 @@ export default {
       de: {
         team: {
           lead: 'Leitung/Webseite',
-          editorial: 'Redaktion/Geschichten'
+          editorial: 'Redaktion/Geschichten',
+          logo: 'Logo',
+          support: 'Unterstützer'
         },
         legal: 'Rechtliche Hinweise',
         terms: 'Allgemeine Geschäftsbedingungen',

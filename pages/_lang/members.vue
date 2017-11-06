@@ -33,12 +33,12 @@ export default {
     messages: {
       en: {
         intro: {
-          abstract: 'Below you will find the complete list of our members. Selected members have stories attached and are marked with a {icon}. Click on the respective logo for more information.'
+          abstract: 'Below you will find the complete list of our members. Selected members have stories attached and are marked with a {icon}.'
         }
       },
       de: {
         intro: {
-          abstract: 'Im Folgenden findest du das vollständige Verzeichnis der eingetragenen Mitglieder. Ausgewählte Produzenten werden von uns persönlich porträtiert und sind mit einem {icon} gekennzeichnet. Klicke auf das jeweilige Logo für mehr Informationen.'
+          abstract: 'Im Folgenden findest du das vollständige Verzeichnis der eingetragenen Mitglieder. Ausgewählte Produzenten werden von uns persönlich porträtiert und sind mit einem {icon} gekennzeichnet.'
         }
       }
     }
