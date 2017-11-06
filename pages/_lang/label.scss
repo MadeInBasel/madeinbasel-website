@@ -6,4 +6,35 @@
     margin-left: auto;
     margin-right: auto;
   }
+
+  .benefits {
+    .box {
+      margin-bottom: 1em;
+      padding: 0.2em;
+
+      &:first-child {
+        .box-inner {
+          @media(min-width: 960px) {
+            border-left: 0;
+          }
+        }
+      }
+
+      .box-inner {
+        border-left: 3px solid $colorBgDark;
+        padding: 0.5em 2em;
+      }
+    }
+
+    ul {
+      margin-top: 1em;
+      font-size: 1.1em;
+      text-align: left;
+      line-height: 1.2;
+
+      li {
+        margin-bottom: 0.5em;
+      }
+    }
+  }
 }

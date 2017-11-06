@@ -72,7 +72,7 @@
   <section class="section--small section--dark">
     <div class="section-inner">
       <div class="boundaries">
-        <small class="fine-print"><span v-html="$t('free-notice', {mib: '<strong>Made in Basel</strong>'})"></span>&nbsp; <a href="mailto:hello@madeinbasel.org">hello@madeinbasel.org</a></small>
+        <small class="center-block"><span v-html="$t('free-notice', {mib: '<strong>Made in Basel</strong>'})"></span>&nbsp; <a href="mailto:hello@madeinbasel.org">hello@madeinbasel.org</a></small>
       </div>
     </div>
   </section>

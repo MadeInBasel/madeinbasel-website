@@ -9,7 +9,7 @@
       <h1>{{ $t('pages.join') }}</h1>
       <div class="abstract" v-html="$t('abstract')"></div>
       <component-join v-on:success="dialog=true" />
-      <small class="join-addendum fine-print"><span v-html="$t('free-notice', {mib: '<strong>Made in Basel</strong>'})"></span>&nbsp; <a href="mailto:hello@madeinbasel.org">hello@madeinbasel.org</a></small>
+      <small class="join-addendum center-block"><span v-html="$t('free-notice', {mib: '<strong>Made in Basel</strong>'})"></span>&nbsp; <a href="mailto:hello@madeinbasel.org">hello@madeinbasel.org</a></small>
       <v-dialog v-model="dialog" max-width="600" content-class="dialog--custom dialog--done">
         <div class="text-xs-center done">
           <v-icon color="success">check_circle</v-icon>
