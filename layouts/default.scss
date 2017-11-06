@@ -262,6 +262,10 @@ section {
   @media(min-width: $breakpointSmall) {
     width: 80%;
   }
+
+  strong {
+    text-transform: uppercase;
+  }
 }
 
 .center-block {

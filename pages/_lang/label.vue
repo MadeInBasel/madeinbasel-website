@@ -63,6 +63,25 @@ distance: '20px'
   <section class="section--dark">
     <div class="wave wave-top"></div>
     <div class="section-inner">
+      <div class="boundaries">
+        <h2>{{ $t('values.heading')}}</h2>
+        <div class="abstract" v-html="$t('values.abstract', {mib: '<strong>Made in Basel</strong>'})"></div>
+        <v-layout wrap>
+          <v-flex md4 class="box" v-for="(item, i) in $t('values.values')" :key="i">
+            <div class="box-inner">
+              <h4>{{ item.heading }}</h4>
+              <p>{{ item.description }}</p>
+            </div>
+          </v-flex>
+        </v-layout>
+      </div>
+    </div>
+    <div class="wave wave-bottom"></div>
+  </section>
+
+  <section>
+
+    <div class="section-inner">
       <div class="boundaries" v-scroll-reveal="{
       scale: 1,
       delay: 200,
@@ -74,6 +93,7 @@ distance: '20px'
 
     </div>
   </section>
+
 
   <section class="section--small section--dark">
     <div class="section-inner">
@@ -127,6 +147,23 @@ export default {
             ]
           }
         },
+        values: {
+          heading: 'Values',
+          abstract: '{mib} is committed to the following set of principles. Members and users of the label are inherently committed to these values and act accordingly.',
+          values: [{
+              heading: 'Quality',
+              description: 'Our name stands for high-quality products and acts as a synonym for creativity, innovation and sustainability.'
+            },
+            {
+              heading: 'Integrity',
+              description: 'We are honest, genuine, ethical and fair.'
+            },
+            {
+              heading: 'Openness',
+              description: 'We think globally, act locally, believe in liberalism, open borders and the idea of being “united in diversity”.'
+            }
+          ]
+        },
         vision: {
           heading: 'Vision',
           abstract: '"Whoever has visions should go to the doctor." - <em>Helmut Schmidt</em>'
@@ -143,7 +180,7 @@ export default {
         },
         benefits: {
           heading: 'Warum ist\'s interessant?',
-          abstract: 'Basel besitzt eine ausserordentlich Vielfalt an Werktätigen, die mithelfen der Stadt Charakter und Seele zu verleihen. Das Label "Made in Basel" kommt sowohl Konsumenten als auch Herstellern zugute:',
+          abstract: 'Basel besitzt eine ausserordentlich Vielfalt an Werktätigen, die mithelfen der Stadt Charakter und Seele zu verleihen. Das Label hilft sowohl Konsumenten als auch Herstellern:',
           consumers: {
             heading: 'Für Konsumenten',
             arguments: [
@@ -163,6 +200,23 @@ export default {
               'Trete in Kontakt mit lokalen Herstellern um über Neuigkeiten und bewährte Verfahren auf dem Laufenden zu bleiben'
             ]
           }
+        },
+        values: {
+          heading: 'WERTE',
+          abstract: '{mib} verpflichtet sich den folgenden Prinzipien. Mitglieder und Nutzer des Labels bekennen sich zu diesen Werten und handeln entsprechend.',
+          values: [{
+              heading: 'Qualität',
+              description: 'Unser Name steht für hochwertige Produkte und dient als Synonym für Nachhaltigkeit, Kreativität und Innovation.'
+            },
+            {
+              heading: 'Integrität',
+              description: 'Wir sind ehrlich, aufrichtig und handeln ethisch und fair.'
+            },
+            {
+              heading: 'Weltoffenheit',
+              description: 'Wir denken global, handeln lokal, glauben an Liberalismus, offene Grenzen und die Idee, in “Vielfalt vereint" zu sein.'
+            }
+          ]
         },
         vision: {
           heading: 'Vision',
