@@ -81,10 +81,6 @@ module.exports = {
       ssr: false
     },
     {
-      src: '~plugins/vueSmoothScroll.js',
-      ssr: false
-    },
-    {
       src: '~plugins/VueScrollReveal.js',
       ssr: false
     },
@@ -102,7 +98,7 @@ module.exports = {
    ** Build configuration
    */
   build: {
-    vendor: ['jquery', 'vuetify', 'underscore', 'vue-loading-spinner', 'vue-smooth-scroll', 'vue-scroll-reveal'],
+    vendor: ['jquery', 'vuetify', 'underscore', 'vue-loading-spinner', 'vue-scroll-reveal'],
     /*
      ** Run ESLINT on save
      */
