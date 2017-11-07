@@ -14,12 +14,12 @@ module.exports = {
       {
         hid: 'description',
         name: 'description',
-        content: 'Made in Basel'
+        content: 'Made in Basel - is an initiative to promote products and services from Basel, Switzerland. We support local production and help sustain a creative climate that encourages entrepreneurship and innovation. We put Basel on the map.'
       },
       {
         hid: 'keywords',
         name: 'keywords',
-        content: 'Made in Basel'
+        content: 'Made in Basel, label, local, stories, handmade, crafts, products, innovation, Basel, Switzerland'
       }
     ],
     link: [{
