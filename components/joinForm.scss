@@ -9,10 +9,30 @@
 
   .component-uploadcare {
     .preview {
-      .image {
+      .standalone {
         object-fit: contain;
         max-height: 150px;
-        width: 240px;
+        width: 220px;
+      }
+
+      .gallery {
+        .gallery-item {
+          position: relative;
+
+          .indication {
+            background-color: rgba(255, 255, 255, .7);
+            font-size: 0.8em;
+            left: 5px;
+            padding: 0 5px;
+            position: absolute;
+            text-transform: uppercase;
+            top: 5px;
+          }
+        }
+
+        img {
+          padding: 2px;
+        }
       }
     }
 

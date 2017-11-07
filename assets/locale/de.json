@@ -32,7 +32,9 @@
     "downloadLogoPackage": "Logo Dateien Herunterladen",
     "login": "Anmelden",
     "logout": "Abmelden",
-    "deleteAccount": "Benutzerkonto löschen"
+    "deleteAccount": "Benutzerkonto löschen",
+    "uploadPhotos": "Photos Hochladen",
+    "uploadLogo": "Logo Hochladen"
   },
   "error": {
     "empty": "Nichts anzuzeigen"

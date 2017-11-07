@@ -13,7 +13,7 @@
         <small>{{ $t('form.step1.intro') }}</small>
       </v-stepper-step>
       <v-stepper-content step="1">
-        <component-uploadcare v-on:success="setOrganisationImage" v-on:discard="resetOrganisationImage" />
+        <component-uploadcare v-on:success="setOrganisationImage" v-on:discard="resetOrganisationImage" :label="$t('buttons.uploadLogo')" required />
         <v-text-field :label="$t('form.organisationName.label')" ref="organisationName" v-model="organisationName" :rules="organisationNameRules" required></v-text-field>
         <component-address v-on:success="setAddress" v-on:discard="resetAddress" />
         <v-flex xs9 sm4>
@@ -28,6 +28,10 @@
         <small>{{ $t('form.step2.intro') }}</small>
       </v-stepper-step>
       <v-stepper-content step="2">
+        <div class="photos">
+          <small>{{ $t('form.step2.photos') }}</small>
+        </div>
+        <component-uploadcare v-on:success="setOrganisationPhotos" multiple />
         <v-flex xs9 sm6>
           <v-text-field :label="$t('form.website.label')" :rules="websiteRules" v-model="website"></v-text-field>
         </v-flex>
@@ -36,7 +40,7 @@
         <v-flex sm8>
           <v-select ref="foo" v-bind:items="industries" v-model="industry" :label="$t('form.industry.label')" autocomplete></v-select>
         </v-flex>
-        <v-checkbox :label="$t('form.featured.label')" :hint="$t('form.featured.hint')" :persistent-hint=true v-model="featureRequest"></v-checkbox>
+        <v-checkbox :label="$t('form.featured.label')" :hint="$t('form.featured.hint')" persistent-hint v-model="featureRequest"></v-checkbox>
         <div class="text-xs-right">
           <v-btn flat @click.native="stepper = 1">{{ $t('buttons.back') }}</v-btn>
           <v-btn color="primary" @click.native="stepper = 3">{{ $t('buttons.continue') }}</v-btn>
@@ -83,6 +87,7 @@ export default {
       stepper: 0,
       valid: false,
       organisationImage: '',
+      organisationPhotos: '',
       organisationName: '',
       organisationNameRules: [
         (v) => !!v || this.$t('form.organisationName.error')
@@ -115,6 +120,9 @@ export default {
       delete imageData.sourceInfo
       this.organisationImage = imageData
     },
+    setOrganisationPhotos: function (data) {
+      this.organisationPhotos = data
+    },
     resetOrganisationImage: function () {
       this.organisationImage = ''
     },
@@ -136,6 +144,7 @@ export default {
         var data = {
           timestamp: new Date(),
           organisationImage: this.organisationImage,
+          organisationPhotos: this.organisationPhotos,
           organisationName: this.organisationName,
           address: this.address,
           employees: this.employees,
@@ -196,7 +205,8 @@ export default {
           },
           step2: {
             title: 'Your Mission',
-            intro: 'Describe what you do'
+            intro: 'Describe what you do.',
+            photos: 'Show us your workplace wich a couple of images. First one will be used as the cover image.'
           },
           step3: {
             title: 'Account',
@@ -245,7 +255,8 @@ export default {
           },
           step2: {
             title: 'Deine Mission',
-            intro: 'Beschreibe deine Tätigkeit'
+            intro: 'Beschreibe deine Tätigkeit',
+            photos: 'Zeig uns deinen Arbeitsplatz mit ein paar Photos. Das erste Bild wird als Cover benützt.'
           },
           step3: {
             title: 'Benutzerkonto',

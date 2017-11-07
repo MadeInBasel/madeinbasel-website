@@ -32,7 +32,9 @@
     "downloadLogoPackage": "Get Logo Package",
     "login": "Login",
     "logout": "Logout",
-    "deleteAccount": "Delete Account"
+    "deleteAccount": "Delete Account",
+    "uploadPhotos": "Upload Photos",
+    "uploadLogo": "Upload Logo"
   },
   "error": {
     "empty": "Nothing to show"

@@ -1,14 +1,21 @@
 <template>
 <div class="component-uploadcare">
-  <div v-show="statePreview" class="preview">
-    <img class="image" :src="imageUrl" alt="Logo">
+  <div v-show="fileGroupInfo.uuid" class="preview">
+    <v-layout v-if="fileGroupInfo.hasOwnProperty('count')" wrap class="gallery">
+      <v-flex class="gallery-item" xs6 sm4 md3 v-for="(item, i) in fileGroupInfo.count" :key="i">
+        <img :src="fileGroupInfo.cdnUrl + 'nth/' + i + '/-/scale_crop/300x300/center/-/progressive/yes/'" alt="Photo">
+        <div v-if="i == 0" class="indication">Cover</div>
+      </v-flex>
+    </v-layout>
+    <img v-else class="standalone" :src="fileGroupInfo.cdnUrl" alt="Logo">
     <v-btn small round @click="discardImage">
       {{ $t('buttons.change') }}
     </v-btn>
   </div>
   <div v-show="stateUpload">
     <v-btn color="primary" class="btn-upload" :loading="stateLoading" :disabled="stateLoading" @click="uploadImage">
-      <v-icon>cloud_upload</v-icon>&nbsp; {{ $t('buttons.upload') }}*
+      <v-icon>cloud_upload</v-icon>{{ label }}
+      <template v-if="required">*</template>
     </v-btn>
   </div>
   <div class="stateError">
@@ -31,6 +38,20 @@ export default {
     stateErrorRequired: {
       type: Boolean,
       default: false
+    },
+    label: {
+      type: String,
+      default () {
+        return this.$t('buttons.uploadPhotos')
+      }
+    },
+    required: {
+      type: Boolean,
+      default: false
+    },
+    multiple: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -38,50 +59,69 @@ export default {
       stateLoading: false,
       stateError: false,
       stateUpload: true,
-      statePreview: false,
-      imageUrl: ''
+      fileGroupInfo: {},
+      fileGroup: null
     }
   },
   methods: {
     uploadImage() {
       var self = this
-      uploadcare.openDialog(null, {
-        imagesOnly: true
-      }).done(function (file) {
-        self.stateLoading = true
-        file.promise().done(function (fileInfo) {
+      var dialog = uploadcare.openDialog(this.fileGroup, {
+        imagesOnly: true,
+        multiple: this.multiple
+      })
+      dialog.done(function (result) {
+        self.handleUpload(result)
+      })
+      dialog.fail(function (result) {
+        self.handleUpload(result)
+      })
+    },
+    handleUpload(result) {
+      var self = this
+      if (result) {
+        this.stateLoading = true
+        result.promise().done(function (fileInfo) {
+          self.stateError = false
           self.stateLoading = false
           self.stateUpload = false
-          self.statePreview = true
-          self.imageUrl = fileInfo.cdnUrl
+          self.fileGroupInfo = fileInfo
           self.$emit('success', fileInfo)
+
+          if (self.fileGroupInfo.count) {
+            uploadcare.loadFileGroup(fileInfo.uuid)
+              .done(function (fileGroup) {
+                self.fileGroup = fileGroup
+              })
+          }
         }).catch(function (error, fileInfo) {
+          if (!self.fileGroup) {
+            self.stateError = true
+          }
           self.stateLoading = false
-          self.stateError = true
-          console.log(error)
+          self.fileGroupInfo = {}
+          self.fileGroup = null
+          console.log('upload error', error)
         })
-      })
+      }
     },
     discardImage() {
       this.stateUpload = true
-      this.statePreview = false
+      if (!this.fileGroupInfo.count) {
+        this.fileGroupInfo = {}
+      }
+      this.uploadImage()
       this.$emit('discard')
     }
   },
   i18n: {
     messages: {
       en: {
-        buttons: {
-          upload: 'Upload Logo'
-        },
         error: {
           upload: 'Upload Error. Try using PNG or JPG.'
         }
       },
       de: {
-        buttons: {
-          upload: 'Logo Hochladen'
-        },
         error: {
           upload: 'Hochladen fehlgeschlagen. Bitte PNG oder JPG verwenden.'
         }
