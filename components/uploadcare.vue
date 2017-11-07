@@ -46,8 +46,7 @@ export default {
     uploadImage() {
       var self = this
       uploadcare.openDialog(null, {
-        imagesOnly: true,
-        imageShrink: '1024x1024'
+        imagesOnly: true
       }).done(function (file) {
         self.stateLoading = true
         file.promise().done(function (fileInfo) {

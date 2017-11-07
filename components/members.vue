@@ -16,7 +16,7 @@
   <transition-group v-show="ready" name="transition-down" tag="div" class="layout members wrap">
     <v-flex v-show="ready" xs6 sm3 v-for="(item, index) in membersPaging" :key="item.id">
       <nuxt-link class="member" v-ripple alt="Preview" :to="{ path: $route.path + '#' + `${item.id}`}">
-        <img :src="item.data.organisationImage.cdnUrl" :alt="item.data.organisationName">
+        <img :src="item.data.organisationImage.cdnUrl + '-/preview/400x400/'" :alt="item.data.organisationName">
       </nuxt-link>
     </v-flex>
   </transition-group>
@@ -34,7 +34,7 @@
       </div>
       <div class="content">
         <div class="content-logo">
-          <img :src="item.data.organisationImage.cdnUrl" :alt="item.data.organisationName">
+          <img :src="item.data.organisationImage.cdnUrl + '-/preview/400x400/'" :alt="item.data.organisationName">
         </div>
         <div v-if="item.data.hasOwnProperty('description')" class="content-description abstract">
           <div v-if="$i18n.locale === 'en' || user">{{ item.data.description.en }}</div>
