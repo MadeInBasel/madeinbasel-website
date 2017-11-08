@@ -4,28 +4,28 @@ const main = [{
     icon: 'home'
   },
   {
-    path: '/join',
-    label: 'pages.join',
-    icon: 'add_circle'
-  },
-  {
     path: '/label',
     label: 'pages.label',
     icon: 'lightbulb_outline'
   },
   {
-    path: '/stories',
-    label: 'pages.stories',
-    icon: 'favorite'
-  },
-  {
     path: '/members',
     label: 'pages.members',
     icon: 'face'
+  },
+  {
+    path: '/stories',
+    label: 'pages.stories',
+    icon: 'favorite'
   }
 ]
 
 const about = [{
+    path: '/join',
+    label: 'pages.join',
+    icon: 'add_circle'
+  },
+  {
     path: '/contact',
     label: 'pages.contact',
     icon: 'mail'
