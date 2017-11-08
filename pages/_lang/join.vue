@@ -78,7 +78,7 @@ export default {
         }
       },
       de: {
-        abstract: 'Nimm dir 2 Minuten Zeit um mitzumachen. Die Mitgliedschaft ist kostenlos*. Ausführliche Angaben helfen um aus der Masse hervorzutreten und von Kunden und Partnern entdeckt zu werden.',
+        abstract: 'Nimm dir 2 Minuten Zeit um mitzumachen. Die Mitgliedschaft ist kostenlos*. Ausführliche Angaben helfen, um aus der Masse hervorzutreten und von Kunden und Partnern entdeckt zu werden.',
         download: {
           heading: 'Downloads',
           abstract: 'Lade die {mib}-Logo-Dateien zur freien Verwendung herunter. Wir freuen uns, wenn unser Logo einen Platz auf deiner Webseite findet!'

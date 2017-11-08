@@ -119,7 +119,7 @@ export default {
       de: {
         intro: {
           heading: 'Das Label',
-          abstract: '{mib} ist eine Initiative, die Produkte und Dienstleistungen aus Basel bewirbt. Wir fördern Innovation, Vielfalt und Unternehmergeist und helfen damit Basel als Wohn-, Arbeits- und Kulturstadt auf der Weltkarte zu verankern.'
+          abstract: '{mib} ist eine Initiative, die Produkte und Dienstleistungen aus Basel bewirbt. Wir fördern Innovation, Vielfalt und Unternehmergeist. Damit helfen wir, Basel als Wohn-, Arbeits- und Kulturstadt auf der Weltkarte zu verankern.'
         },
         members: {
           heading: 'Neues Entdecken',
