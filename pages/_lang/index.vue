@@ -5,7 +5,7 @@
       display: none;
     }
   </style>
-  <section class="wallpaper boundaries">
+  <section class="wallpaper boundaries intro">
     <div v-show="!ready" class="spinner">
       <v-progress-circular indeterminate color="primary"></v-progress-circular>
     </div>

@@ -4,9 +4,7 @@
   .wallpaper {
     align-items: center;
     display: flex;
-    height: 100vh;
     justify-content: center;
-    position: relative;
 
     .logo {
       width: 60vw;
@@ -18,13 +16,6 @@
       @media (min-height: 600px) {
         max-height: 500px;
       }
-    }
-
-    .more {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
     }
   }
 

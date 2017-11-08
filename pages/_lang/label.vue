@@ -10,6 +10,9 @@
       <div class="abstract" v-html="$t('intro.abstract')"></div>
       <img class="logo" src="~assets/images/logo.svg" alt="Logo">
     </div>
+    <div class="more">
+      <v-icon>expand_more</v-icon>
+    </div>
   </section>
 
   <section class="section--dark">

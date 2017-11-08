@@ -171,6 +171,14 @@ section {
 
   &.intro {
     min-height: 100vh;
+    position: relative;
+
+    .more {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
 
   &.section--small {
