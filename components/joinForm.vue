@@ -251,7 +251,8 @@ export default {
     },
     usernamePreview(string) {
       var short = string.split(/[\s]/)
-      return short.length ? short[0] : string
+      var newString = short.length ? short[0] : string
+      return newString.toLowerCase()
     }
   },
   computed: {

@@ -20,10 +20,10 @@
           <div class="icon-container">
             <v-icon dark>photo</v-icon>
           </div>
-          <img v-if="item.data.hasOwnProperty('organisationPhotos') && item.data.organisationPhotos" :src="item.data.organisationPhotos.cdnUrl + 'nth/0/-/preview/640x360/'" alt="Cover">
+          <img v-if="item.data.hasOwnProperty('organisationPhotos') && item.data.organisationPhotos" :src="item.data.organisationPhotos.cdnUrl + 'nth/0/-/resize/400x/'" alt="Cover">
         </div>
         <div class="member-info">
-          <img class="image" :src="item.data.organisationImage.cdnUrl + '-/preview/200x200/'" :alt="item.data.organisationName">
+          <img class="image" :src="item.data.organisationImage.cdnUrl + '-/preview/160x160/'" :alt="item.data.organisationName">
           <div class="name">
             <strong>{{ item.data.organisationName }}</strong>
           </div>
