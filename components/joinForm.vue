@@ -16,9 +16,36 @@
         <component-uploadcare v-on:success="setOrganisationImage" v-on:discard="resetOrganisationImage" :label="$t('buttons.uploadLogo')" crop="300x300 minimum" required />
         <v-text-field :label="$t('form.organisationName.label')" ref="organisationName" v-model="organisationName" :rules="organisationNameRules" required></v-text-field>
         <component-address v-on:success="setAddress" v-on:discard="resetAddress" />
-        <v-flex xs9 sm4>
-          <v-text-field :label="$t('form.employees.label')" v-model="employees" type="number" :rules="employeesRules" required></v-text-field>
+
+        <v-flex xs9 sm6>
+          <v-text-field :label="$t('form.website.label')" :rules="websiteRules" v-model="website"></v-text-field>
         </v-flex>
+
+        <transition name="transition-down">
+          <v-flex v-show="showInstagram" xs9 sm6>
+            <v-text-field label="Instagram (@username)" v-model="instagram" append-icon="close" :append-icon-cb="() => (showInstagram = false)"></v-text-field>
+          </v-flex>
+        </transition>
+        <transition name="transition-down">
+          <v-flex v-show="showTwitter" xs9 sm6>
+            <v-text-field label="Twitter (@username)" v-model="twitter" append-icon="close" :append-icon-cb="() => (showTwitter = false)"></v-text-field>
+          </v-flex>
+        </transition>
+        <transition name="transition-down">
+          <v-flex v-show="showFacebook" xs9 sm6>
+            <v-text-field label="Facebook Page (URL)" v-model="facebook" append-icon="close" :append-icon-cb="() => (showFacebook = false)"></v-text-field>
+          </v-flex>
+        </transition>
+        <transition name="fade">
+          <v-btn small round v-show="!showInstagram" class="caption mr-2" @click="showInstagram = true">+ Instagram</v-btn>
+        </transition>
+        <transition name="fade">
+          <v-btn small round v-show="!showTwitter" class="caption mr-2" @click="showTwitter = true">+ Twitter</v-btn>
+        </transition>
+        <transition name="fade">
+          <v-btn small round v-show="!showFacebook" class="caption mr-2" @click="showFacebook = true">+ Facebook</v-btn>
+        </transition>
+
         <div class="text-xs-right">
           <v-btn color="primary" :disabled="validateStep1()" @click.native="stepper = 2">{{ $t('buttons.continue') }}</v-btn>
         </div>
@@ -32,14 +59,32 @@
           <small>{{ $t('form.step2.photos') }}</small>
         </div>
         <component-uploadcare v-on:success="setOrganisationPhotos" multiple />
-        <v-flex xs9 sm6>
-          <v-text-field :label="$t('form.website.label')" :rules="websiteRules" v-model="website"></v-text-field>
-        </v-flex>
-        <v-text-field :label="$t('form.description.label.de')" v-model="description.de" :rules="descriptionRules" :counter="140"></v-text-field>
-        <v-text-field :label="$t('form.description.label.en')" v-model="description.en" :rules="descriptionRules" :counter="140"></v-text-field>
+
         <v-flex sm8>
           <v-select ref="foo" v-bind:items="industries" v-model="industry" :label="$t('form.industry.label')" autocomplete></v-select>
         </v-flex>
+
+        <transition name="transition-down">
+          <v-text-field v-show="showGerman" :label="$t('form.description.label.de')" v-model="description.de" :rules="descriptionRules" :counter="140"></v-text-field>
+        </transition>
+        <transition name="transition-down">
+          <v-text-field v-show="showEnglish" :label="$t('form.description.label.en')" v-model="description.en" :rules="descriptionRules" :counter="140"></v-text-field>
+        </transition>
+        <transition name="fade">
+          <v-btn small round v-show="!showGerman" class="caption mr-2" @click="showGerman = true">+ German</v-btn>
+        </transition>
+        <transition name="fade">
+          <v-btn small round v-show="!showEnglish" class="caption mr-2" @click="showEnglish = true">+ Englisch</v-btn>
+        </transition>
+
+        <v-flex xs9 sm4>
+          <v-radio-group v-model="employees" column :label="$t('form.employees.label')">
+            <v-radio label="1-10" value="1-10"></v-radio>
+            <v-radio label="11-100" value="11-100"></v-radio>
+            <v-radio label="100+" value="100+"></v-radio>
+          </v-radio-group>
+        </v-flex>
+
         <v-checkbox :label="$t('form.featured.label')" :hint="$t('form.featured.hint')" persistent-hint v-model="featureRequest"></v-checkbox>
         <div class="text-xs-right">
           <v-btn flat @click.native="stepper = 1">{{ $t('buttons.back') }}</v-btn>
@@ -92,10 +137,18 @@ export default {
       organisationNameRules: [
         (v) => !!v || this.$t('form.organisationName.error')
       ],
-      employees: null,
+      employees: '1-10',
       employeesRules: [
         (v) => !!v || this.$t('form.employees.error')
       ],
+      showInstagram: false,
+      instagram: '',
+      showTwitter: false,
+      twitter: '',
+      showFacebook: false,
+      facebook: '',
+      showEnglish: false,
+      showGerman: false,
       description: {
         en: '',
         de: ''
@@ -113,6 +166,10 @@ export default {
       featureRequest: false,
       terms: false
     }
+  },
+  mounted() {
+    this.showEnglish = this.$i18n.locale === 'en'
+    this.showGerman = this.$i18n.locale === 'de'
   },
   methods: {
     setOrganisationImage: function (data) {
@@ -135,7 +192,7 @@ export default {
       this.address = {}
     },
     validateStep1() {
-      return !this.organisationName || !this.organisationImage || !this.employees
+      return !this.organisationName || !this.organisationImage
     },
     submit() {
       if (this.user && this.$refs.form.validate()) {
@@ -151,6 +208,9 @@ export default {
           description: this.description,
           industry: this.industries.findIndex(function (value) { return value === self.industry }),
           website: this.website,
+          instagram: this.instagram,
+          twitter: this.twitter,
+          facebook: this.facebook,
           featureRequest: this.featureRequest,
           terms: this.terms,
           owner: this.user.uid,

@@ -281,6 +281,11 @@ section {
   }
 }
 
+.stepper__step--active + .stepper__content .stepper__wrapper {
+  //fix for form click feedback (radios/checkboxes)
+  overflow: visible;
+}
+
 .dialog__container {
   display: block !important;
 }
@@ -374,5 +379,15 @@ section {
 .transition-down-enter,
 .transition-down-leave-to {
   transform: translateY(10px);
+  opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
