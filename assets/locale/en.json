@@ -35,7 +35,10 @@
     "deleteAccount": "Delete Account",
     "uploadPhotos": "Upload Photos",
     "uploadLogo": "Upload Logo",
-    "map": "Show on Map"
+    "map": "Show on Map",
+    "delete": "Delete",
+    "verify": "Verify",
+    "revokeVerification": "Revoke Verification"
   },
   "error": {
     "empty": "Nothing to show"

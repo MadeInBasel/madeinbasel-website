@@ -35,7 +35,10 @@
     "deleteAccount": "Benutzerkonto löschen",
     "uploadPhotos": "Photos Hochladen",
     "uploadLogo": "Logo Hochladen",
-    "map": "Auf der Karte"
+    "map": "Auf der Karte",
+    "delete": "Löschen",
+    "verify": "Verifizieren",
+    "revokeVerification": "Verifizierung aufheben"
   },
   "error": {
     "empty": "Nichts anzuzeigen"

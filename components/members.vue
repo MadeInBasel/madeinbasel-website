@@ -81,10 +81,26 @@
           <a v-if="item.data.social.hasOwnProperty('facebook') && item.data.social.facebook" :href="item.data.social.facebook" target="_blank" rel="noopener">Facebook</a>
         </div>
 
-        <div v-if="user" class="admin-zone text-xs-center">
-          <v-btn v-if="user.uid === item.data.owner || user.isAdmin" color="error" :loading="loadingDelete" :disabled="loadingDelete" @click="deleteEntry(item.id)">Delete</v-btn>
-          <v-btn v-if="user.isAdmin && !item.data.verified" color="primary" :loading="loadingVerify" :disabled="loadingVerify" @click="verifyEntry(item.id)">Verify</v-btn>
-          <v-btn v-if="user.isAdmin && item.data.verified" :loading="loadingVerify" :disabled="loadingVerify" @click="revokeVerification(item.id)">Revoke Verification</v-btn>
+        <div v-if="user && (user.uid === item.data.owner || user.isAdmin)" class="admin" :class="{danger: confirmDelete}">
+          <div class="admin-title">Admin</div>
+          <div v-if="confirmDelete">
+            <div class="abstract">
+              {{ $t('admin.confirmDelete') }}
+            </div>
+            <v-btn v-if="user.uid === item.data.owner || user.isAdmin" color="error" :loading="loadingDelete" :disabled="loadingDelete" @click="deleteEntry(item.id)">
+              {{ $t('buttons.confirm') }}</v-btn>
+            <v-btn v-if="user.uid === item.data.owner || user.isAdmin" color="primary" @click="confirmDelete = false">
+              {{ $t('buttons.cancel') }}</v-btn>
+          </div>
+
+          <div v-else>
+            <v-btn v-if="user.uid === item.data.owner || user.isAdmin" color="error" @click="confirmDelete = true">
+              {{ $t('buttons.delete') }}</v-btn>
+            <v-btn v-if="user.isAdmin && !item.data.verified" color="primary" :loading="loadingVerify" :disabled="loadingVerify" @click="verifyEntry(item.id)">
+              {{ $t('buttons.verify') }}</v-btn>
+            <v-btn v-if="user.isAdmin && item.data.verified" outline :loading="loadingVerify" :disabled="loadingVerify" @click="revokeVerification(item.id)">
+              {{ $t('buttons.revokeVerification') }}</v-btn>
+          </div>
         </div>
       </div>
     </div>
@@ -127,7 +143,8 @@ export default {
       size: '&size=640x360',
       mapStyles: '&format=png&maptype=roadmap&style=feature:landscape%7Celement:geometry%7Ccolor:0xffffff&style=feature:poi.attraction%7Cvisibility:off&style=feature:poi.business%7Cvisibility:off&style=feature:poi.government%7Cvisibility:off&style=feature:poi.medical%7Cvisibility:off&style=feature:poi.place_of_worship%7Cvisibility:off&style=feature:poi.school%7Cvisibility:off&style=feature:poi.sports_complex%7Cvisibility:off&style=feature:road%7Celement:labels.icon%7Cvisibility:off&style=feature:road.arterial%7Celement:geometry%7Ccolor:0xdddddd&style=feature:road.arterial%7Celement:labels.icon%7Cvisibility:off&style=feature:road.highway%7Celement:geometry%7Ccolor:0xdddddd&style=feature:road.highway%7Celement:labels.icon%7Cvisibility:off&style=feature:road.local%7Celement:geometry%7Ccolor:0xeeeeee',
       loadingVerify: false,
-      loadingDelete: false
+      loadingDelete: false,
+      confirmDelete: false
     }
   },
   methods: {
@@ -224,6 +241,7 @@ export default {
       this.firestore.collection('organisations').doc(id).delete()
         .then(function () {
           self.loadingDelete = false
+          self.confirmDelete = false
           self.dialog = false
           self.members = self.members.filter(item => {
             return item.id !== id
@@ -276,11 +294,17 @@ export default {
     messages: {
       en: {
         memberSince: 'Member since',
-        mapPlaceholder: 'Address unknown'
+        mapPlaceholder: 'Address unknown',
+        admin: {
+          confirmDelete: 'Are you sure? Your listing will be removed permanently.'
+        }
       },
       de: {
         memberSince: 'Mitglied seit',
-        mapPlaceholder: 'Adresse unbekannt'
+        mapPlaceholder: 'Adresse unbekannt',
+        admin: {
+          confirmDelete: 'Bist du sicher? Dein Eintrag wird permanent gelöscht.'
+        }
       }
     }
   }
