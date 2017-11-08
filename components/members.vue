@@ -56,17 +56,21 @@
         </div>
 
         <div v-if="item.data.hasOwnProperty('website') && item.data.website">
-          <!-- <v-btn flat outline :href="item.data.website" target="_blank" rel="noopener">{{ $t('buttons.website') }}</v-btn> -->
+          <v-btn flat outline :href="item.data.website" target="_blank" rel="noopener">{{ $t('buttons.website') }}</v-btn>
           Web: {{ item.data.website }}
         </div>
         <div v-if="item.data.hasOwnProperty('instagram') && item.data.instagram">
           Instagram: {{ item.data.instagram }}
         </div>
         <div v-if="item.data.hasOwnProperty('twitter') && item.data.twitter">
-          Twitter: {{ item.data.twitter }}
+          Twitter: {{ item.data.twitter }} target="_blank" rel="noopener"
         </div>
         <div v-if="item.data.hasOwnProperty('facebook') && item.data.facebook">
           Facebook: {{ item.data.facebook }}
+          <a :href="'http://' + item.data.facebook">Facebook</a>
+        </div>
+        <div v-if="item.data.address.formatted_address">
+          <a :href="'https://www.google.com/maps/search/?api=1&query=' + item.data.address.formatted_address" target="_blank" rel="noopener">test</a>
         </div>
 
         <div v-if="user" class="admin-zone text-xs-center">

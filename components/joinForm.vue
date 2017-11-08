@@ -18,22 +18,22 @@
         <component-address v-on:success="setAddress" v-on:discard="resetAddress" />
 
         <v-flex xs9 sm6>
-          <v-text-field :label="$t('form.website.label')" :rules="websiteRules" v-model="website"></v-text-field>
+          <v-text-field :label="$t('form.website.label') + ' (URL)'" :rules="websiteRules" v-model="website"></v-text-field>
         </v-flex>
 
         <transition name="transition-down">
           <v-flex v-show="showInstagram" xs9 sm6>
-            <v-text-field label="Instagram (@username)" v-model="instagram" append-icon="close" :append-icon-cb="() => (showInstagram = false)"></v-text-field>
+            <v-text-field label="Instagram" prefix="@" v-model="social.instagram" append-icon="close" :append-icon-cb="() => (showInstagram = false)"></v-text-field>
           </v-flex>
         </transition>
         <transition name="transition-down">
           <v-flex v-show="showTwitter" xs9 sm6>
-            <v-text-field label="Twitter (@username)" v-model="twitter" append-icon="close" :append-icon-cb="() => (showTwitter = false)"></v-text-field>
+            <v-text-field label="Twitter" prefix="@" v-model="social.twitter" append-icon="close" :append-icon-cb="() => (showTwitter = false)"></v-text-field>
           </v-flex>
         </transition>
         <transition name="transition-down">
           <v-flex v-show="showFacebook" xs9 sm6>
-            <v-text-field label="Facebook Page (URL)" v-model="facebook" append-icon="close" :append-icon-cb="() => (showFacebook = false)"></v-text-field>
+            <v-text-field label="Facebook Page (URL)" :hint="'e.g. https://www.facebook.com/' + (organisationName ? usernamePreview(organisationName) : 'foo')" persistent-hint :rules="facebookRules" v-model="social.facebook" append-icon="close" :append-icon-cb="() => (showFacebook = false)"></v-text-field>
           </v-flex>
         </transition>
         <transition name="fade">
@@ -142,13 +142,18 @@ export default {
         (v) => !!v || this.$t('form.employees.error')
       ],
       showInstagram: false,
-      instagram: '',
       showTwitter: false,
-      twitter: '',
       showFacebook: false,
-      facebook: '',
       showEnglish: false,
       showGerman: false,
+      social: {
+        instagram: '',
+        twitter: '',
+        facebook: ''
+      },
+      facebookRules: [
+        (v) => (!v || /http(s)?:\/\/(www\.)?facebook\.com\/\b([-a-zA-Z0-9@:%_\+.~#?&//=]+?)/.test(v)) || this.$t('form.website.error', { url: 'https://www.facebook.com/wiewaersmalmit/' })
+      ],
       description: {
         en: '',
         de: ''
@@ -161,7 +166,7 @@ export default {
       address: {},
       website: '',
       websiteRules: [
-        (v) => (!v || /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/.test(v)) || this.$t('form.website.error')
+        (v) => (!v || /http(s)?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/.test(v)) || this.$t('form.website.error', { url: 'https://www.example.com' })
       ],
       featureRequest: false,
       terms: false
@@ -208,9 +213,7 @@ export default {
           description: this.description,
           industry: this.industries.findIndex(function (value) { return value === self.industry }),
           website: this.website,
-          instagram: this.instagram,
-          twitter: this.twitter,
-          facebook: this.facebook,
+          social: this.social,
           featureRequest: this.featureRequest,
           terms: this.terms,
           owner: this.user.uid,
@@ -245,6 +248,9 @@ export default {
     },
     clear() {
       this.$refs.form.reset()
+    },
+    usernamePreview(string) {
+      return string
     }
   },
   computed: {
@@ -282,7 +288,7 @@ export default {
           },
           website: {
             label: 'Website',
-            error: 'Website must be valid'
+            error: 'A valid URL looks like this: {url}'
           },
           description: {
             label: {
@@ -332,7 +338,7 @@ export default {
           },
           website: {
             label: 'Webseite',
-            error: 'Webseite muss gültig sein'
+            error: 'Ein Beispiel einer gültigen URL: {url}'
           },
           description: {
             label: {
