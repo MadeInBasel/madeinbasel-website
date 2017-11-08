@@ -26,13 +26,8 @@ const about = [{
     icon: 'add_circle'
   },
   {
-    path: '/contact',
-    label: 'pages.contact',
-    icon: 'mail'
-  },
-  {
-    path: '/terms',
-    label: 'pages.terms',
+    path: '/legal',
+    label: 'pages.legal',
     icon: 'info'
   },
   {

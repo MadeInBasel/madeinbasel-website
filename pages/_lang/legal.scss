@@ -1,12 +1,14 @@
 @import '~assets/styles/variables.scss';
 
-#terms {
+#legal {
   .contact {
-    margin-bottom: 1em;
-
     i {
       display: none;
     }
+  }
+
+  .contact-dialog {
+    margin-bottom: 1em;
   }
 
   .team {
@@ -14,10 +16,14 @@
 
     .team-heading {
       font-weight: bold;
-      margin-top: 0.5em;
+
+      &:not(:first-child) {
+        margin-top: 0.5em;
+      }
     }
   }
 
+  .btn-contact,
   .btn-download {
     margin-left: 0;
   }
@@ -30,4 +36,8 @@
     text-align: center;
     width: 100%;
   }
+}
+
+.dialog--contact {
+  padding: 20px;
 }

@@ -1,30 +1,46 @@
 <template>
-<div id="terms">
+<div id="legal">
   <section class="impressum">
     <div class="section-inner boundaries" v-scroll-reveal="{
     scale: 1,
     delay: 200,
     distance: '20px'
   }">
-      <h1>{{ $t('pages.terms') }}</h1>
-      <component-address />
+      <h1>{{ $t('pages.legal') }}</h1>
 
-      <div class="team">
-        <div class="team-heading">{{ $t('team.lead') }}</div>
-        <div>Christophe Schwyzer</div>
-        <div class="team-heading">{{ $t('team.editorial') }}</div>
-        <div>Olivier Christe</div>
-        <div class="team-heading">{{ $t('team.logo') }}</div>
-        <div>David Steiner</div>
-        <div class="team-heading">{{ $t('team.support') }}</div>
-        <div>Lara Schnell</div>
-        <div>Nicolas Schmutz</div>
-        <div>Remo Kübler</div>
-      </div>
+      <v-layout wrap>
+        <v-flex xs12 sm6 order-sm2>
+          <component-address />
+          <v-dialog class="contact-dialog" v-model="contactDialog" max-width="600" content-class="dialog--custom dialog--contact">
+            <v-btn class="btn-contact" color="primary" slot="activator">{{ $t('contactForm') }}</v-btn>
+            <component-contact-form />
+            <v-btn class="btn-close" fab small @click="contactDialog = false">
+              <v-icon>close</v-icon>
+            </v-btn>
+          </v-dialog>
+        </v-flex>
+        <v-flex xs12 sm6>
+          <div class="team">
+            <div class="team-heading">{{ $t('team.lead') }}</div>
+            <div>Christophe Schwyzer</div>
+            <div class="team-heading">{{ $t('team.editorial') }}</div>
+            <div>Olivier Christe</div>
+            <div class="team-heading">{{ $t('team.logo') }}</div>
+            <div>David Steiner</div>
+            <div class="team-heading">{{ $t('team.support') }}</div>
+            <div>Lara Schnell</div>
+            <div>Nicolas Schmutz</div>
+            <div>Remo Kübler</div>
+          </div>
+        </v-flex>
+
+      </v-layout>
 
       <v-btn class="btn-download" color="primary" href="/files/MadeInBasel-LogoPackage.zip" download="MadeInBasel-LogoPackage">
         <v-icon>file_download</v-icon> {{ $t('buttons.downloadLogoPackage') }}</v-btn>
     </div>
+
+
   </section>
 
   <section class="legal section--dark">
@@ -67,25 +83,28 @@
 <script>
 import address from '~/components/contactAddress.vue'
 import terms from '~/components/terms.vue'
+import contactForm from '~/components/contactForm.vue'
 
 export default {
   components: {
     'component-address': address,
-    'component-terms': terms
+    'component-terms': terms,
+    'component-contact-form': contactForm
   },
   head() {
     return {
-      title: this.$t('pages.terms')
+      title: this.$t('pages.legal')
     }
   },
   data() {
     return {
-      dialog: false
+      contactDialog: false
     }
   },
   i18n: {
     messages: {
       en: {
+        contactForm: 'Contact Form',
         team: {
           lead: 'Lead/Website',
           editorial: 'Editorial/Stories',
@@ -108,6 +127,7 @@ export default {
         }
       },
       de: {
+        contactForm: 'Kontaktformular',
         team: {
           lead: 'Leitung/Webseite',
           editorial: 'Redaktion/Geschichten',
@@ -135,5 +155,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'terms.scss';
+@import 'legal.scss';
 </style>
