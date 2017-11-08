@@ -2,7 +2,7 @@
 <div class="component-members" @keyup.esc="dialog = false">
   <div v-if="user && user.isAdmin" class="admin-zone text-xs-center">
     <v-btn color="primary" :loading="!ready" :disabled="!ready" @click="getMembers()">
-      <v-icon>cached</v-icon> Reload Members</v-btn>
+      <v-icon>cached</v-icon>Reload Members</v-btn>
   </div>
   <div v-show="!ready" class="spinner">
     <v-progress-circular indeterminate color="primary"></v-progress-circular>

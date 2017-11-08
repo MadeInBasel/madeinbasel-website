@@ -21,17 +21,17 @@
           <v-text-field :label="$t('form.website.label') + ' (URL)'" :rules="websiteRules" v-model="website"></v-text-field>
         </v-flex>
 
-        <transition name="transition-down">
+        <transition name="transition-up">
           <v-flex v-show="showInstagram" xs9 sm6>
             <v-text-field label="Instagram" prefix="@" v-model="social.instagram" append-icon="close" :append-icon-cb="() => (showInstagram = false, social.instagram = '')"></v-text-field>
           </v-flex>
         </transition>
-        <transition name="transition-down">
+        <transition name="transition-up">
           <v-flex v-show="showTwitter" xs9 sm6>
             <v-text-field label="Twitter" prefix="@" v-model="social.twitter" append-icon="close" :append-icon-cb="() => (showTwitter = false, social.twitter = '')"></v-text-field>
           </v-flex>
         </transition>
-        <transition name="transition-down">
+        <transition name="transition-up">
           <v-flex v-show="showFacebook" xs9 sm6>
             <v-text-field label="Facebook Page (URL)" :hint="'e.g. https://www.facebook.com/' + (organisationName ? usernamePreview(organisationName) : 'foo')" persistent-hint :rules="facebookRules" v-model="social.facebook" append-icon="close" :append-icon-cb="() => (showFacebook = false, social.facebook = '')"></v-text-field>
           </v-flex>
@@ -64,10 +64,10 @@
           <v-select ref="foo" v-bind:items="industries" v-model="industry" :label="$t('form.industry.label')" autocomplete></v-select>
         </v-flex>
 
-        <transition name="transition-down">
+        <transition name="transition-up">
           <v-text-field v-show="showGerman" :label="$t('form.description.label.de')" v-model="description.de" :rules="descriptionRules" :counter="140"></v-text-field>
         </transition>
-        <transition name="transition-down">
+        <transition name="transition-up">
           <v-text-field v-show="showEnglish" :label="$t('form.description.label.en')" v-model="description.en" :rules="descriptionRules" :counter="140"></v-text-field>
         </transition>
         <transition name="fade">
