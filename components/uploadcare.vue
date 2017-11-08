@@ -1,6 +1,6 @@
 <template>
 <div class="component-uploadcare">
-  <div v-show="fileGroupInfo.uuid" class="preview">
+  <div v-show="fileGroupInfo.uuid" class="preview" :class="{ multiple: multiple}">
     <v-layout v-if="fileGroupInfo.hasOwnProperty('count')" wrap class="gallery">
       <v-flex class="gallery-item" xs6 sm4 md3 v-for="(item, i) in fileGroupInfo.count" :key="i">
         <img :src="fileGroupInfo.cdnUrl + 'nth/' + i + '/-/scale_crop/300x300/center/-/progressive/yes/'" alt="Photo">
@@ -13,10 +13,16 @@
     </v-btn>
   </div>
   <div v-show="stateUpload">
-    <v-btn color="primary" class="btn-upload" :loading="stateLoading" :disabled="stateLoading" @click="uploadImage">
-      <v-icon>cloud_upload</v-icon>{{ label }}
-      <template v-if="required">*</template>
-    </v-btn>
+    <div class="upload">
+      <div v-if="!multiple" class="placeholder" @click="uploadImage">
+        <v-icon>face</v-icon>
+        <small class="ratio"><strong>1:1</strong></small>
+      </div>
+      <v-btn color="primary" class="btn-upload" :loading="stateLoading" :disabled="stateLoading" @click="uploadImage">
+        <v-icon>cloud_upload</v-icon>{{ label }}
+        <template v-if="required">*</template>
+      </v-btn>
+    </div>
   </div>
   <div class="stateError">
     <small v-show="stateError">{{ $t('error.upload') }}</small>
@@ -52,6 +58,10 @@ export default {
     multiple: {
       type: Boolean,
       default: false
+    },
+    crop: {
+      type: String,
+      default: 'disabled'
     }
   },
   data() {
@@ -68,7 +78,8 @@ export default {
       var self = this
       var dialog = uploadcare.openDialog(this.fileGroup, {
         imagesOnly: true,
-        multiple: this.multiple
+        multiple: this.multiple,
+        crop: this.crop
       })
       dialog.done(function (result) {
         self.handleUpload(result)
@@ -130,3 +141,7 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+@import "uploadcare.scss";
+</style>

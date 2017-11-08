@@ -23,29 +23,42 @@
 
   <v-dialog v-if="item.data" lazy v-model="dialog" max-width="600" content-class="dialog--custom">
     <div class="dialog-content">
-      <div class="map">
+      <v-carousel hide-controls v-if="item.data.hasOwnProperty('organisationPhotos')">
+        <v-carousel-item v-for="(image,i) in item.data.organisationPhotos.count" :key="i" :src="item.data.organisationPhotos.cdnUrl + 'nth/' + i + '/-/preview/960x540/'"></v-carousel-item>
+        <v-carousel-item v-if="item.data.address.lng && item.data.address.lat" :src="'https://maps.googleapis.com/maps/api/staticmap?'+ zoom + size + mapStyles + '&markers=' + item.data.address.lat + ',' + item.data.address.lng +'&key=' + googleAPIKey"></v-carousel-item>
+      </v-carousel>
+      <div v-else class="map">
         <div class="map-placeholder">
           <div>
             <v-icon>map</v-icon>
           </div>
           {{ $t('mapPlaceholder') }}
         </div>
-        <img v-if="item.data.address.lng && item.data.address.lat" :src="'https://maps.googleapis.com/maps/api/staticmap?zoom=14&size=640x300' + mapStyles + '&markers=' + item.data.address.lat + ',' + item.data.address.lng +'&key=' + googleAPIKey" alt="Google Maps">
+        <img v-if="item.data.address.lng && item.data.address.lat" :src="'https://maps.googleapis.com/maps/api/staticmap?'+ zoom + size + mapStyles + '&markers=' + item.data.address.lat + ',' + item.data.address.lng +'&key=' + googleAPIKey" alt="Google Maps">
       </div>
+
       <div class="content">
         <div class="content-logo">
-          <img :src="item.data.organisationImage.cdnUrl + '-/preview/400x400/'" :alt="item.data.organisationName">
+          <img :src="item.data.organisationImage.cdnUrl + '-/preview/300x300/'" :alt="item.data.organisationName">
+        </div>
+        <div class="content-name">
+          <strong>{{ item.data.organisationName }}</strong>
+        </div>
+        <div v-if="item.data.hasOwnProperty('industry') && item.data.industry >= 0">
+          {{ $t('industries[' + `${item.data.industry}` + ']') }}
+        </div>
+        <div v-if="item.data.hasOwnProperty('timestamp')">
+          <small>{{ $t('memberSince') }}: {{ getYear() }}</small>
         </div>
         <div v-if="item.data.hasOwnProperty('description')" class="content-description abstract">
-          <div v-if="$i18n.locale === 'en' || user">{{ item.data.description.en }}</div>
-          <div v-if="$i18n.locale === 'de' || user">{{ item.data.description.de }}</div>
+          <q v-if="$i18n.locale === 'en' || user">{{ item.data.description.en }}</q>
+          <q v-if="$i18n.locale === 'de' || user">{{ item.data.description.de }}</q>
         </div>
-        <div v-if="item.data.hasOwnProperty('timestamp')" class="text-xs-center">
-          <small>{{ $t('memberSince')}}: {{ getYear() }}</small>
+
+        <div v-if="item.data.hasOwnProperty('website') && item.data.website">
+          {{ item.data.website }}
         </div>
-        <div v-if="item.data.hasOwnProperty('website')" class="text-xs-center">
-          <v-btn flat outline nuxt ripple :href='item.data.website' target="_blank" rel="noopener">{{ $t('buttons.visitWebsite') }}</v-btn>
-        </div>
+
         <div v-if="user" class="admin-zone text-xs-center">
           <v-btn v-if="user.uid === item.data.owner || user.isAdmin" color="error" :loading="loadingDelete" :disabled="loadingDelete" @click="deleteEntry(item.id)">Delete</v-btn>
           <v-btn v-if="user.isAdmin && !item.data.verified" color="primary" :loading="loadingVerify" :disabled="loadingVerify" @click="verifyEntry(item.id)">Verify</v-btn>
@@ -86,8 +99,10 @@ export default {
       dialog: false,
       item: {},
       ready: false,
-      googleAPIKey: 'AIzaSyCS-zAs7ur43P-FaPYuFzTjbMZxUj8bDek',
       members: [],
+      googleAPIKey: 'AIzaSyCS-zAs7ur43P-FaPYuFzTjbMZxUj8bDek',
+      zoom: 'zoom=14',
+      size: '&size=640x360',
       mapStyles: '&format=png&maptype=roadmap&style=feature:landscape%7Celement:geometry%7Ccolor:0xffffff&style=feature:poi.attraction%7Cvisibility:off&style=feature:poi.business%7Cvisibility:off&style=feature:poi.government%7Cvisibility:off&style=feature:poi.medical%7Cvisibility:off&style=feature:poi.place_of_worship%7Cvisibility:off&style=feature:poi.school%7Cvisibility:off&style=feature:poi.sports_complex%7Cvisibility:off&style=feature:road%7Celement:labels.icon%7Cvisibility:off&style=feature:road.arterial%7Celement:geometry%7Ccolor:0xdddddd&style=feature:road.arterial%7Celement:labels.icon%7Cvisibility:off&style=feature:road.highway%7Celement:geometry%7Ccolor:0xdddddd&style=feature:road.highway%7Celement:labels.icon%7Cvisibility:off&style=feature:road.local%7Celement:geometry%7Ccolor:0xeeeeee',
       loadingVerify: false,
       loadingDelete: false

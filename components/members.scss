@@ -40,10 +40,17 @@
   .dialog-content {
     padding: 0;
 
+    .carousel {
+      height: 260px;
+      @media(min-width: $breakpointSmall) {
+        height: 360px;
+      }
+    }
+
     .map {
       background-color: #7dc0d0;
       color: white;
-      padding-bottom: 46.875%;
+      padding-bottom: 56.25%;
       position: relative;
 
       img {
@@ -51,6 +58,7 @@
         left: 0;
         position: absolute;
         top: 0;
+        transform: scale(1.1);
         width: 100%;
       }
 
@@ -71,9 +79,11 @@
     }
 
     .content {
+      align-items: center;
       background: $colorBg;
       box-shadow: 0 -4px 4px rgba(0,0,0,0.05);
-      margin-top: -22px;
+      display: flex;
+      flex-direction: column;
       position: relative;
       padding: 10px 4vw;
     }
@@ -81,20 +91,36 @@
     .content-logo {
       align-items: center;
       display: flex;
+      width: 100%;
       justify-content: center;
+      position: relative;
+      margin-top: -20%;
+      margin-bottom: 0.5em;
 
       img {
+        background-color: white;
+        border: 1px solid rgba(0,0,0,.05);
+        border-radius: 50%;
+        box-shadow: 0 1px 5px rgba(0,0,0,.1);
         display: inline-flex;
-        max-height: 100px;
-        max-width: 70%;
+        padding: 3px;
+        width: 45%;
         @media(min-width: $breakpointSmall) {
-          max-width: 50%;
+          width: 30%;
         }
       }
     }
 
+    .content-name {
+      font-size: 1.1em;
+    }
+
     .content-description {
       margin-bottom: 1em;
+
+      q {
+        display: block;
+      }
     }
   }
 

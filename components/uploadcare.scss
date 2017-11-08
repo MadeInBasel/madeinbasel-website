@@ -1,0 +1,84 @@
+@import "~assets/styles/variables.scss";
+
+.component-uploadcare {
+  .preview:not(.multiple),
+  .upload {
+    display: inline-flex;
+    align-items: center;
+    flex-direction: column;
+
+    .btn {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  .preview {
+    .standalone {
+      border: 1px solid rgba(0,0,0,.4);
+      border-radius: 50%;
+      object-fit: contain;
+      max-height: 150px;
+
+    }
+
+    .gallery {
+      .gallery-item {
+        position: relative;
+
+        .indication {
+          background-color: rgba(255, 255, 255, .7);
+          font-size: 0.8em;
+          left: 5px;
+          padding: 0 5px;
+          position: absolute;
+          text-transform: uppercase;
+          top: 5px;
+        }
+      }
+
+      img {
+        padding: 2px;
+      }
+    }
+  }
+
+  .upload {
+    .placeholder {
+      align-items: center;
+      border: 1px dashed rgba(0,0,0,.4);
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      height: 100px;
+      justify-content: center;
+      margin-bottom: 1em;
+      position: relative;
+      width: 100px;
+
+      .icon {
+        flex-grow: 1;
+        font-size: 2em;
+      }
+
+      .ratio {
+        position: absolute;
+        bottom: 2px;
+        color: rgba(0,0,0,.4);
+      }
+
+    }
+  }
+
+  .btn-upload {
+    .icon {
+      margin-right: 0.3em;
+    }
+  }
+
+  .stateError {
+    color: #b71c1c;
+    min-height: 19px;
+  }
+}
