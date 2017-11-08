@@ -51,12 +51,22 @@
           <small>{{ $t('memberSince') }}: {{ getYear() }}</small>
         </div>
         <div v-if="item.data.hasOwnProperty('description')" class="content-description abstract">
-          <q v-if="$i18n.locale === 'en' || user">{{ item.data.description.en }}</q>
-          <q v-if="$i18n.locale === 'de' || user">{{ item.data.description.de }}</q>
+          <q v-if="item.data.description.en && ($i18n.locale === 'en' || user)">{{ item.data.description.en }}</q>
+          <q v-if="item.data.description.de && ($i18n.locale === 'de' || user)">{{ item.data.description.de }}</q>
         </div>
 
         <div v-if="item.data.hasOwnProperty('website') && item.data.website">
-          {{ item.data.website }}
+          <!-- <v-btn flat outline :href="item.data.website" target="_blank" rel="noopener">{{ $t('buttons.website') }}</v-btn> -->
+          Web: {{ item.data.website }}
+        </div>
+        <div v-if="item.data.hasOwnProperty('instagram') && item.data.instagram">
+          Instagram: {{ item.data.instagram }}
+        </div>
+        <div v-if="item.data.hasOwnProperty('twitter') && item.data.twitter">
+          Twitter: {{ item.data.twitter }}
+        </div>
+        <div v-if="item.data.hasOwnProperty('facebook') && item.data.facebook">
+          Facebook: {{ item.data.facebook }}
         </div>
 
         <div v-if="user" class="admin-zone text-xs-center">
