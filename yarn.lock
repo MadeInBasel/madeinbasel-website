@@ -3598,6 +3598,29 @@ node-sass@^4.5.3:
     sass-graph "^2.1.1"
     stdout-stream "^1.4.0"
 
+node-sass@^4.6.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-4.6.0.tgz#1a54f5f4502e3cde310a26d6346266fd667271d9"
+  dependencies:
+    async-foreach "^0.1.3"
+    chalk "^1.1.1"
+    cross-spawn "^3.0.0"
+    gaze "^1.0.0"
+    get-stdin "^4.0.1"
+    glob "^7.0.3"
+    in-publish "^2.0.0"
+    lodash.assign "^4.2.0"
+    lodash.clonedeep "^4.3.2"
+    lodash.mergewith "^4.6.0"
+    meow "^3.7.0"
+    mkdirp "^0.5.1"
+    nan "^2.3.2"
+    node-gyp "^3.3.1"
+    npmlog "^4.0.0"
+    request "^2.79.0"
+    sass-graph "^2.2.4"
+    stdout-stream "^1.4.0"
+
 node.extend@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/node.extend/-/node.extend-2.0.0.tgz#7525a2875677ea534784a5e10ac78956139614df"
@@ -5041,7 +5064,7 @@ safe-buffer@~5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.0.1.tgz#d263ca54696cd8a306b5ca6551e92de57918fbe7"
 
-sass-graph@^2.1.1:
+sass-graph@^2.1.1, sass-graph@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/sass-graph/-/sass-graph-2.2.4.tgz#13fbd63cd1caf0908b9fd93476ad43a51d1e0b49"
   dependencies:
@@ -5646,9 +5669,9 @@ unpipe@1.0.0, unpipe@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/unpipe/-/unpipe-1.0.0.tgz#b2bf4ee8514aae6165b4817829d21b2ef49904ec"
 
-uploadcare-widget@^3.1.4:
-  version "3.1.4"
-  resolved "https://registry.yarnpkg.com/uploadcare-widget/-/uploadcare-widget-3.1.4.tgz#0709cb46f43c68dfe2cc5ad5c3b261044514bba9"
+uploadcare-widget@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/uploadcare-widget/-/uploadcare-widget-3.2.0.tgz#193569b9e509eea300cb6285b485bdb4dc1cf6ad"
   dependencies:
     jquery ">=1.10.2"
 
@@ -5799,10 +5822,6 @@ vue-server-renderer@~2.4.2:
     resolve "^1.2.0"
     serialize-javascript "^1.3.0"
     source-map "0.5.6"
-
-vue-smooth-scroll@^1.0.13:
-  version "1.0.13"
-  resolved "https://registry.yarnpkg.com/vue-smooth-scroll/-/vue-smooth-scroll-1.0.13.tgz#77263728f659db5da61fc3bc2789b0eb3ce0f1bb"
 
 vue-style-loader@^3.0.0:
   version "3.0.3"
