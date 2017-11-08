@@ -34,7 +34,8 @@
     "logout": "Logout",
     "deleteAccount": "Delete Account",
     "uploadPhotos": "Upload Photos",
-    "uploadLogo": "Upload Logo"
+    "uploadLogo": "Upload Logo",
+    "map": "Show on Map"
   },
   "error": {
     "empty": "Nothing to show"

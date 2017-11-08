@@ -123,6 +123,20 @@
         display: block;
       }
     }
+
+    .content-buttons {
+      margin-bottom: 1em;
+
+      .btn {
+        margin-bottom: 0;
+      }
+    }
+
+    .content-social {
+      > a {
+        padding: 4px;
+      }
+    }
   }
 
   .admin-zone {

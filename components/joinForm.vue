@@ -23,17 +23,17 @@
 
         <transition name="transition-down">
           <v-flex v-show="showInstagram" xs9 sm6>
-            <v-text-field label="Instagram" prefix="@" v-model="social.instagram" append-icon="close" :append-icon-cb="() => (showInstagram = false)"></v-text-field>
+            <v-text-field label="Instagram" prefix="@" v-model="social.instagram" append-icon="close" :append-icon-cb="() => (showInstagram = false, social.instagram = '')"></v-text-field>
           </v-flex>
         </transition>
         <transition name="transition-down">
           <v-flex v-show="showTwitter" xs9 sm6>
-            <v-text-field label="Twitter" prefix="@" v-model="social.twitter" append-icon="close" :append-icon-cb="() => (showTwitter = false)"></v-text-field>
+            <v-text-field label="Twitter" prefix="@" v-model="social.twitter" append-icon="close" :append-icon-cb="() => (showTwitter = false, social.twitter = '')"></v-text-field>
           </v-flex>
         </transition>
         <transition name="transition-down">
           <v-flex v-show="showFacebook" xs9 sm6>
-            <v-text-field label="Facebook Page (URL)" :hint="'e.g. https://www.facebook.com/' + (organisationName ? usernamePreview(organisationName) : 'foo')" persistent-hint :rules="facebookRules" v-model="social.facebook" append-icon="close" :append-icon-cb="() => (showFacebook = false)"></v-text-field>
+            <v-text-field label="Facebook Page (URL)" :hint="'e.g. https://www.facebook.com/' + (organisationName ? usernamePreview(organisationName) : 'foo')" persistent-hint :rules="facebookRules" v-model="social.facebook" append-icon="close" :append-icon-cb="() => (showFacebook = false, social.facebook = '')"></v-text-field>
           </v-flex>
         </transition>
         <transition name="fade">
@@ -250,7 +250,8 @@ export default {
       this.$refs.form.reset()
     },
     usernamePreview(string) {
-      return string
+      var short = string.split(/[\s]/)
+      return short.length ? short[0] : string
     }
   },
   computed: {

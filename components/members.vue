@@ -23,7 +23,7 @@
 
   <v-dialog v-if="item.data" lazy v-model="dialog" max-width="600" content-class="dialog--custom">
     <div class="dialog-content">
-      <v-carousel hide-controls v-if="item.data.hasOwnProperty('organisationPhotos')">
+      <v-carousel hide-controls v-if="item.data.hasOwnProperty('organisationPhotos') && item.data.organisationPhotos">
         <v-carousel-item v-for="(image,i) in item.data.organisationPhotos.count" :key="i" :src="item.data.organisationPhotos.cdnUrl + 'nth/' + i + '/-/preview/960x540/'"></v-carousel-item>
         <v-carousel-item v-if="item.data.address.lng && item.data.address.lat" :src="'https://maps.googleapis.com/maps/api/staticmap?'+ zoom + size + mapStyles + '&markers=' + item.data.address.lat + ',' + item.data.address.lng +'&key=' + googleAPIKey"></v-carousel-item>
       </v-carousel>
@@ -55,22 +55,19 @@
           <q v-if="item.data.description.de && ($i18n.locale === 'de' || user)">{{ item.data.description.de }}</q>
         </div>
 
-        <div v-if="item.data.hasOwnProperty('website') && item.data.website">
-          <v-btn flat outline :href="item.data.website" target="_blank" rel="noopener">{{ $t('buttons.website') }}</v-btn>
-          Web: {{ item.data.website }}
+        <div class="content-buttons">
+          <div v-if="item.data.hasOwnProperty('website') && item.data.website">
+            <v-btn color="primary" :href="item.data.website" target="_blank" rel="noopener">{{ $t('buttons.visitWebsite') }}</v-btn>
+          </div>
+          <div v-if="item.data.hasOwnProperty('address') && item.data.address.formatted_address">
+            <v-btn flat :href="'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(item.data.organisationName) + '+' + encodeURIComponent(item.data.address.formatted_address)" target="_blank" rel="noopener">{{ $t('buttons.map') }}</v-btn>
+          </div>
         </div>
-        <div v-if="item.data.hasOwnProperty('instagram') && item.data.instagram">
-          Instagram: {{ item.data.instagram }}
-        </div>
-        <div v-if="item.data.hasOwnProperty('twitter') && item.data.twitter">
-          Twitter: {{ item.data.twitter }} target="_blank" rel="noopener"
-        </div>
-        <div v-if="item.data.hasOwnProperty('facebook') && item.data.facebook">
-          Facebook: {{ item.data.facebook }}
-          <a :href="'http://' + item.data.facebook">Facebook</a>
-        </div>
-        <div v-if="item.data.address.formatted_address">
-          <a :href="'https://www.google.com/maps/search/?api=1&query=' + item.data.address.formatted_address" target="_blank" rel="noopener">test</a>
+
+        <div class="content-social" v-if="item.data.hasOwnProperty('social')">
+          <a v-if="item.data.social.hasOwnProperty('instagram') && item.data.social.instagram" :href="'https://instagram.com/' + item.data.social.instagram" target="_blank" rel="noopener">Instagram</a>
+          <a v-if="item.data.social.hasOwnProperty('twitter') && item.data.social.twitter" :href="'https://twitter.com/' + item.data.social.twitter" target="_blank" rel="noopener">Twitter</a>
+          <a v-if="item.data.social.hasOwnProperty('facebook') && item.data.social.facebook" :href="item.data.social.facebook" target="_blank" rel="noopener">Facebook</a>
         </div>
 
         <div v-if="user" class="admin-zone text-xs-center">

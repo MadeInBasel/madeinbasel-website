@@ -34,7 +34,8 @@
     "logout": "Abmelden",
     "deleteAccount": "Benutzerkonto löschen",
     "uploadPhotos": "Photos Hochladen",
-    "uploadLogo": "Logo Hochladen"
+    "uploadLogo": "Logo Hochladen",
+    "map": "Auf der Karte"
   },
   "error": {
     "empty": "Nichts anzuzeigen"
