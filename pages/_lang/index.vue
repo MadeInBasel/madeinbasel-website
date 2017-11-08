@@ -53,30 +53,6 @@
     </div>
   </section>
 
-  <section class="section--dark">
-    <div class="wave wave-top"></div>
-    <div class="section-inner">
-      <div class="boundaries" v-scroll-reveal="{
-    scale: 1,
-    delay: 200,
-    distance: '20px'
-  }">
-        <h2>{{ $t('join.heading')}}</h2>
-        <div class="abstract" v-html="$t('join.abstract', {mib: '<strong>Made in Basel</strong>'})"></div>
-        <div class="text-xs-center">
-          <v-btn outline dark large :to="localePath('/join')">{{ $t('pages.join') }}</v-btn>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="section--small section--dark">
-    <div class="section-inner">
-      <div class="boundaries">
-        <small class="center-block"><span v-html="$t('free-notice', {mib: '<strong>Made in Basel</strong>'})"></span>&nbsp; <a href="mailto:hello@madeinbasel.org">hello@madeinbasel.org</a></small>
-      </div>
-    </div>
-  </section>
-
 </div>
 </template>
 
@@ -110,10 +86,6 @@ export default {
         members: {
           heading: 'Discover',
           abstract: 'In Basel\'s backyards, cellars  and attics people are working on tomorrow\'s ideas and products. {mib} documents extraordinary craftsmanship and tells the story about the people behind it. We also maintain a public registry.'
-        },
-        join: {
-          heading: 'Join Us',
-          abstract: '{mib} is an open platform. In general, all citizens and institutions with residence in Basel may join and benefit from the label. And yes, it\'s free*. Join in!'
         }
       },
       de: {
@@ -124,10 +96,6 @@ export default {
         members: {
           heading: 'Neues Entdecken',
           abstract: 'In Basels Hinterhöfen wird gebastelt, gelötet und geschraubt. In Kellern und Mansarden entstehen die Ideen von Morgen. {mib} dokumentiert Basels Schaffen anhand ausgewählter Geschichten. Es wird zudem ein Verzeichnis über Mitglieder geführt.'
-        },
-        join: {
-          heading: 'Mach mit!',
-          abstract: '{mib} ist eine offene Plattform. Grundsätzlich können alle in Basel ansässigen Personen und Institutionen beitreten und vom Label profitieren. Übrigens, das Ganze ist kostenlos*. Mach mit!'
         }
       }
     }
