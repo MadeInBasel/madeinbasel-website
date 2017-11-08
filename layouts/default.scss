@@ -292,6 +292,8 @@ section {
 
 .dialog--custom {
   background-color: $colorBg;
+  display: flex;
+  flex-direction: column;
   position: relative;
 
   .btn-close {
@@ -306,6 +308,7 @@ section {
   }
 
   .dialog-content {
+    flex-grow: 1;
     padding: 10px 4vw;
     @media(min-width: $breakpointMedium) {
       padding-left: 40px;
@@ -315,8 +318,9 @@ section {
 
   .dialog-footer {
     display: flex;
-    justify-content: center;
-    margin-top: 1em;
+    justify-content: flex-end;
+    margin-top: 0.5em;
+    padding: 0.5em;
   }
 }
 @keyframes rainbow {

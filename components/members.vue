@@ -107,6 +107,11 @@
     <v-btn class="btn-close" fab small @click="dialog = false">
       <v-icon>close</v-icon>
     </v-btn>
+    <div class="dialog-footer">
+      <v-btn small flat @click="dialog = false">
+        <v-icon>close</v-icon> {{ $t('buttons.close') }}
+      </v-btn>
+    </div>
   </v-dialog>
 </div>
 </template>

@@ -197,6 +197,12 @@
     }
   }
 
+  .dialog-footer {
+    @media(min-width: $breakpointSmall) {
+      display: none;
+    }
+  }
+
   .admin {
     margin-top: 20px;
     background-color: fade-out($colorGreen, .9);
