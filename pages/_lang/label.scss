@@ -1,7 +1,7 @@
 @import "~assets/styles/variables.scss";
 
 #label {
-  .intro .logo {
+  .brand .logo {
     width: 160px;
     margin-left: auto;
     margin-right: auto;
@@ -28,6 +28,10 @@
   }
 
   .benefits {
+    .abstract {
+      margin-bottom: 4em;
+    }
+
     ul {
       margin-top: 1em;
       text-align: left;
