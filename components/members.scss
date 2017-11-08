@@ -13,18 +13,71 @@
     .flex {
       padding: 5px;
 
-      .member {
-        align-items: center;
-        box-shadow: 2px 2px rgba(0,0,0,0.3);
-        background-color: white;
-        display: flex;
-        height: 100px;
-        justify-content: center;
-        padding: 12px;
+    }
+  }
+
+  .member {
+    align-items: center;
+    box-shadow: 2px 2px rgba(0,0,0,0.3);
+    background-color: white;
+    display: block;
+    text-decoration: none;
+
+    .member-cover {
+      background-color: $colorBgDark;
+      padding-bottom: 56.25%;
+      position: relative;
+
+      .icon-container,
+      img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
       }
 
-      img {
-        max-height: 100%;
+      .icon-container {
+        align-items: center;
+        background-color: $colorBgDark;
+        color: white;
+        display: flex;
+        justify-content: center;
+      }
+
+      .icon {
+        font-size: 2em;
+        opacity: 0.3;
+      }
+    }
+
+    .member-info {
+      align-items: flex-end;
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      padding: 10px;
+      position: relative;
+      margin-top: -40px;
+
+      .image {
+        background-color: white;
+        border: 1px solid rgba(0,0,0,.05);
+        border-radius: 50%;
+        box-shadow: 0 1px 5px rgba(0,0,0,.1);
+        display: inline-flex;
+        padding: 2px;
+        width: 60px;
+      }
+
+      .name {
+        flex-grow: 1;
+        line-height: 20px;
+        max-width: 100%;
+        overflow: hidden;
+        padding-left: 4px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
     }
   }
@@ -125,6 +178,9 @@
     }
 
     .content-buttons {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
       margin-bottom: 1em;
 
       .btn {
