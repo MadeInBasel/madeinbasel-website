@@ -47,9 +47,6 @@
       <div class="text-xs-center">
         <v-btn color="primary" large :to="localePath('/members')">{{ $t('buttons.allMembers') }}</v-btn>
       </div>
-      <div class="text-xs-center">
-        <v-btn flat large :to="localePath('/join')">{{ $t('pages.join') }}</v-btn>
-      </div>
     </div>
   </section>
 

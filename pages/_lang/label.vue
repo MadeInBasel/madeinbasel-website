@@ -25,9 +25,7 @@
   }">
         <div class="benefits">
           <h2>{{ $t('benefits.heading')}}</h2>
-          <div class="abstract">
-            {{ $t('benefits.abstract')}}
-          </div>
+          <div class="abstract" v-html="$t('benefits.abstract', {mib: '<strong>Made in Basel</strong>'})"></div>
           <v-layout wrap class="benefits-list">
             <v-flex md6 class="box">
               <div class="box-inner">
@@ -114,11 +112,11 @@ export default {
     messages: {
       en: {
         mission: {
-          abstract: '<strong>Made in Basel</strong> is an initiative to promote products and services from Basel. We support innovation and entrepreneurial spirit, sustain a diverse, creative climate where ideas and people can prosper. The label stands for high-quality local products and services with a unique spirit. Members are committed to Basel as a place to live, work and recreate.'
+          abstract: '<strong>Made in Basel</strong> is an initiative to promote products and services from Basel. We support innovation and entrepreneurial spirit, sustain a diverse, creative climate where ideas and people can prosper. The label stands for high-quality local products and services. Members are committed to Basel as a place to live, work and recreate.'
         },
         benefits: {
           heading: 'Why does it matter?',
-          abstract: 'Basel has an extraordinarily diverse workforce that gives the city much of its character and soul. The label "Made in Basel" intends to benefit both, consumers and manufactures. Here is how:',
+          abstract: 'Local manufacturing creates employment opportunities for an extraordinarily diverse workforce and is essential to an environmentally sustainable city. The label {mib} intends to benefit consumers and manufactures equally. Here is how:',
           consumers: {
             heading: 'For Consumers',
             arguments: [
@@ -171,7 +169,7 @@ export default {
         },
         benefits: {
           heading: 'Warum ist\'s interessant?',
-          abstract: 'Basel besitzt eine ausserordentlich Vielfalt an Werktätigen, die mithelfen der Stadt Charakter und Seele zu verleihen. Das Label hilft sowohl Konsumenten als auch Herstellern:',
+          abstract: 'Lokale Produktion schafft Beschäftigungsmöglichkeiten für eine außerordentlich vielfältige Arbeiterschaft und ist für eine ökologisch nachhaltige Stadt unerlässlich. Das Label {mib} will Verbrauchern und Herstellern in gleichem Masse zugutekommen.',
           consumers: {
             heading: 'Für Konsumenten',
             arguments: [
