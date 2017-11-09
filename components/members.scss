@@ -56,10 +56,10 @@
       align-items: flex-end;
       display: flex;
       width: 100%;
-      justify-content: center;
-      padding: 7px;
+      padding: 12px 7px 7px;
       position: relative;
-      margin-top: -26px;
+      margin-top: -22px;
+      min-height: 65px;
 
       .image {
         background-color: white;
@@ -67,19 +67,35 @@
         border-radius: 50%;
         box-shadow: 0 1px 5px rgba(0,0,0,.1);
         display: inline-flex;
-        padding: 2px;
+        padding: 1px;
         width: 46px;
+        @media(max-width:360px) {
+          width: 30px;
+          align-self: flex-start;
+        }
       }
 
-      .name {
+      .intro {
         flex-grow: 1;
-        font-size: 0.9em;
-        line-height: 20px;
+        line-height: 1.2;
         max-width: 100%;
         overflow: hidden;
-        padding-left: 5px;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        padding-left: 7px;
+
+        > div {
+          max-width: 100%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+
+      .intro-name {
+        font-size: 0.9em;
+      }
+
+      .intro-industry {
+        font-size: 0.7em;
       }
     }
   }

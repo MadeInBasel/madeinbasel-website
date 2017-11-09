@@ -24,8 +24,13 @@
         </div>
         <div class="member-info">
           <img class="image" :src="item.data.organisationImage.cdnUrl + '-/preview/160x160/'" :alt="item.data.organisationName">
-          <div class="name">
-            <strong>{{ item.data.organisationName }}</strong>
+          <div class="intro">
+            <div class="intro-name">
+              <strong>{{ item.data.organisationName }}</strong>
+            </div>
+            <div class="intro-industry">
+              <span v-if="item.data.hasOwnProperty('industry') && item.data.industry >= 0">{{ $t('industries[' + `${item.data.industry}` + ']') }}</span>&nbsp;
+            </div>
           </div>
         </div>
       </nuxt-link>
