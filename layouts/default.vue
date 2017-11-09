@@ -6,7 +6,7 @@
         <img class="logo" src="~assets/images/logo.svg" alt="Logo">
       </nuxt-link>
       <v-list dense>
-        <v-list-tile v-for="(item, i) in main" :key="i" nuxt exact v-ripple :to="localePath(`${item.path}`)">
+        <v-list-tile v-for="(item, i) in main.slice(1)" :key="i" nuxt exact v-ripple :to="localePath(`${item.path}`)">
           <v-list-tile-action>
             <v-icon class="grey--text text--darken-1">{{ item.icon }}</v-icon>
           </v-list-tile-action>
