@@ -6,7 +6,7 @@
     delay: 200,
     distance: '20px'
   }">
-      <h1>{{ $t('pages.legal') }}</h1>
+      <h1>{{ $t('pages.about') }}</h1>
 
       <v-layout wrap>
         <v-flex xs12 sm6 order-sm2>
@@ -93,7 +93,7 @@ export default {
   },
   head() {
     return {
-      title: this.$t('pages.legal')
+      title: this.$t('pages.about')
     }
   },
   data() {
@@ -155,5 +155,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'legal.scss';
+@import 'about.scss';
 </style>

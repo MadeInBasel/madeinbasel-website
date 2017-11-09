@@ -3,6 +3,7 @@
   <div class="contact-physical">
     <v-icon>place</v-icon>
     <div itemprop="name">Made in Basel</div>
+    <div class="co" itemprop="alternateName">Christophe Schwyzer</div>
     <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
       <span itemprop="streetAddress">Mittlere Strasse 60</span>
       <div>
@@ -31,3 +32,9 @@ export default {
   }
 }
 </script>
+
+<style media="screen">
+.co::before {
+  content: "℅ ";
+}
+</style>

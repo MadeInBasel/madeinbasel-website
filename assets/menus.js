@@ -26,8 +26,8 @@ const about = [{
     icon: 'add_circle'
   },
   {
-    path: '/legal',
-    label: 'pages.legal',
+    path: '/about',
+    label: 'pages.about',
     icon: 'info'
   }
 ]
