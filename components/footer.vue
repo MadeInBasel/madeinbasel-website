@@ -11,11 +11,17 @@
     </div>
 
     <div class="menu" :title="$t('about')">
+      <div>
+        <nuxt-link :to="localePath('/admin')">
+          {{ $t('pages.admin') }}
+        </nuxt-link>
+      </div>
       <ul>
         <li v-for="item in social">
           <a :href="item.url" target="_blank" rel="noopener">{{ item.label }}</a>
         </li>
       </ul>
+
     </div>
   </div>
 </footer>

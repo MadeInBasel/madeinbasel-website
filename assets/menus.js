@@ -29,11 +29,6 @@ const about = [{
     path: '/legal',
     label: 'pages.legal',
     icon: 'info'
-  },
-  {
-    path: '/admin',
-    label: 'pages.admin',
-    icon: 'person'
   }
 ]
 
