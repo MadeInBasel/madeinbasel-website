@@ -9,7 +9,7 @@
     </v-layout>
     <img v-else class="standalone" :src="fileGroupInfo.cdnUrl" alt="Logo">
     <v-btn small round @click="discardImage">
-      {{ $t('buttons.change') }}
+      {{ $t('buttons.changeSelection') }}
     </v-btn>
   </div>
   <div v-show="stateUpload">
