@@ -8,6 +8,7 @@
   }">
       <h1>{{ $t('pages.label') }}</h1>
       <div class="abstract" v-html="$t('mission.abstract')"></div>
+      <img class="logo" src="~assets/images/logo.svg" alt="Logo">
     </div>
     <div class="more">
       <v-icon>expand_more</v-icon>
@@ -90,7 +91,10 @@ distance: '20px'
     }">
         <h2>{{ $t('brand.heading')}}</h2>
         <div class="abstract" v-html="$t('brand.abstract')"></div>
-        <img class="logo" src="~assets/images/logo.svg" alt="Logo">
+        <div class="text-xs-center">
+          <v-btn class="btn-download" color="primary" href="/files/MadeInBasel-LogoPackage.zip" download="MadeInBasel-LogoPackage">
+            <v-icon>file_download</v-icon> {{ $t('buttons.downloadLogoPackage') }}</v-btn>
+        </div>
       </div>
 
     </div>
@@ -153,8 +157,8 @@ export default {
           ]
         },
         brand: {
-          heading: 'Brand',
-          abstract: 'The main aspect of <strong>Made in Basel</strong> is the trade-mark shown below. It serves as a label and a distinctive brand. The use of the label is free of charge for all institutions and residents of Basel.'
+          heading: 'Brandmark',
+          abstract: 'The main aspect of <strong>Made in Basel</strong> is the trade-mark shown above. It serves as a label and a distinctive brand. The use of the label is free of charge for all institutions and residents of Basel.'
         },
         vision: {
           heading: 'Vision',
@@ -207,7 +211,7 @@ export default {
         },
         brand: {
           heading: 'Marke',
-          abstract: 'Hauptbestandteil von <strong>Made in Basel</strong> ist die unten abgebildete geschützte Wort-Bild-Marke. Sie dient als Label und als Erkennungsmerkmal. Die Verwendung des Labels steht grundsätzlich allen in Basel ansässigen Institutionen und Personen frei.'
+          abstract: 'Hauptbestandteil von <strong>Made in Basel</strong> ist die eingangs abgebildete geschützte Wort-Bild-Marke. Sie dient als Label und als Erkennungsmerkmal. Die Verwendung des Labels steht grundsätzlich allen in Basel ansässigen Institutionen und Personen frei.'
         },
         vision: {
           heading: 'Vision',
