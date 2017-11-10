@@ -81,7 +81,7 @@ module.exports = {
       ssr: false
     },
     {
-      src: '~plugins/VueScrollReveal.js',
+      src: '~plugins/vueScrollReveal.js',
       ssr: false
     },
     {
