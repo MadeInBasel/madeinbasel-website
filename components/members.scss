@@ -1,0 +1,242 @@
+@import "~assets/styles/variables.scss";
+
+.component-members {
+  .spinner {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-height: 100px;
+  }
+
+  .members {
+    .flex {
+      padding: 5px;
+
+    }
+  }
+
+  .member {
+    align-items: center;
+    box-shadow: 2px 2px rgba(0,0,0,0.3);
+    background-color: white;
+    display: block;
+    text-decoration: none;
+
+    .member-cover {
+      background-color: $colorBgDark;
+      padding-bottom: 56.25%;
+      position: relative;
+
+      .icon-container,
+      img {
+        height: 100%;
+        left: 0;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+
+      .icon-container {
+        align-items: center;
+        background-color: $colorBgDark;
+        color: white;
+        display: flex;
+        justify-content: center;
+      }
+
+      .icon {
+        font-size: 2em;
+        opacity: 0.3;
+      }
+    }
+
+    .member-info {
+      align-items: flex-end;
+      display: flex;
+      width: 100%;
+      padding: 12px 7px 7px;
+      position: relative;
+      margin-top: -22px;
+      min-height: 65px;
+
+      .image {
+        background-color: white;
+        border: 1px solid rgba(0,0,0,.05);
+        border-radius: 50%;
+        box-shadow: 0 1px 5px rgba(0,0,0,.1);
+        display: inline-flex;
+        padding: 1px;
+        width: 46px;
+        @media(max-width:360px) {
+          width: 30px;
+          align-self: flex-start;
+        }
+      }
+
+      .intro {
+        flex-grow: 1;
+        line-height: 1.2;
+        max-width: 100%;
+        overflow: hidden;
+        padding-left: 7px;
+
+        > div {
+          max-width: 100%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+
+      .intro-name {
+        font-size: 0.9em;
+      }
+
+      .intro-industry {
+        font-size: 0.7em;
+      }
+    }
+  }
+
+  .emptyPaging {
+    margin: 12px;
+    padding: 12px;
+    border: 2px dashed $colorSubtle;
+  }
+}
+
+.dialog--custom {
+  .dialog-content {
+    padding: 0;
+
+    .carousel {
+      height: 260px;
+      @media(min-width: $breakpointSmall) {
+        height: 360px;
+      }
+    }
+
+    .map {
+      background-color: #7dc0d0;
+      color: white;
+      padding-bottom: 56.25%;
+      position: relative;
+
+      img {
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        transform: scale(1.1);
+        width: 100%;
+      }
+
+      .map-placeholder {
+        font-weight: bold;
+        left: 50%;
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+
+        .icon {
+          color: white;
+          font-size: 40px;
+        }
+      }
+    }
+
+    .content {
+      align-items: center;
+      background: $colorBg;
+      box-shadow: 0 -4px 4px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      padding: 10px 4vw;
+    }
+
+    .content-logo {
+      align-items: center;
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      position: relative;
+      margin-top: -20%;
+      margin-bottom: 0.5em;
+
+      img {
+        background-color: white;
+        border: 1px solid rgba(0,0,0,.05);
+        border-radius: 50%;
+        box-shadow: 0 1px 5px rgba(0,0,0,.1);
+        display: inline-flex;
+        padding: 3px;
+        width: 45%;
+        @media(min-width: $breakpointSmall) {
+          width: 30%;
+        }
+      }
+    }
+
+    .content-name {
+      font-size: 1.1em;
+    }
+
+    .content-description {
+      margin-top: 1em;
+      margin-bottom: 1em;
+
+      q {
+        display: block;
+      }
+    }
+
+    .content-buttons {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1em;
+
+      .btn {
+        margin-bottom: 0;
+      }
+    }
+
+    .content-social {
+      > a {
+        padding: 4px;
+      }
+    }
+  }
+
+  .dialog-footer {
+    @media(min-width: $breakpointSmall) {
+      display: none;
+    }
+  }
+
+  .admin {
+    margin-top: 20px;
+    background-color: fade-out($colorGreen, .9);
+    padding: 5px 10px 10px;
+    border: 2px dashed $colorGreen;
+    width: 100%;
+
+    &.danger {
+      background-color: fade-out(red, .9);
+      border-color: red;
+    }
+
+    .admin-title {
+      color: darken($colorGreen, 50);
+      font-size: 0.8em;
+      text-align: right;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
+}

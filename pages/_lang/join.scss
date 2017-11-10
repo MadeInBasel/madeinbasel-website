@@ -1,0 +1,20 @@
+@import "~assets/styles/variables.scss";
+
+#join {
+  .join-addendum {
+    padding: 0.4em;
+  }
+}
+
+.dialog--done {
+  padding: 16px;
+
+  .done {
+    padding: 1em;
+
+    .icon {
+      font-size: 4em;
+    }
+
+  }
+}

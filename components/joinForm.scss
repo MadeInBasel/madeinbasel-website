@@ -1,0 +1,21 @@
+@import "~assets/styles/variables.scss";
+
+.component-joinForm {
+  .address-preview .proposition {
+    background-color: lightblue;
+    border: 1px dashed;
+    padding: 4px 8px 0;
+  }
+
+  .terms {
+    margin-bottom: 1em;
+  }
+
+  .component-login {
+    margin-bottom: 1em;
+  }
+
+  .component-terms {
+    float: left;
+  }
+}

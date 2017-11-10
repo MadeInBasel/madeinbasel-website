@@ -1,0 +1,25 @@
+@import "~assets/styles/variables.scss";
+
+#index {
+  .wallpaper {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    .logo {
+      width: 60vw;
+      max-width: 500px;
+      max-height: 100%;
+      @media (min-width: $breakpointSmall) {
+        width: 40vw;
+      }
+      @media (min-height: 600px) {
+        max-height: 500px;
+      }
+    }
+  }
+
+  .members {
+    margin-bottom: 0.8em;
+  }
+}

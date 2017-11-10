@@ -1,97 +1,107 @@
 <template>
-  <v-app light>
-    <v-navigation-drawer
-      persistent
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      v-model="drawer"
-      enable-resize-watcher
-    >
-      <v-list>
-        <v-list-tile
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-        >
+<v-app id="layout" class="rainbow scrollTop scrollTopExtended" v-bind:class="{ 'no-animations': !animations }" v-scroll="onScroll">
+  <div class="layout-inner">
+    <v-navigation-drawer id="navigation" class="pb-0" persistent temporary right height="100%" enable-resize-watcher v-model="drawer">
+      <nuxt-link class="emblem" :to="localePath('/')">
+        <img class="logo" src="~assets/images/logo.svg" alt="Logo">
+      </nuxt-link>
+      <v-list dense>
+        <v-list-tile v-for="(item, i) in main.slice(1)" :key="i" nuxt exact v-ripple :to="localePath(`${item.path}`)">
           <v-list-tile-action>
-            <v-icon v-html="item.icon"></v-icon>
+            <v-icon class="grey--text text--darken-1">{{ item.icon }}</v-icon>
           </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title v-text="item.title"></v-list-tile-title>
-          </v-list-tile-content>
+          <v-list-tile-title>
+            {{ $t(`${item.label}`) }}
+          </v-list-tile-title>
+        </v-list-tile>
+        <v-divider inset></v-divider>
+        <v-list-tile v-for="(item, i) in about" :key="i" nuxt exact v-ripple :to="localePath(`${item.path}`)">
+          <v-list-tile-action>
+            <v-icon class="grey--text text--darken-1">{{ item.icon }}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-title>
+            {{ $t(`${item.label}`) }}
+          </v-list-tile-title>
+        </v-list-tile>
+        <v-divider inset></v-divider>
+        <v-list-tile v-for="(item, i) in social" :key="i" nuxt v-ripple :href="item.url" target="_blank" rel="noopener">
+          <v-list-tile-action>
+            <v-icon class="grey--text text--darken-1">launch</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-title>
+            {{ $t(`${item.label}`) }}
+          </v-list-tile-title>
         </v-list-tile>
       </v-list>
+      <app-language/>
+      <v-btn class="btn-close" color="primary" v-on:click="drawer=false">{{ $t('buttons.close') }}</v-btn>
+      <v-btn class="btn-close-top" small icon v-on:click="drawer=false">
+        <v-icon>close</v-icon>
+      </v-btn>
     </v-navigation-drawer>
-    <v-toolbar fixed>
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-btn
-        icon
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>web</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="fixed = !fixed"
-      >
-        <v-icon>remove</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title"></v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn
-        icon
-        @click.stop="rightDrawer = !rightDrawer"
-      >
-        <v-icon>menu</v-icon>
-      </v-btn>
-    </v-toolbar>
-    <main>
-      <v-container fluid>
+    <app-header v-on:drawer="toggleNavigation"></app-header>
+    <main id="page">
+      <v-content>
         <nuxt />
-      </v-container>
+      </v-content>
     </main>
-    <v-navigation-drawer
-      temporary
-      :right="right"
-      v-model="rightDrawer"
-    >
-      <v-list>
-        <v-list-tile @click="right = !right">
-          <v-list-tile-action>
-            <v-icon light>compare_arrows</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title>Switch drawer (click me)</v-list-tile-title>
-        </v-list-tile>
-      </v-list>
-    </v-navigation-drawer>
-    <v-footer :fixed="fixed">
-      <span>&copy; 2017</span>
-    </v-footer>
-  </v-app>
+  </div>
+  <app-footer />
+</v-app>
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        clipped: false,
-        drawer: true,
-        fixed: false,
-        items: [
-          { to: '/', title: 'Welcome', icon: 'apps' },
-          { to: '/inspire', title: 'Inspire', icon: 'bubble_chart' }
-        ],
-        miniVariant: false,
-        right: true,
-        rightDrawer: false,
-        title: 'Vuetify.js'
-      }
+import { main, about, social } from '~/assets/menus.js'
+import header from '~/components/header.vue'
+import footer from '~/components/footer.vue'
+import language from '~/components/language.vue'
+import _ from 'underscore'
+import $ from 'jquery'
+
+export default {
+  components: {
+    'app-header': header,
+    'app-footer': footer,
+    'app-language': language
+  },
+  data: () => ({
+    drawer: false,
+    main: main,
+    about: about,
+    social: social,
+    offsetTop: 0
+  }),
+  methods: {
+    toggleNavigation: function (state) {
+      this.drawer = state
+    },
+    onScroll(e) {
+      this.offsetTop = window.pageYOffset || document.documentElement.scrollTop
+      var $layout = $(this.$el)
+      var self = this
+      _.throttle(function () {
+        $layout.toggleClass('scrollTop', self.offsetTop < 10)
+        $layout.toggleClass('scrollTopExtended', self.offsetTop < window.screen.height / 4)
+      }, 100)()
+    }
+  },
+  computed: {
+    animations() {
+      return this.$store.state.animations
+    }
+  },
+  beforeMount() {
+    var lang = navigator.language || navigator.userLanguage
+    var self = this
+    if (this.$i18n.locale === 'en' && lang.substring(0, 2) === 'de') {
+      _.once(function () {
+        self.$router.replace({ path: `/de` + self.$route.fullPath })
+      }())
     }
   }
+}
 </script>
+
+<style lang="scss">
+@import "default.scss";
+</style>

@@ -1,0 +1,13 @@
+language: node_js
+node_js: 8
+
+install:
+  - yarn
+
+script: npm run generate
+
+deploy:
+  skip_cleanup: true
+  provider: firebase
+  token:
+    secure: "1/2mQQi7brxqVlLxTjyF4rCQK1llj_Ktk6ZaMtk0-FLBFAVj_XbLejOw0TpqYhqpTj"
