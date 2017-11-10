@@ -9,7 +9,7 @@ export default ({
       app.mixin({
         methods: {
           localePath: function(url) {
-            return (store.state.locale === 'en' ? url : '/' + store.state.locale + url)
+            return '/' + store.state.locale + url
           }
         }
       })

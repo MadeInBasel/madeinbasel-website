@@ -14,12 +14,12 @@
     "nuxt": "^1.0.0-rc11",
     "underscore": "^1.8.3",
     "uploadcare-widget": "^3.2.0",
+    "vue": "~2.4.2",
     "vue-i18n": "^7.3.2",
     "vue-loading-spinner": "^1.0.10",
     "vue-scroll-reveal": "^1.0.3",
     "vuetify": "^0.16.9",
-    "webfontloader": "^1.6.28",
-    "vue": "~2.4.2"
+    "webfontloader": "^1.6.28"
   },
   "scripts": {
     "dev": "nuxt",

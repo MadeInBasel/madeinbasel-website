@@ -1,41 +1,34 @@
 <template>
 <div class="language" :title="$t('language')">
-  <template v-if="$i18n.locale === 'en'">
-    <strong>{{ $t('links.english') }}</strong> |
-    <nuxt-link :to="`/de` + $route.fullPath" active-class="none" exact>
-      {{ $t('links.german') }}
-    </nuxt-link>
-  </template>
-  <template v-else>
-    <strong>{{ $t('links.german') }}</strong> |
-    <nuxt-link :to="$route.fullPath.replace(/^\/[^\/]+/, '')" active-class="none" exact>
-      {{ $t('links.english') }}
-    </nuxt-link>
+  <template v-for="lang in $store.state.locales">
+    <template v-if="$i18n.locale === lang">
+      <strong>{{ $t('links.'+lang) }}</strong>
+    </template>
+    <template v-else>
+      <nuxt-link :to="{ params: {lang: lang} }" active-class="none" exact>
+        {{ $t('links.'+lang) }}
+      </nuxt-link>
+    </template>
   </template>
 </div>
 </template>
 
 <script>
 export default {
-  methods: {
-    path(url) {
-      return (this.$i18n.locale === 'en' ? url : '/' + this.$i18n.locale + url)
-    }
-  },
   i18n: {
     messages: {
       en: {
         language: 'Language',
         'links': {
-          'german': 'DE',
-          'english': 'EN'
+          'de': 'DE',
+          'en': 'EN'
         }
       },
       de: {
         language: 'Sprache',
         'links': {
-          'german': 'DE',
-          'english': 'EN'
+          'de': 'DE',
+          'en': 'EN'
         }
       }
     }
