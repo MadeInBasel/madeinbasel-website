@@ -4,7 +4,7 @@
     <nuxt-link v-if="user" class="user" :to="localePath('/admin')">
       {{ user.isAdmin ? '★' : '' }} {{ user.displayName ? user.displayName : user.email }}
     </nuxt-link>
-    <nuxt-link class="logo" :to="localePath('/')">
+    <nuxt-link v-show="$route.fullPath.length > 4" class="logo" :to="localePath('/')">
       <img src="~assets/images/logo-seal.svg" alt="Logo">
     </nuxt-link>
     <ul class="header-navigation-menu">

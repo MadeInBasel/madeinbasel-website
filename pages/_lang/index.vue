@@ -1,10 +1,5 @@
 <template>
 <div id="index">
-  <style media="screen">
-    #header .logo {
-      display: none;
-    }
-  </style>
   <section class="wallpaper boundaries">
     <div v-show="!ready" class="spinner">
       <v-progress-circular indeterminate color="primary"></v-progress-circular>
