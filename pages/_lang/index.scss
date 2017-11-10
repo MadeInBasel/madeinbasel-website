@@ -5,6 +5,8 @@
     align-items: center;
     display: flex;
     justify-content: center;
+    min-height: 100vh;
+    position: relative;
 
     .logo {
       width: 60vw;
@@ -16,6 +18,13 @@
       @media (min-height: 600px) {
         max-height: 500px;
       }
+    }
+
+    .more {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
     }
   }
 

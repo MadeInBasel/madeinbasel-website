@@ -1,45 +1,28 @@
 <template>
 <div id="members">
-  <section>
-    <div class="section-inner boundaries" v-scroll-reveal="{
-    scale: 1,
-    delay: 200,
-    distance: '20px'
-  }">
-      <h1>{{ $t('pages.members') }}</h1>
-      <div class="abstract" v-html="$t('intro.abstract', {icon: '♥'})"></div>
-      <component-members />
-    </div>
-  </section>
+  <component-section>
+    <h1>{{ $t('pages.members') }}</h1>
+    <div class="abstract" v-html="$t('intro.abstract', {icon: '♥'})"></div>
+    <component-members />
+  </component-section>
 
-  <section class="section--dark">
-    <div class="wave wave-top"></div>
-    <div class="section-inner">
-      <div class="boundaries" v-scroll-reveal="{
-    scale: 1,
-    delay: 200,
-    distance: '20px'
-  }">
-        <h2>{{ $t('join.heading')}}</h2>
-        <div class="abstract" v-html="$t('join.abstract', {mib: '<strong>Made in Basel</strong>'})"></div>
-        <div class="text-xs-center">
-          <v-btn outline dark large :to="localePath('/join')">{{ $t('pages.join') }}</v-btn>
-        </div>
-      </div>
+  <component-section dark hideBottomWave>
+    <h2>{{ $t('join.heading')}}</h2>
+    <div class="abstract" v-html="$t('join.abstract', {mib: '<strong>Made in Basel</strong>'})"></div>
+    <div class="text-xs-center">
+      <v-btn outline dark large :to="localePath('/join')">{{ $t('pages.join') }}</v-btn>
     </div>
-  </section>
-  <section class="section--small section--dark">
-    <div class="section-inner">
-      <div class="boundaries">
-        <small class="center-block"><span v-html="$t('free-notice', {mib: '<strong>Made in Basel</strong>'})"></span>&nbsp; <a href="mailto:hello@madeinbasel.org">hello@madeinbasel.org</a></small>
-      </div>
-    </div>
-  </section>
+  </component-section>
+
+  <component-section small dark>
+    <small class="center-block"><span v-html="$t('free-notice', {mib: '<strong>Made in Basel</strong>'})"></span>&nbsp; <a href="mailto:hello@madeinbasel.org">hello@madeinbasel.org</a></small>
+  </component-section>
 </div>
 </template>
 
 <script>
 import members from '~/components/members.vue'
+import section from '~/components/section.vue'
 
 export default {
   head() {
@@ -48,7 +31,8 @@ export default {
     }
   },
   components: {
-    'component-members': members
+    'component-members': members,
+    'component-section': section
   },
   i18n: {
     messages: {

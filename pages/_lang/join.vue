@@ -1,58 +1,45 @@
 <template>
 <div id="join">
-  <section class="join" v-scroll-reveal="{
-    scale: 1,
-    delay: 200,
-    distance: '20px'
-  }">
-    <div class="section-inner boundaries">
-      <h1>{{ $t('pages.join') }}</h1>
-      <div class="abstract" v-html="$t('abstract')"></div>
-      <component-join v-on:success="dialog=true" />
-      <small class="join-addendum center-block"><span v-html="$t('free-notice', {mib: '<strong>Made in Basel</strong>'})"></span>&nbsp; <a href="mailto:hello@madeinbasel.org">hello@madeinbasel.org</a></small>
-      <v-dialog v-model="dialog" max-width="600" content-class="dialog--custom dialog--done">
-        <div class="text-xs-center done">
-          <v-icon color="success">check_circle</v-icon>
-        </div>
-        <h3>{{ $t('success.heading ')}}!</h3>
-        <div class="abstract">
-          {{ $t('success.abstract ')}}
-        </div>
-        <div class="text-xs-center">
-          <a href="https://twitter.com/madeinbasel" target="_blank">Follow @madeinbasel</a>
-        </div>
-        <div class="dialog-footer">
-          <v-btn color="primary" @click="dialog = false">{{ $t('buttons.close' )}}</v-btn>
-        </div>
-      </v-dialog>
-    </div>
-  </section>
-  <section class="section--dark">
-    <div class="wave wave-top"></div>
-    <div class="section-inner">
-      <div class="boundaries" v-scroll-reveal="{
-  scale: 1,
-  delay: 200,
-  distance: '20px'
-}">
-        <h2>{{ $t('download.heading')}}</h2>
-        <div class="abstract" v-html="$t('download.abstract', {mib: '<strong>Made in Basel</strong>'})"></div>
-        <div class="text-xs-center">
-          <v-btn outline dark large href="/files/MadeInBasel-LogoPackage.zip" download="MadeInBasel-LogoPackage">
-            <v-icon>file_download</v-icon> {{ $t('buttons.downloadLogoPackage') }}</v-btn>
-        </div>
+  <component-section class="join">
+    <h1>{{ $t('pages.join') }}</h1>
+    <div class="abstract" v-html="$t('abstract')"></div>
+    <component-join v-on:success="dialog=true" />
+    <small class="join-addendum center-block"><span v-html="$t('free-notice', {mib: '<strong>Made in Basel</strong>'})"></span>&nbsp; <a href="mailto:hello@madeinbasel.org">hello@madeinbasel.org</a></small>
+    <v-dialog v-model="dialog" max-width="600" content-class="dialog--custom dialog--done">
+      <div class="text-xs-center done">
+        <v-icon color="success">check_circle</v-icon>
       </div>
+      <h3>{{ $t('success.heading ')}}!</h3>
+      <div class="abstract">
+        {{ $t('success.abstract ')}}
+      </div>
+      <div class="text-xs-center">
+        <a href="https://twitter.com/madeinbasel" target="_blank">Follow @madeinbasel</a>
+      </div>
+      <div class="dialog-footer">
+        <v-btn color="primary" @click="dialog = false">{{ $t('buttons.close' )}}</v-btn>
+      </div>
+    </v-dialog>
+  </component-section>
+  <component-section dark hideBottomWave>
+    <h2>{{ $t('download.heading')}}</h2>
+    <div class="abstract" v-html="$t('download.abstract', {mib: '<strong>Made in Basel</strong>'})"></div>
+    <div class="text-xs-center">
+      <v-btn outline dark large href="/files/MadeInBasel-LogoPackage.zip" download="MadeInBasel-LogoPackage">
+        <v-icon>file_download</v-icon> {{ $t('buttons.downloadLogoPackage') }}</v-btn>
     </div>
-  </section>
+  </component-section>
 </div>
 </template>
 
 <script>
 import join from '~/components/joinForm.vue'
+import section from '~/components/section.vue'
 
 export default {
   components: {
-    'component-join': join
+    'component-join': join,
+    'component-section': section
   },
   head() {
     return {
