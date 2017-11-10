@@ -31,6 +31,7 @@
             <div>Lara Schnell</div>
             <div>Nicolas Schmutz</div>
             <div>Remo Kübler</div>
+            <div>Reto Kaiser</div>
           </div>
         </v-flex>
 
