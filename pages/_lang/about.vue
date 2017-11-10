@@ -1,81 +1,57 @@
 <template>
 <div id="legal">
-  <section class="impressum">
-    <div class="section-inner boundaries" v-scroll-reveal="{
-    scale: 1,
-    delay: 200,
-    distance: '20px'
-  }">
-      <h1>{{ $t('pages.about') }}</h1>
+  <component-section class="impressum">
+    <h1>{{ $t('pages.about') }}</h1>
 
-      <v-layout wrap>
-        <v-flex xs12 sm6 order-sm2>
-          <component-address />
-          <v-dialog class="contact-dialog" v-model="contactDialog" max-width="600" content-class="dialog--custom dialog--contact">
-            <v-btn class="btn-contact" color="primary" slot="activator">{{ $t('contactForm') }}</v-btn>
-            <component-contact-form />
-            <v-btn class="btn-close" fab small @click="contactDialog = false">
-              <v-icon>close</v-icon>
-            </v-btn>
-          </v-dialog>
-        </v-flex>
-        <v-flex xs12 sm6>
-          <div class="team">
-            <div class="team-heading">{{ $t('team.lead') }}</div>
-            <div>Christophe Schwyzer</div>
-            <div class="team-heading">{{ $t('team.editorial') }}</div>
-            <div>Olivier Christe</div>
-            <div class="team-heading">{{ $t('team.logo') }}</div>
-            <div>David Steiner</div>
-            <div class="team-heading">{{ $t('team.support') }}</div>
-            <div>Lara Schnell</div>
-            <div>Nicolas Schmutz</div>
-            <div>Remo Kübler</div>
-          </div>
-        </v-flex>
+    <v-layout wrap>
+      <v-flex xs12 sm6 order-sm2>
+        <component-address />
+        <v-dialog class="contact-dialog" v-model="contactDialog" max-width="600" content-class="dialog--custom dialog--contact">
+          <v-btn class="btn-contact" color="primary" slot="activator">{{ $t('contactForm') }}</v-btn>
+          <component-contact-form />
+          <v-btn class="btn-close" fab small @click="contactDialog = false">
+            <v-icon>close</v-icon>
+          </v-btn>
+        </v-dialog>
+      </v-flex>
+      <v-flex xs12 sm6>
+        <div class="team">
+          <div class="team-heading">{{ $t('team.lead') }}</div>
+          <div>Christophe Schwyzer</div>
+          <div class="team-heading">{{ $t('team.editorial') }}</div>
+          <div>Olivier Christe</div>
+          <div class="team-heading">{{ $t('team.logo') }}</div>
+          <div>David Steiner</div>
+          <div class="team-heading">{{ $t('team.support') }}</div>
+          <div>Lara Schnell</div>
+          <div>Nicolas Schmutz</div>
+          <div>Remo Kübler</div>
+          <div>Reto Kaiser</div>
+        </div>
+      </v-flex>
+    </v-layout>
 
-      </v-layout>
+    <v-btn class="btn-download" color="primary" href="/files/MadeInBasel-LogoPackage.zip" download="MadeInBasel-LogoPackage">
+      <v-icon>file_download</v-icon> {{ $t('buttons.downloadLogoPackage') }}</v-btn>
+  </component-section>
 
-      <v-btn class="btn-download" color="primary" href="/files/MadeInBasel-LogoPackage.zip" download="MadeInBasel-LogoPackage">
-        <v-icon>file_download</v-icon> {{ $t('buttons.downloadLogoPackage') }}</v-btn>
-    </div>
+  <component-section class="legal" dark>
+    <h2>{{ $t('legal') }}</h2>
 
+    <h4>{{ $t('disclaimer.heading') }}</h4>
+    <p>{{ $t('disclaimer.content') }}</p>
 
-  </section>
+    <h4>{{ $t('copyright.heading') }}</h4>
+    <p>{{ $t('copyright.content') }}</p>
 
-  <section class="legal section--dark">
-    <div class="wave wave-top"></div>
-    <div class="section-inner">
-      <div class="boundaries" v-scroll-reveal="{
-    scale: 1,
-    delay: 200,
-    distance: '20px'
-  }">
-        <h2>{{ $t('legal') }}</h2>
+    <h4>{{ $t('cookies.heading') }}</h4>
+    <p v-html="$t('cookies.content')"></p>
+  </component-section>
 
-        <h4>{{ $t('disclaimer.heading') }}</h4>
-        <p>{{ $t('disclaimer.content') }}</p>
-
-        <h4>{{ $t('copyright.heading') }}</h4>
-        <p>{{ $t('copyright.content') }}</p>
-
-        <h4>{{ $t('cookies.heading') }}</h4>
-        <p v-html="$t('cookies.content')"></p>
-      </div>
-    </div>
-    <div class="wave wave-bottom"></div>
-  </section>
-
-  <section>
-    <div class="section-inner boundaries" v-scroll-reveal="{
-    scale: 1,
-    delay: 200,
-    distance: '20px'
-  }">
-      <h2>{{ $t('terms') }}</h2>
-      <component-terms />
-    </div>
-  </section>
+  <component-section class="legal">
+    <h2>{{ $t('terms') }}</h2>
+    <component-terms />
+  </component-section>
 
 </div>
 </template>
@@ -84,12 +60,14 @@
 import address from '~/components/contactAddress.vue'
 import terms from '~/components/terms.vue'
 import contactForm from '~/components/contactForm.vue'
+import section from '~/components/section.vue'
 
 export default {
   components: {
     'component-address': address,
     'component-terms': terms,
-    'component-contact-form': contactForm
+    'component-contact-form': contactForm,
+    'component-section': section
   },
   head() {
     return {

@@ -1,28 +1,26 @@
 <template>
 <div id="members">
-  <section>
-    <div class="section-inner boundaries" v-scroll-reveal="{
-    scale: 1,
-    delay: 200,
-    distance: '20px'
-  }">
-      <h1>{{ $t('pages.stories') }}</h1>
-      <div class="abstract" v-html="$t('intro.abstract')"></div>
-      <div class="text-xs-center">
-        <i>{{ $t('placeholder') }}</i>
-      </div>
-
+  <component-section>
+    <h1>{{ $t('pages.stories') }}</h1>
+    <div class="abstract" v-html="$t('intro.abstract')"></div>
+    <div class="text-xs-center">
+      <i>{{ $t('placeholder') }}</i>
     </div>
-  </section>
+  </component-section>
 </div>
 </template>
 
 <script>
+import section from '~/components/section.vue'
+
 export default {
   head() {
     return {
       title: this.$t('pages.stories')
     }
+  },
+  components: {
+    'component-section': section
   },
   i18n: {
     messages: {
