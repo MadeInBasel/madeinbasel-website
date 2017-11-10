@@ -18,7 +18,8 @@
     "vue-loading-spinner": "^1.0.10",
     "vue-scroll-reveal": "^1.0.3",
     "vuetify": "^0.16.9",
-    "webfontloader": "^1.6.28"
+    "webfontloader": "^1.6.28",
+    "vue": "~2.4.2"
   },
   "scripts": {
     "dev": "nuxt",
