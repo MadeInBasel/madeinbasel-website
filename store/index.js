@@ -1,24 +1,30 @@
-export const state = () => ({
-  locales: ['en', 'de'],
-  locale: 'en',
-  user: null,
-  db: null,
-  animations: true
-})
+import Vuex from 'vuex'
 
-export const mutations = {
-  SET_LANG(state, locale) {
-    if (state.locales.indexOf(locale) !== -1) {
-      state.locale = locale
+const createStore = () => {
+  return new Vuex.Store({
+    state: {
+      locales: ['en', 'de'],
+      locale: 'en',
+      animations: true,
+      user: null
+    },
+    mutations: {
+      SET_LANG(state, locale) {
+        if (state.locales.indexOf(locale) !== -1) {
+          state.locale = locale
+        }
+      },
+      TOGGLE_ANIMATIONS(state, animations) {
+        state.animations = animations
+      },
+      FILL_DB(state, db) {
+        state.db = db
+      },
+      UPDATE_USER(state, user) {
+        state.user = user
+      }
     }
-  },
-  UPDATE_USER(state, user) {
-    state.user = user
-  },
-  FILL_DB(state, db) {
-    state.db = db
-  },
-  TOGGLE_ANIMATIONS(state, animations) {
-    state.animations = animations
-  }
+  })
 }
+
+export default createStore
