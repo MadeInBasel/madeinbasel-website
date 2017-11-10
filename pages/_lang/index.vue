@@ -5,7 +5,7 @@
       display: none;
     }
   </style>
-  <section class="wallpaper boundaries intro">
+  <section class="wallpaper boundaries">
     <div v-show="!ready" class="spinner">
       <v-progress-circular indeterminate color="primary"></v-progress-circular>
     </div>
@@ -17,48 +17,34 @@
     </div>
   </section>
 
-  <section class="section--dark">
-    <div class="wave wave-top"></div>
-    <div class="section-inner">
-      <div class="boundaries" v-scroll-reveal="{
-    scale: 1,
-    delay: 200,
-    distance: '20px'
-  }">
-        <h2>{{ $t('intro.heading')}}</h2>
-        <div class="abstract" v-html="$t('intro.abstract', {mib: '<strong>Made in Basel</strong>'})"></div>
-        <div class="text-xs-center">
-          <v-btn outline dark large :to="localePath('/label')">{{ $t('buttons.learnMore') }}</v-btn>
-        </div>
-      </div>
+  <component-section dark>
+    <h2>{{ $t('intro.heading')}}</h2>
+    <div class="abstract" v-html="$t('intro.abstract', {mib: '<strong>Made in Basel</strong>'})"></div>
+    <div class="text-xs-center">
+      <v-btn outline dark large :to="localePath('/label')">{{ $t('buttons.learnMore') }}</v-btn>
     </div>
-    <div class="wave wave-bottom"></div>
-  </section>
+  </component-section>
 
-  <section>
-    <div class="section-inner boundaries" v-scroll-reveal="{
-    scale: 1,
-    delay: 200,
-    distance: '20px'
-  }">
-      <h2>{{ $t('members.heading')}}</h2>
-      <div class="abstract" v-html="$t('members.abstract', {mib: '<strong>Made in Basel</strong>'})"></div>
-      <component-members paging=8 />
-      <div class="text-xs-center">
-        <v-btn color="primary" large :to="localePath('/members')">{{ $t('buttons.allMembers') }}</v-btn>
-      </div>
+  <component-section>
+    <h2>{{ $t('members.heading')}}</h2>
+    <div class="abstract" v-html="$t('members.abstract', {mib: '<strong>Made in Basel</strong>'})"></div>
+    <component-members paging=8 />
+    <div class="text-xs-center">
+      <v-btn color="primary" large :to="localePath('/members')">{{ $t('buttons.allMembers') }}</v-btn>
     </div>
-  </section>
+  </component-section>
 
 </div>
 </template>
 
 <script>
 import members from '~/components/members.vue'
+import section from '~/components/section.vue'
 
 export default {
   components: {
-    'component-members': members
+    'component-members': members,
+    'component-section': section
   },
   head() {
     return {

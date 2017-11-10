@@ -1,108 +1,70 @@
 <template>
 <div id="label">
-  <section class="intro mission">
-    <div class="section-inner boundaries" v-scroll-reveal="{
-    scale: 1,
-    delay: 200,
-    distance: '20px'
-  }">
-      <h1>{{ $t('pages.label') }}</h1>
-      <div class="abstract" v-html="$t('mission.abstract')"></div>
-      <img class="logo" src="~assets/images/logo.svg" alt="Logo">
-    </div>
-    <div class="more">
-      <v-icon>expand_more</v-icon>
-    </div>
-  </section>
+  <component-section class="mission">
+    <h1>{{ $t('pages.label') }}</h1>
+    <div class="abstract" v-html="$t('mission.abstract')"></div>
+    <img class="logo" src="~assets/images/logo.svg" alt="Logo">
+  </component-section>
 
-  <section class="section--dark">
-    <div class="wave wave-top"></div>
-    <div class="section-inner">
-      <div class="boundaries" v-scroll-reveal="{
-    scale: 1,
-    delay: 200,
-    distance: '20px'
-  }">
-        <div class="benefits">
-          <h2>{{ $t('benefits.heading')}}</h2>
-          <div class="abstract" v-html="$t('benefits.abstract', {mib: '<strong>Made in Basel</strong>'})"></div>
-          <v-layout wrap class="benefits-list">
-            <v-flex md6 class="box">
-              <div class="box-inner">
-                <h4>{{ $t('benefits.consumers.heading') }}</h4>
-                <ul>
-                  <li v-for="(item, i) in $t('benefits.consumers.arguments')" :key="i">{{ item }}</li>
-                </ul>
-              </div>
-            </v-flex>
-            <v-flex md6 class="box">
-              <div class="box-inner">
-                <h4>{{ $t('benefits.manufacturers.heading') }}</h4>
-                <ul>
-                  <li v-for="(item, i) in $t('benefits.manufacturers.arguments')" :key="i">{{ item }}</li>
-                </ul>
-              </div>
-            </v-flex>
-          </v-layout>
+  <component-section class="benefits" dark>
+    <h2>{{ $t('benefits.heading')}}</h2>
+    <div class="abstract" v-html="$t('benefits.abstract', {mib: '<strong>Made in Basel</strong>'})"></div>
+    <v-layout wrap class="benefits-list">
+      <v-flex md6 class="box">
+        <div class="box-inner">
+          <h4>{{ $t('benefits.consumers.heading') }}</h4>
+          <ul>
+            <li v-for="(item, i) in $t('benefits.consumers.arguments')" :key="i">{{ item }}</li>
+          </ul>
         </div>
-      </div>
-    </div>
-    <div class="wave wave-bottom"></div>
-  </section>
-
-  <section>
-    <div class="section-inner boundaries" v-scroll-reveal="{
-scale: 1,
-delay: 200,
-distance: '20px'
-}">
-      <h2>{{ $t('values.heading')}}</h2>
-      <div class="abstract" v-html="$t('values.abstract', {mib: '<strong>Made in Basel</strong>'})"></div>
-      <v-layout wrap>
-        <v-flex md4 class="box" v-for="(item, i) in $t('values.values')" :key="i">
-          <div class="box-inner">
-            <h4>{{ item.heading }}</h4>
-            <p>{{ item.description }}</p>
-          </div>
-        </v-flex>
-      </v-layout>
-    </div>
-  </section>
-
-  <section class="section--dark">
-    <div class="wave wave-top"></div>
-    <div class="section-inner">
-      <div class="boundaries">
-        <h2>{{ $t('vision.heading')}}</h2>
-        <div class="abstract" v-html="$t('vision.abstract')"></div>
-      </div>
-    </div>
-    <div class="wave wave-bottom"></div>
-  </section>
-
-  <section class="brand">
-    <div class="section-inner">
-      <div class="boundaries" v-scroll-reveal="{
-      scale: 1,
-      delay: 200,
-      distance: '20px'
-    }">
-        <h2>{{ $t('brand.heading')}}</h2>
-        <div class="abstract" v-html="$t('brand.abstract')"></div>
-        <div class="text-xs-center">
-          <v-btn class="btn-download" color="primary" href="/files/MadeInBasel-LogoPackage.zip" download="MadeInBasel-LogoPackage">
-            <v-icon>file_download</v-icon> {{ $t('buttons.downloadLogoPackage') }}</v-btn>
+      </v-flex>
+      <v-flex md6 class="box">
+        <div class="box-inner">
+          <h4>{{ $t('benefits.manufacturers.heading') }}</h4>
+          <ul>
+            <li v-for="(item, i) in $t('benefits.manufacturers.arguments')" :key="i">{{ item }}</li>
+          </ul>
         </div>
-      </div>
+      </v-flex>
+    </v-layout>
+  </component-section>
 
+  <component-section>
+    <h2>{{ $t('values.heading')}}</h2>
+    <div class="abstract" v-html="$t('values.abstract', {mib: '<strong>Made in Basel</strong>'})"></div>
+    <v-layout wrap>
+      <v-flex md4 class="box" v-for="(item, i) in $t('values.values')" :key="i">
+        <div class="box-inner">
+          <h4>{{ item.heading }}</h4>
+          <p>{{ item.description }}</p>
+        </div>
+      </v-flex>
+    </v-layout>
+  </component-section>
+
+  <component-section dark>
+    <h2>{{ $t('vision.heading')}}</h2>
+    <div class="abstract" v-html="$t('vision.abstract')"></div>
+  </component-section>
+
+  <component-section class="brand">
+    <h2>{{ $t('brand.heading')}}</h2>
+    <div class="abstract" v-html="$t('brand.abstract')"></div>
+    <div class="text-xs-center">
+      <v-btn class="btn-download" color="primary" href="/files/MadeInBasel-LogoPackage.zip" download="MadeInBasel-LogoPackage">
+        <v-icon>file_download</v-icon> {{ $t('buttons.downloadLogoPackage') }}</v-btn>
     </div>
-  </section>
+  </component-section>
 </div>
 </template>
 
 <script>
+import section from '~/components/section.vue'
+
 export default {
-  components: {},
+  components: {
+    'component-section': section
+  },
   head() {
     return {
       title: this.$t('pages.label')
