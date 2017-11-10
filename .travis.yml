@@ -4,7 +4,7 @@ node_js: 8
 install:
   - yarn
 
-script: npm generate
+script: npm run generate
 
 deploy:
   skip_cleanup: true
