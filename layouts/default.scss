@@ -230,7 +230,7 @@ h3 {
   flex-direction: column;
   position: relative;
 
-  .btn-close {
+  .btn-x {
     background-color: transparent !important;
     position: absolute;
     right: 0;
@@ -255,6 +255,10 @@ h3 {
     justify-content: flex-end;
     margin-top: 0.5em;
     padding: 0.5em;
+
+    .btn-close {
+      margin: 0;
+    }
   }
 }
 @keyframes rainbow {

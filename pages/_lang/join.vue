@@ -6,18 +6,20 @@
     <component-join v-on:success="dialog=true" />
     <small class="join-addendum center-block"><span v-html="$t('free-notice', {mib: '<strong>Made in Basel</strong>'})"></span>&nbsp; <a href="mailto:hello@madeinbasel.org">hello@madeinbasel.org</a></small>
     <v-dialog v-model="dialog" max-width="600" content-class="dialog--custom dialog--done">
-      <div class="text-xs-center done">
-        <v-icon color="success">check_circle</v-icon>
-      </div>
-      <h3>{{ $t('success.heading ')}}!</h3>
-      <div class="abstract">
-        {{ $t('success.abstract ')}}
-      </div>
-      <div class="text-xs-center">
-        <a href="https://twitter.com/madeinbasel" target="_blank">Follow @madeinbasel</a>
+      <div class="dialog-content">
+        <div class="text-xs-center done">
+          <v-icon color="success">check_circle</v-icon>
+        </div>
+        <h3>{{ $t('success.heading ')}}!</h3>
+        <div class="abstract">
+          {{ $t('success.abstract ')}}
+        </div>
+        <div class="text-xs-center">
+          <a href="https://twitter.com/madeinbasel" target="_blank">Follow @madeinbasel</a>
+        </div>
       </div>
       <div class="dialog-footer">
-        <v-btn color="primary" @click="dialog = false">{{ $t('buttons.close' )}}</v-btn>
+        <v-btn small flat class="btn-close" @click="dialog = false">{{ $t('buttons.close' )}}</v-btn>
       </div>
     </v-dialog>
   </component-section>
