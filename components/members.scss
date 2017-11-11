@@ -156,28 +156,38 @@
       display: flex;
       flex-direction: column;
       position: relative;
-      padding: 10px 4vw;
+      padding: 0 4vw 10px;
     }
 
     .content-logo {
-      align-items: center;
       display: flex;
       width: 100%;
       justify-content: center;
       position: relative;
-      margin-top: -20%;
+      margin-top: -50px;
       margin-bottom: 0.5em;
+      @media(min-width: $breakpointMini) {
+        margin-top: -60px;
+      }
+      @media(min-width: $breakpointSmall) {
+        margin-top: -75px;
+      }
 
       img {
         background-color: white;
         border: 1px solid rgba(0,0,0,.05);
         border-radius: 50%;
         box-shadow: 0 1px 5px rgba(0,0,0,.1);
-        display: inline-flex;
-        padding: 3px;
-        width: 45%;
+        padding: 2px;
+        width: 100px;
+        height: 100px;
+        @media(min-width: $breakpointMini) {
+          width: 120px;
+          height: 120px;
+        }
         @media(min-width: $breakpointSmall) {
-          width: 30%;
+          width: 150px;
+          height: 150px;
         }
       }
     }
