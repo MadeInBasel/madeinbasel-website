@@ -66,8 +66,8 @@
 
 
         <div v-if="item.data.hasOwnProperty('description')" class="content-description abstract">
-          <q v-if="item.data.description.en && ($i18n.locale === 'en' || user)">{{ item.data.description.en }}</q>
-          <q v-if="item.data.description.de && ($i18n.locale === 'de' || user)">{{ item.data.description.de }}</q>
+          <q v-if="item.data.description.en && ($i18n.locale === 'en' || isAuthor(item))">{{ item.data.description.en }}</q>
+          <q v-if="item.data.description.de && ($i18n.locale === 'de' || isAuthor(item))">{{ item.data.description.de }}</q>
         </div>
 
         <div class="content-social">
@@ -102,20 +102,20 @@
             </svg>
           </v-btn>
         </div>
-        <div v-if="user && (user.uid === item.data.owner || user.isAdmin)" class="admin" :class="{danger: confirmDelete}">
+        <div v-if="isAuthor(item)" class="admin" :class="{danger: confirmDelete}">
           <div class="admin-title">Admin</div>
           <div v-if="confirmDelete">
             <div class="abstract">
               {{ $t('admin.confirmDelete') }}
             </div>
-            <v-btn v-if="user.uid === item.data.owner || user.isAdmin" color="error" :loading="loadingDelete" :disabled="loadingDelete" @click="deleteEntry(item.id)">
+            <v-btn v-if="isAuthor(item)" color="error" :loading="loadingDelete" :disabled="loadingDelete" @click="deleteEntry(item.id)">
               {{ $t('buttons.confirm') }}</v-btn>
-            <v-btn v-if="user.uid === item.data.owner || user.isAdmin" color="primary" @click="confirmDelete = false">
+            <v-btn v-if="isAuthor(item)" color="primary" @click="confirmDelete = false">
               {{ $t('buttons.cancel') }}</v-btn>
           </div>
 
           <div v-else>
-            <v-btn v-if="user.uid === item.data.owner || user.isAdmin" color="error" @click="confirmDelete = true">
+            <v-btn v-if="isAuthor(item)" color="error" @click="confirmDelete = true">
               {{ $t('buttons.delete') }}</v-btn>
             <v-btn v-if="user.isAdmin && !item.data.verified" color="primary" :loading="loadingVerify" :disabled="loadingVerify" @click="verifyEntry(item.id)">
               {{ $t('buttons.verify') }}</v-btn>
@@ -174,6 +174,9 @@ export default {
     }
   },
   methods: {
+    isAuthor: function (item) {
+      return this.user && (this.user.uid === item.data.owner || this.user.isAdmin)
+    },
     getMembers: function () {
       this.ready = false
       var self = this
