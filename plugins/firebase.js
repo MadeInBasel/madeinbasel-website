@@ -5,7 +5,7 @@ import {
 
 export default ({
   app,
-  isClient,
+  client,
   store
 }) => {
   const firebase = require("firebase");
