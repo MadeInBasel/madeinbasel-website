@@ -37,7 +37,7 @@
     </v-flex>
   </transition-group>
 
-  <v-dialog v-if="item.data" lazy v-model="dialog" max-width="600" content-class="dialog--custom" :fullscreen="$vuetify.breakpoint.xsOnly">
+  <v-dialog v-if="item.data" lazy v-model="dialog" max-width="600" content-class="dialog--custom dialog--member" :fullscreen="$vuetify.breakpoint.xsOnly">
     <div class="dialog-content">
       <v-carousel hide-controls v-if="item.data.hasOwnProperty('organisationPhotos') && item.data.organisationPhotos">
         <v-carousel-item v-for="(image,i) in item.data.organisationPhotos.count" :key="i" :src="item.data.organisationPhotos.cdnUrl + 'nth/' + i + '/-/preview/960x540/'"></v-carousel-item>
@@ -109,12 +109,12 @@
         </div>
       </div>
     </div>
-    <v-btn class="btn-close" fab small @click="dialog = false">
+    <v-btn class="btn-x" fab small @click="dialog = false">
       <v-icon>close</v-icon>
     </v-btn>
     <div class="dialog-footer">
-      <v-btn small flat @click="dialog = false">
-        <v-icon>close</v-icon> {{ $t('buttons.close') }}
+      <v-btn class="btn-close" small flat @click="dialog = false">
+        {{ $t('buttons.close') }}
       </v-btn>
     </div>
   </v-dialog>
