@@ -91,9 +91,18 @@ module.exports = {
   ],
 
   router: {
-    middleware: 'i18n',
-    extendRoutes(routes) {
-      routes.reverse()  // Hack to ensure "/:lang/:memberId" is the last route
+    middleware: 'i18n-redirect',
+    extendRoutes (routes) {
+      // move this to the middleware?
+      routes.forEach(route => {
+        const {path} = route
+        route.path = `/:lang(\\w{2})${path}`
+      })
+      routes.push({
+        path: '/',
+        component: 'pages/index.vue'
+      })
+      return routes
     }
   },
 
