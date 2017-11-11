@@ -1,6 +1,6 @@
 <template>
 <div class="language" :title="$t('language')">
-  <template v-for="lang in $store.state.locales">
+  <template v-for="lang in Object.keys($i18n.messages)">
     <template v-if="$i18n.locale === lang">
       <strong>{{ $t('links.'+lang) }}</strong>
     </template>

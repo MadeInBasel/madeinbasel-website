@@ -67,12 +67,6 @@ module.exports = {
     src: '~plugins/vuetify.js'
   },
     {
-      src: '~plugins/i18n.js'
-    },
-    {
-      src: '~plugins/localePath.js'
-    },
-    {
       src: '~plugins/ga.js',
       ssr: false
     },
@@ -90,21 +84,9 @@ module.exports = {
     }
   ],
 
-  router: {
-    middleware: 'i18n-redirect',
-    extendRoutes (routes) {
-      // move this to the middleware?
-      routes.forEach(route => {
-        const {path} = route
-        route.path = `/:lang(\\w{2})${path}`
-      })
-      routes.push({
-        path: '/',
-        component: 'pages/index.vue'
-      })
-      return routes
-    }
-  },
+  modules: [
+    ['~/modules/i18n-routes/index', {languages: ['en', 'de']}]
+  ],
 
   /*
    ** Build configuration
@@ -115,7 +97,7 @@ module.exports = {
      ** Run ESLINT on save
      */
     extend (config, ctx) {
-      if (ctx.isClient) {
+      if (ctx.client) {
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
