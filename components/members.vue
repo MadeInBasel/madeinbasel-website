@@ -57,15 +57,13 @@
         <div class="content-logo">
           <img :src="item.data.organisationImage.cdnUrl + '-/preview/300x300/'" :alt="item.data.organisationName">
         </div>
-        <div class="content-name">
+        <div class="content-name" :title="$t('memberSince') + ': ' + getYear()">
           <strong>{{ item.data.organisationName }}</strong>
         </div>
         <div class="content-industry" v-if="item.data.hasOwnProperty('industry') && item.data.industry >= 0">
           {{ $t('industries[' + `${item.data.industry}` + ']') }}
         </div>
-        <div class="content-timestamp" v-if="item.data.hasOwnProperty('timestamp')">
-          {{ $t('memberSince') }}: {{ getYear() }}
-        </div>
+
 
         <div v-if="item.data.hasOwnProperty('description')" class="content-description abstract">
           <q v-if="item.data.description.en && ($i18n.locale === 'en' || user)">{{ item.data.description.en }}</q>
@@ -104,7 +102,6 @@
             </svg>
           </v-btn>
         </div>
-
         <div v-if="user && (user.uid === item.data.owner || user.isAdmin)" class="admin" :class="{danger: confirmDelete}">
           <div class="admin-title">Admin</div>
           <div v-if="confirmDelete">
