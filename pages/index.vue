@@ -1,11 +1,8 @@
 <template>
 <div id="index">
   <section class="wallpaper boundaries">
-    <div v-show="!ready" class="spinner">
-      <v-progress-circular indeterminate color="primary"></v-progress-circular>
-    </div>
     <transition name="transition-down">
-      <img v-show="ready" class="logo" src="~assets/images/logo.svg" alt="Logo">
+      <img class="logo" src="~assets/images/logo.svg" alt="Logo">
     </transition>
     <div class="more">
       <v-icon>expand_more</v-icon>
