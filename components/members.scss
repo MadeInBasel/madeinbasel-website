@@ -156,7 +156,10 @@
       display: flex;
       flex-direction: column;
       position: relative;
-      padding: 0 4vw 10px;
+      padding: 0 4vw 4vw;
+      @media(min-width: $breakpointSmall) {
+        padding: 0 25px 25px;
+      }
     }
 
     .content-logo {
@@ -196,6 +199,10 @@
       font-size: 1.1em;
     }
 
+    .content-timestamp {
+      font-size: 0.8em;
+    }
+
     .content-description {
       margin-top: 1em;
       margin-bottom: 1em;
@@ -205,20 +212,13 @@
       }
     }
 
-    .content-buttons {
-      align-items: center;
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 1em;
-
-      .btn {
-        margin-bottom: 0;
-      }
-    }
-
     .content-social {
-      > a {
-        padding: 4px;
+      .btn {
+        margin: 0;
+
+        svg path {
+          fill: $colorFg;
+        }
       }
     }
   }
