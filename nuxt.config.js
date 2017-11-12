@@ -5,8 +5,8 @@ module.exports = {
     title: 'Made in Basel',
     titleTemplate: '%s - Made in Basel',
     meta: [{
-        charset: 'utf-8'
-      },
+      charset: 'utf-8'
+    },
       {
         name: 'viewport',
         content: 'width=device-width, initial-scale=1'
@@ -23,10 +23,10 @@ module.exports = {
       }
     ],
     link: [{
-        rel: 'icon',
-        type: 'image/x-icon',
-        href: '/favicon.ico'
-      },
+      rel: 'icon',
+      type: 'image/x-icon',
+      href: '/favicon.ico'
+    },
       {
         rel: 'apple-touch-icon',
         href: '/apple-touch-icon.png'
@@ -54,9 +54,9 @@ module.exports = {
   },
 
   css: [{
-      src: '~assets/styles/app.styl',
-      lang: 'styl'
-    },
+    src: '~assets/styles/app.styl',
+    lang: 'styl'
+  },
     {
       src: '~assets/styles/variables.scss',
       lang: 'scss'
@@ -64,14 +64,8 @@ module.exports = {
   ],
 
   plugins: [{
-      src: '~plugins/vuetify.js'
-    },
-    {
-      src: '~plugins/i18n.js'
-    },
-    {
-      src: '~plugins/localePath.js'
-    },
+    src: '~plugins/vuetify.js'
+  },
     {
       src: '~plugins/ga.js',
       ssr: false
@@ -90,9 +84,9 @@ module.exports = {
     }
   ],
 
-  router: {
-    middleware: 'i18n'
-  },
+  modules: [
+    ['~/modules/i18n-routes/index', {languages: ['en', 'de']}]
+  ],
 
   /*
    ** Build configuration
@@ -102,8 +96,8 @@ module.exports = {
     /*
      ** Run ESLINT on save
      */
-    extend(config, ctx) {
-      if (ctx.isClient) {
+    extend (config, ctx) {
+      if (ctx.client) {
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
@@ -115,6 +109,6 @@ module.exports = {
   },
 
   generate: {
-    routes: ['/', '/de', '/admin', 'de/admin', '/stories', 'de/stories', '/join', '/de/join', '/label', '/de/label', '/members', '/de/members', '/about', '/de/about']
+    routes: ['/en', '/de', '/en/admin', '/de/admin', '/en/stories', '/de/stories', '/en/join', '/de/join', '/en/label', '/de/label', '/en/members', '/de/members', '/en/about', '/de/about']
   }
 }
