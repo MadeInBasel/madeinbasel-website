@@ -32,7 +32,12 @@ const about = [{
   }
 ]
 
-const social = [{
+const social = [
+  {
+    url: 'https://instagram.com/madeinbasel',
+    label: 'Instagram'
+  },
+  {
     url: 'https://twitter.com/madeinbasel',
     label: 'Twitter'
   },

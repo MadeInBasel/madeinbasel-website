@@ -5,7 +5,11 @@
 
     <v-layout wrap>
       <v-flex xs12 sm6 order-sm2>
+        <div><strong>Impressum</strong></div>
         <component-address />
+
+        <div><strong>Social</strong></div>
+        <component-socialMenu />
         <v-dialog class="contact-dialog" v-model="contactDialog" max-width="600" content-class="dialog--custom dialog--contact">
           <v-btn class="btn-contact" color="primary" slot="activator">{{ $t('contactForm') }}</v-btn>
           <component-contact-form />
@@ -31,13 +35,18 @@
       </v-flex>
     </v-layout>
 
+  </component-section>
+
+  <component-section dark>
+
+    <h2>Member Zone</h2>
     <v-btn class="btn-download" color="primary" href="/files/MadeInBasel-LogoPackage.zip" download="MadeInBasel-LogoPackage">
       <v-icon>file_download</v-icon> {{ $t('buttons.downloadLogoPackage') }}</v-btn>
   </component-section>
 
-  <component-section class="legal" dark>
+  <component-section class="legal">
     <h2>{{ $t('legal') }}</h2>
-
+    <component-terms />
     <h4>{{ $t('disclaimer.heading') }}</h4>
     <p>{{ $t('disclaimer.content') }}</p>
 
@@ -48,11 +57,6 @@
     <p v-html="$t('cookies.content')"></p>
   </component-section>
 
-  <component-section class="legal">
-    <h2>{{ $t('terms') }}</h2>
-    <component-terms />
-  </component-section>
-
 </div>
 </template>
 
@@ -61,13 +65,15 @@ import address from '~/components/contactAddress.vue'
 import terms from '~/components/terms.vue'
 import contactForm from '~/components/contactForm.vue'
 import section from '~/components/section.vue'
+import socialMenu from '~/components/socialMenu.vue'
 
 export default {
   components: {
     'component-address': address,
     'component-terms': terms,
     'component-contact-form': contactForm,
-    'component-section': section
+    'component-section': section,
+    'component-socialMenu': socialMenu
   },
   head() {
     return {
