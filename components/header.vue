@@ -5,7 +5,7 @@
       {{ user.isAdmin ? '★' : '' }} {{ user.displayName ? user.displayName : user.email }}
     </nuxt-link>
     <nuxt-link v-show="$route.name != 'index'" class="logo" :to="localePath('/')">
-      <img src="~assets/images/logo-seal.svg" alt="Logo">
+      <img src="~assets/images/logo-brandmark.svg" alt="Logo">
     </nuxt-link>
     <ul class="header-navigation-menu">
       <nuxt-link v-ripple tag="li" :to="localePath(`${about[0].path}`)">
