@@ -30,6 +30,9 @@ module.exports = function (moduleOptions) {
 
   // Add routes
   this.extendRoutes(function (routes) {
+    routes.sort((a, b) => {
+      return b['path'].length - a['path'].length
+    })
     routes.forEach(route => {
       const {path} = route
       route.path = `/:lang(\\w{2})${path}`
