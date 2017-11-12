@@ -79,6 +79,10 @@ module.exports = {
       ssr: false
     },
     {
+      src: '~plugins/vue-esc.js',
+      ssr: false
+    },
+    {
       src: '~plugins/firebase.js',
       ssr: false
     }

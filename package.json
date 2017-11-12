@@ -15,6 +15,7 @@
     "underscore": "^1.8.3",
     "uploadcare-widget": "^3.2.0",
     "vue": "~2.4.2",
+    "vue-esc": "^2.0.0",
     "vue-i18n": "^7.3.2",
     "vue-loading-spinner": "^1.0.10",
     "vue-scroll-reveal": "^1.0.3",
