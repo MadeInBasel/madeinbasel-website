@@ -6,7 +6,6 @@ middleware['i18n-routes'] = function ({isHMR, app, store, route, params, error, 
     return
   }
 
-
   const urlLanguage = params.lang
   if (urlLanguage) {
     if (options.languages.indexOf(urlLanguage) === -1) {
