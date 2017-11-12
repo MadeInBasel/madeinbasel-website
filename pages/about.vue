@@ -5,7 +5,11 @@
 
     <v-layout wrap>
       <v-flex xs12 sm6 order-sm2>
+        <div><strong>Impressum</strong></div>
         <component-address />
+
+        <div><strong>Social</strong></div>
+        <component-socialMenu />
         <v-dialog class="contact-dialog" v-model="contactDialog" max-width="600" content-class="dialog--custom dialog--contact">
           <v-btn class="btn-contact" color="primary" slot="activator">{{ $t('contactForm') }}</v-btn>
           <component-contact-form />
@@ -31,13 +35,20 @@
       </v-flex>
     </v-layout>
 
-    <v-btn class="btn-download" color="primary" href="/files/MadeInBasel-LogoPackage.zip" download="MadeInBasel-LogoPackage">
-      <v-icon>file_download</v-icon> {{ $t('buttons.downloadLogoPackage') }}</v-btn>
   </component-section>
 
-  <component-section class="legal" dark>
-    <h2>{{ $t('legal') }}</h2>
+  <component-section dark>
+    <h2>{{ $t('download.heading')}}</h2>
+    <div class="abstract" v-html="$t('download.abstract', {mib: '<strong>Made in Basel</strong>'})"></div>
+    <div class="text-xs-center">
+      <v-btn outline dark large href="/files/MadeInBasel-LogoPackage.zip" download="MadeInBasel-LogoPackage">
+        <v-icon>file_download</v-icon> {{ $t('buttons.downloadLogoPackage') }}</v-btn>
+    </div>
+  </component-section>
 
+  <component-section class="legal">
+    <h2>{{ $t('legal') }}</h2>
+    <component-terms />
     <h4>{{ $t('disclaimer.heading') }}</h4>
     <p>{{ $t('disclaimer.content') }}</p>
 
@@ -48,11 +59,6 @@
     <p v-html="$t('cookies.content')"></p>
   </component-section>
 
-  <component-section class="legal">
-    <h2>{{ $t('terms') }}</h2>
-    <component-terms />
-  </component-section>
-
 </div>
 </template>
 
@@ -61,13 +67,15 @@ import address from '~/components/contactAddress.vue'
 import terms from '~/components/terms.vue'
 import contactForm from '~/components/contactForm.vue'
 import section from '~/components/section.vue'
+import socialMenu from '~/components/socialMenu.vue'
 
 export default {
   components: {
     'component-address': address,
     'component-terms': terms,
     'component-contact-form': contactForm,
-    'component-section': section
+    'component-section': section,
+    'component-socialMenu': socialMenu
   },
   head() {
     return {
@@ -88,6 +96,10 @@ export default {
           editorial: 'Editorial/Stories',
           logo: 'Logo',
           support: 'Supporter'
+        },
+        download: {
+          heading: 'Downloads',
+          abstract: 'Download the {mib} label files for your marketing purposes. We\'d be happy if our logo finds a place on your website!'
         },
         legal: 'Legal Notices',
         terms: 'Terms (German)',
@@ -111,6 +123,10 @@ export default {
           editorial: 'Redaktion/Geschichten',
           logo: 'Logo',
           support: 'Unterstützer'
+        },
+        download: {
+          heading: 'Downloads',
+          abstract: 'Lade die {mib}-Logo-Dateien zur freien Verwendung herunter. Wir freuen uns, wenn unser Logo einen Platz auf deiner Webseite findet!'
         },
         legal: 'Rechtliche Hinweise',
         terms: 'Allgemeine Geschäftsbedingungen',

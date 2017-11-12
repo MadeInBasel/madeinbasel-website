@@ -33,7 +33,7 @@
     }
   }
 
-  .contact {
+  .component-contactAddress {
     margin-right: 50px;
     line-height: 1.4;
 
@@ -48,19 +48,16 @@
 
   .menu {
     margin-left: auto;
+  }
 
-    ul {
-      text-transform: uppercase;
-      margin: 0;
-      padding: 0;
-      line-height: 1.4;
-      list-style-type: none;
-
-      li {
-        @media (min-width: $breakpointMedium) {
-          display: inline;
-          margin-right: 10px;
-        }
+  .component-socialMenu {
+    li {
+      &.github {
+        display: none;
+      }
+      @media (min-width: $breakpointMedium) {
+        display: inline;
+        margin-right: 10px;
       }
     }
   }

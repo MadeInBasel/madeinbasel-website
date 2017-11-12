@@ -42,18 +42,9 @@
     </v-layout>
   </component-section>
 
-  <component-section dark>
+  <component-section dark hideBottomWave>
     <h2>{{ $t('vision.heading')}}</h2>
     <div class="abstract" v-html="$t('vision.abstract')"></div>
-  </component-section>
-
-  <component-section class="brand">
-    <h2>{{ $t('brand.heading')}}</h2>
-    <div class="abstract" v-html="$t('brand.abstract')"></div>
-    <div class="text-xs-center">
-      <v-btn class="btn-download" color="primary" href="/files/MadeInBasel-LogoPackage.zip" download="MadeInBasel-LogoPackage">
-        <v-icon>file_download</v-icon> {{ $t('buttons.downloadLogoPackage') }}</v-btn>
-    </div>
   </component-section>
 </div>
 </template>
@@ -116,10 +107,6 @@ export default {
             }
           ]
         },
-        brand: {
-          heading: 'Brandmark',
-          abstract: 'The main aspect of <strong>Made in Basel</strong> is the trade-mark shown above. It serves as a label and a distinctive brand. The use of the label is free of charge for all institutions and residents of Basel.'
-        },
         vision: {
           heading: 'Vision',
           abstract: '"Whoever has visions should go to the doctor." - <em>Helmut Schmidt</em>'
@@ -168,10 +155,6 @@ export default {
               description: 'Wir denken global, handeln lokal, glauben an Liberalismus, offene Grenzen und die Idee, in “Vielfalt vereint" zu sein.'
             }
           ]
-        },
-        brand: {
-          heading: 'Marke',
-          abstract: 'Hauptbestandteil von <strong>Made in Basel</strong> ist die eingangs abgebildete geschützte Wort-Bild-Marke. Sie dient als Label und als Erkennungsmerkmal. Die Verwendung des Labels steht grundsätzlich allen in Basel ansässigen Institutionen und Personen frei.'
         },
         vision: {
           heading: 'Vision',

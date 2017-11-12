@@ -1,14 +1,16 @@
 @import '~assets/styles/variables.scss';
 
 #legal {
-  .contact {
+  .component-contactAddress,
+  .component-socialMenu,
+  .contact-dialog {
+    margin-bottom: 1em;
+  }
+
+  .component-contactAddress {
     i {
       display: none;
     }
-  }
-
-  .contact-dialog {
-    margin-bottom: 1em;
   }
 
   .team {

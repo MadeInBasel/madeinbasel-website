@@ -24,7 +24,7 @@
           </v-list-tile-title>
         </v-list-tile>
         <v-divider inset></v-divider>
-        <v-list-tile v-for="(item, i) in social" :key="i" nuxt v-ripple :href="item.url" target="_blank" rel="noopener">
+        <v-list-tile v-for="(item, i) in social.slice(0, -1)" :key="i" nuxt v-ripple :href="item.url" target="_blank" rel="noopener">
           <v-list-tile-action>
             <v-icon class="grey--text text--darken-1">launch</v-icon>
           </v-list-tile-action>
