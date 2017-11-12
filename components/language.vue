@@ -1,6 +1,6 @@
 <template>
 <div class="language" :title="$t('language')">
-  <template v-for="lang in Object.keys($i18n.messages)">
+  <template v-for="(lang, i) in Object.keys($i18n.messages)">
     <template v-if="$i18n.locale === lang">
       <strong>{{ $t('links.'+lang) }}</strong>
     </template>
@@ -8,6 +8,9 @@
       <nuxt-link :to="{ params: {lang: lang} }" active-class="none" exact>
         {{ $t('links.'+lang) }}
       </nuxt-link>
+    </template>
+    <template v-if="i < lang.length-1">
+      |
     </template>
   </template>
 </div>
