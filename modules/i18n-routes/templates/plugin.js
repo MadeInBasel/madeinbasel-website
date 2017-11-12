@@ -12,6 +12,9 @@ export default ({app, store}) => {
     }),
     mutations: {
       setLanguage (state, language) {
+        if (options.languages.indexOf(language) === -1) {
+          throw new Error('Invalid language: ' + language)
+        }
         state.language = language
         app.i18n.locale = language
       }
@@ -29,18 +32,34 @@ export default ({app, store}) => {
     silentTranslationWarn: true
   })
 
-  const localePathHelper = {
-    install (app, options) {
-      app.mixin({
-        methods: {
-          localePath: function (url) {
-            return '/' + store.state['i18n-routes'].language + url
-          }
+
+  let mixinMethods = {
+    localePath: function (url) {
+      return '/' + store.state['i18n-routes'].language + url
+    },
+    detectLanguage: function () {
+      let languageList = []
+      if (typeof navigator !== 'undefined') {
+        if (navigator.userLanguage) {
+          languageList.unshift(navigator.userLanguage.substring(0, 2))
         }
+        if (navigator.language) {
+          languageList.unshift(navigator.language.substring(0, 2))
+        }
+      }
+      let language = languageList.find((language) => {
+        return (options.languages.indexOf(language) !== -1)
       })
+      return language || options.languages[0]
     }
   }
-  Vue.use(localePathHelper)
+  Vue.use({
+    install (app) {
+      app.mixin({
+        methods: mixinMethods
+      })
+    }
+  })
 }
 
 function registerStoreModule (store, name, definition) {

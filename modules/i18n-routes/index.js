@@ -21,6 +21,13 @@ module.exports = function (moduleOptions) {
     options: moduleOptions
   })
 
+  // Add redirect page
+  this.addTemplate({
+    src: resolve(__dirname, './templates/redirect.vue'),
+    fileName: 'i18n-routes.redirect.vue',
+    options: moduleOptions
+  })
+
   // Add routes
   this.extendRoutes(function (routes) {
     routes.forEach(route => {
@@ -29,7 +36,7 @@ module.exports = function (moduleOptions) {
     })
     routes.push({
       path: '/',
-      component: 'pages/index.vue'
+      component: '.nuxt/i18n-routes.redirect.vue'
     })
     return routes
   })
