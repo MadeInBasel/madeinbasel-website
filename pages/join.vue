@@ -21,14 +21,6 @@
       </div>
     </v-dialog>
   </component-section>
-  <component-section dark hideBottomWave>
-    <h2>{{ $t('download.heading')}}</h2>
-    <div class="abstract" v-html="$t('download.abstract', {mib: '<strong>Made in Basel</strong>'})"></div>
-    <div class="text-xs-center">
-      <v-btn outline dark large href="/files/MadeInBasel-LogoPackage.zip" download="MadeInBasel-LogoPackage">
-        <v-icon>file_download</v-icon> {{ $t('buttons.downloadLogoPackage') }}</v-btn>
-    </div>
-  </component-section>
 </div>
 </template>
 
@@ -55,10 +47,6 @@ export default {
     messages: {
       en: {
         abstract: 'It takes only 2 minutes to participate and the membership is free*. The more details you provide, the easier it is for others to find you.',
-        download: {
-          heading: 'Downloads',
-          abstract: 'Download the {mib} label files for your marketing purposes. We\'d be happy if our logo finds a place on your website!'
-        },
         success: {
           heading: 'Congratulations',
           abstract: 'Your data will be checked and your listing will be activated within the next days.'
@@ -66,10 +54,6 @@ export default {
       },
       de: {
         abstract: 'Nimm dir 2 Minuten Zeit um mitzumachen. Die Mitgliedschaft ist kostenlos*. Ausführliche Angaben helfen, um aus der Masse hervorzutreten und von Kunden und Partnern entdeckt zu werden.',
-        download: {
-          heading: 'Downloads',
-          abstract: 'Lade die {mib}-Logo-Dateien zur freien Verwendung herunter. Wir freuen uns, wenn unser Logo einen Platz auf deiner Webseite findet!'
-        },
         success: {
           heading: 'Gratulation',
           abstract: 'Deine Angaben werden geprüft und in den nächsten Tagen freigeschaltet.'

@@ -38,10 +38,12 @@
   </component-section>
 
   <component-section dark>
-
-    <h2>Member Zone</h2>
-    <v-btn class="btn-download" color="primary" href="/files/MadeInBasel-LogoPackage.zip" download="MadeInBasel-LogoPackage">
-      <v-icon>file_download</v-icon> {{ $t('buttons.downloadLogoPackage') }}</v-btn>
+    <h2>{{ $t('download.heading')}}</h2>
+    <div class="abstract" v-html="$t('download.abstract', {mib: '<strong>Made in Basel</strong>'})"></div>
+    <div class="text-xs-center">
+      <v-btn outline dark large href="/files/MadeInBasel-LogoPackage.zip" download="MadeInBasel-LogoPackage">
+        <v-icon>file_download</v-icon> {{ $t('buttons.downloadLogoPackage') }}</v-btn>
+    </div>
   </component-section>
 
   <component-section class="legal">
@@ -95,6 +97,10 @@ export default {
           logo: 'Logo',
           support: 'Supporter'
         },
+        download: {
+          heading: 'Downloads',
+          abstract: 'Download the {mib} label files for your marketing purposes. We\'d be happy if our logo finds a place on your website!'
+        },
         legal: 'Legal Notices',
         terms: 'Terms (German)',
         disclaimer: {
@@ -117,6 +123,10 @@ export default {
           editorial: 'Redaktion/Geschichten',
           logo: 'Logo',
           support: 'Unterstützer'
+        },
+        download: {
+          heading: 'Downloads',
+          abstract: 'Lade die {mib}-Logo-Dateien zur freien Verwendung herunter. Wir freuen uns, wenn unser Logo einen Platz auf deiner Webseite findet!'
         },
         legal: 'Rechtliche Hinweise',
         terms: 'Allgemeine Geschäftsbedingungen',
