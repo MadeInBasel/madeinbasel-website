@@ -7,7 +7,7 @@
     <v-btn v-if="!link" class="btn-dialog" color="primary" large slot="activator">{{ $t('label') }}</v-btn>
     <iframe src="https://docs.google.com/document/d/e/2PACX-1vRyzyY7NLVRU9xv4DGB6v7T46PpW9yg2eIn7Z0xDnQDyv24oEBxcaqfKPGeMdjlLlw0hTH9sLJhUQ3k/pub"></iframe>
     <div class="dialog-footer">
-      <v-btn color="primary" @click="dialog = false">{{ $t('buttons.close' )}}</v-btn>
+      <v-btn class="btn-close" small flat @click="dialog = false">{{ $t('buttons.close' )}}</v-btn>
     </div>
   </v-dialog>
 </div>
@@ -41,7 +41,7 @@ export default {
 
 <style media="screen">
 .dialog--terms {
-  padding: 20px 2vw;
+  padding: 20px 2vw 0;
 }
 
 .dialog--terms iframe {

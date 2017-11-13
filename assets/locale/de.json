@@ -6,14 +6,16 @@
   "pages": {
     "home": "Home",
     "label": "Das Label",
-    "join": "Mitmachen",
-    "members": "Mitglieder",
+    "apply": "Bewerben",
+    "explore": "Entdecken",
     "stories": "Portraits",
     "about": "Impressum",
     "admin": "Admin"
   },
   "buttons": {
     "accept": "Akzeptieren",
+    "applyNow": "Bewirb Dich",
+    "applyNew": "Neue Bewerbung",
     "edit": "Bearbeiten",
     "discard": "Verwerfen",
     "change": "Ändern",
@@ -87,6 +89,8 @@
     "Versicherung",
     "Öffentliche Verwaltung"
   ],
-  "free-notice": "*Hilf uns, unsere Dienstleistungen kostenlos und werbefrei zu halten, indem du Sponsor wirst.",
-  "placeholder": "In Bearbeitung"
+  "sponsor-notice": "Hilf uns, unsere Dienstleistungen kostenlos und werbefrei zu halten, indem du Sponsor wirst.",
+  "placeholder": "In Bearbeitung",
+  "memberQuestion": "Möchtest du Mitglied werden?",
+  "existingMemberQuestion": "Bereits Mitglied?"
 }

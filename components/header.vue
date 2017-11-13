@@ -8,8 +8,8 @@
       <img src="~assets/images/logo-brandmark.svg" alt="Logo">
     </nuxt-link>
     <ul class="header-navigation-menu">
-      <nuxt-link v-ripple tag="li" :to="localePath(`${about[0].path}`)">
-        <a>{{ $t(`${about[0].label}`) }}</a>
+      <nuxt-link v-ripple tag="li" :to="localePath(`${main[2].path}`)">
+        <a>{{ $t(`${main[2].label}`) }}</a>
       </nuxt-link>
       <li class="menu">
         <a href="javascript:;" v-ripple v-on:click.stop="openNavigation()">Menu</a>
@@ -23,12 +23,12 @@
 </template>
 
 <script>
-import { about } from '~/assets/menus.js'
+import { main } from '~/assets/menus.js'
 
 export default {
   data() {
     return {
-      about: about,
+      main: main,
       openNavigation: function () {
         this.$emit('drawer', true)
       }

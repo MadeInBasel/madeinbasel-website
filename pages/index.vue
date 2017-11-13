@@ -22,7 +22,7 @@
     <div class="abstract" v-html="$t('members.abstract', {mib: '<strong>Made in Basel</strong>'})"></div>
     <component-members paging=8 />
     <div class="text-xs-center">
-      <v-btn color="primary" large :to="localePath('/members')">{{ $t('buttons.allMembers') }}</v-btn>
+      <v-btn color="primary" large :to="localePath('/explore')">{{ $t('buttons.allMembers') }}</v-btn>
     </div>
   </component-section>
 

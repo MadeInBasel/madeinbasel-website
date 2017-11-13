@@ -109,6 +109,6 @@ module.exports = {
   },
 
   generate: {
-    routes: ['/en', '/de', '/en/admin', '/de/admin', '/en/stories', '/de/stories', '/en/join', '/de/join', '/en/label', '/de/label', '/en/members', '/de/members', '/en/about', '/de/about']
+    routes: ['/en', '/de', '/en/admin', '/de/admin', '/en/stories', '/de/stories', '/en/apply', '/de/apply', '/en/label', '/de/label', '/en/explore', '/de/explore', '/en/about', '/de/about']
   }
 }

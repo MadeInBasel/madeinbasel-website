@@ -6,14 +6,16 @@
   "pages": {
     "home": "Home",
     "label": "The Label",
-    "join": "Join Us",
-    "members": "Members",
+    "apply": "Apply",
+    "explore": "Explore",
     "stories": "Stories",
     "about": "About",
     "admin": "Admin"
   },
   "buttons": {
     "accept": "Accept",
+    "applyNow": "Apply Now",
+    "applyNew": "New Application",
     "edit": "Edit",
     "discard": "Discard",
     "change": "Change",
@@ -30,7 +32,7 @@
     "allMembers": "All Members",
     "learnMore": "Learn More",
     "downloadLogoPackage": "Get Logo Package",
-    "login": "Login",
+    "login": "Sign in",
     "logout": "Logout",
     "deleteAccount": "Delete Account",
     "uploadPhotos": "Upload Photos",
@@ -87,6 +89,8 @@
     "Insurance",
     "Public administration"
   ],
-  "free-notice": "*Help us to provide our services free of charge and without ads by becoming a sponsor.",
-  "placeholder": "work in progress"
+  "sponsor-notice": "Help us to provide our services free of charge and without ads by becoming a sponsor.",
+  "placeholder": "work in progress",
+  "memberQuestion": "Want to become a member?",
+  "existingMemberQuestion": "Already a member?"
 }

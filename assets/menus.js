@@ -9,21 +9,14 @@ const main = [{
     icon: 'lightbulb_outline'
   },
   {
-    path: '/members',
-    label: 'pages.members',
+    path: '/explore',
+    label: 'pages.explore',
     icon: 'face'
   },
   {
     path: '/stories',
     label: 'pages.stories',
     icon: 'favorite'
-  }
-]
-
-const about = [{
-    path: '/join',
-    label: 'pages.join',
-    icon: 'add_circle'
   },
   {
     path: '/about',
@@ -49,6 +42,5 @@ const social = [
 
 export {
   main,
-  about,
   social
 }

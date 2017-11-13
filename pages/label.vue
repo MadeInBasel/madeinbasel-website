@@ -46,6 +46,7 @@
     <h2>{{ $t('vision.heading')}}</h2>
     <div class="abstract" v-html="$t('vision.abstract')"></div>
   </component-section>
+
 </div>
 </template>
 
@@ -103,7 +104,7 @@ export default {
             },
             {
               heading: 'Openness',
-              description: 'We think globally, act locally, believe in liberalism, open borders and the idea of being “united in diversity”.'
+              description: 'We are liberal, think globally, act locally, believe open borders and the idea of being “united in diversity”.'
             }
           ]
         },
@@ -152,7 +153,7 @@ export default {
             },
             {
               heading: 'Weltoffenheit',
-              description: 'Wir denken global, handeln lokal, glauben an Liberalismus, offene Grenzen und die Idee, in “Vielfalt vereint" zu sein.'
+              description: 'Wir sind liberal, denken global, handeln lokal, glauben an offene Grenzen und die Idee, in “Vielfalt vereint" zu sein.'
             }
           ]
         },
