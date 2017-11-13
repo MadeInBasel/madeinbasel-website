@@ -40,7 +40,9 @@
     "map": "Auf der Karte",
     "delete": "Löschen",
     "verify": "Verifizieren",
-    "revokeVerification": "Verifizierung aufheben"
+    "revokeVerification": "Verifizierung aufheben",
+    "yes": "Ja",
+    "no": "Nein"
   },
   "error": {
     "empty": "Nichts anzuzeigen"

@@ -1,0 +1,13 @@
+@import "~assets/styles/variables.scss";
+
+.component-address {
+  position: relative;
+
+  .spinner {
+    background-color: white;
+    padding: 5px;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}

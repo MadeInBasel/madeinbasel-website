@@ -40,7 +40,9 @@
     "map": "Show on Map",
     "delete": "Delete",
     "verify": "Verify",
-    "revokeVerification": "Revoke Verification"
+    "revokeVerification": "Revoke Verification",
+    "yes": "Yes",
+    "no": "No"
   },
   "error": {
     "empty": "Nothing to show"
