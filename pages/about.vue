@@ -13,7 +13,7 @@
         <v-dialog class="contact-dialog" v-model="contactDialog" max-width="600" content-class="dialog--custom dialog--contact">
           <v-btn class="btn-contact" color="primary" slot="activator">{{ $t('contactForm') }}</v-btn>
           <component-contact-form />
-          <v-btn class="btn-close" fab small @click="contactDialog = false">
+          <v-btn class="btn-x" fab small @click="contactDialog = false">
             <v-icon>close</v-icon>
           </v-btn>
         </v-dialog>
