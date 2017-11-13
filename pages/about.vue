@@ -34,16 +34,36 @@
         </div>
       </v-flex>
     </v-layout>
-
   </component-section>
 
-  <component-section dark>
-    <h2>{{ $t('download.heading')}}</h2>
-    <div class="abstract" v-html="$t('download.abstract', {mib: '<strong>Made in Basel</strong>'})"></div>
-    <div class="text-xs-center">
-      <v-btn outline dark large href="/files/MadeInBasel-LogoPackage.zip" download="MadeInBasel-LogoPackage">
-        <v-icon>file_download</v-icon> {{ $t('buttons.downloadLogoPackage') }}</v-btn>
-    </div>
+  <component-section dark class="membership">
+    <template v-if="user">
+      <h2 v-html="$t('membership.heading', {user: user.displayName})"></h2>
+      <div class="abstract">
+        <img v-if="user.photoURL" :src="user.photoURL" class="thumb" alt="Thumb">
+        <div>
+          {{ $t('membership.abstract') }}
+        </div>
+      </div>
+      <div class="text-xs-center">
+        <v-btn outline dark large :to="localePath('/admin')">
+          {{ $t('pages.admin') }}</v-btn>
+      </div>
+      <div class="text-xs-center">
+        <v-btn flat dark large :to="localePath('/apply')">
+          {{ $t('buttons.applyNew') }}</v-btn>
+      </div>
+    </template>
+    <template v-else>
+      <h2>{{ $t('apply.heading')}}</h2>
+      <div class="abstract" v-html="$t('apply.abstract', {mib: '<strong>Made in Basel</strong>'})"></div>
+      <div class="text-xs-center">
+        <v-btn outline dark large :to="localePath('/apply')">{{ $t('pages.apply') }}</v-btn>
+      </div>
+      <div class="mt-2 text-xs-center">
+        <small>{{ $t('existingMemberQuestion') }} <nuxt-link :to="localePath('/admin')">{{ $t('buttons.login') }}</nuxt-link></small>
+      </div>
+    </template>
   </component-section>
 
   <component-section class="legal">
@@ -68,6 +88,7 @@ import terms from '~/components/terms.vue'
 import contactForm from '~/components/contactForm.vue'
 import section from '~/components/section.vue'
 import socialMenu from '~/components/socialMenu.vue'
+import login from '~/components/login.vue'
 
 export default {
   components: {
@@ -75,7 +96,8 @@ export default {
     'component-terms': terms,
     'component-contact-form': contactForm,
     'component-section': section,
-    'component-socialMenu': socialMenu
+    'component-socialMenu': socialMenu,
+    'component-login': login
   },
   head() {
     return {
@@ -85,6 +107,11 @@ export default {
   data() {
     return {
       contactDialog: false
+    }
+  },
+  computed: {
+    user() {
+      return this.$store.state.user
     }
   },
   i18n: {
@@ -97,9 +124,13 @@ export default {
           logo: 'Logo',
           support: 'Supporter'
         },
-        download: {
-          heading: 'Downloads',
-          abstract: 'Download the {mib} label files for your marketing purposes. We\'d be happy if our logo finds a place on your website!'
+        membership: {
+          heading: 'Hello {user}',
+          abstract: 'Welcome back! You can manage your profile and membership listings on the admin page. Are you a serial entrepreneur? Feel free to file multiple applications.'
+        },
+        apply: {
+          heading: 'Become a Member',
+          abstract: 'Are you a Basel based entrepreneur offering products or services we should know about? Tell us about it. Apply now!'
         },
         legal: 'Legal Notices',
         terms: 'Terms (German)',
@@ -124,9 +155,13 @@ export default {
           logo: 'Logo',
           support: 'Unterstützer'
         },
-        download: {
-          heading: 'Downloads',
-          abstract: 'Lade die {mib}-Logo-Dateien zur freien Verwendung herunter. Wir freuen uns, wenn unser Logo einen Platz auf deiner Webseite findet!'
+        membership: {
+          heading: 'Hallo {user}',
+          abstract: 'Willkommen zurück! Du kannst dein Profil und deine eingetragenen Organisationen auf der Admin-Seite verwalten. Bist du Serienunternehmer? Es können mehrere Bewerbungen eingereicht werden.'
+        },
+        apply: {
+          heading: 'Mitglied werden',
+          abstract: 'Bist du Basler Unternehmer, der Produkte oder Dienstleistungen anbietet, von denen wir wissen sollten? Erzähle uns davon. Bewirb dich für eine Mitgliedschaft!'
         },
         legal: 'Rechtliche Hinweise',
         terms: 'Allgemeine Geschäftsbedingungen',

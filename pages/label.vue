@@ -46,6 +46,12 @@
     <h2>{{ $t('vision.heading')}}</h2>
     <div class="abstract" v-html="$t('vision.abstract')"></div>
   </component-section>
+
+  <component-section small dark>
+    {{ $t('memberQuestion') }}
+    <nuxt-link :to="localePath('/apply')">{{ $t('buttons.applyNow') }}</nuxt-link>
+  </component-section>
+
 </div>
 </template>
 

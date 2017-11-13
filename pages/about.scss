@@ -25,8 +25,7 @@
     }
   }
 
-  .btn-contact,
-  .btn-download {
+  .btn-contact {
     margin-left: 0;
   }
 
@@ -37,6 +36,14 @@
   .terms-dialog {
     text-align: center;
     width: 100%;
+  }
+
+  .membership {
+    .thumb {
+      border-radius: 50%;
+      display: inline-flex;
+      width: 100px;
+    }
   }
 }
 

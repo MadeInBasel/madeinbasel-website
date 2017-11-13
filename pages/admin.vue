@@ -4,9 +4,9 @@
     <h1>{{ $t('pages.admin') }}</h1>
     <div v-if="user" class="user">
       <img v-if="user.photoURL" :src="user.photoURL" class="thumb" alt="Thumb">
-      <div><strong>{{ user.displayName }}</strong></div>
+      <div @click="showUID = true" :title="'UID: '+ user.uid "><strong>{{ user.displayName }}</strong></div>
       <div>{{ user.email }}</div>
-      <div>UID: {{ user.uid }}</div>
+      <div v-show="showUID">UID: {{ user.uid }}</div>
       <div>
         <a href="javascript:;" @click="dialogDelete = true">{{ $t('buttons.deleteAccount') }}</a>
         <v-dialog lazy v-model="dialogDelete" max-width="600" content-class="dialog--custom dialog--delete">
@@ -63,6 +63,20 @@
     <h2>Verified Members</h2>
     <component-members></component-members>
   </component-section>
+
+  <div class="text-xs-center">
+    <v-btn color="primary" large :to="localePath('/apply')">
+      {{ $t('buttons.applyNew') }}</v-btn>
+  </div>
+
+  <component-section dark v-if="user" hideBottomWave>
+    <h2>{{ $t('download.heading')}}</h2>
+    <div class="abstract" v-html="$t('download.abstract', {mib: '<strong>Made in Basel</strong>'})"></div>
+    <div class="text-xs-center">
+      <v-btn outline dark large href="/files/MadeInBasel-LogoPackage.zip" download="MadeInBasel-LogoPackage">
+        <v-icon>file_download</v-icon> {{ $t('buttons.downloadLogoPackage') }}</v-btn>
+    </div>
+  </component-section>
 </div>
 </template>
 
@@ -90,7 +104,8 @@ export default {
       loadingDelete: false,
       errorDelete: '',
       verifiedCount: false,
-      pendingCount: false
+      pendingCount: false,
+      showUID: false
     }
   },
   methods: {
@@ -139,7 +154,11 @@ export default {
         },
         entries: 'My Entries',
         verified: 'verified',
-        verificationPending: 'Verification pending'
+        verificationPending: 'Verification pending',
+        download: {
+          heading: 'Downloads',
+          abstract: 'Download the {mib} label files for your marketing purposes. We\'d be happy if our logo finds a place on your website!'
+        }
       },
       de: {
         delete: {
@@ -149,7 +168,11 @@ export default {
         },
         entries: 'Meine Einträge',
         verified: 'geprüft',
-        verificationPending: 'Prüfung ausstehend'
+        verificationPending: 'Prüfung ausstehend',
+        download: {
+          heading: 'Downloads',
+          abstract: 'Lade die {mib}-Logo-Dateien zur freien Verwendung herunter. Wir freuen uns, wenn unser Logo einen Platz auf deiner Webseite findet!'
+        }
       }
     }
   }

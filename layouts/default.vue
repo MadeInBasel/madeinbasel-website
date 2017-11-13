@@ -15,15 +15,6 @@
           </v-list-tile-title>
         </v-list-tile>
         <v-divider inset></v-divider>
-        <v-list-tile v-for="(item, i) in about" :key="i" nuxt exact v-ripple :to="localePath(`${item.path}`)">
-          <v-list-tile-action>
-            <v-icon class="grey--text text--darken-1">{{ item.icon }}</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title>
-            {{ $t(`${item.label}`) }}
-          </v-list-tile-title>
-        </v-list-tile>
-        <v-divider inset></v-divider>
         <v-list-tile v-for="(item, i) in social.slice(0, -1)" :key="i" nuxt v-ripple :href="item.url" target="_blank" rel="noopener">
           <v-list-tile-action>
             <v-icon class="grey--text text--darken-1">launch</v-icon>
@@ -51,7 +42,7 @@
 </template>
 
 <script>
-import { main, about, social } from '~/assets/menus.js'
+import { main, social } from '~/assets/menus.js'
 import header from '~/components/header.vue'
 import footer from '~/components/footer.vue'
 import language from '~/components/language.vue'
@@ -67,7 +58,6 @@ export default {
   data: () => ({
     drawer: false,
     main: main,
-    about: about,
     social: social,
     offsetTop: 0
   }),
