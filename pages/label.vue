@@ -104,7 +104,7 @@ export default {
             },
             {
               heading: 'Openness',
-              description: 'We are liberal, think globally, act locally, believe open borders and the idea of being “united in diversity”.'
+              description: 'We are liberal, think globally, act locally, believe in open borders and the idea of being “united in diversity”.'
             }
           ]
         },
