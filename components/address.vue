@@ -77,15 +77,15 @@ export default {
       }).then(function (response) {
         if (response.results.length) {
           self.loading = false
-          if (response.results[0].geometry.location_type === 'APPROXIMATE') {
+          if (response.results[0].geometry.location_type === 'ROOFTOP') {
+            self.results = response.results
+            self.showError(false)
+          } else {
             self.results = null
             if (self.customAddress) {
               self.showError(true)
             }
             self.customAddress = true
-          } else {
-            self.results = response.results
-            self.showError(false)
           }
         }
       })
