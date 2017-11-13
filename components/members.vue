@@ -41,7 +41,7 @@
     <div class="dialog-content">
       <v-carousel hide-controls v-if="item.data.hasOwnProperty('organisationPhotos') && item.data.organisationPhotos">
         <v-carousel-item v-for="(image,i) in item.data.organisationPhotos.count" :key="i" :src="item.data.organisationPhotos.cdnUrl + 'nth/' + i + '/-/preview/960x540/'"></v-carousel-item>
-        <v-carousel-item v-if="item.data.address.lng && item.data.address.lat" :src="'https://maps.googleapis.com/maps/api/staticmap?'+ zoom + size + mapStyles + '&markers=' + item.data.address.lat + ',' + item.data.address.lng +'&key=' + googleAPIKey"></v-carousel-item>
+        <v-carousel-item v-if="item.data.address.geometry" :src="'https://maps.googleapis.com/maps/api/staticmap?'+ zoom + size + mapStyles + '&markers=' + item.data.address.geometry.location.lat + ',' + item.data.address.geometry.location.lng +'&key=' + googleAPIKey"></v-carousel-item>
       </v-carousel>
       <div v-else class="map">
         <div class="map-placeholder">
@@ -50,7 +50,7 @@
           </div>
           {{ $t('mapPlaceholder') }}
         </div>
-        <img v-if="item.data.address.lng && item.data.address.lat" :src="'https://maps.googleapis.com/maps/api/staticmap?'+ zoom + size + mapStyles + '&markers=' + item.data.address.lat + ',' + item.data.address.lng +'&key=' + googleAPIKey" alt="Google Maps">
+        <img v-if="item.data.address.geometry" :src="'https://maps.googleapis.com/maps/api/staticmap?'+ zoom + size + mapStyles + '&markers=' + item.data.address.geometry.location.lat + ',' + item.data.address.geometry.location.lng +'&key=' + googleAPIKey" alt="Google Maps">
       </div>
 
       <div class="content">

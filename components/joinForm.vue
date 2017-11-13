@@ -15,7 +15,7 @@
       <v-stepper-content step="1">
         <component-uploadcare v-on:success="setOrganisationImage" v-on:discard="resetOrganisationImage" :label="$t('buttons.uploadLogo')" crop="300x300 minimum" required />
         <v-text-field :label="$t('form.organisationName.label')" ref="organisationName" v-model="organisationName" :rules="organisationNameRules" required></v-text-field>
-        <component-address v-on:success="setAddress" v-on:discard="resetAddress" />
+        <component-address v-on:success="setAddress" v-on:discard="resetAddress" :nameQuery="organisationName" />
 
         <v-flex xs9 sm6>
           <v-text-field :label="$t('form.website.label') + ' (URL)'" :rules="websiteRules" v-model="website"></v-text-field>
@@ -189,9 +189,7 @@ export default {
       this.organisationImage = ''
     },
     setAddress: function (data) {
-      this.address.formatted_address = data.formatted_address
-      this.address.lat = data.geometry.location.lat
-      this.address.lng = data.geometry.location.lng
+      this.address = data
     },
     resetAddress: function () {
       this.address = {}
