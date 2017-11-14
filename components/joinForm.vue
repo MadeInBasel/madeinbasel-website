@@ -230,7 +230,7 @@ export default {
               url: 'https://formspree.io/hello@madeinbasel.org',
               method: 'POST',
               data: {
-                _subject: 'New Member - Made in Basel',
+                _subject: 'New Member - MADE IN BASEL',
                 data: data,
                 dataType: 'json'
               }
@@ -302,7 +302,7 @@ export default {
           },
           featured: {
             label: 'Featured Story',
-            hint: 'I want to get a personal portrayel on Made in Basel. Please contact me.'
+            hint: 'I want to get a personal portrayel on MADE IN BASEL. Please contact me.'
           },
           terms: {
             label: 'I agree…',
@@ -352,7 +352,7 @@ export default {
           },
           featured: {
             label: 'Persönlichs Portrait',
-            hint: 'Ich möchte ein persönliches Portrait auf Made in Basel. Bitte um Kontaktaufnahme'
+            hint: 'Ich möchte ein persönliches Portrait auf MADE IN BASEL. Bitte um Kontaktaufnahme'
           },
           terms: {
             label: 'Ich akzeptiere…',

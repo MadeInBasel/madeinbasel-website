@@ -11,7 +11,7 @@
 
   <component-section dark>
     <h2>{{ $t('intro.heading')}}</h2>
-    <div class="abstract" v-html="$t('intro.abstract', {mib: '<strong>Made in Basel</strong>'})"></div>
+    <div class="abstract" v-html="$t('intro.abstract', {mib: '<strong>MADE IN BASEL</strong>'})"></div>
     <div class="text-xs-center">
       <v-btn outline dark large :to="localePath('/label')">{{ $t('buttons.learnMore') }}</v-btn>
     </div>
@@ -19,7 +19,7 @@
 
   <component-section>
     <h2>{{ $t('members.heading')}}</h2>
-    <div class="abstract" v-html="$t('members.abstract', {mib: '<strong>Made in Basel</strong>'})"></div>
+    <div class="abstract" v-html="$t('members.abstract', {mib: '<strong>MADE IN BASEL</strong>'})"></div>
     <component-members paging=8 />
     <div class="text-xs-center">
       <v-btn color="primary" large :to="localePath('/explore')">{{ $t('buttons.allMembers') }}</v-btn>

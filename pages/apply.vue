@@ -4,7 +4,7 @@
     <h1>{{ $t('pages.apply') }}</h1>
     <div class="abstract" v-html="$t('abstract')"></div>
     <component-join v-on:success="dialog=true" />
-    <small class="apply-addendum center-block"><span v-html="$t('sponsor-notice', {mib: '<strong>Made in Basel</strong>'})"></span>&nbsp; <a href="mailto:hello@madeinbasel.org">hello@madeinbasel.org</a></small>
+    <small class="apply-addendum center-block"><span v-html="$t('sponsor-notice', {mib: '<strong>MADE IN BASEL</strong>'})"></span>&nbsp; <a href="mailto:hello@madeinbasel.org">hello@madeinbasel.org</a></small>
     <v-dialog v-model="dialog" max-width="600" content-class="dialog--custom dialog--done">
       <div class="text-xs-center done">
         <v-icon color="success">check_circle</v-icon>

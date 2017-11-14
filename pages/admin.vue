@@ -71,7 +71,7 @@
 
   <component-section dark v-if="user" hideBottomWave>
     <h2>{{ $t('download.heading')}}</h2>
-    <div class="abstract" v-html="$t('download.abstract', {mib: '<strong>Made in Basel</strong>'})"></div>
+    <div class="abstract" v-html="$t('download.abstract', {mib: '<strong>MADE IN BASEL</strong>'})"></div>
     <div class="text-xs-center">
       <v-btn outline dark large href="/files/MadeInBasel-LogoPackage.zip" download="MadeInBasel-LogoPackage">
         <v-icon>file_download</v-icon> {{ $t('buttons.downloadLogoPackage') }}</v-btn>
