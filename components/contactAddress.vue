@@ -2,8 +2,8 @@
 <div class="component-contactAddress" itemscope itemtype="http://schema.org/LocalBusiness">
   <div class="contact-physical">
     <v-icon>place</v-icon>
-    <div itemprop="name">Made in Basel</div>
-    <div class="co" itemprop="alternateName">Santihans GmbH</div>
+    <div itemprop="name">MADE IN BASEL</div>
+    <div class="co" itemprop="alternateName">SANTiHANS LLC</div>
     <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
       <span itemprop="streetAddress">Mittlere Strasse 60</span>
       <div>

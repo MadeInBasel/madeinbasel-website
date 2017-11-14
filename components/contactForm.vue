@@ -45,7 +45,7 @@ export default {
     },
     subject: {
       type: String,
-      default: 'Made in Basel'
+      default: 'MADE IN BASEL'
     }
   },
   methods: {

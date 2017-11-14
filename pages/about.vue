@@ -56,7 +56,7 @@
     </template>
     <template v-else>
       <h2>{{ $t('apply.heading')}}</h2>
-      <div class="abstract" v-html="$t('apply.abstract', {mib: '<strong>Made in Basel</strong>'})"></div>
+      <div class="abstract" v-html="$t('apply.abstract', {mib: '<strong>MADE IN BASEL</strong>'})"></div>
       <div class="text-xs-center">
         <v-btn outline dark large :to="localePath('/apply')">{{ $t('pages.apply') }}</v-btn>
       </div>
@@ -176,7 +176,7 @@ export default {
         },
         copyright: {
           heading: 'Urheberrechte',
-          content: 'Die Urheber- und alle anderen Rechte an Inhalten, Bildern, Fotos oder anderen Dateien auf der Website gehören ausschliesslich der "Made in Basel" oder den speziell genannten Rechtsinhabern. Für die Reproduktion jeglicher Elemente ist die schriftliche Zustimmung der Urheberrechtsträger im Voraus einzuholen.'
+          content: 'Die Urheber- und alle anderen Rechte an Inhalten, Bildern, Fotos oder anderen Dateien auf der Website gehören ausschliesslich der "MADE IN BASEL" oder den speziell genannten Rechtsinhabern. Für die Reproduktion jeglicher Elemente ist die schriftliche Zustimmung der Urheberrechtsträger im Voraus einzuholen.'
         },
         cookies: {
           heading: 'Cookies',

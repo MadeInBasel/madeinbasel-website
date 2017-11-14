@@ -8,7 +8,7 @@
 
   <component-section class="benefits" dark>
     <h2>{{ $t('benefits.heading')}}</h2>
-    <div class="abstract" v-html="$t('benefits.abstract', {mib: '<strong>Made in Basel</strong>'})"></div>
+    <div class="abstract" v-html="$t('benefits.abstract', {mib: '<strong>MADE IN BASEL</strong>'})"></div>
     <v-layout wrap class="benefits-list">
       <v-flex md6 class="box">
         <div class="box-inner">
@@ -31,7 +31,7 @@
 
   <component-section>
     <h2>{{ $t('values.heading')}}</h2>
-    <div class="abstract" v-html="$t('values.abstract', {mib: '<strong>Made in Basel</strong>'})"></div>
+    <div class="abstract" v-html="$t('values.abstract', {mib: '<strong>MADE IN BASEL</strong>'})"></div>
     <v-layout wrap>
       <v-flex md4 class="box" v-for="(item, i) in $t('values.values')" :key="i">
         <div class="box-inner">
@@ -71,7 +71,7 @@ export default {
     messages: {
       en: {
         mission: {
-          abstract: '<strong>Made in Basel</strong> is an initiative to promote products and services from Basel. We support innovation and entrepreneurial spirit, sustain a diverse, creative climate where ideas and people can prosper. The label stands for high-quality local products and services. Members are committed to Basel as a place to live, work and recreate.'
+          abstract: '<strong>MADE IN BASEL</strong> is an initiative to promote products and services from Basel. We support innovation and entrepreneurial spirit, sustain a diverse, creative climate where ideas and people can prosper. The label stands for high-quality local products and services. Members are committed to Basel as a place to live, work and recreate.'
         },
         benefits: {
           heading: 'Why does it matter?',
@@ -91,7 +91,7 @@ export default {
             arguments: [
               'Expand markets and reach more consumers',
               'Find local suppliers and contractors',
-              'Use the “Made in Basel” logo to educate consumers about your products',
+              'Use the “MADE IN BASEL” logo to educate consumers about your products',
               'Connect with the local community to stay abreast of news and best practices'
             ]
           }
@@ -120,7 +120,7 @@ export default {
       },
       de: {
         mission: {
-          abstract: '<strong>Made in Basel</strong> ist eine Initiative um Produkte und Dienstleistungen aus Basel zu bewerben. Wir fördern Innovation und Unternehmergeist, setzen uns für ein vielfältiges, kreatives Klima ein und unterstützen Basels Qualitäten als Wohn-, Arbeits- und Kulturstadt. Das Label steht für hochwertige lokale Produkte und Dienstleistungen mit einem Hauch Basel. Mitglieder bekennen sich zum Werkplatz Basel. '
+          abstract: '<strong>MADE IN BASEL</strong> ist eine Initiative um Produkte und Dienstleistungen aus Basel zu bewerben. Wir fördern Innovation und Unternehmergeist, setzen uns für ein vielfältiges, kreatives Klima ein und unterstützen Basels Qualitäten als Wohn-, Arbeits- und Kulturstadt. Das Label steht für hochwertige lokale Produkte und Dienstleistungen mit einem Hauch Basel. Mitglieder bekennen sich zum Werkplatz Basel. '
         },
         benefits: {
           heading: 'Warum ist\'s interessant?',
@@ -140,7 +140,7 @@ export default {
             arguments: [
               'Erweitere deine Märkte und erreiche mehr Konsumenten',
               'Finde lokale Lieferanten und Auftragnehmer, optimiere Lieferketten',
-              'Verwende das “Made in Basel” Logo um Verbraucher über deine Produkte aufzuklären',
+              'Verwende das “MADE IN BASEL” Logo um Verbraucher über deine Produkte aufzuklären',
               'Trete in Kontakt mit lokalen Herstellern um über Neuigkeiten und bewährte Verfahren auf dem Laufenden zu bleiben'
             ]
           }
