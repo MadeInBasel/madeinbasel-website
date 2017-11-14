@@ -32,31 +32,34 @@ export default ({app, store}) => {
     silentTranslationWarn: true
   })
 
-
-  let mixinMethods = {
-    localePath: function (url) {
-      return '/' + store.state['i18n-routes'].language + url
-    },
-    detectLanguage: function () {
-      let languageList = []
-      if (typeof navigator !== 'undefined') {
-        if (navigator.userLanguage) {
-          languageList.unshift(navigator.userLanguage.substring(0, 2))
-        }
-        if (navigator.language) {
-          languageList.unshift(navigator.language.substring(0, 2))
-        }
-      }
-      let language = languageList.find((language) => {
-        return (options.languages.indexOf(language) !== -1)
-      })
-      return language || options.languages[0]
-    }
-  }
   Vue.use({
     install (app) {
       app.mixin({
-        methods: mixinMethods
+        methods: {
+          localePath (url) {
+            return '/' + store.state['i18n-routes'].language + url
+          },
+          detectLanguage () {
+            let languageList = []
+            if (typeof navigator !== 'undefined') {
+              if (navigator.userLanguage) {
+                languageList.unshift(navigator.userLanguage.substring(0, 2))
+              }
+              if (navigator.language) {
+                languageList.unshift(navigator.language.substring(0, 2))
+              }
+            }
+            let language = languageList.find((language) => {
+              return (options.languages.indexOf(language) !== -1)
+            })
+            return language || options.languages[0]
+          }
+        },
+        beforeMount () {
+          if (!this.$route.params.lang) {
+            this.$router.replace({params: {lang: this.detectLanguage()}})
+          }
+        }
       })
     }
   })
