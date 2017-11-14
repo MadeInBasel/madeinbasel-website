@@ -59,7 +59,12 @@ export default {
   },
   head() {
     return {
-      title: this.$t('pages.label')
+      title: this.$t('pages.label'),
+      meta: [{
+        hid: 'og:title',
+        property: 'og:title',
+        content: this.$t('pages.label')
+      }]
     }
   },
   i18n: {

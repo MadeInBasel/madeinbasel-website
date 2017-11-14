@@ -2,8 +2,8 @@ const webpack = require('webpack')
 
 module.exports = {
   head: {
-    title: 'Made in Basel',
-    titleTemplate: '%s - Made in Basel',
+    title: 'MADE IN BASEL',
+    titleTemplate: '%s - MADE IN BASEL',
 
     meta: [{
         charset: 'utf-8'
@@ -11,16 +11,6 @@ module.exports = {
       {
         name: 'viewport',
         content: 'width=device-width, initial-scale=1'
-      },
-      {
-        hid: 'description',
-        name: 'description',
-        content: 'Made in Basel - is an initiative to promote products and services from Basel, Switzerland. We support local production and help sustain a creative climate that encourages entrepreneurship and innovation. We put Basel on the map.'
-      },
-      {
-        hid: 'keywords',
-        name: 'keywords',
-        content: 'Made in Basel, label, local, stories, handmade, crafts, products, innovation, Basel, Switzerland'
       }
     ],
     link: [{

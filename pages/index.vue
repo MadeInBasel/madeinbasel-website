@@ -40,7 +40,12 @@ export default {
   },
   head() {
     return {
-      title: this.$t('pages.home')
+      title: this.$t('pages.home'),
+      meta: [{
+        hid: 'og:title',
+        property: 'og:title',
+        content: this.$t('pages.home')
+      }]
     }
   },
   data() {

@@ -16,7 +16,12 @@ import section from '~/components/section.vue'
 export default {
   head() {
     return {
-      title: this.$t('pages.stories')
+      title: this.$t('pages.stories'),
+      meta: [{
+        hid: 'og:title',
+        property: 'og:title',
+        content: this.$t('pages.stories')
+      }]
     }
   },
   components: {

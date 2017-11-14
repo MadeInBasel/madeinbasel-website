@@ -38,7 +38,12 @@ export default {
   },
   head() {
     return {
-      title: this.$t('pages.apply')
+      title: this.$t('pages.apply'),
+      meta: [{
+        hid: 'og:title',
+        property: 'og:title',
+        content: this.$t('pages.apply')
+      }]
     }
   },
   data() {
