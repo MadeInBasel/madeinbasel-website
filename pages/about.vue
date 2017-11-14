@@ -101,7 +101,12 @@ export default {
   },
   head() {
     return {
-      title: this.$t('pages.about')
+      title: this.$t('pages.about'),
+      meta: [{
+        hid: 'og:title',
+        property: 'og:title',
+        content: this.$t('pages.about')
+      }]
     }
   },
   data() {

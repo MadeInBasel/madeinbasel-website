@@ -60,6 +60,46 @@ export default {
       htmlAttrs: {
         lang: this.$i18n.locale,
       },
+      meta: [{
+          hid: 'description',
+          name: 'description',
+          content: this.$t('meta.description')
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: this.$t('meta.keywords')
+        }, {
+          hid: 'og:type',
+          property: 'og:type',
+          content: 'website'
+        },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: 'https://www.madeinbasel.org' + this.$route.fullPath
+        },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: 'https://www.madeinbasel.org/images/og-image.jpg'
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: this.$t('meta.description')
+        },
+        {
+          hid: 'og:site_name',
+          property: 'og:site_name',
+          content: 'MADE IN BASEL'
+        },
+        {
+          hid: 'og:locale',
+          property: 'og:locale',
+          content: this.$i18n.locale
+        }
+      ]
     }
   },
   data: () => ({
@@ -85,6 +125,22 @@ export default {
   computed: {
     animations() {
       return this.$store.state.animations
+    }
+  },
+  i18n: {
+    messages: {
+      en: {
+        meta: {
+          description: 'MADE IN BASEL is an initiative to promote products and services from Basel, Switzerland.',
+          keywords: 'MADE IN BASEL, label, local, excellence, stories, handmade, crafts, products, innovation, Basel, Switzerland'
+        }
+      },
+      de: {
+        meta: {
+          description: 'MADE IN BASEL ist eine Initiative, die Produkte und Dienstleistungen aus Basel bewirbt.',
+          keywords: 'MADE IN BASEL, Label, Kaufen, Lokal, Exzellenz, Geschichten, Handarbeit, Handwerk, Produkte, Innovation, Basel, Schweiz'
+        }
+      }
     }
   }
 }

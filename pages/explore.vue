@@ -20,7 +20,12 @@ import section from '~/components/section.vue'
 export default {
   head() {
     return {
-      title: this.$t('pages.explore')
+      title: this.$t('pages.explore'),
+      meta: [{
+        hid: 'og:title',
+        property: 'og:title',
+        content: this.$t('pages.explore')
+      }]
     }
   },
   components: {
