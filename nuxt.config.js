@@ -4,9 +4,10 @@ module.exports = {
   head: {
     title: 'Made in Basel',
     titleTemplate: '%s - Made in Basel',
+
     meta: [{
-      charset: 'utf-8'
-    },
+        charset: 'utf-8'
+      },
       {
         name: 'viewport',
         content: 'width=device-width, initial-scale=1'
@@ -23,10 +24,20 @@ module.exports = {
       }
     ],
     link: [{
-      rel: 'icon',
-      type: 'image/x-icon',
-      href: '/favicon.ico'
-    },
+        rel: 'alternate',
+        hreflang: 'en',
+        href: 'https://www.madeinbasel.org/en'
+      },
+      {
+        rel: 'alternate',
+        hreflang: 'de',
+        href: 'https://www.madeinbasel.org/de'
+      },
+      {
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: '/favicon.ico'
+      },
       {
         rel: 'apple-touch-icon',
         href: '/apple-touch-icon.png'
@@ -54,9 +65,9 @@ module.exports = {
   },
 
   css: [{
-    src: '~assets/styles/app.styl',
-    lang: 'styl'
-  },
+      src: '~assets/styles/app.styl',
+      lang: 'styl'
+    },
     {
       src: '~assets/styles/variables.scss',
       lang: 'scss'
@@ -64,8 +75,8 @@ module.exports = {
   ],
 
   plugins: [{
-    src: '~plugins/vuetify.js'
-  },
+      src: '~plugins/vuetify.js'
+    },
     {
       src: '~plugins/ga.js',
       ssr: false
@@ -85,7 +96,9 @@ module.exports = {
   ],
 
   modules: [
-    ['~/modules/i18n-routes/index', {languages: ['en', 'de']}]
+    ['~/modules/i18n-routes/index', {
+      languages: ['en', 'de']
+    }]
   ],
 
   /*
@@ -96,7 +109,7 @@ module.exports = {
     /*
      ** Run ESLINT on save
      */
-    extend (config, ctx) {
+    extend(config, ctx) {
       if (ctx.client) {
         config.module.rules.push({
           enforce: 'pre',

@@ -55,6 +55,13 @@ export default {
     'app-footer': footer,
     'app-language': language
   },
+  head() {
+    return {
+      htmlAttrs: {
+        lang: this.$i18n.locale,
+      },
+    }
+  },
   data: () => ({
     drawer: false,
     main: main,
