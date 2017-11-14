@@ -98,6 +98,21 @@ export default {
           hid: 'og:locale',
           property: 'og:locale',
           content: this.$i18n.locale
+        },
+        {
+          hid: 'twitter:card',
+          name: 'twitter:card',
+          content: 'summary'
+        },
+        {
+          hid: 'twitter:site',
+          name: 'twitter:site',
+          content: '@madeinbasel'
+        },
+        {
+          hid: 'twitter:creator',
+          name: 'twitter:creator',
+          content: '@stophecom'
         }
       ]
     }
