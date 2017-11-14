@@ -95,7 +95,7 @@ module.exports = {
    ** Build configuration
    */
   build: {
-    vendor: ['jquery', 'vuetify', 'underscore', 'vue-loading-spinner', 'vue-scroll-reveal'],
+    vendor: ['jquery', 'vuetify', 'underscore', 'vue-scroll-reveal'],
     /*
      ** Run ESLINT on save
      */
