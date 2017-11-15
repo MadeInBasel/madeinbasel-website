@@ -88,7 +88,6 @@ import terms from '~/components/terms.vue'
 import contactForm from '~/components/contactForm.vue'
 import section from '~/components/section.vue'
 import socialMenu from '~/components/socialMenu.vue'
-import login from '~/components/login.vue'
 
 export default {
   components: {
@@ -96,8 +95,7 @@ export default {
     'component-terms': terms,
     'component-contact-form': contactForm,
     'component-section': section,
-    'component-socialMenu': socialMenu,
-    'component-login': login
+    'component-socialMenu': socialMenu
   },
   head() {
     return {
