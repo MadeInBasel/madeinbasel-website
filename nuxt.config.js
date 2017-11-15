@@ -103,7 +103,6 @@ module.exports = {
       isClient
     }) {
       if (isClient) {
-        config.devtool = 'cheap-module-source-map'
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
