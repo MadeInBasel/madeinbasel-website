@@ -47,7 +47,6 @@ import header from '~/components/header.vue'
 import footer from '~/components/footer.vue'
 import language from '~/components/language.vue'
 import _ from 'underscore'
-import $ from 'jquery'
 
 export default {
   components: {
@@ -58,7 +57,7 @@ export default {
   head() {
     return {
       htmlAttrs: {
-        lang: this.$i18n.locale,
+        lang: this.$i18n.locale
       },
       meta: [{
           hid: 'description',
@@ -129,11 +128,11 @@ export default {
     },
     onScroll(e) {
       this.offsetTop = window.pageYOffset || document.documentElement.scrollTop
-      var $layout = $(this.$el)
+      var layout = this.$el
       var self = this
       _.throttle(function () {
-        $layout.toggleClass('scrollTop', self.offsetTop < 10)
-        $layout.toggleClass('scrollTopExtended', self.offsetTop < window.screen.height / 4)
+        layout.classList.toggle('scrollTop', self.offsetTop < 10)
+        layout.classList.toggle('scrollTopExtended', self.offsetTop < window.screen.height / 4)
       }, 100)()
     }
   },
