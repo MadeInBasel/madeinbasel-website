@@ -95,12 +95,15 @@ module.exports = {
    ** Build configuration
    */
   build: {
-    vendor: ['jquery', 'vuetify', 'underscore', 'vue-scroll-reveal'],
+    // analyze: true,
     /*
      ** Run ESLINT on save
      */
-    extend(config, ctx) {
-      if (ctx.client) {
+    extend(config, {
+      isClient
+    }) {
+      if (isClient) {
+        config.devtool = 'cheap-module-source-map'
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
