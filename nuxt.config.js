@@ -17,6 +17,11 @@ module.exports = {
     link: [
       {
         rel: 'alternate',
+        hreflang: 'x-default',
+        href: 'https://www.madeinbasel.org/'
+      },
+      {
+        rel: 'alternate',
         hreflang: 'en',
         href: 'https://www.madeinbasel.org/en'
       },
