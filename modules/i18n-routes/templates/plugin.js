@@ -59,6 +59,24 @@ export default ({app, store}) => {
           if (!this.$route.params.lang) {
             this.$router.replace({params: {lang: this.detectLanguage()}})
           }
+        },
+        head () {
+          if (!this.$route) {
+            return
+          }
+          let languageParamList = options.languages.concat(null)
+          let alternateLinks = languageParamList.map((languageParam) => {
+            let hreflang = (languageParam ? languageParam : 'x-default')
+            return {
+              hid: 'alternate-lang-' + hreflang,
+              rel: 'alternate',
+              hreflang: hreflang,
+              href: this.$router.resolve({params: {lang: languageParam}}).href
+            }
+          })
+          return {
+            link: alternateLinks
+          }
         }
       })
     }
