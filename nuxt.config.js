@@ -5,7 +5,8 @@ module.exports = {
     title: 'MADE IN BASEL',
     titleTemplate: '%s - MADE IN BASEL',
 
-    meta: [{
+    meta: [
+      {
         charset: 'utf-8'
       },
       {
@@ -13,7 +14,8 @@ module.exports = {
         content: 'width=device-width, initial-scale=1'
       }
     ],
-    link: [{
+    link: [
+      {
         rel: 'alternate',
         hreflang: 'en',
         href: 'https://www.madeinbasel.org/en'
@@ -54,7 +56,8 @@ module.exports = {
     color: '#191919'
   },
 
-  css: [{
+  css: [
+    {
       src: '~assets/styles/app.styl',
       lang: 'styl'
     },
@@ -64,7 +67,8 @@ module.exports = {
     }
   ],
 
-  plugins: [{
+  plugins: [
+    {
       src: '~plugins/vuetify.js'
     },
     {
