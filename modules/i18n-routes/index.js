@@ -1,4 +1,5 @@
 const {resolve} = require('path')
+const pathToRegexp = require('path-to-regexp')
 
 module.exports = function (moduleOptions) {
   const defaults = {
@@ -21,7 +22,7 @@ module.exports = function (moduleOptions) {
     options: moduleOptions
   })
 
-  // Add routes
+  // Add routes for router
   this.extendRoutes(function (routes) {
     routes.sort((a, b) => {
       return b['path'].length - a['path'].length
@@ -31,5 +32,34 @@ module.exports = function (moduleOptions) {
       route.path = `/:lang(\\w{2})?${path}`
     })
     return routes
+  })
+
+  // Add routes to generate
+  function flatRoutes (router, path = '', routes = []) {
+    router.forEach((r) => {
+      if (r.children) {
+        flatRoutes(r.children, path + r.path + '/', routes)
+      } else {
+        routes.push((r.path === '' && path[path.length - 1] === '/' ? path.slice(0, -1) : path) + r.path)
+      }
+    })
+    return routes
+  }
+  this.nuxt.plugin('generator', generator => {
+    generator.plugin('generateRoutes', ({generateRoutes}) => {
+      let routes = flatRoutes(this.options.router.routes)
+      routes = routes.filter((route) => {
+        let tokens = pathToRegexp.parse(route)
+        let params = tokens.filter((token) => typeof token === 'object')
+        return params.length === 1 && params[0].name === 'lang'
+      })
+      routes.forEach((route) => {
+        let toPath = pathToRegexp.compile(route)
+        let languageParamList = moduleOptions.languages.concat(null)
+        languageParamList.forEach((languageParam) => {
+          generateRoutes.push(toPath({lang: languageParam}))
+        })
+      })
+    })
   })
 }
