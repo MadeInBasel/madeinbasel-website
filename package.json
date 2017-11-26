@@ -17,7 +17,8 @@
     "vue-i18n": "^7.3.2",
     "vue-scroll-reveal": "^1.0.3",
     "vuetify": "^0.16.9",
-    "webfontloader": "^1.6.28"
+    "webfontloader": "^1.6.28",
+    "path-to-regexp": "^2.1.0"
   },
   "scripts": {
     "dev": "nuxt",
