@@ -1,5 +1,5 @@
 <template>
-<component-layout hasBackgroundAnimation />
+<component-layout />
 </template>
 
 <script>

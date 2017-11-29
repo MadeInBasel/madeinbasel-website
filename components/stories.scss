@@ -1,0 +1,114 @@
+@import "~assets/styles/variables.scss";
+
+.component-stories {
+  .flex {
+    padding: 5px;
+  }
+
+  .story {
+    box-shadow: 2px 2px rgba(0,0,0,0.3);
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+
+    @media(min-width: $breakpointSmall) {
+      flex-direction: row;
+    }
+
+    .story-cover {
+      flex: 0 0 40%;
+      position: relative;
+
+      @media(min-width: $breakpointSmall) {
+        flex-basis: 60%;
+      }
+
+      .aspectRatioKeeper {
+        padding-bottom: 2/3*100%;
+      }
+
+      img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+      }
+
+      .video {
+        background: white;
+        box-shadow: 2px 2px rgba(0,0,0,.5);
+        bottom: 12px;
+        padding: 1px;
+        position: absolute;
+        right: 12px;
+        width: 30%;
+
+        .icon {
+          text-shadow: 1px 1px 1px rgba(0,0,0,.5);
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+
+    .story-preview {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .meta {
+    flex-grow: 1;
+
+    .meta-label {
+      font-size: 0.8em;
+      margin-bottom: 0.2em;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      font-size: 1.5em;
+      line-height: 1.2;
+      margin-bottom: 0.4em;
+      text-align: left;
+    }
+
+    .meta-article {
+      color: $colorSubtle;
+      font-size: 0.8em;
+    }
+  }
+
+  .business {
+    display: flex;
+    margin-top: 2.5em;
+
+    .business-thumb {
+      background-color: white;
+      border: 1px solid rgba(0,0,0,.05);
+      border-radius: 50%;
+      display: inline-flex;
+      height: 50px;
+      width: 50px;
+    }
+
+    .business-info {
+      padding-left: 8px;
+      padding-top: 10px;
+
+      .name {
+        line-height: 1;
+        font-size: 0.9em;
+        font-weight: bold;
+      }
+
+      .industry {
+        color: $colorSubtle;
+        font-size: 0.8em;
+      }
+    }
+  }
+}

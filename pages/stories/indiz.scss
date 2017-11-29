@@ -1,0 +1,56 @@
+@import '~assets/styles/variables.scss';
+
+#story {
+  font-size: 1.2em;
+  padding-top: 70px;
+
+  .cover {
+    margin-bottom: 2em;
+
+    .cover-image.aspectRatioKeeper {
+      padding-bottom: 1/3*100%;
+
+      img {
+        object-fit: cover;
+      }
+    }
+
+    .cover-info {
+      .label {
+        padding-top: 12px;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .business {
+    align-items: flex-end;
+    justify-content: flex-end;
+    display: flex;
+    width: 100%;
+
+    .business-thumb {
+      width: 20%;
+
+      .aspectRatioKeeper {
+        padding-bottom: 100%;
+      }
+
+      img {
+        background-color: white;
+        border: 1px solid $colorBorder;
+        border-radius: 50%;
+        padding: 2px;
+      }
+    }
+  }
+
+  h2 {
+    text-align: left;
+  }
+
+  .text {
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+}

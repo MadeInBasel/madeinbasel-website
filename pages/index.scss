@@ -28,7 +28,14 @@
     }
   }
 
-  .members {
-    margin-bottom: 0.8em;
+  .discover {
+    .component-members {
+      margin-bottom: 0.8em;
+    }
+
+    .members-heading {
+      margin-top: 2em;
+      margin-bottom: 1em;
+    }
   }
 }
