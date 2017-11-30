@@ -16,7 +16,7 @@
       <div class="story-preview">
         <div class="meta">
           <div class="meta-label" v-text="$t('pages.story')"></div>
-          <h3>Der letzte Rucksack, den Du je brauchen wirst</h3>
+          <h3>Über Mauern, Rucksäcke und Eisberge</h3>
           <div class="meta-article">
             <time>Dezember</time> &#5867; 8min read
           </div>
