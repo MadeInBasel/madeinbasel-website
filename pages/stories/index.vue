@@ -3,7 +3,10 @@
   <component-section>
     <h1>{{ $t('pages.stories') }}</h1>
     <div class="abstract" v-html="$t('intro.abstract')"></div>
-    <component-stories />
+    <div class="text-xs-center">
+      <i>{{ $t('placeholder') }}</i>
+    </div>
+    <!-- <component-stories /> -->
   </component-section>
 </div>
 </template>

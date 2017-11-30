@@ -21,8 +21,8 @@
     <h2>{{ $t('members.heading')}}</h2>
     <div class="abstract" v-html="$t('members.abstract', {mib: '<strong>MADE IN BASEL</strong>'})"></div>
 
-    <component-stories />
-    <h3 class="members-heading">{{ $t('members.subheading')}}</h3>
+    <!-- <component-stories /> -->
+    <!-- <h3 class="members-heading">{{ $t('members.subheading')}}</h3> -->
     <component-members paging=8 />
     <div class="text-xs-center">
       <v-btn color="primary" large :to="localePath('/explore')">{{ $t('buttons.allMembers') }}</v-btn>
