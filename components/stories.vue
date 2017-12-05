@@ -7,7 +7,7 @@
           <div>
             <img src="/stories/indiz/preview.jpg" alt="Cover">
             <div class="video">
-              <img src="/stories/indiz/interview.jpg" alt="Interview">
+              <img src="/stories/indiz/poster.jpg" alt="Poster">
               <v-icon dark>play_arrow</v-icon>
             </div>
           </div>
