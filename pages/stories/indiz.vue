@@ -29,15 +29,17 @@
     die Wände. Die beiden nehmen auf dem Sofa Platz. Andri will wissen: „Was heisst ein wenig erzählen: ihr stellt Fragen und wir antworten?“ – „Genau.“ – „Super, dann los!“
   </p>
 
-  <div class="media-boundaries">
-    <div>
-      <div class="js-autoplay aspectRatioKeeper">
-        <video src="/stories/indiz/Indiz-Part-1-web.mp4"></video>
+  <div class="media">
+    <div class="media-boundaries">
+      <div>
+        <div class="js-autoplay aspectRatioKeeper">
+          <video src="/stories/indiz/Indiz-Part-1-web.mp4" poster="/stories/indiz/poster.jpg"></video>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="boundaries text-xs-right">
-    <small class="js-countdown">&nbsp;</small>
+    <div class="boundaries text-xs-right">
+      <small class="js-countdown">&nbsp;</small>
+    </div>
   </div>
 
   <p class="text boundaries">
@@ -55,15 +57,17 @@
     Aber wenn die materielle Form, also die Rucksäcke, wirklich nur 1/9 der gesamten Produktion darstellen – oder 7/8 oder 15/19, nicht dass jetzt jemand diese Zahl absolut nimmt – dann ist die Gesamtproduktion zwischen dem Maler und dem Rucksackdesigner
     vielleicht gar nicht so unterschiedlich. Vielleicht decken sich Ideen, Träume, Bedürfnisse weitflächig, und nur die Spitze des Eisbergs unterscheidet sich grundlegend.
   </p>
-  <div class="media-boundaries">
-    <div>
-      <div class="js-autoplay aspectRatioKeeper">
-        <video src="/stories/indiz/Indiz-Part-2-web.mp4"></video>
+  <div class="media">
+    <div class="media-boundaries">
+      <div>
+        <div class="js-autoplay aspectRatioKeeper">
+          <video src="/stories/indiz/Indiz-Part-2-web.mp4" poster="/stories/indiz/poster.jpg"></video>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="boundaries text-xs-right">
-    <small class="js-countdown">&nbsp;</small>
+    <div class="boundaries text-xs-right">
+      <small class="js-countdown">&nbsp;</small>
+    </div>
   </div>
 
   <p class="text boundaries">
@@ -113,14 +117,39 @@ export default {
       ]
     }
   },
+  methods: {
+    autoplayVideo: function (video) {
+      var autoPlayAllowed = true
+      var promise = video.play()
+      if (promise instanceof Promise) {
+        promise.catch(function (error) {
+          // Check if it is the right error
+          if (error.name === 'NotAllowedError') {
+            autoPlayAllowed = false
+          } else {
+            throw error
+          }
+        }).then(function () {
+          if (autoPlayAllowed) {
+            video.play()
+          } else {
+            video.setAttribute('controls', true)
+          }
+        })
+      } else {
+        // Unknown if allowed
+      }
+    }
+  },
   mounted() {
     var $videoWrapper = $('.js-autoplay')
     const VisSense = VisSenseFactory(window)
+    var self = this
 
     $videoWrapper.each(function () {
       var visibility = VisSense($(this)[0], { fullyvisible: 0.7 })
       var video = $(this).find('video').get(0)
-      var counter = $(this).parent().next().find('.js-countdown')
+      var counter = $(this).closest('.media').find('.js-countdown')
 
       video.addEventListener('timeupdate', updateCountdown)
 
@@ -130,7 +159,7 @@ export default {
 
       var visibilityMonitor = visibility.monitor({
         fullyvisible: function () {
-          video.play()
+          self.autoplayVideo(video)
         },
         percentagechange: function (monitor, newValue, oldValue) {
           var difference = newValue - oldValue
