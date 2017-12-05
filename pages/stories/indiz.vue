@@ -30,8 +30,10 @@
   </p>
 
   <div class="media-boundaries">
-    <div class="js-autoplay aspectRatioKeeper">
-      <video src="/stories/indiz/Indiz-Part-1-web.mp4"></video>
+    <div>
+      <div class="js-autoplay aspectRatioKeeper">
+        <video src="/stories/indiz/Indiz-Part-1-web.mp4"></video>
+      </div>
     </div>
   </div>
   <div class="boundaries text-xs-right">
@@ -54,8 +56,10 @@
     vielleicht gar nicht so unterschiedlich. Vielleicht decken sich Ideen, Träume, Bedürfnisse weitflächig, und nur die Spitze des Eisbergs unterscheidet sich grundlegend.
   </p>
   <div class="media-boundaries">
-    <div class="js-autoplay aspectRatioKeeper">
-      <video src="/stories/indiz/Indiz-Part-2-web.mp4"></video>
+    <div>
+      <div class="js-autoplay aspectRatioKeeper">
+        <video src="/stories/indiz/Indiz-Part-2-web.mp4"></video>
+      </div>
     </div>
   </div>
   <div class="boundaries text-xs-right">
