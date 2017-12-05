@@ -16,7 +16,10 @@
       <div class="story-preview">
         <div class="meta">
           <div class="meta-label" v-text="$t('pages.story')"></div>
-          <h3>Über Mauern, Rucksäcke und Eisberge</h3>
+          <h3>Über Wände, Rucksäcke und Eisberge</h3>
+          <div class="meta-article">
+            Wer in einem Rucksack wühlt, stösst neben Laptop und Trinkflasche auch die Produzenten. Mit Iris und Andri vom Basler Rucksacklabel Indiz denken wir darüber nach, wie Bedürfnisse zu Objekten werden und wie beide gemeinsam altern.
+          </div>
           <div class="meta-article">
             <time>Dezember</time> &#5867; 8min read
           </div>

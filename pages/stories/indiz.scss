@@ -1,12 +1,25 @@
 @import '~assets/styles/variables.scss';
 
 #story {
-  font-size: 1.3em;
-  padding-top: 70px;
+  font-size: 1.2em;
+  // padding-top: 70px;
+  position: relative;
+
+  &::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    height: 120px;
+    width: 100%;
+    background-image: linear-gradient(rgba(255, 255, 255, .5) 30%, rgba(255, 255, 255,0));
+    z-index: 1;
+  }
 
   h2 {
+    line-height: 1.2;
+    margin-bottom: 0.4em;
     text-align: left;
-    margin-bottom: 0.1em;
   }
 
   .text {
@@ -14,10 +27,15 @@
     display: flex;
     margin-top: 3em;
     margin-bottom: 3em;
+  }
 
-    &:not(:first-of-type) {
-      min-height: 30vh;
-    }
+  .article-meta {
+    color: $colorSubtle;
+  }
+
+  .article-abstract {
+    font-weight: bold;
+    margin-bottom: 2em;
   }
 
   .cover {
@@ -31,13 +49,8 @@
         padding-bottom: 1/3*100%;
       }
 
-      .m-parallax-clipper {
-        img {
-          height: 60%;
-          @media(min-width: $breakpointExtraLarge) {
-            height: 100%;
-          }
-        }
+      img {
+        object-fit: cover;
       }
     }
 
@@ -79,9 +92,15 @@
   }
 
   .media-boundaries {
-    @media(min-aspect-ratio: 16/9) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-height: 100vh;
+    overflow: hidden;
+
+    @media(min-aspect-ratio: 16/9) and (min-width: $breakpointExtraLarge) {
       @include boundaries();
-      width: $maxPageSize + 200px;
+      width: $maxPageSize;
     }
   }
 

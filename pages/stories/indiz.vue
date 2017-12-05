@@ -1,14 +1,9 @@
 <template>
 <div id="story">
   <div class="cover">
-    <div class="m-parallax cover-image aspectRatioKeeper">
-      <div class="m-parallax-clipper">
-        <img src="/stories/indiz/cover.jpg" alt="Cover">
-      </div>
-    </div>
-    <!-- <div class="cover-image aspectRatioKeeper">
+    <div class="cover-image aspectRatioKeeper">
       <img src="/stories/indiz/cover.jpg" alt="Cover">
-    </div> -->
+    </div>
     <div class="boundaries cover-info">
       <div class="business">
         <div class="business-thumb">
@@ -17,31 +12,30 @@
           </div>
         </div>
       </div>
-
       <div class="label" v-text="$t('pages.story')"></div>
     </div>
   </div>
   <div class="boundaries">
-    <h2>Über Mauern, Rucksäcke und Eisberge</h2>
-    <p>
-      <small>von Olivier Christe & Christophe Schwyzer</small>
+    <p class="article-meta">
+      <small>von Olivier Christe & Christophe Schwyzer &#5867; <time>Dezember 2017</time></small>
     </p>
+    <h2>Über Wände, Rucksäcke und Eisberge</h2>
+    <p class="article-abstract">Wer in einem Rucksack wühlt, stösst neben Laptop und Trinkflasche auch die Produzenten. Mit Iris und Andri vom Basler Rucksacklabel Indiz denken wir darüber nach, wie Bedürfnisse zu Objekten werden und wie beide gemeinsam altern.</p>
+
   </div>
-  <p class="text boundaries">
+  <p class="boundaries">
     Sie hängen in einer Reihe an der Wand: Jonas, Simone, Filip, Yasmine und Kuno. Sie hängen da und es stört sie nicht und ist auch noch nett anzusehen. Es sind Rucksäcke. Wir sind im Atelier von Iris Staudecker und Andri Werlen an der Socinstrasse 7. Die
-    Rucksäcke sind umgeben von Spiegeln, ein gemütliches Sofa lädt zum Reinspringen ein. Der Schwedenofen unterstützt dieses Verlangen. Die andere Raumhälfte prägt ein grosser Tisch und vier Nähmaschinen. Schnittmuster und Prototypen schmücken die Wände.
-    Der Plan ist: „Ihr setzt euch gemütlich hin und quatscht ein wenig.“ Andri will wissen: „Was heisst ein wenig quatschen: ihr stellt Fragen und wir antworten?“ – „Genau.“ – „Super, dann los!“
+    Rucksäcke sind umgeben von Spiegeln, ein gemütliches Sofa lädt zum Reinspringen ein. Der Schwedenofen unterstützt dieses Verlangen. Die andere Raumhälfte wird von einem grossen Tisch und vier Nähmaschinen geprägt. Schnittmuster und Prototypen schmücken
+    die Wände. Die beiden nehmen auf dem Sofa Platz. Andri will wissen: „Was heisst ein wenig erzählen: ihr stellt Fragen und wir antworten?“ – „Genau.“ – „Super, dann los!“
   </p>
 
   <div class="media-boundaries">
-    <div class="js-autoplay m-parallax aspectRatioKeeper">
-      <div class="m-parallax-clipper">
-        <video src="/stories/indiz/Indiz-Part-1-web.mp4"></video>
-      </div>
+    <div class="js-autoplay aspectRatioKeeper">
+      <video src="/stories/indiz/Indiz-Part-1-web.mp4"></video>
     </div>
-    <div class="boundaries text-xs-right">
-      <small class="js-countdown"></small>
-    </div>
+  </div>
+  <div class="boundaries text-xs-right">
+    <small class="js-countdown">&nbsp;</small>
   </div>
 
   <p class="text boundaries">
@@ -54,20 +48,18 @@
     </div>
   </div>
   <p class="text boundaries">
-    Berufe sind etwas Sonderbares. Man entscheidet sich irgendwann, nur noch Mauern zu bauen, Versicherungsverträge zu verkaufen oder Fahrstunden zu geben. Und das macht man dann, vielleicht kein ganzes Leben, aber doch eine bedeutende Zeit. Der Inhalt wird
+    Berufe sind etwas Sonderbares. Man entscheidet sich irgendwann, nur Wände zu streichen, Versicherungsverträge zu verkaufen oder Fahrstunden zu geben. Und das macht man dann, vielleicht kein ganzes Leben, aber doch eine bedeutende Zeit. Der Inhalt wird
     zum Dreh- und Angelpunkt der eigenen Existenz und es ist doch sonderbar, weshalb es gerade das ist. Umso mehr in einer Zeit und an einem Ort der freien Berufswahl. Und es ist doch sonderbar, dass sich Iris und Andri für Rucksäcke entschieden haben.
-    Aber wenn die materielle Form, also die Rucksäcke, wirklich nur 1/9 der gesamten Produktion darstellen – oder 7/8 oder 15/19, nicht dass jetzt jemand diese Zahl absolut nimmt – dann ist die Gesamtproduktion zwischen dem Maurer und dem Rucksackdesigner
+    Aber wenn die materielle Form, also die Rucksäcke, wirklich nur 1/9 der gesamten Produktion darstellen – oder 7/8 oder 15/19, nicht dass jetzt jemand diese Zahl absolut nimmt – dann ist die Gesamtproduktion zwischen dem Maler und dem Rucksackdesigner
     vielleicht gar nicht so unterschiedlich. Vielleicht decken sich Ideen, Träume, Bedürfnisse weitflächig, und nur die Spitze des Eisbergs unterscheidet sich grundlegend.
   </p>
   <div class="media-boundaries">
-    <div class="js-autoplay m-parallax aspectRatioKeeper">
-      <div class="m-parallax-clipper">
-        <video src="/stories/indiz/Indiz-Part-2-web.mp4"></video>
-      </div>
+    <div class="js-autoplay aspectRatioKeeper">
+      <video src="/stories/indiz/Indiz-Part-2-web.mp4"></video>
     </div>
-    <div class="boundaries text-xs-right">
-      <small class="js-countdown"></small>
-    </div>
+  </div>
+  <div class="boundaries text-xs-right">
+    <small class="js-countdown">&nbsp;</small>
   </div>
 
   <p class="text boundaries">
@@ -99,7 +91,6 @@ export default {
   layout: 'clean',
   data() {
     return {
-
       carouselItems: [{
           src: 'IMG_2652_1.jpg'
         },
@@ -123,9 +114,9 @@ export default {
     const VisSense = VisSenseFactory(window)
 
     $videoWrapper.each(function () {
-      var visibility = VisSense($(this)[0], { fullyvisible: 0.9 })
+      var visibility = VisSense($(this)[0], { fullyvisible: 0.7 })
       var video = $(this).find('video').get(0)
-      var counter = $(this).next().find('.js-countdown')
+      var counter = $(this).parent().next().find('.js-countdown')
 
       video.addEventListener('timeupdate', updateCountdown)
 
@@ -139,7 +130,7 @@ export default {
         },
         percentagechange: function (monitor, newValue, oldValue) {
           var difference = newValue - oldValue
-          if (difference < 1 && newValue < 0.8) {
+          if (difference < 1 && newValue < 0.6) {
             video.pause()
           }
         },
