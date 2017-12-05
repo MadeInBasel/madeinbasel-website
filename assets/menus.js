@@ -11,13 +11,13 @@ const main = [{
   {
     path: '/explore',
     label: 'pages.explore',
-    icon: 'face'
-  },
-  {
-    path: '/stories',
-    label: 'pages.stories',
     icon: 'favorite'
   },
+  // {
+  //   path: '/stories',
+  //   label: 'pages.stories',
+  //   icon: 'favorite'
+  // },
   {
     path: '/about',
     label: 'pages.about',

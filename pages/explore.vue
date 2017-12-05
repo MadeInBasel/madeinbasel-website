@@ -41,12 +41,12 @@ export default {
     messages: {
       en: {
         intro: {
-          abstract: 'Below you will find the complete list of our members. Selected members have stories attached and are marked with a {icon}.'
+          abstract: 'From handicrafts, culinary delights to curiosities - get an insight into the multifaceted creativity of Basel\'s neighbourhoods and get to know the people behind the products.'
         }
       },
       de: {
         intro: {
-          abstract: 'Im Folgenden findest du das vollständige Verzeichnis der eingetragenen Mitglieder. Ausgewählte Produzenten werden von uns persönlich porträtiert und sind mit einem {icon} gekennzeichnet.'
+          abstract: 'Von Kunsthandwerk, über Kulinarisches bis zu Kuriositäten - erhalte Einblick in das vielfältige Schaffen aus Basels Quartieren und lerne die Menschen hinter den Produkten kennen.'
         }
       }
     }
