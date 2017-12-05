@@ -4,6 +4,9 @@
     <h1>{{ $t('pages.explore') }}</h1>
     <div class="abstract" v-html="$t('intro.abstract', {icon: '♥'})"></div>
     <component-members />
+    <div class="text-xs-center">
+      <component-newsletter />
+    </div>
   </component-section>
 
   <component-section small dark>
@@ -14,8 +17,9 @@
 </template>
 
 <script>
-import members from '~/components/members.vue'
-import section from '~/components/section.vue'
+import componentMembers from '~/components/members.vue'
+import componentSection from '~/components/section.vue'
+import componentNewsletter from '~/components/newsletter.vue'
 
 export default {
   head() {
@@ -29,8 +33,9 @@ export default {
     }
   },
   components: {
-    'component-members': members,
-    'component-section': section
+    componentMembers,
+    componentSection,
+    componentNewsletter
   },
   i18n: {
     messages: {

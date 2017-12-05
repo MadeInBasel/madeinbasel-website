@@ -12,6 +12,7 @@
         <nuxt-link :to="localePath('/admin')">
           {{ $t('pages.admin') }}
         </nuxt-link>
+        <component-newsletter link />
       </div>
     </div>
 
@@ -26,12 +27,14 @@
 import address from '~/components/contactAddress.vue'
 import language from '~/components/language.vue'
 import socialMenu from '~/components/socialMenu.vue'
+import componentNewsletter from '~/components/newsletter.vue'
 
 export default {
   components: {
     'component-address': address,
     'component-language': language,
-    'component-socialMenu': socialMenu
+    'component-socialMenu': socialMenu,
+    componentNewsletter
   },
   computed: {
     animations() {
