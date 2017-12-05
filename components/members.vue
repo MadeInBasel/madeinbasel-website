@@ -14,7 +14,7 @@
     </div>
   </div>
   <transition-group v-show="ready" name="transition-down" tag="div" class="layout members wrap">
-    <v-flex v-show="ready" xs6 sm4 md3 v-for="(item, index) in membersPaging" :key="item.id">
+    <v-flex v-show="ready" xs12 sm6 md4 v-for="(item, index) in membersPaging" :key="item.id">
       <nuxt-link class="member" v-ripple :to="{ path: $route.path + '#' + `${item.id}`}">
         <div class="member-cover">
           <div class="icon-container">
