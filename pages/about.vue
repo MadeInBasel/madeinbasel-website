@@ -7,7 +7,7 @@
       <v-flex xs12 sm6 order-sm2>
         <div><strong>Impressum</strong></div>
         <component-address />
-
+        <component-newsletter link />
         <div><strong>Social</strong></div>
         <component-socialMenu />
         <v-dialog class="contact-dialog" v-model="contactDialog" max-width="600" content-class="dialog--custom dialog--contact">
@@ -88,6 +88,7 @@ import terms from '~/components/terms.vue'
 import contactForm from '~/components/contactForm.vue'
 import section from '~/components/section.vue'
 import socialMenu from '~/components/socialMenu.vue'
+import componentNewsletter from '~/components/newsletter.vue'
 
 export default {
   components: {
@@ -95,7 +96,8 @@ export default {
     'component-terms': terms,
     'component-contact-form': contactForm,
     'component-section': section,
-    'component-socialMenu': socialMenu
+    'component-socialMenu': socialMenu,
+    componentNewsletter
   },
   head() {
     return {
