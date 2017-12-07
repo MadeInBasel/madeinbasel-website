@@ -17,23 +17,23 @@
   </div>
   <div class="boundaries">
     <p class="article-meta">
-      <small>von Olivier Christe & Christophe Schwyzer &#5867; <time>Dezember 2017</time></small>
+      <small>von Olivier Christe & Christophe Schwyzer</small>
     </p>
-    <h2>Über Wände, Rucksäcke und Eisberge</h2>
-    <p class="article-abstract">Wer in einem Rucksack wühlt, stösst neben Laptop und Trinkflasche auch die Produzenten. Mit Iris und Andri vom Basler Rucksacklabel Indiz denken wir darüber nach, wie Bedürfnisse zu Objekten werden und wie beide gemeinsam altern.</p>
+    <h2>Über Mauern, Rucksäcke und Eisberge</h2>
+    <p class="article-abstract">Wer in einem Rucksack wühlt, stösst neben Laptop und Trinkflasche auch auf die Produzenten. Mit Iris und Andri vom Basler Rucksacklabel Indiz denken wir über materielle und immaterielle Produkte nach.</p>
 
   </div>
   <p class="boundaries">
-    Sie hängen in einer Reihe an der Wand: Jonas, Simone, Filip, Yasmine und Kuno. Sie hängen da und es stört sie nicht und ist auch noch nett anzusehen. Es sind Rucksäcke. Wir sind im Atelier von Iris Staudecker und Andri Werlen an der Socinstrasse 7. Die
-    Rucksäcke sind umgeben von Spiegeln, ein gemütliches Sofa lädt zum Reinspringen ein. Der Schwedenofen unterstützt dieses Verlangen. Die andere Raumhälfte wird von einem grossen Tisch und vier Nähmaschinen geprägt. Schnittmuster und Prototypen schmücken
-    die Wände. Die beiden nehmen auf dem Sofa Platz. Andri will wissen: „Was heisst ein wenig erzählen: ihr stellt Fragen und wir antworten?“ – „Genau.“ – „Super, dann los!“
+    Sie hängen in einer Reihe an der Wand: Jonas, Simone, Filip, Yasmine und Kuno. Sie hängen da und es stört sie nicht und ist auch noch nett anzusehen. Es sind Rucksäcke. Wir sind im Atelier von Iris Staudecker und Andri Werlen in Basel. Die Rucksäcke sind
+    umgeben von Spiegeln, ein gemütliches Sofa lädt zum Reinspringen ein. Der Schwedenofen unterstützt dieses Verlangen. Die andere Raumhälfte wird von einem grossen Tisch und vier Nähmaschinen geprägt. Schnittmuster und Prototypen schmücken die Wände.
+    Die beiden nehmen auf dem Sofa Platz. Andri will wissen: „Was heisst ein wenig erzählen: ihr stellt Fragen und wir antworten?“ – „Genau.“ – „Super, dann los!“
   </p>
 
   <div class="media">
     <div class="media-boundaries">
       <div>
         <div class="js-autoplay aspectRatioKeeper">
-          <video src="/stories/indiz/Indiz-Part-1-web.mp4" poster="/stories/indiz/poster.jpg"></video>
+          <video src="/stories/indiz/Indiz-Part-1-web.mp4" poster="/stories/indiz/Poster-Part-1.jpg"></video>
         </div>
       </div>
     </div>
@@ -44,7 +44,7 @@
 
   <p class="text boundaries">
     Menschen produzieren Dinge, doch es sind bei Weitem nicht nur materielle Objekte. Schwierig zu messen, doch die immaterielle Produktion ist vielleicht der unter Wasser liegende, grosse Teil des Eisbergs, 9/10: Träume, Ideen, Pläne, Bedürfnisse, Vorurteile,
-    Stereotypen. Die Rucksäcke sind also die Spitzen der Eisberge. Sie schwimmen in einem weiten Ozean und reichen tief in ihn hinab. Es ist die Welt von Iris Staudecker und Andri Werlen, ihr immaterieller Fundus.
+    Stereotypen. Die Rucksäcke sind also die Spitzen der Eisberge. Sie schwimmen in einem weiten Ozean und reichen tief in ihn hinab. Es ist die Welt von Iris und Andri, ihr immaterieller Fundus.
   </p>
   <div class="m-parallax aspectRatioKeeper">
     <div class="m-parallax-clipper">
@@ -52,7 +52,7 @@
     </div>
   </div>
   <p class="text boundaries">
-    Berufe sind etwas Sonderbares. Man entscheidet sich irgendwann, nur Wände zu streichen, Versicherungsverträge zu verkaufen oder Fahrstunden zu geben. Und das macht man dann, vielleicht kein ganzes Leben, aber doch eine bedeutende Zeit. Der Inhalt wird
+    Berufe sind etwas Sonderbares. Man entscheidet sich irgendwann, nur Mauern zu streichen, Versicherungsverträge zu verkaufen oder Fahrstunden zu geben. Und das macht man dann, vielleicht kein ganzes Leben, aber doch eine bedeutende Zeit. Der Inhalt wird
     zum Dreh- und Angelpunkt der eigenen Existenz und es ist doch sonderbar, weshalb es gerade das ist. Umso mehr in einer Zeit und an einem Ort der freien Berufswahl. Und es ist doch sonderbar, dass sich Iris und Andri für Rucksäcke entschieden haben.
     Aber wenn die materielle Form, also die Rucksäcke, wirklich nur 1/9 der gesamten Produktion darstellen – oder 7/8 oder 15/19, nicht dass jetzt jemand diese Zahl absolut nimmt – dann ist die Gesamtproduktion zwischen dem Maler und dem Rucksackdesigner
     vielleicht gar nicht so unterschiedlich. Vielleicht decken sich Ideen, Träume, Bedürfnisse weitflächig, und nur die Spitze des Eisbergs unterscheidet sich grundlegend.
@@ -61,7 +61,7 @@
     <div class="media-boundaries">
       <div>
         <div class="js-autoplay aspectRatioKeeper">
-          <video src="/stories/indiz/Indiz-Part-2-web.mp4" poster="/stories/indiz/poster.jpg"></video>
+          <video src="/stories/indiz/Indiz-Part-2-web.mp4" poster="/stories/indiz/Poster-Part-2.jpg"></video>
         </div>
       </div>
     </div>
@@ -72,7 +72,8 @@
 
   <p class="text boundaries">
     Iris und Andri arbeiten in einem Hinterhof an der Socinstrasse 7. Dort tragen sie all die Gedanken zusammen, die sie schliesslich zu Rucksäcken zusammennähen. Sie produzieren Prototyp um Prototyp, tragen Probe und kritisieren. Der Ball fliegt hin und
-    her. Übernimm du, du, du. Bis der fertige Prototyp vorliegt. Der letzte Ball fliegt an die Kunden: in Basel gedacht, aber hier oder auf den Philippinen genäht?
+    her. Übernimm du, du, du. Bis der fertige Prototyp vorliegt. Der letzte Ball fliegt an die Kunden: in Basel gedacht, aber hier oder auf den Philippinen genäht? Auf die Frage, ob sie damit die Verantwortung nicht abschieben, antworten die beiden mit
+    Pragmatismus: „Nur wenige sind bereit, 900 Franken für einen Rucksack zu bezahlen.“
   </p>
 
   <div v-for="(item,i) in carouselItems" class="m-parallax aspectRatioKeeper full">
