@@ -9,6 +9,7 @@
 body {
   color: $colorFg;
   font-family: "din-2014",sans-serif;
+  text-rendering: optimizeLegibility;
   font-smoothing: auto;
   -webkit-font-smoothing: antialiased;
   margin: 0;
