@@ -104,6 +104,9 @@ export default {
   data() {
     return {
       carouselItems: [{
+          src: 'IMG_2517_1.jpg'
+        },
+        {
           src: 'IMG_2652_1.jpg'
         },
         {
