@@ -4,6 +4,7 @@
   background-color: $colorBgDark;
   border-top: 3px dotted white;
   color: white;
+  line-height: 1.4;
   mix-blend-mode: multiply;
   padding-bottom: 7vw;
   padding-top: 7vw;
@@ -35,7 +36,6 @@
 
   .component-contactAddress {
     margin-right: 50px;
-    line-height: 1.4;
 
     .co {
       display: none;

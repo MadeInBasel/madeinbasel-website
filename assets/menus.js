@@ -31,6 +31,10 @@ const social = [
     label: 'Instagram'
   },
   {
+    url: 'https://www.facebook.com/MADE-IN-BASEL-295730357607747/',
+    label: 'Facebook'
+  },
+  {
     url: 'https://twitter.com/madeinbasel',
     label: 'Twitter'
   },
