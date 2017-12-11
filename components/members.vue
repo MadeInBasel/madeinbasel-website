@@ -25,13 +25,11 @@
             </div>
           </nuxt-link>
           <div class="story-preview">
-            <nuxt-link :to="localePath('/stories/' + item.data.story)">
-              <div class="meta">
-                <div class="meta-label" v-text="$t('pages.story')"></div>
-                <h3>{{ $t('stories.' + `${item.data.story}` + '.heading') }}</h3>
-                <div class="meta-article">
-                  {{ $t('stories.' + `${item.data.story}` + '.abstract') }}
-                </div>
+            <nuxt-link class="meta" :to="localePath('/stories/' + item.data.story)">
+              <div class="meta-label" v-text="$t('pages.story')"></div>
+              <h3>{{ $t('stories.' + `${item.data.story}` + '.heading') }}</h3>
+              <div class="meta-article">
+                {{ $t('stories.' + `${item.data.story}` + '.abstract') }}
               </div>
             </nuxt-link>
             <nuxt-link v-ripple :to="{ path: $route.path + '#' + `${item.id}`}" class="business">

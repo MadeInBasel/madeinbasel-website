@@ -3,16 +3,14 @@
   <component-section>
     <h1>{{ $t('pages.stories') }}</h1>
     <div class="abstract" v-html="$t('intro.abstract')"></div>
-    <div class="text-xs-center">
-      <i>{{ $t('placeholder') }}</i>
-    </div>
-    <!-- <component-stories /> -->
+    <component-members storiesOnly />
   </component-section>
 </div>
 </template>
 
 <script>
 import section from '~/components/section.vue'
+import componentMembers from '~/components/members.vue'
 
 export default {
   head() {
@@ -26,7 +24,8 @@ export default {
     }
   },
   components: {
-    'component-section': section
+    'component-section': section,
+    componentMembers
   },
   i18n: {
     messages: {

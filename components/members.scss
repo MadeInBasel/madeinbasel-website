@@ -132,7 +132,7 @@
     position: relative;
 
     @media(min-width: $breakpointSmall) {
-      flex-basis: 60%;
+      flex-basis: 65%;
     }
 
     .aspectRatioKeeper {
@@ -160,6 +160,10 @@
 
   .meta {
     flex-grow: 1;
+
+    @media(min-width: $breakpointSmall) {
+      min-height: 160px;
+    }
 
     .meta-label {
       font-size: 0.8em;
