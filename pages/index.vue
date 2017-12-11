@@ -1,15 +1,21 @@
 <template>
 <div id="index">
-  <section class="wallpaper boundaries">
-    <transition name="transition-down">
-      <img class="logo" src="~assets/images/logo.svg" alt="Logo">
-    </transition>
+  <section class="wallpaper">
+    <div>
+      <div class="logo">
+        <img class="logo-brandmark" src="~assets/images/logo-brandmark.svg" alt="Logo">
+        <img class="logo-logotype" src="~assets/images/logo-logotype.svg" alt="Logo">
+      </div>
+
+      <div class="claim">{{ $t('claim') }}</div>
+    </div>
+
     <div class="more">
       <v-icon>expand_more</v-icon>
     </div>
   </section>
 
-  <component-section dark>
+  <component-section class="label" dark>
     <h2>{{ $t('intro.heading')}}</h2>
     <div class="abstract" v-html="$t('intro.abstract', {mib: '<strong>MADE IN BASEL</strong>'})"></div>
     <div class="text-xs-center">
@@ -49,17 +55,13 @@ export default {
       }]
     }
   },
-  data() {
-    return {
-      ready: false
-    }
-  },
   mounted() {
-    this.ready = true
+    document.getElementById('index').classList.add('ready')
   },
   i18n: {
     messages: {
       en: {
+        claim: 'The source of local excellence',
         intro: {
           heading: 'The Label',
           abstract: '{mib} is an initiative to promote products and services from Basel, Switzerland. We support local production and help sustain a creative climate that encourages entrepreneurship and innovation. We put Basel on the map.'
@@ -71,6 +73,7 @@ export default {
         }
       },
       de: {
+        claim: 'Erlesenes aus der Nachbarschaft',
         intro: {
           heading: 'Das Label',
           abstract: '{mib} ist eine Initiative, die Produkte und Dienstleistungen aus Basel bewirbt. Wir fördern Innovation, Vielfalt und Unternehmergeist. Damit helfen wir, Basel als Wohn-, Arbeits- und Kulturstadt auf der Weltkarte zu verankern.'

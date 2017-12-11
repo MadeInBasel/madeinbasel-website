@@ -2,8 +2,8 @@
 <v-app id="layout" class="scrollTop scrollTopExtended" :class="{ 'no-animations': !animations, 'rainbow': hasBackgroundAnimation }" v-scroll="onScroll">
   <div class="layout-inner">
     <v-navigation-drawer id="navigation" class="pb-0" persistent temporary right height="100%" enable-resize-watcher v-model="drawer">
-      <nuxt-link class="emblem" :to="localePath('/')">
-        <img class="logo" src="~assets/images/logo.svg" alt="Logo">
+      <nuxt-link class="logo" :to="localePath('/')">
+        <img src="~assets/images/logo.svg" alt="Logo">
       </nuxt-link>
       <v-list dense>
         <v-list-tile v-for="(item, i) in main.slice(1)" :key="i" nuxt exact v-ripple :to="localePath(`${item.path}`)">

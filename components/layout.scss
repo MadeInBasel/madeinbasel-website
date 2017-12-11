@@ -111,15 +111,14 @@ h3 {
   flex-direction: column;
   padding: 5px;
 
-  .emblem {
+  .logo {
     display: flex;
-    height: 140px;
     justify-content: center;
     margin-bottom: 2em;
     margin-top: 1em;
 
     img {
-      width: 900px;
+      max-height: 130px;
     }
   }
 
