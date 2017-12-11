@@ -3,12 +3,17 @@
 #index {
   .wallpaper {
     align-items: center;
+    box-sizing: content-box;
     display: flex;
     justify-content: center;
     min-height: 100vh;
+    padding-bottom: 100px;
     perspective: 1000px;
     position: relative;
     transform: translate3d(0, 0, 0);
+
+    background: url("~assets/images/pattern.svg");
+    background-size: 180px;
 
     .logo {
       display: flex;
@@ -55,10 +60,14 @@
     .more {
       animation: more 1s ease-out infinite;
       position: absolute;
-      bottom: 20px;
+      bottom: 120px;
       left: 50%;
       transform: translateX(-50%);
     }
+  }
+
+  .label {
+    margin-top: -100px;
   }
 
   .discover {

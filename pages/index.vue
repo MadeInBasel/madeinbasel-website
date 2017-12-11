@@ -1,6 +1,6 @@
 <template>
 <div id="index" :class="{ready: ready}">
-  <section class="wallpaper boundaries">
+  <section class="wallpaper">
     <div>
       <div class="logo">
         <img class="logo-brandmark" src="~assets/images/logo-brandmark.svg" alt="Logo">
@@ -15,7 +15,7 @@
     </div>
   </section>
 
-  <component-section dark>
+  <component-section class="label" dark>
     <h2>{{ $t('intro.heading')}}</h2>
     <div class="abstract" v-html="$t('intro.abstract', {mib: '<strong>MADE IN BASEL</strong>'})"></div>
     <div class="text-xs-center">
