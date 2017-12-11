@@ -104,6 +104,10 @@
           <q v-if="item.data.description.de && ($i18n.locale === 'de' || isAuthor(item))">{{ item.data.description.de }}</q>
         </div>
 
+        <div v-if="item.data.hasOwnProperty('story')" class="content-story">
+          <v-btn outline large :to="localePath('/stories/' + item.data.story)">{{ $t('buttons.readStory') }}</v-btn>
+        </div>
+
         <div class="content-social">
           <v-btn flat icon v-if="item.data.hasOwnProperty('website') && item.data.website" :href="item.data.website" target="_blank" rel="noopener" :title="$t('buttons.visitWebsite')">
             <svg style="width:24px;height:24px" viewBox="0 0 24 24">
@@ -365,6 +369,9 @@ export default {
         admin: {
           confirmDelete: 'Are you sure? Your listing will be removed permanently.'
         },
+        buttons: {
+          readStory: 'Read the story'
+        },
         stories: {
           indiz: {
             heading: 'About walls, backpacks and icebergs',
@@ -377,6 +384,9 @@ export default {
         mapPlaceholder: 'Adresse unbekannt',
         admin: {
           confirmDelete: 'Bist du sicher? Dein Eintrag wird permanent gelöscht.'
+        },
+        buttons: {
+          readStory: 'Zum Portrait'
         },
         stories: {
           indiz: {
