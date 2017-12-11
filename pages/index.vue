@@ -1,5 +1,5 @@
 <template>
-<div id="index" :class="{ready: ready}">
+<div id="index">
   <section class="wallpaper">
     <div>
       <div class="logo">
@@ -55,13 +55,8 @@ export default {
       }]
     }
   },
-  data() {
-    return {
-      ready: false
-    }
-  },
   mounted() {
-    this.ready = true
+    document.getElementById('index').classList.add('ready')
   },
   i18n: {
     messages: {

@@ -3,6 +3,9 @@
 #index {
   .wallpaper {
     align-items: center;
+    background-image: url("~assets/images/pattern.svg");
+    background-repeat: repeat;
+    background-size: 180px;
     box-sizing: content-box;
     display: flex;
     justify-content: center;
@@ -12,10 +15,8 @@
     position: relative;
     transform: translate3d(0, 0, 0);
 
-    background: url("~assets/images/pattern.svg");
-    background-size: 180px;
-
     .logo {
+      align-items: center;
       display: flex;
       flex-direction: column;
       margin-left: auto;
@@ -29,17 +30,17 @@
       @media (min-height: 600px) {
         max-height: 400px;
       }
-    }
 
-    .logo-brandmark {
-      opacity: 0;
-      perspective: 1000px;
-      transform: translate3d(100px, 100px, 100px) scale(5) rotate(15deg);
-      transition: 400ms cubic-bezier(.53,1.35,.73,.95);
-    }
+      .logo-brandmark {
+        opacity: 0;
+        perspective: 1000px;
+        transform: translate3d(100px, 100px, 100px) scale(5) rotate(15deg);
+        transition: 400ms cubic-bezier(.53,1.35,.73,.95);
+      }
 
-    .logo-logotype {
-      transform: translateY(-26%);
+      .logo-logotype {
+        transform: translateY(-26%);
+      }
     }
 
     .claim {
@@ -48,10 +49,13 @@
       margin-left: auto;
       margin-right: auto;
       max-width: 90%;
+      opacity: 0;
       text-align: center;
       text-transform: uppercase;
+      transform: translateY(20px) scale(1.2);
+      transition: 200ms 800ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
-      @media (min-width: $breakpointSmall) {
+      @media (min-width:$breakpointSmall) {
         font-size: 2em;
         margin-top: 1em;
       }
@@ -87,6 +91,11 @@
     .logo-brandmark {
       opacity: 1;
       transform: translate3d(0, 0, 0) scale(1) rotate(0);
+    }
+
+    .claim {
+      opacity: 1;
+      transform: translateY(0) scale(1);
     }
   }
 }
