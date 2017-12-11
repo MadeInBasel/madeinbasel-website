@@ -14,6 +14,10 @@
       padding: 5px;
 
     }
+
+    .members-stories {
+      margin-bottom: 1em;
+    }
   }
 
   .member {
@@ -25,6 +29,7 @@
 
     .member-cover {
       background-color: $colorBgDark;
+      display: block;
       padding-bottom: 56.25%;
       position: relative;
 
@@ -104,6 +109,105 @@
     margin: 12px;
     padding: 12px;
     border: 2px dashed $colorSubtle;
+  }
+}
+
+.story {
+  box-shadow: 2px 2px rgba(0,0,0,0.3);
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+
+  @media(min-width: $breakpointSmall) {
+    flex-direction: row;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .story-cover {
+    flex: 0 0 40%;
+    position: relative;
+
+    @media(min-width: $breakpointSmall) {
+      flex-basis: 60%;
+    }
+
+    .aspectRatioKeeper {
+      padding-bottom: 2/3*100%;
+
+      @media(min-width: $breakpointSmall) {
+        height: 100%;
+        padding: 0;
+      }
+
+    }
+
+    img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .story-preview {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .meta {
+    flex-grow: 1;
+
+    .meta-label {
+      font-size: 0.8em;
+      margin-bottom: 0.4em;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      font-size: 1.5em;
+      line-height: 1.2;
+      margin-bottom: 0.4em;
+      text-align: left;
+    }
+
+    .meta-article {
+      color: $colorSubtle;
+      font-size: 0.8em;
+    }
+  }
+
+  .business {
+    display: flex;
+    margin-top: 2.5em;
+
+    .business-thumb {
+      background-color: white;
+      border: 1px solid rgba(0,0,0,.05);
+      border-radius: 50%;
+      display: inline-flex;
+      height: 50px;
+      width: 50px;
+    }
+
+    .business-info {
+      padding-left: 8px;
+      padding-top: 10px;
+
+      .name {
+        line-height: 1;
+        font-size: 0.9em;
+        font-weight: bold;
+      }
+
+      .industry {
+        color: $colorSubtle;
+        font-size: 0.8em;
+      }
+    }
   }
 }
 

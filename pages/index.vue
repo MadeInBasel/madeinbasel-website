@@ -21,9 +21,7 @@
     <h2>{{ $t('members.heading')}}</h2>
     <div class="abstract" v-html="$t('members.abstract', {mib: '<strong>MADE IN BASEL</strong>'})"></div>
 
-    <!-- <component-stories /> -->
-    <!-- <h3 class="members-heading">{{ $t('members.subheading')}}</h3> -->
-    <component-members paging=8 />
+    <component-members paging=3 storiesOnly />
     <div class="text-xs-center">
       <v-btn color="primary" large :to="localePath('/explore')">{{ $t('buttons.allMembers') }}</v-btn>
     </div>
@@ -34,13 +32,11 @@
 
 <script>
 import members from '~/components/members.vue'
-import stories from '~/components/stories.vue'
 import section from '~/components/section.vue'
 
 export default {
   components: {
     'component-members': members,
-    'component-stories': stories,
     'component-section': section
   },
   head() {

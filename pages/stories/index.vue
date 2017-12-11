@@ -13,7 +13,6 @@
 
 <script>
 import section from '~/components/section.vue'
-import componentStories from '~/components/stories.vue'
 
 export default {
   head() {
@@ -27,8 +26,7 @@ export default {
     }
   },
   components: {
-    'component-section': section,
-    componentStories
+    'component-section': section
   },
   i18n: {
     messages: {

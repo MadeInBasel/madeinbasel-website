@@ -48,7 +48,7 @@
   </p>
   <div class="m-parallax aspectRatioKeeper">
     <div class="m-parallax-clipper">
-      <img src="/stories/indiz/parallax.jpg" alt="Image">
+      <img src="/stories/indiz/drafts.jpg" alt="Image">
     </div>
   </div>
   <p class="text boundaries">
@@ -57,6 +57,9 @@
     Aber wenn die materielle Form, also die Rucksäcke, wirklich nur 1/9 der gesamten Produktion darstellen – oder 7/8 oder 15/19, nicht dass jetzt jemand diese Zahl absolut nimmt – dann ist die Gesamtproduktion zwischen dem Maler und dem Rucksackdesigner
     vielleicht gar nicht so unterschiedlich. Vielleicht decken sich Ideen, Träume, Bedürfnisse weitflächig, und nur die Spitze des Eisbergs unterscheidet sich grundlegend.
   </p>
+  <!-- <div class="boundaries image">
+    <img src="/stories/indiz/drafts.jpg" alt="Drafts">
+  </div> -->
   <div class="media">
     <div class="media-boundaries">
       <div>

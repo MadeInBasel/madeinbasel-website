@@ -14,27 +14,63 @@
     </div>
   </div>
   <transition-group v-show="ready" name="transition-down" tag="div" class="layout members wrap">
-    <v-flex v-show="ready" xs12 sm6 md4 v-for="(item, index) in membersPaging" :key="item.id">
-      <nuxt-link class="member" v-ripple :to="{ path: $route.path + '#' + `${item.id}`}">
-        <div class="member-cover">
-          <div class="icon-container">
-            <v-icon dark>photo</v-icon>
-          </div>
-          <img v-if="item.data.hasOwnProperty('organisationPhotos') && item.data.organisationPhotos" :src="item.data.organisationPhotos.cdnUrl + 'nth/0/-/resize/400x/'" alt="Cover">
-        </div>
-        <div class="member-info">
-          <img class="image" :src="item.data.organisationImage.cdnUrl + '-/preview/160x160/'" :alt="item.data.organisationName">
-          <div class="intro">
-            <div class="intro-name">
-              <strong>{{ item.data.organisationName }}</strong>
+    <template v-show="ready" v-for="(item, index) in membersPaging">
+      <v-flex class="members-stories" v-if="item.data.hasOwnProperty('story')" xs12 :key="item.id">
+        <div class="story">
+          <nuxt-link :to="localePath('/stories/' + item.data.story)" class="story-cover">
+            <div class="aspectRatioKeeper">
+              <div>
+                <img :src="'/stories/' + item.data.story + '/preview.jpg'" alt="Cover">
+              </div>
             </div>
-            <div class="intro-industry">
-              <span v-if="item.data.hasOwnProperty('industry') && item.data.industry >= 0">{{ $t('industries[' + `${item.data.industry}` + ']') }}</span>&nbsp;
-            </div>
+          </nuxt-link>
+          <div class="story-preview">
+            <nuxt-link :to="localePath('/stories/' + item.data.story)">
+              <div class="meta">
+                <div class="meta-label" v-text="$t('pages.story')"></div>
+                <h3>{{ $t('stories.' + `${item.data.story}` + '.heading') }}</h3>
+                <div class="meta-article">
+                  {{ $t('stories.' + `${item.data.story}` + '.abstract') }}
+                </div>
+              </div>
+            </nuxt-link>
+            <nuxt-link v-ripple :to="{ path: $route.path + '#' + `${item.id}`}" class="business">
+              <img class="business-thumb" :src="item.data.organisationImage.cdnUrl + '-/preview/160x160/'" :alt="item.data.organisationName">
+              <div class="business-info">
+                <div class="name">
+                  <strong>{{ item.data.organisationName }}</strong>
+                </div>
+                <div class="industry">
+                  <span v-if="item.data.hasOwnProperty('industry') && item.data.industry >= 0">{{ $t('industries[' + `${item.data.industry}` + ']') }}</span>&nbsp;
+                </div>
+              </div>
+            </nuxt-link>
           </div>
         </div>
-      </nuxt-link>
-    </v-flex>
+      </v-flex>
+
+      <v-flex v-else-if="!storiesOnly" xs12 sm6 md4 :key="item.id">
+        <nuxt-link class="member" v-ripple :to="{ path: $route.path + '#' + `${item.id}`}">
+          <div class="member-cover">
+            <div class="icon-container">
+              <v-icon dark>photo</v-icon>
+            </div>
+            <img v-if="item.data.hasOwnProperty('organisationPhotos') && item.data.organisationPhotos" :src="item.data.organisationPhotos.cdnUrl + 'nth/0/-/resize/400x/'" alt="Cover">
+          </div>
+          <div class="member-info">
+            <img class="image" :src="item.data.organisationImage.cdnUrl + '-/preview/160x160/'" :alt="item.data.organisationName">
+            <div class="intro">
+              <div class="intro-name">
+                <strong>{{ item.data.organisationName }}</strong>
+              </div>
+              <div class="intro-industry">
+                <span v-if="item.data.hasOwnProperty('industry') && item.data.industry >= 0">{{ $t('industries[' + `${item.data.industry}` + ']') }}</span>&nbsp;
+              </div>
+            </div>
+          </div>
+        </nuxt-link>
+      </v-flex>
+    </template>
   </transition-group>
 
   <v-dialog v-if="item.data" lazy v-model="dialog" max-width="600" content-class="dialog--custom dialog--member" :fullscreen="$vuetify.breakpoint.xsOnly">
@@ -154,6 +190,10 @@ export default {
       default: true
     },
     isOwner: {
+      type: Boolean,
+      default: false
+    },
+    storiesOnly: {
       type: Boolean,
       default: false
     }
@@ -326,6 +366,12 @@ export default {
         mapPlaceholder: 'Address unknown',
         admin: {
           confirmDelete: 'Are you sure? Your listing will be removed permanently.'
+        },
+        stories: {
+          indiz: {
+            heading: 'About walls, backpacks and icebergs',
+            abstract: 'If you are rummaging around in a backpack, you will not only find your laptop and water bottle but also the producers. With Iris and Andri from the Basel backpack label Indiz we contemplate about material and immaterial products. [Story in German] '
+          }
         }
       },
       de: {
@@ -333,6 +379,12 @@ export default {
         mapPlaceholder: 'Adresse unbekannt',
         admin: {
           confirmDelete: 'Bist du sicher? Dein Eintrag wird permanent gelöscht.'
+        },
+        stories: {
+          indiz: {
+            heading: 'Über Mauern, Rucksäcke und Eisberge',
+            abstract: 'Wer in einem Rucksack wühlt, stösst neben Laptop und Trinkflasche auch auf die Produzenten. Mit Iris und Andri vom Basler Rucksacklabel Indiz denken wir über materielle und immaterielle Produkte nach.'
+          }
         }
       }
     }
