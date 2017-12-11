@@ -3,7 +3,7 @@
   <div class="contact-physical">
     <v-icon>place</v-icon>
     <div itemprop="name">MADE IN BASEL</div>
-    <div class="co" itemprop="alternateName">SANTiHANS LLC</div>
+    <div class="co" itemprop="alternateName">SANTiHANS GmbH</div>
     <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
       <span itemprop="streetAddress">Mittlere Strasse 60</span>
       <div>

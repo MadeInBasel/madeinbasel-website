@@ -15,7 +15,7 @@
         <a href="javascript:;" v-ripple v-on:click.stop="openNavigation()">Menu</a>
       </li>
     </ul>
-    <v-btn class="hamburger rainbow" v-on:click.stop="openNavigation()" fab role="navigation">
+    <v-btn class="hamburger" :class="{'rainbow': hasBackgroundAnimation}" v-on:click.stop="openNavigation()" fab role="navigation">
       <v-icon>menu</v-icon>
     </v-btn>
   </div>
@@ -26,6 +26,12 @@
 import { main } from '~/assets/menus.js'
 
 export default {
+  props: {
+    hasBackgroundAnimation: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
       main: main,

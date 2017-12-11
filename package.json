@@ -11,14 +11,15 @@
     "jquery": "^3.2.1",
     "node.extend": "^2.0.0",
     "nuxt": "^1.0.0-rc11",
+    "path-to-regexp": "^2.1.0",
     "underscore": "^1.8.3",
     "uploadcare-widget": "^3.2.0",
+    "vissense": "^0.10.0",
     "vue": "~2.4.2",
     "vue-i18n": "^7.3.2",
     "vue-scroll-reveal": "^1.0.3",
     "vuetify": "^0.16.9",
-    "webfontloader": "^1.6.28",
-    "path-to-regexp": "^2.1.0"
+    "webfontloader": "^1.6.28"
   },
   "scripts": {
     "dev": "nuxt",

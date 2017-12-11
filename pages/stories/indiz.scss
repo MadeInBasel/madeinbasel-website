@@ -1,0 +1,153 @@
+@import '~assets/styles/variables.scss';
+
+#story {
+  font-size: 1.2em;
+  // padding-top: 70px;
+  position: relative;
+
+  &::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    height: 120px;
+    width: 100%;
+    background-image: linear-gradient(rgba(255, 255, 255, .5) 30%, rgba(255, 255, 255,0));
+    z-index: 1;
+  }
+
+  h2 {
+    line-height: 1.2;
+    margin-bottom: 0.4em;
+    text-align: left;
+  }
+
+  .text {
+    align-items: center;
+    display: flex;
+    margin-top: 3em;
+    margin-bottom: 3em;
+  }
+
+  .image {
+    margin-bottom: 3em;
+  }
+
+  .article-meta {
+    color: $colorSubtle;
+  }
+
+  .article-abstract {
+    font-weight: bold;
+    margin-bottom: 2em;
+  }
+
+  .cover {
+    margin-bottom: 2em;
+
+    .cover-image.aspectRatioKeeper {
+      padding-bottom: 1/2*100%;
+      max-height: 50vh;
+
+      @media(min-width: $breakpointSmall) {
+        padding-bottom: 1/3*100%;
+      }
+
+      img {
+        object-fit: cover;
+      }
+    }
+
+    .cover-info {
+      .label {
+        margin-top: -15%;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .business {
+    align-items: flex-end;
+    display: flex;
+    justify-content: flex-end;
+    transform: translateY(-50%);
+    width: 100%;
+
+    .business-thumb {
+      width: 30%;
+      transform: translateY(1) scale(1);
+      transition: 200ms;
+
+      @media(min-width: $breakpointSmall) {
+        width: 20%;
+      }
+
+      .aspectRatioKeeper {
+        padding-bottom: 100%;
+      }
+
+      img {
+        background-color: white;
+        border: 1px solid $colorBorder;
+        border-radius: 50%;
+        padding: 2px;
+      }
+    }
+  }
+
+  .media-boundaries {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-height: 100vh;
+    overflow: hidden;
+
+    @media(min-aspect-ratio: 16/9) and (min-width: $breakpointExtraLarge) {
+      @include boundaries();
+      width: $maxPageSize;
+    }
+  }
+
+  .m-parallax {
+    &.full.aspectRatioKeeper {
+      padding-bottom: 100vh;
+    }
+
+    .m-parallax-clipper {
+      clip: rect(0,auto,auto,0);
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+
+      img,
+      video {
+        height: 100%;
+        left: 0;
+        object-fit: cover;
+        top: 0;
+        width: 100%;
+      }
+
+      img {
+        position: fixed;
+      }
+
+      video {
+        object-fit: contain;
+        @media(min-width: $breakpointSmall) and (min-aspect-ratio: 1/1) {
+          position: fixed;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}
+
+#layout:not(.scrollTop) {
+  #story .business .business-thumb {
+    opacity: 0;
+    transform: translateY(20%) scale(.7);
+  }
+}

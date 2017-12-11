@@ -17,10 +17,11 @@
     </div>
   </component-section>
 
-  <component-section>
+  <component-section class="discover">
     <h2>{{ $t('members.heading')}}</h2>
     <div class="abstract" v-html="$t('members.abstract', {mib: '<strong>MADE IN BASEL</strong>'})"></div>
-    <component-members paging=8 />
+
+    <component-members paging=3 storiesOnly />
     <div class="text-xs-center">
       <v-btn color="primary" large :to="localePath('/explore')">{{ $t('buttons.allMembers') }}</v-btn>
     </div>
@@ -65,7 +66,8 @@ export default {
         },
         members: {
           heading: 'Discover',
-          abstract: 'In Basel\'s backyards, cellars  and attics people are working on tomorrow\'s ideas and products. {mib} documents extraordinary craftsmanship and tells the story about the people behind it. We also maintain a public registry.'
+          abstract: 'In Basel\'s backyards, cellars  and attics people are working on tomorrow\'s ideas and products. {mib} documents extraordinary craftsmanship and tells the story about the people behind it.',
+          subheading: 'Members'
         }
       },
       de: {
@@ -75,7 +77,8 @@ export default {
         },
         members: {
           heading: 'Neues Entdecken',
-          abstract: 'In Basels Hinterhöfen wird gebastelt, gelötet und geschraubt. In Kellern und Mansarden entstehen die Ideen von Morgen. {mib} dokumentiert Basels Schaffen anhand ausgewählter Geschichten. Es wird zudem ein Verzeichnis über Mitglieder geführt.'
+          abstract: 'In Basels Hinterhöfen wird gebastelt, gelötet und geschraubt. In Kellern und Mansarden entstehen die Ideen von Morgen. {mib} dokumentiert Basels Schaffen anhand ausgewählter Geschichten.',
+          subheading: 'Mitglieder'
         }
       }
     }
