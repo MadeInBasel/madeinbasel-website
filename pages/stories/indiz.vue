@@ -48,7 +48,7 @@
   </p>
   <div class="m-parallax aspectRatioKeeper">
     <div class="m-parallax-clipper">
-      <img src="/stories/indiz/drafts.jpg" alt="Image">
+      <img src="/stories/indiz/parallax.jpg" alt="Image">
     </div>
   </div>
   <p class="text boundaries">
@@ -57,9 +57,6 @@
     Aber wenn die materielle Form, also die Rucksäcke, wirklich nur 1/9 der gesamten Produktion darstellen – oder 7/8 oder 15/19, nicht dass jetzt jemand diese Zahl absolut nimmt – dann ist die Gesamtproduktion zwischen dem Maler und dem Rucksackdesigner
     vielleicht gar nicht so unterschiedlich. Vielleicht decken sich Ideen, Träume, Bedürfnisse weitflächig, und nur die Spitze des Eisbergs unterscheidet sich grundlegend.
   </p>
-  <!-- <div class="boundaries image">
-    <img src="/stories/indiz/drafts.jpg" alt="Drafts">
-  </div> -->
   <div class="media">
     <div class="media-boundaries">
       <div>
@@ -72,7 +69,9 @@
       <small class="js-countdown">&nbsp;</small>
     </div>
   </div>
-
+  <div class="boundaries image">
+    <img src="/stories/indiz/drafts.jpg" alt="Drafts">
+  </div>
   <p class="text boundaries">
     Iris und Andri arbeiten in einem Hinterhof an der Socinstrasse 7. Dort tragen sie all die Gedanken zusammen, die sie schliesslich zu Rucksäcken zusammennähen. Sie produzieren Prototyp um Prototyp, tragen Probe und kritisieren. Der Ball fliegt hin und
     her. Übernimm du, du, du. Bis der fertige Prototyp vorliegt. Der letzte Ball fliegt an die Kunden: in Basel gedacht, aber hier oder auf den Philippinen genäht? Auf die Frage, ob sie damit die Verantwortung nicht abschieben, antworten die beiden mit
@@ -104,9 +103,6 @@ export default {
   data() {
     return {
       carouselItems: [{
-          src: 'IMG_2517_1.jpg'
-        },
-        {
           src: 'IMG_2652_1.jpg'
         },
         {
