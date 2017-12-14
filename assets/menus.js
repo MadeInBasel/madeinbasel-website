@@ -25,8 +25,7 @@ const main = [{
   }
 ]
 
-const social = [
-  {
+const social = [{
     url: 'https://instagram.com/madeinbasel',
     label: 'Instagram'
   },
@@ -37,6 +36,10 @@ const social = [
   {
     url: 'https://twitter.com/madeinbasel',
     label: 'Twitter'
+  },
+  {
+    url: 'https://www.youtube.com/channel/UCFqzxxEhAEbMsoHgKAtcALw/',
+    label: 'Youtube'
   },
   {
     url: 'https://github.com/madeinbasel',
