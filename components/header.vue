@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       main: main,
-      openNavigation: function () {
+      openNavigation: function() {
         this.$emit('drawer', true)
       }
     }
@@ -49,6 +49,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "header.scss";
+@import 'header.scss';
 </style>
 le>

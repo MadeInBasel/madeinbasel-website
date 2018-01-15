@@ -22,16 +22,16 @@ export default {
     messages: {
       en: {
         language: 'Language',
-        'links': {
-          'de': 'DE',
-          'en': 'EN'
+        links: {
+          de: 'DE',
+          en: 'EN'
         }
       },
       de: {
         language: 'Sprache',
-        'links': {
-          'de': 'DE',
-          'en': 'EN'
+        links: {
+          de: 'DE',
+          en: 'EN'
         }
       }
     }

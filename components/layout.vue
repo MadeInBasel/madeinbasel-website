@@ -65,7 +65,8 @@ export default {
       htmlAttrs: {
         lang: this.$i18n.locale
       },
-      meta: [{
+      meta: [
+        {
           hid: 'description',
           name: 'description',
           content: this.$t('meta.description')
@@ -74,7 +75,8 @@ export default {
           hid: 'keywords',
           name: 'keywords',
           content: this.$t('meta.keywords')
-        }, {
+        },
+        {
           hid: 'og:type',
           property: 'og:type',
           content: 'website'
@@ -129,16 +131,19 @@ export default {
     offsetTop: 0
   }),
   methods: {
-    toggleNavigation: function (state) {
+    toggleNavigation: function(state) {
       this.drawer = state
     },
     onScroll(e) {
       this.offsetTop = window.pageYOffset || document.documentElement.scrollTop
       var layout = this.$el
       var self = this
-      _.throttle(function () {
+      _.throttle(function() {
         layout.classList.toggle('scrollTop', self.offsetTop < 10)
-        layout.classList.toggle('scrollTopExtended', self.offsetTop < window.screen.height / 4)
+        layout.classList.toggle(
+          'scrollTopExtended',
+          self.offsetTop < window.screen.height / 4
+        )
       }, 100)()
     }
   },
@@ -151,14 +156,18 @@ export default {
     messages: {
       en: {
         meta: {
-          description: 'MADE IN BASEL is an initiative to promote products and services from Basel, Switzerland.',
-          keywords: 'MADE IN BASEL, label, local, excellence, stories, handmade, crafts, products, innovation, Basel, Switzerland'
+          description:
+            'MADE IN BASEL is an initiative to promote products and services from Basel, Switzerland.',
+          keywords:
+            'MADE IN BASEL, label, local, excellence, stories, handmade, crafts, products, innovation, Basel, Switzerland'
         }
       },
       de: {
         meta: {
-          description: 'MADE IN BASEL ist eine Initiative, die Produkte und Dienstleistungen aus Basel bewirbt.',
-          keywords: 'MADE IN BASEL, Label, Kaufen, Lokal, Exzellenz, Geschichten, Handarbeit, Handwerk, Produkte, Innovation, Basel, Schweiz'
+          description:
+            'MADE IN BASEL ist eine Initiative, die Produkte und Dienstleistungen aus Basel bewirbt.',
+          keywords:
+            'MADE IN BASEL, Label, Kaufen, Lokal, Exzellenz, Geschichten, Handarbeit, Handwerk, Produkte, Innovation, Basel, Schweiz'
         }
       }
     }
@@ -167,5 +176,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "layout.scss";
+@import 'layout.scss';
 </style>

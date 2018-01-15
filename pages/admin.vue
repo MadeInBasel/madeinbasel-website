@@ -96,11 +96,13 @@ export default {
   head() {
     return {
       title: 'Admin',
-      meta: [{
-        hid: 'og:title',
-        property: 'og:title',
-        content: this.$t('pages.admin')
-      }]
+      meta: [
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: this.$t('pages.admin')
+        }
+      ]
     }
   },
   data() {
@@ -123,20 +125,26 @@ export default {
     deleteAccount() {
       this.loadingDelete = true
       var self = this
-      this.firestore.collection('users').doc(this.user.uid).delete()
-        .then(function () {
+      this.firestore
+        .collection('users')
+        .doc(this.user.uid)
+        .delete()
+        .then(function() {
           var user = firebase.auth().currentUser
-          user.delete().then(function () {
-            self.loadingDelete = false
-            self.dialogDelete = false
-            self.$store.commit('UPDATE_USER', null)
-            console.log('Successfully deleted!')
-          }).catch(function (error) {
-            self.errorDelete = error.message
-            console.error('Error deleting user: ', error)
-          })
+          user
+            .delete()
+            .then(function() {
+              self.loadingDelete = false
+              self.dialogDelete = false
+              self.$store.commit('UPDATE_USER', null)
+              console.log('Successfully deleted!')
+            })
+            .catch(function(error) {
+              self.errorDelete = error.message
+              console.error('Error deleting user: ', error)
+            })
         })
-        .catch(function (error) {
+        .catch(function(error) {
           console.error('Error writing document: ', error)
         })
     }
@@ -154,29 +162,35 @@ export default {
       en: {
         delete: {
           heading: 'So sad!',
-          abstract: 'Be aware. Registered organisations remain on the platform unless they have been deleted prior to this action. You will not be able to recover your account.',
-          reason: 'What went wront? We appreciate suggestions, ideas and construcutive criticism.'
+          abstract:
+            'Be aware. Registered organisations remain on the platform unless they have been deleted prior to this action. You will not be able to recover your account.',
+          reason:
+            'What went wront? We appreciate suggestions, ideas and construcutive criticism.'
         },
         entries: 'My Entries',
         verified: 'verified',
         verificationPending: 'Verification pending',
         download: {
           heading: 'Downloads',
-          abstract: 'Download the {mib} label files for your marketing purposes. We\'d be happy if our logo finds a place on your website!'
+          abstract:
+            "Download the {mib} label files for your marketing purposes. We'd be happy if our logo finds a place on your website!"
         }
       },
       de: {
         delete: {
           heading: 'Oh noooo!',
-          abstract: 'Achtung. Registrierte Organisationen bleiben auf der Plattform bestehen falls sie nicht vorher gelöscht wurden. Das Konto kann nicht wiederhergestellt werden.',
-          reason: 'Was ist schiefgegangen? Wir schätzen Anregungen, Ideen und konstruktive Kritik.'
+          abstract:
+            'Achtung. Registrierte Organisationen bleiben auf der Plattform bestehen falls sie nicht vorher gelöscht wurden. Das Konto kann nicht wiederhergestellt werden.',
+          reason:
+            'Was ist schiefgegangen? Wir schätzen Anregungen, Ideen und konstruktive Kritik.'
         },
         entries: 'Meine Einträge',
         verified: 'geprüft',
         verificationPending: 'Prüfung ausstehend',
         download: {
           heading: 'Downloads',
-          abstract: 'Lade die {mib}-Logo-Dateien zur freien Verwendung herunter. Wir freuen uns, wenn unser Logo einen Platz auf deiner Webseite findet!'
+          abstract:
+            'Lade die {mib}-Logo-Dateien zur freien Verwendung herunter. Wir freuen uns, wenn unser Logo einen Platz auf deiner Webseite findet!'
         }
       }
     }

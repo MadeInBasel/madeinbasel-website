@@ -28,10 +28,15 @@ export default {
       message: null,
       email: null,
       rules: {
-        required: (value) => (value === null || !!value) || this.$t('form.error.required'),
-        email: (value) => {
+        required: value =>
+          value === null || !!value || this.$t('form.error.required'),
+        email: value => {
           const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-          return (value === null || pattern.test(value)) || this.$t('form.error.invalidEmail')
+          return (
+            value === null ||
+            pattern.test(value) ||
+            this.$t('form.error.invalidEmail')
+          )
         }
       },
       formSuccess: false
@@ -39,7 +44,7 @@ export default {
   },
   props: {
     title: {
-      default: function () {
+      default: function() {
         return this.$t('form.title')
       }
     },
@@ -49,7 +54,7 @@ export default {
     }
   },
   methods: {
-    onSubmit: function () {
+    onSubmit: function() {
       var self = this
       $.ajax({
         url: 'https://formspree.io/hello@madeinbasel.org',
@@ -61,7 +66,7 @@ export default {
           message: self.message
         },
         dataType: 'json'
-      }).then(function () {
+      }).then(function() {
         self.formSuccess = true
         self.$emit('success', true)
       })
@@ -80,7 +85,8 @@ export default {
             required: 'Required',
             invalidEmail: 'Invalid e-mail'
           },
-          successMessage: 'Thank you for your message. We\'ll get back to you as soon as possible.'
+          successMessage:
+            "Thank you for your message. We'll get back to you as soon as possible."
         }
       },
       de: {
@@ -94,7 +100,8 @@ export default {
             required: 'Erforderlich',
             invalidEmail: 'Ungültige Email'
           },
-          successMessage: 'Vielen Dank für die Nachricht. Wir melden uns so schnell wie möglich.'
+          successMessage:
+            'Vielen Dank für die Nachricht. Wir melden uns so schnell wie möglich.'
         }
       }
     }
@@ -103,9 +110,9 @@ export default {
 </script>
 
 <style lang="scss">
-@import "~assets/styles/variables.scss";
+@import '~assets/styles/variables.scss';
 .form-action {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 </style>

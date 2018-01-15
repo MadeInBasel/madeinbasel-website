@@ -135,12 +135,10 @@ export default {
       organisationPhotos: '',
       organisationName: '',
       organisationNameRules: [
-        (v) => !!v || this.$t('form.organisationName.error')
+        v => !!v || this.$t('form.organisationName.error')
       ],
       employees: '1-10',
-      employeesRules: [
-        (v) => !!v || this.$t('form.employees.error')
-      ],
+      employeesRules: [v => !!v || this.$t('form.employees.error')],
       showInstagram: false,
       showTwitter: false,
       showFacebook: false,
@@ -152,21 +150,33 @@ export default {
         facebook: ''
       },
       facebookRules: [
-        (v) => (!v || /http(s)?:\/\/(www\.)?facebook\.com\/\b([-a-zA-Z0-9@:%_\+.~#?&//=]+?)/.test(v)) || this.$t('form.website.error', { url: 'https://www.facebook.com/wiewaersmalmit/' })
+        v =>
+          !v ||
+          /http(s)?:\/\/(www\.)?facebook\.com\/\b([-a-zA-Z0-9@:%_\+.~#?&//=]+?)/.test(
+            v
+          ) ||
+          this.$t('form.website.error', {
+            url: 'https://www.facebook.com/wiewaersmalmit/'
+          })
       ],
       description: {
         en: '',
         de: ''
       },
       descriptionRules: [
-        (v) => (!v || v.length <= 140) || this.$t('form.description.error')
+        v => !v || v.length <= 140 || this.$t('form.description.error')
       ],
       industry: null,
       industries: this.$t('industries'),
       address: {},
       website: '',
       websiteRules: [
-        (v) => (!v || /http(s)?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/.test(v)) || this.$t('form.website.error', { url: 'https://www.example.com' })
+        v =>
+          !v ||
+          /http(s)?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/.test(
+            v
+          ) ||
+          this.$t('form.website.error', { url: 'https://www.example.com' })
       ],
       featureRequest: false,
       terms: false
@@ -177,21 +187,21 @@ export default {
     this.showGerman = this.$i18n.locale === 'de'
   },
   methods: {
-    setOrganisationImage: function (data) {
+    setOrganisationImage: function(data) {
       var imageData = data
       delete imageData.sourceInfo
       this.organisationImage = imageData
     },
-    setOrganisationPhotos: function (data) {
+    setOrganisationPhotos: function(data) {
       this.organisationPhotos = data
     },
-    resetOrganisationImage: function () {
+    resetOrganisationImage: function() {
       this.organisationImage = ''
     },
-    setAddress: function (data) {
+    setAddress: function(data) {
       this.address = data
     },
-    resetAddress: function () {
+    resetAddress: function() {
       this.address = {}
     },
     validateStep1() {
@@ -209,7 +219,9 @@ export default {
           address: this.address,
           employees: this.employees,
           description: this.description,
-          industry: this.industries.findIndex(function (value) { return value === self.industry }),
+          industry: this.industries.findIndex(function(value) {
+            return value === self.industry
+          }),
           website: this.website,
           social: this.social,
           featureRequest: this.featureRequest,
@@ -218,14 +230,16 @@ export default {
           email: this.user.email,
           verified: false
         }
-        self.firestore.collection('organisations').add(data)
-          .then(function () {
+        self.firestore
+          .collection('organisations')
+          .add(data)
+          .then(function() {
             // Success
             self.formSuccess = true
             self.stateLoading = false
             self.$emit('success')
           })
-          .then(function () {
+          .then(function() {
             $.ajax({
               url: 'https://formspree.io/hello@madeinbasel.org',
               method: 'POST',
@@ -236,7 +250,7 @@ export default {
               }
             })
           })
-          .catch(function (error) {
+          .catch(function(error) {
             self.firebaseError = true
             console.error('Error adding document: ', error)
           })
@@ -267,16 +281,18 @@ export default {
         form: {
           step1: {
             title: 'Your Organisation',
-            intro: 'Basic information about your organisation. Fields indicated with * are required.'
+            intro:
+              'Basic information about your organisation. Fields indicated with * are required.'
           },
           step2: {
             title: 'Your Mission',
             intro: 'Describe what you do.',
-            photos: 'Show us your workplace wich a couple of images. First one will be used as the cover image.'
+            photos:
+              'Show us your workplace wich a couple of images. First one will be used as the cover image.'
           },
           step3: {
             title: 'Account',
-            intro: 'Let\'s keep in touch. Won\'t be public and we don\'t spam.'
+            intro: "Let's keep in touch. Won't be public and we don't spam."
           },
           organisationName: {
             label: 'Organisation Name',
@@ -302,15 +318,18 @@ export default {
           },
           featured: {
             label: 'Featured Story',
-            hint: 'I want to get a personal portrayel on MADE IN BASEL. Please contact me.'
+            hint:
+              'I want to get a personal portrayel on MADE IN BASEL. Please contact me.'
           },
           terms: {
             label: 'I agree…',
             hint: '…to the terms (AGBs)',
             error: 'You must agree to continue!'
           },
-          successMessage: 'Congratulations. Thank you for participating! Your information will be published within a couple days. Do you have ideas or suggestions or want to become a sponsor? Contact us! hello@madeinbasel.org',
-          errorMessage: 'Something went wront. Please try again or contact us hello@madeinbasel.org'
+          successMessage:
+            'Congratulations. Thank you for participating! Your information will be published within a couple days. Do you have ideas or suggestions or want to become a sponsor? Contact us! hello@madeinbasel.org',
+          errorMessage:
+            'Something went wront. Please try again or contact us hello@madeinbasel.org'
         }
       },
       de: {
@@ -322,7 +341,8 @@ export default {
           step2: {
             title: 'Deine Mission',
             intro: 'Beschreibe deine Tätigkeit',
-            photos: 'Zeig uns deinen Arbeitsplatz mit ein paar Photos. Das erste Bild wird als Cover benützt.'
+            photos:
+              'Zeig uns deinen Arbeitsplatz mit ein paar Photos. Das erste Bild wird als Cover benützt.'
           },
           step3: {
             title: 'Benutzerkonto',
@@ -352,15 +372,18 @@ export default {
           },
           featured: {
             label: 'Persönlichs Portrait',
-            hint: 'Ich möchte ein persönliches Portrait auf MADE IN BASEL. Bitte um Kontaktaufnahme'
+            hint:
+              'Ich möchte ein persönliches Portrait auf MADE IN BASEL. Bitte um Kontaktaufnahme'
           },
           terms: {
             label: 'Ich akzeptiere…',
             hint: '…die Allgemeinen Geschäftsbedingungen (AGB)',
             error: 'Akzeptiere die AGBs um fortzufahren!'
           },
-          successMessage: 'Gratulation. Danke fürs Mitmachen! Deine Informationen werden in den nächsten Tagen publiziert. Hast du Ideen, Anregungen oder den Wunsch Sponsor zu werden? Melde dich! hello@madeinbasel.org',
-          errorMessage: 'Es ist ein Fehler aufgetreten. Bitte versuche es erneut oder kontaktiere uns via Email: hello@madeinbasel.org'
+          successMessage:
+            'Gratulation. Danke fürs Mitmachen! Deine Informationen werden in den nächsten Tagen publiziert. Hast du Ideen, Anregungen oder den Wunsch Sponsor zu werden? Melde dich! hello@madeinbasel.org',
+          errorMessage:
+            'Es ist ein Fehler aufgetreten. Bitte versuche es erneut oder kontaktiere uns via Email: hello@madeinbasel.org'
         }
       }
     }
@@ -369,5 +392,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "joinForm.scss";
+@import 'joinForm.scss';
 </style>

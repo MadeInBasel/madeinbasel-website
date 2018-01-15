@@ -42,9 +42,7 @@ export default {
       addressSearch: '',
       addressConfirmed: '',
       addressError: false,
-      addressRules: [
-        (v) => (!v || !this.addressError) || this.$t('errorMessage')
-      ]
+      addressRules: [v => !v || !this.addressError || this.$t('errorMessage')]
     }
   },
   props: {
@@ -59,22 +57,27 @@ export default {
     }
   },
   watch: {
-    nameQuery: function () {
+    nameQuery: function() {
       this.updateMap()
     }
   },
   methods: {
-    updateMap: _.debounce(function () {
+    updateMap: _.debounce(function() {
       var self = this
       var components = '&components=country:Switzerland'
-      var addressParam = '&address=' + encodeURIComponent(self.addressQuery) + '+Basel'
+      var addressParam =
+        '&address=' + encodeURIComponent(self.addressQuery) + '+Basel'
       var apiKey = '&key=AIzaSyAdBXoAqNNmpPjgqq09Zn9kMpBDMOyeMns'
       this.loading = true
       this.addressConfirmed = ''
 
       $.ajax({
-        url: 'https://maps.googleapis.com/maps/api/geocode/json?' + components + addressParam + apiKey
-      }).then(function (response) {
+        url:
+          'https://maps.googleapis.com/maps/api/geocode/json?' +
+          components +
+          addressParam +
+          apiKey
+      }).then(function(response) {
         if (response.results.length) {
           self.loading = false
           if (response.results[0].geometry.location_type === 'ROOFTOP') {
@@ -118,5 +121,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "address.scss";
+@import 'address.scss';
 </style>

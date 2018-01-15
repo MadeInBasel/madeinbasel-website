@@ -47,7 +47,7 @@ export default {
     },
     label: {
       type: String,
-      default () {
+      default() {
         return this.$t('buttons.uploadPhotos')
       }
     },
@@ -81,10 +81,10 @@ export default {
         multiple: this.multiple,
         crop: this.crop
       })
-      dialog.done(function (result) {
+      dialog.done(function(result) {
         self.handleUpload(result)
       })
-      dialog.fail(function (result) {
+      dialog.fail(function(result) {
         self.handleUpload(result)
       })
     },
@@ -92,28 +92,30 @@ export default {
       var self = this
       if (result) {
         this.stateLoading = true
-        result.promise().done(function (fileInfo) {
-          self.stateError = false
-          self.stateLoading = false
-          self.stateUpload = false
-          self.fileGroupInfo = fileInfo
-          self.$emit('success', fileInfo)
+        result
+          .promise()
+          .done(function(fileInfo) {
+            self.stateError = false
+            self.stateLoading = false
+            self.stateUpload = false
+            self.fileGroupInfo = fileInfo
+            self.$emit('success', fileInfo)
 
-          if (self.fileGroupInfo.count) {
-            uploadcare.loadFileGroup(fileInfo.uuid)
-              .done(function (fileGroup) {
+            if (self.fileGroupInfo.count) {
+              uploadcare.loadFileGroup(fileInfo.uuid).done(function(fileGroup) {
                 self.fileGroup = fileGroup
               })
-          }
-        }).catch(function (error, fileInfo) {
-          if (!self.fileGroup) {
-            self.stateError = true
-          }
-          self.stateLoading = false
-          self.fileGroupInfo = {}
-          self.fileGroup = null
-          console.log('upload error', error)
-        })
+            }
+          })
+          .catch(function(error, fileInfo) {
+            if (!self.fileGroup) {
+              self.stateError = true
+            }
+            self.stateLoading = false
+            self.fileGroupInfo = {}
+            self.fileGroup = null
+            console.log('upload error', error)
+          })
       }
     },
     discardImage() {
@@ -143,5 +145,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "uploadcare.scss";
+@import 'uploadcare.scss';
 </style>

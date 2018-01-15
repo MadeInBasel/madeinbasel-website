@@ -48,11 +48,13 @@ export default {
   head() {
     return {
       title: this.$t('pages.home'),
-      meta: [{
-        hid: 'og:title',
-        property: 'og:title',
-        content: this.$t('pages.home')
-      }]
+      meta: [
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: this.$t('pages.home')
+        }
+      ]
     }
   },
   mounted() {
@@ -64,11 +66,13 @@ export default {
         claim: 'The source of local excellence',
         intro: {
           heading: 'The Label',
-          abstract: '{mib} is an initiative to promote products and services from Basel, Switzerland. We support local production and help sustain a creative climate that encourages entrepreneurship and innovation. We put Basel on the map.'
+          abstract:
+            '{mib} is an initiative to promote products and services from Basel, Switzerland. We support local production and help sustain a creative climate that encourages entrepreneurship and innovation. We put Basel on the map.'
         },
         members: {
           heading: 'Discover',
-          abstract: 'In Basel\'s backyards, cellars  and attics people are working on tomorrow\'s ideas and products. {mib} documents extraordinary craftsmanship and tells the story about the people behind it.',
+          abstract:
+            "In Basel's backyards, cellars  and attics people are working on tomorrow's ideas and products. {mib} documents extraordinary craftsmanship and tells the story about the people behind it.",
           subheading: 'Members'
         }
       },
@@ -76,11 +80,13 @@ export default {
         claim: 'Erlesenes aus der Nachbarschaft',
         intro: {
           heading: 'Das Label',
-          abstract: '{mib} ist eine Initiative, die Produkte und Dienstleistungen aus Basel bewirbt. Wir fördern Innovation, Vielfalt und Unternehmergeist. Damit helfen wir, Basel als Wohn-, Arbeits- und Kulturstadt auf der Weltkarte zu verankern.'
+          abstract:
+            '{mib} ist eine Initiative, die Produkte und Dienstleistungen aus Basel bewirbt. Wir fördern Innovation, Vielfalt und Unternehmergeist. Damit helfen wir, Basel als Wohn-, Arbeits- und Kulturstadt auf der Weltkarte zu verankern.'
         },
         members: {
           heading: 'Neues Entdecken',
-          abstract: 'In Basels Hinterhöfen wird gebastelt, gelötet und geschraubt. In Kellern und Mansarden entstehen die Ideen von Morgen. {mib} dokumentiert Basels Schaffen anhand ausgewählter Geschichten.',
+          abstract:
+            'In Basels Hinterhöfen wird gebastelt, gelötet und geschraubt. In Kellern und Mansarden entstehen die Ideen von Morgen. {mib} dokumentiert Basels Schaffen anhand ausgewählter Geschichten.',
           subheading: 'Mitglieder'
         }
       }

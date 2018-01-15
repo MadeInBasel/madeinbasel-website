@@ -16,11 +16,13 @@ export default {
   head() {
     return {
       title: this.$t('pages.stories'),
-      meta: [{
-        hid: 'og:title',
-        property: 'og:title',
-        content: this.$t('pages.stories')
-      }]
+      meta: [
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: this.$t('pages.stories')
+        }
+      ]
     }
   },
   components: {
@@ -31,12 +33,14 @@ export default {
     messages: {
       en: {
         intro: {
-          abstract: 'Here you\'ll find stories about selected products from Basel. From handicraft to industrial production - get an insight into the studios and production sites and get to know the people behind the products.'
+          abstract:
+            "Here you'll find stories about selected products from Basel. From handicraft to industrial production - get an insight into the studios and production sites and get to know the people behind the products."
         }
       },
       de: {
         intro: {
-          abstract: 'Hier findest du Geschichten zu ausgewählten Produzenten aus Basel. Vom Handwerk zur Industrieproduktion - erhalte Einblick in die Ateliers und Produktionsstätten und lerne die Menschen hinter den Produkten kennen.'
+          abstract:
+            'Hier findest du Geschichten zu ausgewählten Produzenten aus Basel. Vom Handwerk zur Industrieproduktion - erhalte Einblick in die Ateliers und Produktionsstätten und lerne die Menschen hinter den Produkten kennen.'
         }
       }
     }
@@ -45,5 +49,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "index.scss";
+@import 'index.scss';
 </style>

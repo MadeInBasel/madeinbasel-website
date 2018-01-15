@@ -35,6 +35,6 @@ export default {
 
 <style media="screen">
 .co::before {
-  content: "℅ ";
+  content: '℅ ';
 }
 </style>

@@ -25,11 +25,13 @@ export default {
   head() {
     return {
       title: this.$t('pages.explore'),
-      meta: [{
-        hid: 'og:title',
-        property: 'og:title',
-        content: this.$t('pages.explore')
-      }]
+      meta: [
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: this.$t('pages.explore')
+        }
+      ]
     }
   },
   components: {
@@ -41,12 +43,14 @@ export default {
     messages: {
       en: {
         intro: {
-          abstract: 'From handicrafts, culinary delights to curiosities - get an insight into the multifaceted creativity of Basel\'s neighbourhoods and get to know the people behind the products.'
+          abstract:
+            "From handicrafts, culinary delights to curiosities - get an insight into the multifaceted creativity of Basel's neighbourhoods and get to know the people behind the products."
         }
       },
       de: {
         intro: {
-          abstract: 'Von Kunsthandwerk, über Kulinarisches bis zu Kuriositäten - erhalte Einblick in das vielfältige Schaffen aus Basels Quartieren und lerne die Menschen hinter den Produkten kennen.'
+          abstract:
+            'Von Kunsthandwerk, über Kulinarisches bis zu Kuriositäten - erhalte Einblick in das vielfältige Schaffen aus Basels Quartieren und lerne die Menschen hinter den Produkten kennen.'
         }
       }
     }
@@ -55,5 +59,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "explore.scss";
+@import 'explore.scss';
 </style>
