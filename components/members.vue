@@ -14,7 +14,7 @@
     </div>
   </div>
   <transition-group v-show="ready" name="transition-down" tag="div" class="layout members wrap">
-    <template v-show="ready" v-for="(item, index) in membersPaging">
+    <template v-show="ready" v-for="(item, i) in membersPaging">
       <v-flex class="members-stories" v-if="item.data.hasOwnProperty('story')" xs12 :key="item.id">
         <div class="story">
           <nuxt-link :to="localePath('/stories/' + item.data.story)" class="story-cover">
