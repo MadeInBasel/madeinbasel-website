@@ -45,7 +45,7 @@ module.exports = function (moduleOptions) {
     })
     return routes
   }
-  this.nuxt.plugin('generator', generator => {
+  this.nuxt.hook('generator', generator => {
     generator.plugin('generateRoutes', ({generateRoutes}) => {
       let routes = flatRoutes(this.options.router.routes)
       routes = routes.filter((route) => {
