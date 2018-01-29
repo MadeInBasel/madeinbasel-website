@@ -10,16 +10,17 @@
     "i18next": "^8.4.3",
     "jquery": "^3.2.1",
     "node.extend": "^2.0.0",
-    "nuxt": "^1.0.0-rc11",
+    "nuxt": "^1.2.0",
     "path-to-regexp": "^2.1.0",
     "underscore": "^1.8.3",
     "uploadcare-widget": "^3.2.0",
     "vissense": "^0.10.0",
-    "vue": "~2.4.2",
-    "vue-i18n": "^7.3.2",
+    "vue": "^2.5.0",
     "vue-scroll-reveal": "^1.0.3",
-    "vuetify": "^0.16.9",
-    "webfontloader": "^1.6.28"
+    "vuetify": "^1.0.0-beta.3",
+    "webfontloader": "^1.6.28",
+    "nuxt-i18n-module":
+      "christopheschwyzer/nuxt-i18n-module#nuxt-v1-compatibility"
   },
   "scripts": {
     "dev": "nuxt",

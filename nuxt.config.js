@@ -1,5 +1,3 @@
-const webpack = require('webpack')
-
 module.exports = {
   head: {
     title: 'MADE IN BASEL',
@@ -27,7 +25,8 @@ module.exports = {
       {
         rel: 'stylesheet',
         type: 'text/css',
-        href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'
+        href:
+          'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'
       },
       {
         rel: 'stylesheet',
@@ -35,9 +34,11 @@ module.exports = {
         href: 'https://cdn.firebase.com/libs/firebaseui/2.4.0/firebaseui.css'
       }
     ],
-    script: [{
-      src: '/js/uploadcare.js'
-    }]
+    script: [
+      {
+        src: '/js/uploadcare.js'
+      }
+    ]
   },
   /*
    ** Customize the progress-bar color
@@ -80,9 +81,12 @@ module.exports = {
   ],
 
   modules: [
-    ['~/modules/i18n-routes/index', {
-      languages: ['en', 'de']
-    }]
+    [
+      'nuxt-i18n-module',
+      {
+        languages: ['en', 'de']
+      }
+    ]
   ],
 
   /*
@@ -90,12 +94,11 @@ module.exports = {
    */
   build: {
     analyze: true,
+    vendor: ['vuetify'],
     /*
      ** Run ESLINT on save
      */
-    extend(config, {
-      isClient
-    }) {
+    extend(config, { isClient }) {
       if (isClient) {
         config.module.rules.push({
           enforce: 'pre',

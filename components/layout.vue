@@ -6,7 +6,7 @@
         <img src="~assets/images/logo.svg" alt="Logo">
       </nuxt-link>
       <v-list dense>
-        <v-list-tile v-for="(item, i) in main.slice(1)" :key="i" nuxt exact v-ripple :to="localePath(`${item.path}`)">
+        <v-list-tile v-for="(item, i) in main.slice(1)" :key="i + '1'" nuxt exact v-ripple :to="localePath(`${item.path}`)">
           <v-list-tile-action>
             <v-icon class="grey--text text--darken-1">{{ item.icon }}</v-icon>
           </v-list-tile-action>
@@ -15,7 +15,7 @@
           </v-list-tile-title>
         </v-list-tile>
         <v-divider inset></v-divider>
-        <v-list-tile v-for="(item, i) in social.slice(0, -1)" :key="i" nuxt v-ripple :href="item.url" target="_blank" rel="noopener">
+        <v-list-tile v-for="(item, i) in social.slice(0, -1)" :key="i+ '2'" nuxt v-ripple :href="item.url" target="_blank" rel="noopener">
           <v-list-tile-action>
             <v-icon class="grey--text text--darken-1">launch</v-icon>
           </v-list-tile-action>
