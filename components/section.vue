@@ -34,5 +34,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "section.scss";
+@import 'section.scss';
 </style>

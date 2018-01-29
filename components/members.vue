@@ -14,7 +14,7 @@
     </div>
   </div>
   <transition-group v-show="ready" name="transition-down" tag="div" class="layout members wrap">
-    <template v-show="ready" v-for="(item, index) in membersPaging">
+    <template v-show="ready" v-for="(item) in membersPaging">
       <v-flex class="members-stories" v-if="item.data.hasOwnProperty('story')" xs12 :key="item.id">
         <div class="story">
           <nuxt-link :to="localePath('/stories/' + item.data.story)" class="story-cover">
@@ -73,7 +73,7 @@
 
   <v-dialog v-if="item.data" lazy v-model="dialog" max-width="600" content-class="dialog--custom dialog--member" :fullscreen="$vuetify.breakpoint.xsOnly">
     <div class="dialog-content">
-      <v-carousel hide-controls v-if="item.data.hasOwnProperty('organisationPhotos') && item.data.organisationPhotos">
+      <v-carousel hide-delimiters v-if="item.data.hasOwnProperty('organisationPhotos') && item.data.organisationPhotos">
         <v-carousel-item v-for="(image,i) in item.data.organisationPhotos.count" :key="i" :src="item.data.organisationPhotos.cdnUrl + 'nth/' + i + '/-/preview/960x540/'"></v-carousel-item>
         <v-carousel-item v-if="item.data.address.geometry" :src="'https://maps.googleapis.com/maps/api/staticmap?'+ zoom + size + mapStyles + '&markers=' + item.data.address.geometry.location.lat + ',' + item.data.address.geometry.location.lng +'&key=' + googleAPIKey"></v-carousel-item>
       </v-carousel>
@@ -209,23 +209,27 @@ export default {
       googleAPIKey: 'AIzaSyCS-zAs7ur43P-FaPYuFzTjbMZxUj8bDek',
       zoom: 'zoom=14',
       size: '&size=640x360',
-      mapStyles: '&format=png&maptype=roadmap&style=feature:landscape%7Celement:geometry%7Ccolor:0xffffff&style=feature:poi.attraction%7Cvisibility:off&style=feature:poi.business%7Cvisibility:off&style=feature:poi.government%7Cvisibility:off&style=feature:poi.medical%7Cvisibility:off&style=feature:poi.place_of_worship%7Cvisibility:off&style=feature:poi.school%7Cvisibility:off&style=feature:poi.sports_complex%7Cvisibility:off&style=feature:road%7Celement:labels.icon%7Cvisibility:off&style=feature:road.arterial%7Celement:geometry%7Ccolor:0xdddddd&style=feature:road.arterial%7Celement:labels.icon%7Cvisibility:off&style=feature:road.highway%7Celement:geometry%7Ccolor:0xdddddd&style=feature:road.highway%7Celement:labels.icon%7Cvisibility:off&style=feature:road.local%7Celement:geometry%7Ccolor:0xeeeeee',
+      mapStyles:
+        '&format=png&maptype=roadmap&style=feature:landscape%7Celement:geometry%7Ccolor:0xffffff&style=feature:poi.attraction%7Cvisibility:off&style=feature:poi.business%7Cvisibility:off&style=feature:poi.government%7Cvisibility:off&style=feature:poi.medical%7Cvisibility:off&style=feature:poi.place_of_worship%7Cvisibility:off&style=feature:poi.school%7Cvisibility:off&style=feature:poi.sports_complex%7Cvisibility:off&style=feature:road%7Celement:labels.icon%7Cvisibility:off&style=feature:road.arterial%7Celement:geometry%7Ccolor:0xdddddd&style=feature:road.arterial%7Celement:labels.icon%7Cvisibility:off&style=feature:road.highway%7Celement:geometry%7Ccolor:0xdddddd&style=feature:road.highway%7Celement:labels.icon%7Cvisibility:off&style=feature:road.local%7Celement:geometry%7Ccolor:0xeeeeee',
       loadingVerify: false,
       loadingDelete: false,
       confirmDelete: false
     }
   },
   methods: {
-    isAuthor: function (item) {
-      return this.user && (this.user.uid === item.data.owner || this.user.isAdmin)
+    isAuthor: function(item) {
+      return (
+        this.user && (this.user.uid === item.data.owner || this.user.isAdmin)
+      )
     },
-    getMembers: function () {
+    getMembers: function() {
       this.ready = false
       var self = this
-      this.firestore.collection('organisations')
+      this.firestore
+        .collection('organisations')
         .get()
-        .then(function (querySnapshot) {
-          self.members = querySnapshot.docs.map(function (item) {
+        .then(function(querySnapshot) {
+          self.members = querySnapshot.docs.map(function(item) {
             return {
               id: item.id,
               data: item.data()
@@ -234,16 +238,16 @@ export default {
           self.ready = true
           self.handleDialogVisibility()
         })
-        .catch(function (error) {
+        .catch(function(error) {
           console.log('Error getting documents: ', error)
         })
     },
-    handleDialogVisibility: function () {
+    handleDialogVisibility: function() {
       var openDialog = this.$route.hash ? this.$route.hash.slice(1) : false
       var self = this
       if (openDialog) {
-        _.defer(function () {
-          var activeDialog = self.membersPaging.filter(function (item, index) {
+        _.defer(function() {
+          var activeDialog = self.membersPaging.filter(function(item, index) {
             return openDialog === item.id
           })
           if (activeDialog.length === 1) {
@@ -255,7 +259,7 @@ export default {
         this.dialog = false
       }
     },
-    getYear: function () {
+    getYear: function() {
       var year = ''
       if (this.item.data) {
         let date = new Date(this.item.data.timestamp)
@@ -266,13 +270,16 @@ export default {
     revokeVerification(id) {
       this.loadingVerify = true
       var self = this
-      this.firestore.collection('organisations').doc(id).update({
+      this.firestore
+        .collection('organisations')
+        .doc(id)
+        .update({
           verified: false
         })
-        .then(function () {
+        .then(function() {
           self.loadingVerify = false
           self.dialog = false
-          self.members.map(function (element) {
+          self.members.map(function(element) {
             if (element.id === id) {
               element.data.verified = false
             }
@@ -280,21 +287,24 @@ export default {
           })
           console.log('Verification Revoked')
         })
-        .catch(function (error) {
+        .catch(function(error) {
           console.error('Error writing document: ', error)
         })
     },
     verifyEntry(id) {
       this.loadingVerify = true
       var self = this
-      this.firestore.collection('organisations').doc(id).update({
+      this.firestore
+        .collection('organisations')
+        .doc(id)
+        .update({
           verified: true
         })
-        .then(function () {
+        .then(function() {
           self.loadingVerify = false
           self.dialog = false
 
-          self.members.map(function (element) {
+          self.members.map(function(element) {
             if (element.id === id) {
               element.data.verified = true
             }
@@ -302,15 +312,18 @@ export default {
           })
           console.log('Set to verified!')
         })
-        .catch(function (error) {
+        .catch(function(error) {
           console.error('Error writing document: ', error)
         })
     },
     deleteEntry(id) {
       this.loadingDelete = true
       var self = this
-      this.firestore.collection('organisations').doc(id).delete()
-        .then(function () {
+      this.firestore
+        .collection('organisations')
+        .doc(id)
+        .delete()
+        .then(function() {
           self.loadingDelete = false
           self.confirmDelete = false
           self.dialog = false
@@ -319,7 +332,7 @@ export default {
           })
           console.log('Successfully deleted!')
         })
-        .catch(function (error) {
+        .catch(function(error) {
           console.error('Error writing document: ', error)
         })
     }
@@ -336,14 +349,23 @@ export default {
       if (members) {
         members = members.filter(item => {
           if (this.verified) {
-            return item.data.hasOwnProperty('verified') && item.data.verified === true
+            return (
+              item.data.hasOwnProperty('verified') &&
+              item.data.verified === true
+            )
           } else {
-            return !item.data.hasOwnProperty('verified') || item.data.verified === false
+            return (
+              !item.data.hasOwnProperty('verified') ||
+              item.data.verified === false
+            )
           }
         })
         if (this.isOwner && this.user) {
           members = members.filter(item => {
-            return item.data.hasOwnProperty('owner') && item.data.owner === this.user.uid
+            return (
+              item.data.hasOwnProperty('owner') &&
+              item.data.owner === this.user.uid
+            )
           })
         }
         members = members.slice(0, this.paging)
@@ -353,8 +375,8 @@ export default {
     }
   },
   watch: {
-    '$route': 'handleDialogVisibility',
-    dialog: function (state) {
+    $route: 'handleDialogVisibility',
+    dialog: function(state) {
       var self = this
       if (!state) {
         self.$router.go(-1)
@@ -367,7 +389,8 @@ export default {
         memberSince: 'Member since',
         mapPlaceholder: 'Address unknown',
         admin: {
-          confirmDelete: 'Are you sure? Your listing will be removed permanently.'
+          confirmDelete:
+            'Are you sure? Your listing will be removed permanently.'
         },
         buttons: {
           readStory: 'Read the story'
@@ -375,7 +398,8 @@ export default {
         stories: {
           indiz: {
             heading: 'About walls, backpacks and icebergs',
-            abstract: 'If you are rummaging around in a backpack, you will not only find your laptop and water bottle but also the producers. With Iris and Andri from the Basel backpack label Indiz we contemplate about material and immaterial products. [Story in German] '
+            abstract:
+              'If you are rummaging around in a backpack, you will not only find your laptop and water bottle but also the producers. With Iris and Andri from the Basel backpack label Indiz we contemplate about material and immaterial products. [Story in German] '
           }
         }
       },
@@ -391,7 +415,8 @@ export default {
         stories: {
           indiz: {
             heading: 'Über Mauern, Rucksäcke und Eisberge',
-            abstract: 'Wer in einem Rucksack wühlt, stösst neben Laptop und Trinkflasche auch auf die Produzenten. Mit Iris und Andri vom Basler Rucksacklabel Indiz denken wir über materielle und immaterielle Produkte nach.'
+            abstract:
+              'Wer in einem Rucksack wühlt, stösst neben Laptop und Trinkflasche auch auf die Produzenten. Mit Iris und Andri vom Basler Rucksacklabel Indiz denken wir über materielle und immaterielle Produkte nach.'
           }
         }
       }
@@ -401,5 +426,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "members.scss";
+@import 'members.scss';
 </style>

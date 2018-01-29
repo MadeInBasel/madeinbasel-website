@@ -13,8 +13,7 @@
           <h2>{{ $t('mailchimp.heading') }}</h2>
           <div class="indicates-required"><span class="asterisk">*</span> {{ $t('mailchimp.required') }}</div>
           <div class="mc-field-group">
-            <label for="mce-EMAIL">{{ $t('mailchimp.email') }}<span class="asterisk">*</span>
-</label>
+            <label for="mce-EMAIL">{{ $t('mailchimp.email') }}<span class="asterisk">*</span></label>
             <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
           </div>
           <div class="mc-field-group">

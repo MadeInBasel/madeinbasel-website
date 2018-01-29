@@ -1,4 +1,4 @@
-@import "~assets/styles/variables.scss";
+@import '~assets/styles/variables.scss';
 
 #header {
   left: 0;
@@ -44,7 +44,7 @@
   padding: 0;
   transform: translate(68px, 0);
   transition: 200ms 200ms;
-  @media(min-width: 700px) {
+  @media (min-width: 700px) {
     display: flex;
   }
 
@@ -68,8 +68,9 @@
 }
 
 .hamburger {
+  box-shadow: none;
   transition: 200ms 0;
-  @media(min-width: 700px) {
+  @media (min-width: 700px) {
     opacity: 0;
     pointer-events: none;
     transform: translate(100%, 0);

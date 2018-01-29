@@ -102,7 +102,8 @@ export default {
   layout: 'clean',
   data() {
     return {
-      carouselItems: [{
+      carouselItems: [
+        {
           src: 'IMG_2652_1.jpg'
         },
         {
@@ -121,24 +122,26 @@ export default {
     }
   },
   methods: {
-    autoplayVideo: function (video) {
+    autoplayVideo: function(video) {
       var autoPlayAllowed = true
       var promise = video.play()
       if (promise instanceof Promise) {
-        promise.catch(function (error) {
-          // Check if it is the right error
-          if (error.name === 'NotAllowedError') {
-            autoPlayAllowed = false
-          } else {
-            throw error
-          }
-        }).then(function () {
-          if (autoPlayAllowed) {
-            video.play()
-          } else {
-            video.setAttribute('controls', true)
-          }
-        })
+        promise
+          .catch(function(error) {
+            // Check if it is the right error
+            if (error.name === 'NotAllowedError') {
+              autoPlayAllowed = false
+            } else {
+              throw error
+            }
+          })
+          .then(function() {
+            if (autoPlayAllowed) {
+              video.play()
+            } else {
+              video.setAttribute('controls', true)
+            }
+          })
       } else {
         // Unknown if allowed
       }
@@ -149,10 +152,14 @@ export default {
     const VisSense = VisSenseFactory(window)
     var self = this
 
-    $videoWrapper.each(function () {
+    $videoWrapper.each(function() {
       var visibility = VisSense($(this)[0], { fullyvisible: 0.7 })
-      var video = $(this).find('video').get(0)
-      var counter = $(this).closest('.media').find('.js-countdown')
+      var video = $(this)
+        .find('video')
+        .get(0)
+      var counter = $(this)
+        .closest('.media')
+        .find('.js-countdown')
 
       video.addEventListener('timeupdate', updateCountdown)
 
@@ -160,35 +167,33 @@ export default {
         counter.text(Math.floor(video.duration - video.currentTime))
       }
 
-      var visibilityMonitor = visibility.monitor({
-        fullyvisible: function () {
-          self.autoplayVideo(video)
-        },
-        percentagechange: function (monitor, newValue, oldValue) {
-          var difference = newValue - oldValue
-          if (difference < 1 && newValue < 0.6) {
+      var visibilityMonitor = visibility
+        .monitor({
+          fullyvisible: function() {
+            self.autoplayVideo(video)
+          },
+          percentagechange: function(monitor, newValue, oldValue) {
+            var difference = newValue - oldValue
+            if (difference < 1 && newValue < 0.6) {
+              video.pause()
+            }
+          },
+          hidden: function() {
             video.pause()
           }
-        },
-        hidden: function () {
-          video.pause()
-        }
-      }).start()
+        })
+        .start()
     })
   },
   i18n: {
     messages: {
-      en: {
-
-      },
-      de: {
-
-      }
+      en: {},
+      de: {}
     }
   }
 }
 </script>
 
 <style lang="scss">
-@import "indiz.scss";
+@import 'indiz.scss';
 </style>

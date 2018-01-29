@@ -39,11 +39,13 @@ export default {
   head() {
     return {
       title: this.$t('pages.apply'),
-      meta: [{
-        hid: 'og:title',
-        property: 'og:title',
-        content: this.$t('pages.apply')
-      }]
+      meta: [
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: this.$t('pages.apply')
+        }
+      ]
     }
   },
   data() {
@@ -54,19 +56,22 @@ export default {
   i18n: {
     messages: {
       en: {
-        abstract: 'Take a couple of minutes to fill out the application. The more details you provide, the more likely it is to get your membership approved. Complete profiles make it easier for others to find and contact you.',
+        abstract:
+          'Take a couple of minutes to fill out the application. The more details you provide, the more likely it is to get your membership approved. Complete profiles make it easier for others to find and contact you.',
         success: {
           heading: 'Thank You',
-          abstract: 'Your application will be reviewed. We\'ll contact you in the coming days.'
+          abstract:
+            "Your application will be reviewed. We'll contact you in the coming days."
         }
       },
       de: {
-        abstract: 'Nimm dir ein paar Minuten Zeit um die Bewerbung auszufüllen. Ausführliche Angaben tragen zum Erfolg der Bewerbung bei. Photos und bedachte Inhalte helfen um aus der Masse hervorzutreten und von Kunden und Partnern entdeckt zu werden.',
+        abstract:
+          'Nimm dir ein paar Minuten Zeit um die Bewerbung auszufüllen. Ausführliche Angaben tragen zum Erfolg der Bewerbung bei. Photos und bedachte Inhalte helfen um aus der Masse hervorzutreten und von Kunden und Partnern entdeckt zu werden.',
         success: {
           heading: 'Vielen Dank',
-          abstract: 'Deine Angaben werden geprüft. Wir melden uns in den nächsten Tagen bei dir.'
+          abstract:
+            'Deine Angaben werden geprüft. Wir melden uns in den nächsten Tagen bei dir.'
         }
-
       }
     }
   }

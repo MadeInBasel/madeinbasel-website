@@ -38,15 +38,13 @@ export default {
       var self = this
       var uiConfig = {
         callbacks: {
-          signInSuccess: function (currentUser, credential, redirectUrl) {
+          signInSuccess: function(currentUser, credential, redirectUrl) {
             return false
           }
         },
         signInSuccessUrl: false,
         signInFlow: 'popup',
-        credentialHelper: [
-          firebaseui.auth.CredentialHelper.NONE
-        ],
+        credentialHelper: [firebaseui.auth.CredentialHelper.NONE],
         signInOptions: [
           firebase.auth.EmailAuthProvider.PROVIDER_ID,
           firebase.auth.GoogleAuthProvider.PROVIDER_ID

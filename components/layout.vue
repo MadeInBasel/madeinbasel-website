@@ -1,12 +1,12 @@
 <template>
 <v-app id="layout" class="scrollTop scrollTopExtended" :class="{ 'no-animations': !animations, 'rainbow': hasBackgroundAnimation }" v-scroll="onScroll">
   <div class="layout-inner">
-    <v-navigation-drawer id="navigation" class="pb-0" persistent temporary right height="100%" enable-resize-watcher v-model="drawer">
+    <v-navigation-drawer id="navigation" class="pb-0" fixed temporary right v-model="drawer">
       <nuxt-link class="logo" :to="localePath('/')">
         <img src="~assets/images/logo.svg" alt="Logo">
       </nuxt-link>
       <v-list dense>
-        <v-list-tile v-for="(item, i) in main.slice(1)" :key="i" nuxt exact v-ripple :to="localePath(`${item.path}`)">
+        <v-list-tile v-for="(item, i) in main.slice(1)" :key="i + '1'" nuxt exact v-ripple :to="localePath(`${item.path}`)">
           <v-list-tile-action>
             <v-icon class="grey--text text--darken-1">{{ item.icon }}</v-icon>
           </v-list-tile-action>
@@ -15,7 +15,7 @@
           </v-list-tile-title>
         </v-list-tile>
         <v-divider inset></v-divider>
-        <v-list-tile v-for="(item, i) in social.slice(0, -1)" :key="i" nuxt v-ripple :href="item.url" target="_blank" rel="noopener">
+        <v-list-tile v-for="(item, i) in social.slice(0, -1)" :key="i+ '2'" nuxt v-ripple :href="item.url" target="_blank" rel="noopener">
           <v-list-tile-action>
             <v-icon class="grey--text text--darken-1">launch</v-icon>
           </v-list-tile-action>
@@ -65,7 +65,8 @@ export default {
       htmlAttrs: {
         lang: this.$i18n.locale
       },
-      meta: [{
+      meta: [
+        {
           hid: 'description',
           name: 'description',
           content: this.$t('meta.description')
@@ -74,7 +75,8 @@ export default {
           hid: 'keywords',
           name: 'keywords',
           content: this.$t('meta.keywords')
-        }, {
+        },
+        {
           hid: 'og:type',
           property: 'og:type',
           content: 'website'
@@ -129,16 +131,19 @@ export default {
     offsetTop: 0
   }),
   methods: {
-    toggleNavigation: function (state) {
+    toggleNavigation: function(state) {
       this.drawer = state
     },
     onScroll(e) {
       this.offsetTop = window.pageYOffset || document.documentElement.scrollTop
       var layout = this.$el
       var self = this
-      _.throttle(function () {
+      _.throttle(function() {
         layout.classList.toggle('scrollTop', self.offsetTop < 10)
-        layout.classList.toggle('scrollTopExtended', self.offsetTop < window.screen.height / 4)
+        layout.classList.toggle(
+          'scrollTopExtended',
+          self.offsetTop < window.screen.height / 4
+        )
       }, 100)()
     }
   },
@@ -151,14 +156,18 @@ export default {
     messages: {
       en: {
         meta: {
-          description: 'MADE IN BASEL is an initiative to promote products and services from Basel, Switzerland.',
-          keywords: 'MADE IN BASEL, label, local, excellence, stories, handmade, crafts, products, innovation, Basel, Switzerland'
+          description:
+            'MADE IN BASEL is an initiative to promote products and services from Basel, Switzerland.',
+          keywords:
+            'MADE IN BASEL, label, local, excellence, stories, handmade, crafts, products, innovation, Basel, Switzerland'
         }
       },
       de: {
         meta: {
-          description: 'MADE IN BASEL ist eine Initiative, die Produkte und Dienstleistungen aus Basel bewirbt.',
-          keywords: 'MADE IN BASEL, Label, Kaufen, Lokal, Exzellenz, Geschichten, Handarbeit, Handwerk, Produkte, Innovation, Basel, Schweiz'
+          description:
+            'MADE IN BASEL ist eine Initiative, die Produkte und Dienstleistungen aus Basel bewirbt.',
+          keywords:
+            'MADE IN BASEL, Label, Kaufen, Lokal, Exzellenz, Geschichten, Handarbeit, Handwerk, Produkte, Innovation, Basel, Schweiz'
         }
       }
     }
@@ -167,5 +176,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "layout.scss";
+@import 'layout.scss';
 </style>
