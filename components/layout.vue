@@ -1,7 +1,7 @@
 <template>
 <v-app id="layout" class="scrollTop scrollTopExtended" :class="{ 'no-animations': !animations, 'rainbow': hasBackgroundAnimation }" v-scroll="onScroll">
   <div class="layout-inner">
-    <v-navigation-drawer id="navigation" class="pb-0" persistent temporary right height="100%" enable-resize-watcher v-model="drawer">
+    <v-navigation-drawer id="navigation" class="pb-0" fixed temporary right v-model="drawer">
       <nuxt-link class="logo" :to="localePath('/')">
         <img src="~assets/images/logo.svg" alt="Logo">
       </nuxt-link>
