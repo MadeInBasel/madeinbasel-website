@@ -14,7 +14,7 @@
     </div>
   </div>
   <transition-group v-show="ready" name="transition-down" tag="div" class="layout members wrap">
-    <template v-show="ready" v-for="(item, i) in membersPaging">
+    <template v-show="ready" v-for="(item) in membersPaging">
       <v-flex class="members-stories" v-if="item.data.hasOwnProperty('story')" xs12 :key="item.id">
         <div class="story">
           <nuxt-link :to="localePath('/stories/' + item.data.story)" class="story-cover">
@@ -73,7 +73,7 @@
 
   <v-dialog v-if="item.data" lazy v-model="dialog" max-width="600" content-class="dialog--custom dialog--member" :fullscreen="$vuetify.breakpoint.xsOnly">
     <div class="dialog-content">
-      <v-carousel hide-controls v-if="item.data.hasOwnProperty('organisationPhotos') && item.data.organisationPhotos">
+      <v-carousel hide-delimiters v-if="item.data.hasOwnProperty('organisationPhotos') && item.data.organisationPhotos">
         <v-carousel-item v-for="(image,i) in item.data.organisationPhotos.count" :key="i" :src="item.data.organisationPhotos.cdnUrl + 'nth/' + i + '/-/preview/960x540/'"></v-carousel-item>
         <v-carousel-item v-if="item.data.address.geometry" :src="'https://maps.googleapis.com/maps/api/staticmap?'+ zoom + size + mapStyles + '&markers=' + item.data.address.geometry.location.lat + ',' + item.data.address.geometry.location.lng +'&key=' + googleAPIKey"></v-carousel-item>
       </v-carousel>
