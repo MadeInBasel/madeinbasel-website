@@ -89,7 +89,7 @@ module.exports = {
    ** Build configuration
    */
   build: {
-    analyze: true,
+    analyze: false,
     /*
      ** Run ESLINT on save
      */
