@@ -1,21 +1,21 @@
 <template>
-<div class="contactForm">
-  <v-alert v-show="formSuccess" icon="done" color="success">
-    {{ $t('form.successMessage') }}
-  </v-alert>
-  <div v-show="!formSuccess">
-    <h4>{{ title }}</h4>
-    <v-form method="POST" v-on:submit.prevent="onSubmit">
-      <v-text-field name="name" :label="$t('form.name')" v-model="name" required :rules="[rules.required]"></v-text-field>
-      <v-text-field name="email" :label="$t('form.email')" v-model="email" required :rules="[rules.required, rules.email]"></v-text-field>
-      <v-text-field name="message" :label="$t('form.message')" counter v-model="message" max="400" multi-line :rules="[rules.required]"></v-text-field>
-      <div class="form-action">
-        <slot></slot>
-        <v-btn type="submit" color="primary">{{ $t('form.submit') }}</v-btn>
-      </div>
-    </v-form>
+  <div class="contactForm">
+    <v-alert v-show="formSuccess" icon="done" color="success">
+      {{ $t('form.successMessage') }}
+    </v-alert>
+    <div v-show="!formSuccess">
+      <h4>{{ title }}</h4>
+      <v-form method="POST" v-on:submit.prevent="onSubmit">
+        <v-text-field name="name" :label="$t('form.name')" v-model="name" required :rules="[rules.required]"></v-text-field>
+        <v-text-field name="email" :label="$t('form.email')" v-model="email" required :rules="[rules.required, rules.email]"></v-text-field>
+        <v-text-field name="message" :label="$t('form.message')" counter v-model="message" max="400" multi-line :rules="[rules.required]"></v-text-field>
+        <div class="form-action">
+          <slot></slot>
+          <v-btn type="submit" color="primary">{{ $t('form.submit') }}</v-btn>
+        </div>
+      </v-form>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -44,7 +44,7 @@ export default {
   },
   props: {
     title: {
-      default: function() {
+      default: function () {
         return this.$t('form.title')
       }
     },
@@ -54,10 +54,10 @@ export default {
     }
   },
   methods: {
-    onSubmit: function() {
+    onSubmit: function () {
       var self = this
       $.ajax({
-        url: 'https://formspree.io/hello@madeinbasel.org',
+        url: 'https://formspree.io/xvargzam',
         method: 'POST',
         data: {
           _subject: self.subject,
@@ -66,7 +66,7 @@ export default {
           message: self.message
         },
         dataType: 'json'
-      }).then(function() {
+      }).then(function () {
         self.formSuccess = true
         self.$emit('success', true)
       })

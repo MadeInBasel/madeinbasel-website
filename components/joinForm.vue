@@ -1,113 +1,113 @@
 <template>
-<div class="component-joinForm">
-  <v-alert v-show="formSuccess" icon="done" color="success">
-    {{ $t('form.successMessage') }}
-  </v-alert>
-  <v-alert v-show="firebaseError" icon="error" error>
-    {{ $t('form.errorMessage') }}
-  </v-alert>
-  <v-form v-show="(!formSuccess && !firebaseError)" v-model="valid" ref="form">
-    <v-stepper v-model="stepper" vertical>
+  <div class="component-joinForm">
+    <v-alert v-show="formSuccess" icon="done" color="success">
+      {{ $t('form.successMessage') }}
+    </v-alert>
+    <v-alert v-show="firebaseError" icon="error" error>
+      {{ $t('form.errorMessage') }}
+    </v-alert>
+    <v-form v-show="(!formSuccess && !firebaseError)" v-model="valid" ref="form">
+      <v-stepper v-model="stepper" vertical>
 
-      <v-stepper-step step="1" :complete="stepper > 1">{{ $t('form.step1.title') }}
-        <small>{{ $t('form.step1.intro') }}</small>
-      </v-stepper-step>
-      <v-stepper-content step="1">
-        <component-uploadcare v-on:success="setOrganisationImage" v-on:discard="resetOrganisationImage" :label="$t('buttons.uploadLogo')" crop="300x300 minimum" required />
-        <v-text-field :label="$t('form.organisationName.label')" ref="organisationName" v-model="organisationName" :rules="organisationNameRules" required></v-text-field>
-        <component-address v-on:success="setAddress" v-on:discard="resetAddress" :nameQuery="organisationName" />
+        <v-stepper-step step="1" :complete="stepper > 1">{{ $t('form.step1.title') }}
+          <small>{{ $t('form.step1.intro') }}</small>
+        </v-stepper-step>
+        <v-stepper-content step="1">
+          <component-uploadcare v-on:success="setOrganisationImage" v-on:discard="resetOrganisationImage" :label="$t('buttons.uploadLogo')" crop="300x300 minimum" required />
+          <v-text-field :label="$t('form.organisationName.label')" ref="organisationName" v-model="organisationName" :rules="organisationNameRules" required></v-text-field>
+          <component-address v-on:success="setAddress" v-on:discard="resetAddress" :nameQuery="organisationName" />
 
-        <v-flex xs9 sm6>
-          <v-text-field :label="$t('form.website.label') + ' (URL)'" :rules="websiteRules" v-model="website"></v-text-field>
-        </v-flex>
-
-        <transition name="transition-up">
-          <v-flex v-show="showInstagram" xs9 sm6>
-            <v-text-field label="Instagram" prefix="@" v-model="social.instagram" append-icon="close" :append-icon-cb="() => (showInstagram = false, social.instagram = '')"></v-text-field>
+          <v-flex xs9 sm6>
+            <v-text-field :label="$t('form.website.label') + ' (URL)'" :rules="websiteRules" v-model="website"></v-text-field>
           </v-flex>
-        </transition>
-        <transition name="transition-up">
-          <v-flex v-show="showTwitter" xs9 sm6>
-            <v-text-field label="Twitter" prefix="@" v-model="social.twitter" append-icon="close" :append-icon-cb="() => (showTwitter = false, social.twitter = '')"></v-text-field>
+
+          <transition name="transition-up">
+            <v-flex v-show="showInstagram" xs9 sm6>
+              <v-text-field label="Instagram" prefix="@" v-model="social.instagram" append-icon="close" :append-icon-cb="() => (showInstagram = false, social.instagram = '')"></v-text-field>
+            </v-flex>
+          </transition>
+          <transition name="transition-up">
+            <v-flex v-show="showTwitter" xs9 sm6>
+              <v-text-field label="Twitter" prefix="@" v-model="social.twitter" append-icon="close" :append-icon-cb="() => (showTwitter = false, social.twitter = '')"></v-text-field>
+            </v-flex>
+          </transition>
+          <transition name="transition-up">
+            <v-flex v-show="showFacebook" xs9 sm6>
+              <v-text-field label="Facebook Page (URL)" :hint="'e.g. https://www.facebook.com/' + (organisationName ? usernamePreview(organisationName) : 'foo')" persistent-hint :rules="facebookRules" v-model="social.facebook" append-icon="close" :append-icon-cb="() => (showFacebook = false, social.facebook = '')"></v-text-field>
+            </v-flex>
+          </transition>
+          <transition name="fade">
+            <v-btn small round v-show="!showInstagram" class="caption mr-2" @click="showInstagram = true">+ Instagram</v-btn>
+          </transition>
+          <transition name="fade">
+            <v-btn small round v-show="!showTwitter" class="caption mr-2" @click="showTwitter = true">+ Twitter</v-btn>
+          </transition>
+          <transition name="fade">
+            <v-btn small round v-show="!showFacebook" class="caption mr-2" @click="showFacebook = true">+ Facebook</v-btn>
+          </transition>
+
+          <div class="text-xs-right">
+            <v-btn color="primary" :disabled="validateStep1()" @click.native="stepper = 2">{{ $t('buttons.continue') }}</v-btn>
+          </div>
+        </v-stepper-content>
+
+        <v-stepper-step step="2" :complete="stepper > 2">{{ $t('form.step2.title') }}
+          <small>{{ $t('form.step2.intro') }}</small>
+        </v-stepper-step>
+        <v-stepper-content step="2">
+          <div class="photos">
+            <small>{{ $t('form.step2.photos') }}</small>
+          </div>
+          <component-uploadcare v-on:success="setOrganisationPhotos" multiple />
+
+          <v-flex sm8>
+            <v-select ref="foo" v-bind:items="industries" v-model="industry" :label="$t('form.industry.label')" autocomplete></v-select>
           </v-flex>
-        </transition>
-        <transition name="transition-up">
-          <v-flex v-show="showFacebook" xs9 sm6>
-            <v-text-field label="Facebook Page (URL)" :hint="'e.g. https://www.facebook.com/' + (organisationName ? usernamePreview(organisationName) : 'foo')" persistent-hint :rules="facebookRules" v-model="social.facebook" append-icon="close" :append-icon-cb="() => (showFacebook = false, social.facebook = '')"></v-text-field>
+
+          <transition name="transition-up">
+            <v-text-field v-show="showGerman" :label="$t('form.description.label.de')" v-model="description.de" :rules="descriptionRules" :counter="140"></v-text-field>
+          </transition>
+          <transition name="transition-up">
+            <v-text-field v-show="showEnglish" :label="$t('form.description.label.en')" v-model="description.en" :rules="descriptionRules" :counter="140"></v-text-field>
+          </transition>
+          <transition name="fade">
+            <v-btn small round v-show="!showGerman" class="caption mr-2" @click="showGerman = true">+ German</v-btn>
+          </transition>
+          <transition name="fade">
+            <v-btn small round v-show="!showEnglish" class="caption mr-2" @click="showEnglish = true">+ Englisch</v-btn>
+          </transition>
+
+          <v-flex xs9 sm4>
+            <v-radio-group v-model="employees" column :label="$t('form.employees.label')">
+              <v-radio label="1-10" value="1-10"></v-radio>
+              <v-radio label="11-100" value="11-100"></v-radio>
+              <v-radio label="100+" value="100+"></v-radio>
+            </v-radio-group>
           </v-flex>
-        </transition>
-        <transition name="fade">
-          <v-btn small round v-show="!showInstagram" class="caption mr-2" @click="showInstagram = true">+ Instagram</v-btn>
-        </transition>
-        <transition name="fade">
-          <v-btn small round v-show="!showTwitter" class="caption mr-2" @click="showTwitter = true">+ Twitter</v-btn>
-        </transition>
-        <transition name="fade">
-          <v-btn small round v-show="!showFacebook" class="caption mr-2" @click="showFacebook = true">+ Facebook</v-btn>
-        </transition>
 
-        <div class="text-xs-right">
-          <v-btn color="primary" :disabled="validateStep1()" @click.native="stepper = 2">{{ $t('buttons.continue') }}</v-btn>
-        </div>
-      </v-stepper-content>
+          <v-checkbox :label="$t('form.featured.label')" :hint="$t('form.featured.hint')" persistent-hint v-model="featureRequest"></v-checkbox>
+          <div class="text-xs-right">
+            <v-btn flat @click.native="stepper = 1">{{ $t('buttons.back') }}</v-btn>
+            <v-btn color="primary" @click.native="stepper = 3">{{ $t('buttons.continue') }}</v-btn>
+          </div>
 
-      <v-stepper-step step="2" :complete="stepper > 2">{{ $t('form.step2.title') }}
-        <small>{{ $t('form.step2.intro') }}</small>
-      </v-stepper-step>
-      <v-stepper-content step="2">
-        <div class="photos">
-          <small>{{ $t('form.step2.photos') }}</small>
-        </div>
-        <component-uploadcare v-on:success="setOrganisationPhotos" multiple />
+        </v-stepper-content>
+        <v-stepper-step step="3">{{ $t('form.step3.title') }}
+          <small>{{ $t('form.step3.intro') }}</small>
+        </v-stepper-step>
+        <v-stepper-content step="3">
+          <component-login />
+          <v-checkbox v-if="user" class="terms" :label="$t('form.terms.label')" :hint="$t('form.terms.hint')" persistent-hint v-model="terms" :rules="[v => !!v || $t('form.terms.error')]" required></v-checkbox>
+          <div class="text-xs-right">
+            <component-terms link />
+            <v-btn flat @click.native="stepper = 2">{{ $t('buttons.back') }}</v-btn>
+            <v-btn color="primary" @click="submit" :loading="stateLoading" :disabled="(!valid || stateLoading)">{{ $t('buttons.save') }}</v-btn>
+          </div>
+        </v-stepper-content>
 
-        <v-flex sm8>
-          <v-select ref="foo" v-bind:items="industries" v-model="industry" :label="$t('form.industry.label')" autocomplete></v-select>
-        </v-flex>
-
-        <transition name="transition-up">
-          <v-text-field v-show="showGerman" :label="$t('form.description.label.de')" v-model="description.de" :rules="descriptionRules" :counter="140"></v-text-field>
-        </transition>
-        <transition name="transition-up">
-          <v-text-field v-show="showEnglish" :label="$t('form.description.label.en')" v-model="description.en" :rules="descriptionRules" :counter="140"></v-text-field>
-        </transition>
-        <transition name="fade">
-          <v-btn small round v-show="!showGerman" class="caption mr-2" @click="showGerman = true">+ German</v-btn>
-        </transition>
-        <transition name="fade">
-          <v-btn small round v-show="!showEnglish" class="caption mr-2" @click="showEnglish = true">+ Englisch</v-btn>
-        </transition>
-
-        <v-flex xs9 sm4>
-          <v-radio-group v-model="employees" column :label="$t('form.employees.label')">
-            <v-radio label="1-10" value="1-10"></v-radio>
-            <v-radio label="11-100" value="11-100"></v-radio>
-            <v-radio label="100+" value="100+"></v-radio>
-          </v-radio-group>
-        </v-flex>
-
-        <v-checkbox :label="$t('form.featured.label')" :hint="$t('form.featured.hint')" persistent-hint v-model="featureRequest"></v-checkbox>
-        <div class="text-xs-right">
-          <v-btn flat @click.native="stepper = 1">{{ $t('buttons.back') }}</v-btn>
-          <v-btn color="primary" @click.native="stepper = 3">{{ $t('buttons.continue') }}</v-btn>
-        </div>
-
-      </v-stepper-content>
-      <v-stepper-step step="3">{{ $t('form.step3.title') }}
-        <small>{{ $t('form.step3.intro') }}</small>
-      </v-stepper-step>
-      <v-stepper-content step="3">
-        <component-login />
-        <v-checkbox v-if="user" class="terms" :label="$t('form.terms.label')" :hint="$t('form.terms.hint')" persistent-hint v-model="terms" :rules="[v => !!v || $t('form.terms.error')]" required></v-checkbox>
-        <div class="text-xs-right">
-          <component-terms link />
-          <v-btn flat @click.native="stepper = 2">{{ $t('buttons.back') }}</v-btn>
-          <v-btn color="primary" @click="submit" :loading="stateLoading" :disabled="(!valid || stateLoading)">{{ $t('buttons.save') }}</v-btn>
-        </div>
-      </v-stepper-content>
-
-    </v-stepper>
-  </v-form>
-</div>
+      </v-stepper>
+    </v-form>
+  </div>
 </template>
 
 <script>
@@ -187,21 +187,21 @@ export default {
     this.showGerman = this.$i18n.locale === 'de'
   },
   methods: {
-    setOrganisationImage: function(data) {
+    setOrganisationImage: function (data) {
       var imageData = data
       delete imageData.sourceInfo
       this.organisationImage = imageData
     },
-    setOrganisationPhotos: function(data) {
+    setOrganisationPhotos: function (data) {
       this.organisationPhotos = data
     },
-    resetOrganisationImage: function() {
+    resetOrganisationImage: function () {
       this.organisationImage = ''
     },
-    setAddress: function(data) {
+    setAddress: function (data) {
       this.address = data
     },
-    resetAddress: function() {
+    resetAddress: function () {
       this.address = {}
     },
     validateStep1() {
@@ -219,7 +219,7 @@ export default {
           address: this.address,
           employees: this.employees,
           description: this.description,
-          industry: this.industries.findIndex(function(value) {
+          industry: this.industries.findIndex(function (value) {
             return value === self.industry
           }),
           website: this.website,
@@ -233,15 +233,15 @@ export default {
         self.firestore
           .collection('organisations')
           .add(data)
-          .then(function() {
+          .then(function () {
             // Success
             self.formSuccess = true
             self.stateLoading = false
             self.$emit('success')
           })
-          .then(function() {
+          .then(function () {
             $.ajax({
-              url: 'https://formspree.io/hello@madeinbasel.org',
+              url: 'https://formspree.io/xvargzam',
               method: 'POST',
               data: {
                 _subject: 'New Member - MADE IN BASEL',
@@ -250,7 +250,7 @@ export default {
               }
             })
           })
-          .catch(function(error) {
+          .catch(function (error) {
             self.firebaseError = true
             console.error('Error adding document: ', error)
           })
