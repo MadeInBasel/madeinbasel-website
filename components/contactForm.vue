@@ -57,10 +57,10 @@ export default {
     onSubmit: function () {
       var self = this
       $.ajax({
-        url: 'https://formspree.io/xvargzam',
+        url: 'https://jumprock.co/mail/madeinbasel',
         method: 'POST',
         data: {
-          _subject: self.subject,
+          subject: self.subject,
           name: self.name,
           email: self.email,
           message: self.message
