@@ -241,12 +241,11 @@ export default {
           })
           .then(function () {
             $.ajax({
-              url: 'https://formspree.io/xvargzam',
+              url: 'https://jumprock.co/mail/madeinbasel',
               method: 'POST',
               data: {
-                _subject: 'New Member - MADE IN BASEL',
-                data: data,
-                dataType: 'json'
+                subject: 'New Member - MADE IN BASEL',
+                message: JSON.stringify(data)
               }
             })
           })
